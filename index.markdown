@@ -23,7 +23,7 @@ long_description: "OpenSearch is a community-driven, open source search and anal
 
 # Both OpenSearch and OpenSearch Dashboards are super pluggable -- you can provide your own or use the [OpenDistro Plugins](#) for extra functionality." 
 
-callouts_head: "The OpenSearch project's principles for development"
+callouts_head: "What's New"
 callouts_class: list-features
 callouts_id: principles
 callouts_leader: 'When we (the contributors) are successful, OpenSearch will be:'

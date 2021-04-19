@@ -70,3 +70,5 @@ paginate_path: "/blog/page:num/"
 exclude:
   - bower.json
   - package.json
+  - bower_components
+  - node_modules

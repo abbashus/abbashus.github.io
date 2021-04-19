@@ -95,5 +95,7 @@ define(function() {
         mods.push('mod/console-tabs');
     }
 
+    mods.push('bootstrap');
+
     require(mods);
 });

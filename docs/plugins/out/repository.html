@@ -1,0 +1,2147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.12">
+<title>OpenSearch Plugins and Integrations</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<style>
+/* Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
+/* Uncomment @import statement to use as custom stylesheet */
+/*@import "https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700";*/
+article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section{display:block}
+audio,video{display:inline-block}
+audio:not([controls]){display:none;height:0}
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}
+a{background:none}
+a:focus{outline:thin dotted}
+a:active,a:hover{outline:0}
+h1{font-size:2em;margin:.67em 0}
+abbr[title]{border-bottom:1px dotted}
+b,strong{font-weight:bold}
+dfn{font-style:italic}
+hr{-moz-box-sizing:content-box;box-sizing:content-box;height:0}
+mark{background:#ff0;color:#000}
+code,kbd,pre,samp{font-family:monospace;font-size:1em}
+pre{white-space:pre-wrap}
+q{quotes:"\201C" "\201D" "\2018" "\2019"}
+small{font-size:80%}
+sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}
+sup{top:-.5em}
+sub{bottom:-.25em}
+img{border:0}
+svg:not(:root){overflow:hidden}
+figure{margin:0}
+fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}
+legend{border:0;padding:0}
+button,input,select,textarea{font-family:inherit;font-size:100%;margin:0}
+button,input{line-height:normal}
+button,select{text-transform:none}
+button,html input[type="button"],input[type="reset"],input[type="submit"]{-webkit-appearance:button;cursor:pointer}
+button[disabled],html input[disabled]{cursor:default}
+input[type="checkbox"],input[type="radio"]{box-sizing:border-box;padding:0}
+button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}
+textarea{overflow:auto;vertical-align:top}
+table{border-collapse:collapse;border-spacing:0}
+*,*::before,*::after{-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box}
+html,body{font-size:100%}
+body{background:#fff;color:rgba(0,0,0,.8);padding:0;margin:0;font-family:"Noto Serif","DejaVu Serif",serif;font-weight:400;font-style:normal;line-height:1;position:relative;cursor:auto;tab-size:4;word-wrap:anywhere;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased}
+a:hover{cursor:pointer}
+img,object,embed{max-width:100%;height:auto}
+object,embed{height:100%}
+img{-ms-interpolation-mode:bicubic}
+.left{float:left!important}
+.right{float:right!important}
+.text-left{text-align:left!important}
+.text-right{text-align:right!important}
+.text-center{text-align:center!important}
+.text-justify{text-align:justify!important}
+.hide{display:none}
+img,object,svg{display:inline-block;vertical-align:middle}
+textarea{height:auto;min-height:50px}
+select{width:100%}
+.subheader,.admonitionblock td.content>.title,.audioblock>.title,.exampleblock>.title,.imageblock>.title,.listingblock>.title,.literalblock>.title,.stemblock>.title,.openblock>.title,.paragraph>.title,.quoteblock>.title,table.tableblock>.title,.verseblock>.title,.videoblock>.title,.dlist>.title,.olist>.title,.ulist>.title,.qlist>.title,.hdlist>.title{line-height:1.45;color:#7a2518;font-weight:400;margin-top:0;margin-bottom:.25em}
+div,dl,dt,dd,ul,ol,li,h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6,pre,form,p,blockquote,th,td{margin:0;padding:0}
+a{color:#2156a5;text-decoration:underline;line-height:inherit}
+a:hover,a:focus{color:#1d4b8f}
+a img{border:0}
+p{font-family:inherit;font-weight:400;font-size:1em;line-height:1.6;margin-bottom:1.25em;text-rendering:optimizeLegibility}
+p aside{font-size:.875em;line-height:1.35;font-style:italic}
+h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{font-family:"Open Sans","DejaVu Sans",sans-serif;font-weight:300;font-style:normal;color:#ba3925;text-rendering:optimizeLegibility;margin-top:1em;margin-bottom:.5em;line-height:1.0125em}
+h1 small,h2 small,h3 small,#toctitle small,.sidebarblock>.content>.title small,h4 small,h5 small,h6 small{font-size:60%;color:#e99b8f;line-height:0}
+h1{font-size:2.125em}
+h2{font-size:1.6875em}
+h3,#toctitle,.sidebarblock>.content>.title{font-size:1.375em}
+h4,h5{font-size:1.125em}
+h6{font-size:1em}
+hr{border:solid #dddddf;border-width:1px 0 0;clear:both;margin:1.25em 0 1.1875em;height:0}
+em,i{font-style:italic;line-height:inherit}
+strong,b{font-weight:bold;line-height:inherit}
+small{font-size:60%;line-height:inherit}
+code{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;font-weight:400;color:rgba(0,0,0,.9)}
+ul,ol,dl{font-size:1em;line-height:1.6;margin-bottom:1.25em;list-style-position:outside;font-family:inherit}
+ul,ol{margin-left:1.5em}
+ul li ul,ul li ol{margin-left:1.25em;margin-bottom:0;font-size:1em}
+ul.square li ul,ul.circle li ul,ul.disc li ul{list-style:inherit}
+ul.square{list-style-type:square}
+ul.circle{list-style-type:circle}
+ul.disc{list-style-type:disc}
+ol li ul,ol li ol{margin-left:1.25em;margin-bottom:0}
+dl dt{margin-bottom:.3125em;font-weight:bold}
+dl dd{margin-bottom:1.25em}
+abbr,acronym{text-transform:uppercase;font-size:90%;color:rgba(0,0,0,.8);border-bottom:1px dotted #ddd;cursor:help}
+abbr{text-transform:none}
+blockquote{margin:0 0 1.25em;padding:.5625em 1.25em 0 1.1875em;border-left:1px solid #ddd}
+blockquote cite{display:block;font-size:.9375em;color:rgba(0,0,0,.6)}
+blockquote cite::before{content:"\2014 \0020"}
+blockquote cite a,blockquote cite a:visited{color:rgba(0,0,0,.6)}
+blockquote,blockquote p{line-height:1.6;color:rgba(0,0,0,.85)}
+@media screen and (min-width:768px){h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{line-height:1.2}
+h1{font-size:2.75em}
+h2{font-size:2.3125em}
+h3,#toctitle,.sidebarblock>.content>.title{font-size:1.6875em}
+h4{font-size:1.4375em}}
+table{background:#fff;margin-bottom:1.25em;border:solid 1px #dedede;word-wrap:normal}
+table thead,table tfoot{background:#f7f8f7}
+table thead tr th,table thead tr td,table tfoot tr th,table tfoot tr td{padding:.5em .625em .625em;font-size:inherit;color:rgba(0,0,0,.8);text-align:left}
+table tr th,table tr td{padding:.5625em .625em;font-size:inherit;color:rgba(0,0,0,.8)}
+table tr.even,table tr.alt{background:#f8f8f7}
+table thead tr th,table tfoot tr th,table tbody tr td,table tr td,table tfoot tr td{line-height:1.6}
+h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{line-height:1.2;word-spacing:-.05em}
+h1 strong,h2 strong,h3 strong,#toctitle strong,.sidebarblock>.content>.title strong,h4 strong,h5 strong,h6 strong{font-weight:400}
+.center{margin-left:auto;margin-right:auto}
+.stretch{width:100%}
+.clearfix::before,.clearfix::after,.float-group::before,.float-group::after{content:" ";display:table}
+.clearfix::after,.float-group::after{clear:both}
+:not(pre).nobreak{word-wrap:normal}
+:not(pre).nowrap{white-space:nowrap}
+:not(pre).pre-wrap{white-space:pre-wrap}
+:not(pre):not([class^=L])>code{font-size:.9375em;font-style:normal!important;letter-spacing:0;padding:.1em .5ex;word-spacing:-.15em;background:#f7f7f8;-webkit-border-radius:4px;border-radius:4px;line-height:1.45;text-rendering:optimizeSpeed}
+pre{color:rgba(0,0,0,.9);font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;line-height:1.45;text-rendering:optimizeSpeed}
+pre code,pre pre{color:inherit;font-size:inherit;line-height:inherit}
+pre>code{display:block}
+pre.nowrap,pre.nowrap pre{white-space:pre;word-wrap:normal}
+em em{font-style:normal}
+strong strong{font-weight:400}
+.keyseq{color:rgba(51,51,51,.8)}
+kbd{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;display:inline-block;color:rgba(0,0,0,.8);font-size:.65em;line-height:1.45;background:#f7f7f7;border:1px solid #ccc;-webkit-border-radius:3px;border-radius:3px;-webkit-box-shadow:0 1px 0 rgba(0,0,0,.2),0 0 0 .1em white inset;box-shadow:0 1px 0 rgba(0,0,0,.2),0 0 0 .1em #fff inset;margin:0 .15em;padding:.2em .5em;vertical-align:middle;position:relative;top:-.1em;white-space:nowrap}
+.keyseq kbd:first-child{margin-left:0}
+.keyseq kbd:last-child{margin-right:0}
+.menuseq,.menuref{color:#000}
+.menuseq b:not(.caret),.menuref{font-weight:inherit}
+.menuseq{word-spacing:-.02em}
+.menuseq b.caret{font-size:1.25em;line-height:.8}
+.menuseq i.caret{font-weight:bold;text-align:center;width:.45em}
+b.button::before,b.button::after{position:relative;top:-1px;font-weight:400}
+b.button::before{content:"[";padding:0 3px 0 2px}
+b.button::after{content:"]";padding:0 2px 0 3px}
+p a>code:hover{color:rgba(0,0,0,.9)}
+#header,#content,#footnotes,#footer{width:100%;margin-left:auto;margin-right:auto;margin-top:0;margin-bottom:0;max-width:62.5em;*zoom:1;position:relative;padding-left:.9375em;padding-right:.9375em}
+#header::before,#header::after,#content::before,#content::after,#footnotes::before,#footnotes::after,#footer::before,#footer::after{content:" ";display:table}
+#header::after,#content::after,#footnotes::after,#footer::after{clear:both}
+#content{margin-top:1.25em}
+#content::before{content:none}
+#header>h1:first-child{color:rgba(0,0,0,.85);margin-top:2.25rem;margin-bottom:0}
+#header>h1:first-child+#toc{margin-top:8px;border-top:1px solid #dddddf}
+#header>h1:only-child,body.toc2 #header>h1:nth-last-child(2){border-bottom:1px solid #dddddf;padding-bottom:8px}
+#header .details{border-bottom:1px solid #dddddf;line-height:1.45;padding-top:.25em;padding-bottom:.25em;padding-left:.25em;color:rgba(0,0,0,.6);display:-ms-flexbox;display:-webkit-flex;display:flex;-ms-flex-flow:row wrap;-webkit-flex-flow:row wrap;flex-flow:row wrap}
+#header .details span:first-child{margin-left:-.125em}
+#header .details span.email a{color:rgba(0,0,0,.85)}
+#header .details br{display:none}
+#header .details br+span::before{content:"\00a0\2013\00a0"}
+#header .details br+span.author::before{content:"\00a0\22c5\00a0";color:rgba(0,0,0,.85)}
+#header .details br+span#revremark::before{content:"\00a0|\00a0"}
+#header #revnumber{text-transform:capitalize}
+#header #revnumber::after{content:"\00a0"}
+#content>h1:first-child:not([class]){color:rgba(0,0,0,.85);border-bottom:1px solid #dddddf;padding-bottom:8px;margin-top:0;padding-top:1rem;margin-bottom:1.25rem}
+#toc{border-bottom:1px solid #e7e7e9;padding-bottom:.5em}
+#toc>ul{margin-left:.125em}
+#toc ul.sectlevel0>li>a{font-style:italic}
+#toc ul.sectlevel0 ul.sectlevel1{margin:.5em 0}
+#toc ul{font-family:"Open Sans","DejaVu Sans",sans-serif;list-style-type:none}
+#toc li{line-height:1.3334;margin-top:.3334em}
+#toc a{text-decoration:none}
+#toc a:active{text-decoration:underline}
+#toctitle{color:#7a2518;font-size:1.2em}
+@media screen and (min-width:768px){#toctitle{font-size:1.375em}
+body.toc2{padding-left:15em;padding-right:0}
+#toc.toc2{margin-top:0!important;background:#f8f8f7;position:fixed;width:15em;left:0;top:0;border-right:1px solid #e7e7e9;border-top-width:0!important;border-bottom-width:0!important;z-index:1000;padding:1.25em 1em;height:100%;overflow:auto}
+#toc.toc2 #toctitle{margin-top:0;margin-bottom:.8rem;font-size:1.2em}
+#toc.toc2>ul{font-size:.9em;margin-bottom:0}
+#toc.toc2 ul ul{margin-left:0;padding-left:1em}
+#toc.toc2 ul.sectlevel0 ul.sectlevel1{padding-left:0;margin-top:.5em;margin-bottom:.5em}
+body.toc2.toc-right{padding-left:0;padding-right:15em}
+body.toc2.toc-right #toc.toc2{border-right-width:0;border-left:1px solid #e7e7e9;left:auto;right:0}}
+@media screen and (min-width:1280px){body.toc2{padding-left:20em;padding-right:0}
+#toc.toc2{width:20em}
+#toc.toc2 #toctitle{font-size:1.375em}
+#toc.toc2>ul{font-size:.95em}
+#toc.toc2 ul ul{padding-left:1.25em}
+body.toc2.toc-right{padding-left:0;padding-right:20em}}
+#content #toc{border-style:solid;border-width:1px;border-color:#e0e0dc;margin-bottom:1.25em;padding:1.25em;background:#f8f8f7;-webkit-border-radius:4px;border-radius:4px}
+#content #toc>:first-child{margin-top:0}
+#content #toc>:last-child{margin-bottom:0}
+#footer{max-width:none;background:rgba(0,0,0,.8);padding:1.25em}
+#footer-text{color:rgba(255,255,255,.8);line-height:1.44}
+#content{margin-bottom:.625em}
+.sect1{padding-bottom:.625em}
+@media screen and (min-width:768px){#content{margin-bottom:1.25em}
+.sect1{padding-bottom:1.25em}}
+.sect1:last-child{padding-bottom:0}
+.sect1+.sect1{border-top:1px solid #e7e7e9}
+#content h1>a.anchor,h2>a.anchor,h3>a.anchor,#toctitle>a.anchor,.sidebarblock>.content>.title>a.anchor,h4>a.anchor,h5>a.anchor,h6>a.anchor{position:absolute;z-index:1001;width:1.5ex;margin-left:-1.5ex;display:block;text-decoration:none!important;visibility:hidden;text-align:center;font-weight:400}
+#content h1>a.anchor::before,h2>a.anchor::before,h3>a.anchor::before,#toctitle>a.anchor::before,.sidebarblock>.content>.title>a.anchor::before,h4>a.anchor::before,h5>a.anchor::before,h6>a.anchor::before{content:"\00A7";font-size:.85em;display:block;padding-top:.1em}
+#content h1:hover>a.anchor,#content h1>a.anchor:hover,h2:hover>a.anchor,h2>a.anchor:hover,h3:hover>a.anchor,#toctitle:hover>a.anchor,.sidebarblock>.content>.title:hover>a.anchor,h3>a.anchor:hover,#toctitle>a.anchor:hover,.sidebarblock>.content>.title>a.anchor:hover,h4:hover>a.anchor,h4>a.anchor:hover,h5:hover>a.anchor,h5>a.anchor:hover,h6:hover>a.anchor,h6>a.anchor:hover{visibility:visible}
+#content h1>a.link,h2>a.link,h3>a.link,#toctitle>a.link,.sidebarblock>.content>.title>a.link,h4>a.link,h5>a.link,h6>a.link{color:#ba3925;text-decoration:none}
+#content h1>a.link:hover,h2>a.link:hover,h3>a.link:hover,#toctitle>a.link:hover,.sidebarblock>.content>.title>a.link:hover,h4>a.link:hover,h5>a.link:hover,h6>a.link:hover{color:#a53221}
+details,.audioblock,.imageblock,.literalblock,.listingblock,.stemblock,.videoblock{margin-bottom:1.25em}
+details>summary:first-of-type{cursor:pointer;display:list-item;outline:none;margin-bottom:.75em}
+.admonitionblock td.content>.title,.audioblock>.title,.exampleblock>.title,.imageblock>.title,.listingblock>.title,.literalblock>.title,.stemblock>.title,.openblock>.title,.paragraph>.title,.quoteblock>.title,table.tableblock>.title,.verseblock>.title,.videoblock>.title,.dlist>.title,.olist>.title,.ulist>.title,.qlist>.title,.hdlist>.title{text-rendering:optimizeLegibility;text-align:left;font-family:"Noto Serif","DejaVu Serif",serif;font-size:1rem;font-style:italic}
+table.tableblock.fit-content>caption.title{white-space:nowrap;width:0}
+.paragraph.lead>p,#preamble>.sectionbody>[class="paragraph"]:first-of-type p{font-size:1.21875em;line-height:1.6;color:rgba(0,0,0,.85)}
+table.tableblock #preamble>.sectionbody>[class="paragraph"]:first-of-type p{font-size:inherit}
+.admonitionblock>table{border-collapse:separate;border:0;background:none;width:100%}
+.admonitionblock>table td.icon{text-align:center;width:80px}
+.admonitionblock>table td.icon img{max-width:none}
+.admonitionblock>table td.icon .title{font-weight:bold;font-family:"Open Sans","DejaVu Sans",sans-serif;text-transform:uppercase}
+.admonitionblock>table td.content{padding-left:1.125em;padding-right:1.25em;border-left:1px solid #dddddf;color:rgba(0,0,0,.6);word-wrap:anywhere}
+.admonitionblock>table td.content>:last-child>:last-child{margin-bottom:0}
+.exampleblock>.content{border-style:solid;border-width:1px;border-color:#e6e6e6;margin-bottom:1.25em;padding:1.25em;background:#fff;-webkit-border-radius:4px;border-radius:4px}
+.exampleblock>.content>:first-child{margin-top:0}
+.exampleblock>.content>:last-child{margin-bottom:0}
+.sidebarblock{border-style:solid;border-width:1px;border-color:#dbdbd6;margin-bottom:1.25em;padding:1.25em;background:#f3f3f2;-webkit-border-radius:4px;border-radius:4px}
+.sidebarblock>:first-child{margin-top:0}
+.sidebarblock>:last-child{margin-bottom:0}
+.sidebarblock>.content>.title{color:#7a2518;margin-top:0;text-align:center}
+.exampleblock>.content>:last-child>:last-child,.exampleblock>.content .olist>ol>li:last-child>:last-child,.exampleblock>.content .ulist>ul>li:last-child>:last-child,.exampleblock>.content .qlist>ol>li:last-child>:last-child,.sidebarblock>.content>:last-child>:last-child,.sidebarblock>.content .olist>ol>li:last-child>:last-child,.sidebarblock>.content .ulist>ul>li:last-child>:last-child,.sidebarblock>.content .qlist>ol>li:last-child>:last-child{margin-bottom:0}
+.literalblock pre,.listingblock>.content>pre{-webkit-border-radius:4px;border-radius:4px;overflow-x:auto;padding:1em;font-size:.8125em}
+@media screen and (min-width:768px){.literalblock pre,.listingblock>.content>pre{font-size:.90625em}}
+@media screen and (min-width:1280px){.literalblock pre,.listingblock>.content>pre{font-size:1em}}
+.literalblock pre,.listingblock>.content>pre:not(.highlight),.listingblock>.content>pre[class="highlight"],.listingblock>.content>pre[class^="highlight "]{background:#f7f7f8}
+.literalblock.output pre{color:#f7f7f8;background:rgba(0,0,0,.9)}
+.listingblock>.content{position:relative}
+.listingblock code[data-lang]::before{display:none;content:attr(data-lang);position:absolute;font-size:.75em;top:.425rem;right:.5rem;line-height:1;text-transform:uppercase;color:inherit;opacity:.5}
+.listingblock:hover code[data-lang]::before{display:block}
+.listingblock.terminal pre .command::before{content:attr(data-prompt);padding-right:.5em;color:inherit;opacity:.5}
+.listingblock.terminal pre .command:not([data-prompt])::before{content:"$"}
+.listingblock pre.highlightjs{padding:0}
+.listingblock pre.highlightjs>code{padding:1em;-webkit-border-radius:4px;border-radius:4px}
+.listingblock pre.prettyprint{border-width:0}
+.prettyprint{background:#f7f7f8}
+pre.prettyprint .linenums{line-height:1.45;margin-left:2em}
+pre.prettyprint li{background:none;list-style-type:inherit;padding-left:0}
+pre.prettyprint li code[data-lang]::before{opacity:1}
+pre.prettyprint li:not(:first-child) code[data-lang]::before{display:none}
+table.linenotable{border-collapse:separate;border:0;margin-bottom:0;background:none}
+table.linenotable td[class]{color:inherit;vertical-align:top;padding:0;line-height:inherit;white-space:normal}
+table.linenotable td.code{padding-left:.75em}
+table.linenotable td.linenos{border-right:1px solid currentColor;opacity:.35;padding-right:.5em}
+pre.pygments .lineno{border-right:1px solid currentColor;opacity:.35;display:inline-block;margin-right:.75em}
+pre.pygments .lineno::before{content:"";margin-right:-.125em}
+.quoteblock{margin:0 1em 1.25em 1.5em;display:table}
+.quoteblock:not(.excerpt)>.title{margin-left:-1.5em;margin-bottom:.75em}
+.quoteblock blockquote,.quoteblock p{color:rgba(0,0,0,.85);font-size:1.15rem;line-height:1.75;word-spacing:.1em;letter-spacing:0;font-style:italic;text-align:justify}
+.quoteblock blockquote{margin:0;padding:0;border:0}
+.quoteblock blockquote::before{content:"\201c";float:left;font-size:2.75em;font-weight:bold;line-height:.6em;margin-left:-.6em;color:#7a2518;text-shadow:0 1px 2px rgba(0,0,0,.1)}
+.quoteblock blockquote>.paragraph:last-child p{margin-bottom:0}
+.quoteblock .attribution{margin-top:.75em;margin-right:.5ex;text-align:right}
+.verseblock{margin:0 1em 1.25em}
+.verseblock pre{font-family:"Open Sans","DejaVu Sans",sans;font-size:1.15rem;color:rgba(0,0,0,.85);font-weight:300;text-rendering:optimizeLegibility}
+.verseblock pre strong{font-weight:400}
+.verseblock .attribution{margin-top:1.25rem;margin-left:.5ex}
+.quoteblock .attribution,.verseblock .attribution{font-size:.9375em;line-height:1.45;font-style:italic}
+.quoteblock .attribution br,.verseblock .attribution br{display:none}
+.quoteblock .attribution cite,.verseblock .attribution cite{display:block;letter-spacing:-.025em;color:rgba(0,0,0,.6)}
+.quoteblock.abstract blockquote::before,.quoteblock.excerpt blockquote::before,.quoteblock .quoteblock blockquote::before{display:none}
+.quoteblock.abstract blockquote,.quoteblock.abstract p,.quoteblock.excerpt blockquote,.quoteblock.excerpt p,.quoteblock .quoteblock blockquote,.quoteblock .quoteblock p{line-height:1.6;word-spacing:0}
+.quoteblock.abstract{margin:0 1em 1.25em;display:block}
+.quoteblock.abstract>.title{margin:0 0 .375em;font-size:1.15em;text-align:center}
+.quoteblock.excerpt>blockquote,.quoteblock .quoteblock{padding:0 0 .25em 1em;border-left:.25em solid #dddddf}
+.quoteblock.excerpt,.quoteblock .quoteblock{margin-left:0}
+.quoteblock.excerpt blockquote,.quoteblock.excerpt p,.quoteblock .quoteblock blockquote,.quoteblock .quoteblock p{color:inherit;font-size:1.0625rem}
+.quoteblock.excerpt .attribution,.quoteblock .quoteblock .attribution{color:inherit;text-align:left;margin-right:0}
+p.tableblock:last-child{margin-bottom:0}
+td.tableblock>.content{margin-bottom:1.25em;word-wrap:anywhere}
+td.tableblock>.content>:last-child{margin-bottom:-1.25em}
+table.tableblock,th.tableblock,td.tableblock{border:0 solid #dedede}
+table.grid-all>*>tr>*{border-width:1px}
+table.grid-cols>*>tr>*{border-width:0 1px}
+table.grid-rows>*>tr>*{border-width:1px 0}
+table.frame-all{border-width:1px}
+table.frame-ends{border-width:1px 0}
+table.frame-sides{border-width:0 1px}
+table.frame-none>colgroup+*>:first-child>*,table.frame-sides>colgroup+*>:first-child>*{border-top-width:0}
+table.frame-none>:last-child>:last-child>*,table.frame-sides>:last-child>:last-child>*{border-bottom-width:0}
+table.frame-none>*>tr>:first-child,table.frame-ends>*>tr>:first-child{border-left-width:0}
+table.frame-none>*>tr>:last-child,table.frame-ends>*>tr>:last-child{border-right-width:0}
+table.stripes-all tr,table.stripes-odd tr:nth-of-type(odd),table.stripes-even tr:nth-of-type(even),table.stripes-hover tr:hover{background:#f8f8f7}
+th.halign-left,td.halign-left{text-align:left}
+th.halign-right,td.halign-right{text-align:right}
+th.halign-center,td.halign-center{text-align:center}
+th.valign-top,td.valign-top{vertical-align:top}
+th.valign-bottom,td.valign-bottom{vertical-align:bottom}
+th.valign-middle,td.valign-middle{vertical-align:middle}
+table thead th,table tfoot th{font-weight:bold}
+tbody tr th{background:#f7f8f7}
+tbody tr th,tbody tr th p,tfoot tr th,tfoot tr th p{color:rgba(0,0,0,.8);font-weight:bold}
+p.tableblock>code:only-child{background:none;padding:0}
+p.tableblock{font-size:1em}
+ol{margin-left:1.75em}
+ul li ol{margin-left:1.5em}
+dl dd{margin-left:1.125em}
+dl dd:last-child,dl dd:last-child>:last-child{margin-bottom:0}
+ol>li p,ul>li p,ul dd,ol dd,.olist .olist,.ulist .ulist,.ulist .olist,.olist .ulist{margin-bottom:.625em}
+ul.checklist,ul.none,ol.none,ul.no-bullet,ol.no-bullet,ol.unnumbered,ul.unstyled,ol.unstyled{list-style-type:none}
+ul.no-bullet,ol.no-bullet,ol.unnumbered{margin-left:.625em}
+ul.unstyled,ol.unstyled{margin-left:0}
+ul.checklist{margin-left:.625em}
+ul.checklist li>p:first-child>.fa-square-o:first-child,ul.checklist li>p:first-child>.fa-check-square-o:first-child{width:1.25em;font-size:.8em;position:relative;bottom:.125em}
+ul.checklist li>p:first-child>input[type="checkbox"]:first-child{margin-right:.25em}
+ul.inline{display:-ms-flexbox;display:-webkit-box;display:flex;-ms-flex-flow:row wrap;-webkit-flex-flow:row wrap;flex-flow:row wrap;list-style:none;margin:0 0 .625em -1.25em}
+ul.inline>li{margin-left:1.25em}
+.unstyled dl dt{font-weight:400;font-style:normal}
+ol.arabic{list-style-type:decimal}
+ol.decimal{list-style-type:decimal-leading-zero}
+ol.loweralpha{list-style-type:lower-alpha}
+ol.upperalpha{list-style-type:upper-alpha}
+ol.lowerroman{list-style-type:lower-roman}
+ol.upperroman{list-style-type:upper-roman}
+ol.lowergreek{list-style-type:lower-greek}
+.hdlist>table,.colist>table{border:0;background:none}
+.hdlist>table>tbody>tr,.colist>table>tbody>tr{background:none}
+td.hdlist1,td.hdlist2{vertical-align:top;padding:0 .625em}
+td.hdlist1{font-weight:bold;padding-bottom:1.25em}
+td.hdlist2{word-wrap:anywhere}
+.literalblock+.colist,.listingblock+.colist{margin-top:-.5em}
+.colist td:not([class]):first-child{padding:.4em .75em 0;line-height:1;vertical-align:top}
+.colist td:not([class]):first-child img{max-width:none}
+.colist td:not([class]):last-child{padding:.25em 0}
+.thumb,.th{line-height:0;display:inline-block;border:solid 4px #fff;-webkit-box-shadow:0 0 0 1px #ddd;box-shadow:0 0 0 1px #ddd}
+.imageblock.left{margin:.25em .625em 1.25em 0}
+.imageblock.right{margin:.25em 0 1.25em .625em}
+.imageblock>.title{margin-bottom:0}
+.imageblock.thumb,.imageblock.th{border-width:6px}
+.imageblock.thumb>.title,.imageblock.th>.title{padding:0 .125em}
+.image.left,.image.right{margin-top:.25em;margin-bottom:.25em;display:inline-block;line-height:0}
+.image.left{margin-right:.625em}
+.image.right{margin-left:.625em}
+a.image{text-decoration:none;display:inline-block}
+a.image object{pointer-events:none}
+sup.footnote,sup.footnoteref{font-size:.875em;position:static;vertical-align:super}
+sup.footnote a,sup.footnoteref a{text-decoration:none}
+sup.footnote a:active,sup.footnoteref a:active{text-decoration:underline}
+#footnotes{padding-top:.75em;padding-bottom:.75em;margin-bottom:.625em}
+#footnotes hr{width:20%;min-width:6.25em;margin:-.25em 0 .75em;border-width:1px 0 0}
+#footnotes .footnote{padding:0 .375em 0 .225em;line-height:1.3334;font-size:.875em;margin-left:1.2em;margin-bottom:.2em}
+#footnotes .footnote a:first-of-type{font-weight:bold;text-decoration:none;margin-left:-1.05em}
+#footnotes .footnote:last-of-type{margin-bottom:0}
+#content #footnotes{margin-top:-.625em;margin-bottom:0;padding:.75em 0}
+.gist .file-data>table{border:0;background:#fff;width:100%;margin-bottom:0}
+.gist .file-data>table td.line-data{width:99%}
+div.unbreakable{page-break-inside:avoid}
+.big{font-size:larger}
+.small{font-size:smaller}
+.underline{text-decoration:underline}
+.overline{text-decoration:overline}
+.line-through{text-decoration:line-through}
+.aqua{color:#00bfbf}
+.aqua-background{background:#00fafa}
+.black{color:#000}
+.black-background{background:#000}
+.blue{color:#0000bf}
+.blue-background{background:#0000fa}
+.fuchsia{color:#bf00bf}
+.fuchsia-background{background:#fa00fa}
+.gray{color:#606060}
+.gray-background{background:#7d7d7d}
+.green{color:#006000}
+.green-background{background:#007d00}
+.lime{color:#00bf00}
+.lime-background{background:#00fa00}
+.maroon{color:#600000}
+.maroon-background{background:#7d0000}
+.navy{color:#000060}
+.navy-background{background:#00007d}
+.olive{color:#606000}
+.olive-background{background:#7d7d00}
+.purple{color:#600060}
+.purple-background{background:#7d007d}
+.red{color:#bf0000}
+.red-background{background:#fa0000}
+.silver{color:#909090}
+.silver-background{background:#bcbcbc}
+.teal{color:#006060}
+.teal-background{background:#007d7d}
+.white{color:#bfbfbf}
+.white-background{background:#fafafa}
+.yellow{color:#bfbf00}
+.yellow-background{background:#fafa00}
+span.icon>.fa{cursor:default}
+a span.icon>.fa{cursor:inherit}
+.admonitionblock td.icon [class^="fa icon-"]{font-size:2.5em;text-shadow:1px 1px 2px rgba(0,0,0,.5);cursor:default}
+.admonitionblock td.icon .icon-note::before{content:"\f05a";color:#19407c}
+.admonitionblock td.icon .icon-tip::before{content:"\f0eb";text-shadow:1px 1px 2px rgba(155,155,0,.8);color:#111}
+.admonitionblock td.icon .icon-warning::before{content:"\f071";color:#bf6900}
+.admonitionblock td.icon .icon-caution::before{content:"\f06d";color:#bf3400}
+.admonitionblock td.icon .icon-important::before{content:"\f06a";color:#bf0000}
+.conum[data-value]{display:inline-block;color:#fff!important;background:rgba(0,0,0,.8);-webkit-border-radius:50%;border-radius:50%;text-align:center;font-size:.75em;width:1.67em;height:1.67em;line-height:1.67em;font-family:"Open Sans","DejaVu Sans",sans-serif;font-style:normal;font-weight:bold}
+.conum[data-value] *{color:#fff!important}
+.conum[data-value]+b{display:none}
+.conum[data-value]::after{content:attr(data-value)}
+pre .conum[data-value]{position:relative;top:-.125em}
+b.conum *{color:inherit!important}
+.conum:not([data-value]):empty{display:none}
+dt,th.tableblock,td.content,div.footnote{text-rendering:optimizeLegibility}
+h1,h2,p,td.content,span.alt{letter-spacing:-.01em}
+p strong,td.content strong,div.footnote strong{letter-spacing:-.005em}
+p,blockquote,dt,td.content,span.alt{font-size:1.0625rem}
+p{margin-bottom:1.25rem}
+.sidebarblock p,.sidebarblock dt,.sidebarblock td.content,p.tableblock{font-size:1em}
+.exampleblock>.content{background:#fffef7;border-color:#e0e0dc;-webkit-box-shadow:0 1px 4px #e0e0dc;box-shadow:0 1px 4px #e0e0dc}
+.print-only{display:none!important}
+@page{margin:1.25cm .75cm}
+@media print{*{-webkit-box-shadow:none!important;box-shadow:none!important;text-shadow:none!important}
+html{font-size:80%}
+a{color:inherit!important;text-decoration:underline!important}
+a.bare,a[href^="#"],a[href^="mailto:"]{text-decoration:none!important}
+a[href^="http:"]:not(.bare)::after,a[href^="https:"]:not(.bare)::after{content:"(" attr(href) ")";display:inline-block;font-size:.875em;padding-left:.25em}
+abbr[title]::after{content:" (" attr(title) ")"}
+pre,blockquote,tr,img,object,svg{page-break-inside:avoid}
+thead{display:table-header-group}
+svg{max-width:100%}
+p,blockquote,dt,td.content{font-size:1em;orphans:3;widows:3}
+h2,h3,#toctitle,.sidebarblock>.content>.title{page-break-after:avoid}
+#header,#content,#footnotes,#footer{max-width:none}
+#toc,.sidebarblock,.exampleblock>.content{background:none!important}
+#toc{border-bottom:1px solid #dddddf!important;padding-bottom:0!important}
+body.book #header{text-align:center}
+body.book #header>h1:first-child{border:0!important;margin:2.5em 0 1em}
+body.book #header .details{border:0!important;display:block;padding:0!important}
+body.book #header .details span:first-child{margin-left:0!important}
+body.book #header .details br{display:block}
+body.book #header .details br+span::before{content:none!important}
+body.book #toc{border:0!important;text-align:left!important;padding:0!important;margin:0!important}
+body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-break-before:always}
+.listingblock code[data-lang]::before{display:block}
+#footer{padding:0 .9375em}
+.hide-on-print{display:none!important}
+.print-only{display:block!important}
+.hide-for-print{display:none!important}
+.show-for-print{display:inherit!important}}
+@media print,amzn-kf8{#header>h1:first-child{margin-top:1.25rem}
+.sect1{padding:0!important}
+.sect1+.sect1{border:0}
+#footer{background:none}
+#footer-text{color:rgba(0,0,0,.6);font-size:.9em}}
+@media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
+</style>
+<style>.toc-current{font-weight: bold;} .toc-root{font-family: "Open Sans","DejaVu Sans",sans-serif;
+                       font-size: 0.9em;} #content{display: flex; flex-direction: column; flex: 1 1 auto;}
+             .nav-footer{text-align: center; margin-top: auto;}
+             .nav-footer > p > a {white-space: nowrap;}</style>
+</head>
+<body id="repository" class="book toc2 toc-left">
+<div id="header">
+<h1>OpenSearch Plugins and Integrations</h1>
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<p><span class="toc-root"><a href="index.html">OpenSearch Plugins and Integrations</a></span></p><ul class="sectlevel1">
+<li><a href="intro.html">Introduction to plugins</a>
+</li>
+<li><a href="plugin-management.html">Plugin Management</a>
+</li>
+<li><a href="analysis.html">Analysis Plugins</a>
+</li>
+<li><a href="discovery.html">Discovery Plugins</a>
+</li>
+<li><a href="ingest.html">Ingest Plugins</a>
+</li>
+<li><a href="mapper.html">Mapper Plugins</a>
+</li>
+<li><a href="repository.html"><span class="toc-current">Snapshot/Restore Repository Plugins</span></a>
+<ul class="sectlevel2">
+<li><a href="repository.html#repository-azure">Azure Repository Plugin</a>
+</li>
+<li><a href="repository.html#repository-s3">S3 Repository Plugin</a>
+</li>
+<li><a href="repository.html#repository-hdfs">Hadoop HDFS Repository Plugin</a>
+</li>
+<li><a href="repository.html#repository-gcs">Google Cloud Storage Repository Plugin</a>
+</li>
+</ul>
+</li>
+<li><a href="store.html">Store Plugins</a>
+</li>
+<li><a href="plugin-authors.html">Help for plugin authors</a>
+</li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="repository">Snapshot/Restore Repository Plugins</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Repository plugins extend the <a href="https://www.opensearch.org/guide/en/opensearch/reference/{branch}/modules-snapshots.html">Snapshot/Restore</a>
+functionality in OpenSearch by adding repositories backed by a cloud provider or
+by distributed file systems.</p>
+</div>
+<h4 id="_core_repository_plugins" class="discrete">Core repository plugins</h4>
+<div class="paragraph">
+<p>The core repository plugins are:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="repository.html#repository-s3">S3 Repository</a></dt>
+<dd>
+<p>The S3 repository plugin adds support for using S3 as a repository.</p>
+</dd>
+<dt class="hdlist1"><a href="repository.html#repository-azure">Azure Repository</a></dt>
+<dd>
+<p>The Azure repository plugin adds support for using Azure as a repository.</p>
+</dd>
+<dt class="hdlist1"><a href="repository.html#repository-hdfs">HDFS Repository</a></dt>
+<dd>
+<p>The Hadoop HDFS Repository plugin adds support for using HDFS as a repository.</p>
+</dd>
+<dt class="hdlist1"><a href="repository.html#repository-gcs">Google Cloud Storage Repository</a></dt>
+<dd>
+<p>The GCS repository plugin adds support for using Google Cloud Storage service as a repository.</p>
+</dd>
+</dl>
+</div>
+<div class="sect2">
+<h3 id="repository-azure">Azure Repository Plugin</h3>
+<div class="paragraph">
+<p>The Azure Repository plugin adds support for using Azure as a repository for
+<a href="https://www.opensearch.org/guide/en/opensearch/reference/{branch}/modules-snapshots.html">Snapshot/Restore</a>.</p>
+</div>
+<h4 id="repository-azure-install" class="discrete">Installation</h4>
+<div class="paragraph">
+<p>This plugin can be installed using the plugin manager:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sh" data-lang="sh">sudo bin/opensearch-plugin install repository-azure</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The plugin must be installed on every node in the cluster, and each node must
+be restarted after installation.</p>
+</div>
+<div class="paragraph">
+<p>You can download this plugin for <a href="plugin-management.html#plugin-management-custom-url">offline
+install</a> from <a href="https://artifacts.opensearch.org/downloads/opensearch-plugins/repository-azure/repository-azure-1.0.0.zip" class="bare">https://artifacts.opensearch.org/downloads/opensearch-plugins/repository-azure/repository-azure-1.0.0.zip</a>. To verify
+the <code>.zip</code> file, use the
+<a href="https://artifacts.opensearch.org/downloads/opensearch-plugins/repository-azure/repository-azure-1.0.0.zip.sha512">SHA hash</a> or
+<a href="https://artifacts.opensearch.org/downloads/opensearch-plugins/repository-azure/repository-azure-1.0.0.zip.asc">ASC key</a>.</p>
+</div>
+<h4 id="repository-azure-remove" class="discrete">Removal</h4>
+<div class="paragraph">
+<p>The plugin can be removed with the following command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sh" data-lang="sh">sudo bin/opensearch-plugin remove repository-azure</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The node must be stopped before removing the plugin.</p>
+</div>
+<div class="sect3">
+<h4 id="repository-azure-usage">Azure Repository</h4>
+<div class="paragraph">
+<p>To enable Azure repositories, you have first to define your azure storage settings as
+<a href="https://www.opensearch.org/guide/en/opensearch/reference/{branch}/secure-settings.html">secure settings</a>, before starting up the node:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sh" data-lang="sh">bin/opensearch-keystore add azure.client.default.account
+bin/opensearch-keystore add azure.client.default.key</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Note that you can also define more than one account:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sh" data-lang="sh">bin/opensearch-keystore add azure.client.default.account
+bin/opensearch-keystore add azure.client.default.key
+bin/opensearch-keystore add azure.client.secondary.account
+bin/opensearch-keystore add azure.client.secondary.sas_token</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For more information about these settings, see
+<a href="repository.html#repository-azure-client-settings">Client settings</a>.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Important</div>
+</td>
+<td class="content">
+<div class="title">Supported Azure Storage Account types</div>
+<div class="paragraph">
+<p>The Azure Repository plugin works with all Standard storage accounts</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Standard Locally Redundant Storage - <code>Standard_LRS</code></p>
+</li>
+<li>
+<p>Standard Zone-Redundant Storage - <code>Standard_ZRS</code></p>
+</li>
+<li>
+<p>Standard Geo-Redundant Storage - <code>Standard_GRS</code></p>
+</li>
+<li>
+<p>Standard Read Access Geo-Redundant Storage - <code>Standard_RAGRS</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><a href="https://azure.microsoft.com/en-gb/documentation/articles/storage-premium-storage">Premium Locally Redundant Storage</a> (<code>Premium_LRS</code>) is <strong>not supported</strong> as it is only usable as VM disk storage, not as general storage.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="repository-azure-client-settings">Client settings</h4>
+<div class="paragraph">
+<p>The client that you use to connect to Azure has a number of settings available.
+The settings have the form <code>azure.client.CLIENT_NAME.SETTING_NAME</code>. By default,
+<code>azure</code> repositories use a client named <code>default</code>, but this can be modified using
+the <a href="repository.html#repository-azure-repository-settings">repository setting</a> <code>client</code>.
+For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">PUT _snapshot/my_backup
+{
+  "type": "azure",
+  "settings": {
+    "client": "secondary"
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Most client settings can be added to the <code>opensearch.yml</code> configuration file.
+For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">azure.client.default.timeout: 10s
+azure.client.default.max_retries: 7
+azure.client.default.endpoint_suffix: core.chinacloudapi.cn
+azure.client.secondary.timeout: 30s</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In this example, the client side timeout is <code>10s</code> per try for the <code>default</code>
+account with <code>7</code> retries before failing. The endpoint suffix is
+<code>core.chinacloudapi.cn</code> and <code>30s</code> per try for the <code>secondary</code> account with <code>3</code>
+retries.</p>
+</div>
+<div class="paragraph">
+<p>The <code>account</code>, <code>key</code>, and <code>sas_token</code> storage settings are reloadable secure
+settings, which you add to the OpenSearch keystore. For more information about
+creating and updating the OpenSearch keystore, see
+<a href="https://www.opensearch.org/guide/en/opensearch/reference/{branch}/secure-settings.html">Secure settings</a>. After you reload the settings, the
+internal Azure clients, which are used to transfer the snapshot, utilize the
+latest settings from the keystore.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+In progress snapshot or restore jobs will not be preempted by a <strong>reload</strong>
+of the storage secure settings. They will complete using the client as it was
+built when the operation started.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The following list contains the available client settings. Those that must be
+stored in the keystore are marked as "secure"; the other settings belong in the
+<code>opensearch.yml</code> file.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>account</code> (<a href="https://www.opensearch.org/guide/en/opensearch/reference/{branch}/secure-settings.html">Secure</a>, <a href="https://www.opensearch.org/guide/en/opensearch/reference/{branch}/secure-settings.html#reloadable-secure-settings">reloadable</a>)</dt>
+<dd>
+<p>The Azure account name, which is used by the repository&#8217;s internal Azure client.</p>
+</dd>
+<dt class="hdlist1"><code>endpoint_suffix</code></dt>
+<dd>
+<p>The Azure endpoint suffix to connect to. The default value is
+<code>core.windows.net</code>.</p>
+</dd>
+<dt class="hdlist1"><code>key</code> (<a href="https://www.opensearch.org/guide/en/opensearch/reference/{branch}/secure-settings.html">Secure</a>, <a href="https://www.opensearch.org/guide/en/opensearch/reference/{branch}/secure-settings.html#reloadable-secure-settings">reloadable</a>)</dt>
+<dd>
+<p>The Azure secret key, which is used by the repository&#8217;s internal Azure client. Alternatively, use <code>sas_token</code>.</p>
+</dd>
+<dt class="hdlist1"><code>max_retries</code></dt>
+<dd>
+<p>The number of retries to use when an Azure request fails. This setting helps
+control the exponential backoff policy. It specifies the number of retries
+that must occur before the snapshot fails. The default value is <code>3</code>. The
+initial backoff period is defined by Azure SDK as <code>30s</code>. Thus there is <code>30s</code>
+of wait time before retrying after a first timeout or failure. The maximum
+backoff period is defined by Azure SDK as <code>90s</code>.</p>
+</dd>
+<dt class="hdlist1"><code>proxy.host</code></dt>
+<dd>
+<p>The host name of a proxy to connect to Azure through. For example: <code>azure.client.default.proxy.host: proxy.host</code>.</p>
+</dd>
+<dt class="hdlist1"><code>proxy.port</code></dt>
+<dd>
+<p>The port of a proxy to connect to Azure through. For example, <code>azure.client.default.proxy.port: 8888</code>.</p>
+</dd>
+<dt class="hdlist1"><code>proxy.type</code></dt>
+<dd>
+<p>Register a proxy type for the client. Supported values are <code>direct</code>, <code>http</code>,
+and <code>socks</code>. For example: <code>azure.client.default.proxy.type: http</code>. When
+<code>proxy.type</code> is set to <code>http</code> or <code>socks</code>, <code>proxy.host</code> and <code>proxy.port</code> must
+also be provided. The default value is <code>direct</code>.</p>
+</dd>
+<dt class="hdlist1"><code>sas_token</code> (<a href="https://www.opensearch.org/guide/en/opensearch/reference/{branch}/secure-settings.html">Secure</a>, <a href="https://www.opensearch.org/guide/en/opensearch/reference/{branch}/secure-settings.html#reloadable-secure-settings">reloadable</a>)</dt>
+<dd>
+<p>A shared access signatures (SAS) token, which the repository&#8217;s internal Azure
+client uses for authentication. The SAS token must have read (r), write (w),
+list (l), and delete (d) permissions for the repository base path and all its
+contents. These permissions must be granted for the blob service (b) and apply
+to resource types service (s), container (c), and object (o). Alternatively,
+use <code>key</code>.</p>
+</dd>
+<dt class="hdlist1"><code>timeout</code></dt>
+<dd>
+<p>The client side timeout for any single request to Azure. The value should
+specify the time unit. For example, a value of <code>5s</code> specifies a 5 second
+timeout. There is no default value, which means that OpenSearch uses the
+<a href="https://azure.github.io/azure-storage-java/com/microsoft/azure/storage/RequestOptions.html#setTimeoutIntervalInMs(java.lang.Integer)">default value</a>
+set by the Azure client (known as 5 minutes). This setting can be defined
+globally, per account, or both.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect3">
+<h4 id="repository-azure-repository-settings">Repository settings</h4>
+<div class="paragraph">
+<p>The Azure repository supports following settings:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>client</code></dt>
+<dd>
+<p>Azure named client to use. Defaults to <code>default</code>.</p>
+</dd>
+<dt class="hdlist1"><code>container</code></dt>
+<dd>
+<p>Container name. You must create the azure container before creating the repository.
+Defaults to <code>opensearch-snapshots</code>.</p>
+</dd>
+<dt class="hdlist1"><code>base_path</code></dt>
+<dd>
+<p>Specifies the path within container to repository data. Defaults to empty
+(root directory).</p>
+</dd>
+<dt class="hdlist1"><code>chunk_size</code></dt>
+<dd>
+<p>Big files can be broken down into multiple smaller blobs in the blob store during snapshotting.
+It is not recommended to change this value from its default unless there is an explicit reason for limiting the
+size of blobs in the repository. Setting a value lower than the default can result in an increased number of API
+calls to the Azure blob store during snapshot create as well as restore operations compared to using the default
+value and thus make both operations slower as well as more costly.
+Specify the chunk size as a value and unit, for example:
+<code>10MB</code>, <code>5KB</code>, <code>500B</code>. Defaults to the maximum size of a blob in the Azure blob store which is <code>5TB</code>.</p>
+</dd>
+<dt class="hdlist1"><code>compress</code></dt>
+<dd>
+<p>When set to <code>true</code> metadata files are stored in compressed format. This
+setting doesn&#8217;t affect index files that are already compressed by default.
+Defaults to <code>false</code>.</p>
+</dd>
+<dt class="hdlist1"><code>max_restore_bytes_per_sec</code></dt>
+<dd>
+<p>Throttles per node restore rate. Defaults to unlimited.
+Note that restores are also throttled through <a href="https://www.opensearch.org/guide/en/opensearch/reference/{branch}/recovery.html">recovery settings</a>.</p>
+</dd>
+<dt class="hdlist1"><code>max_snapshot_bytes_per_sec</code></dt>
+<dd>
+<p>Throttles per node snapshot rate. Defaults to <code>40mb</code> per second.</p>
+</dd>
+<dt class="hdlist1"><code>readonly</code></dt>
+<dd>
+<p>Makes repository read-only.  Defaults to <code>false</code>.</p>
+</dd>
+<dt class="hdlist1"><code>location_mode</code></dt>
+<dd>
+<p><code>primary_only</code> or <code>secondary_only</code>. Defaults to <code>primary_only</code>. Note that if you set it
+to <code>secondary_only</code>, it will force <code>readonly</code> to true.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>Some examples, using scripts:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console"># The simplest one
+PUT _snapshot/my_backup1
+{
+  "type": "azure"
+}
+
+# With some settings
+PUT _snapshot/my_backup2
+{
+  "type": "azure",
+  "settings": {
+    "container": "backup-container",
+    "base_path": "backups",
+    "chunk_size": "32MB",
+    "compress": true
+  }
+}
+
+
+# With two accounts defined in opensearch.yml (my_account1 and my_account2)
+PUT _snapshot/my_backup3
+{
+  "type": "azure",
+  "settings": {
+    "client": "secondary"
+  }
+}
+PUT _snapshot/my_backup4
+{
+  "type": "azure",
+  "settings": {
+    "client": "secondary",
+    "location_mode": "primary_only"
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Example using Java:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">client.admin().cluster().preparePutRepository("my_backup_java1")
+    .setType("azure").setSettings(Settings.builder()
+        .put(Storage.CONTAINER, "backup-container")
+        .put(Storage.CHUNK_SIZE, new ByteSizeValue(32, ByteSizeUnit.MB))
+    ).get();</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="repository-azure-validation">Repository validation rules</h4>
+<div class="paragraph">
+<p>According to the
+<a href="https://docs.microsoft.com/en-us/rest/api/storageservices/Naming-and-Referencing-Containers&#8212;&#8203;Blobs&#8212;&#8203;and-Metadata">containers
+naming guide</a>, a container name must be a valid DNS name, conforming to the
+following naming rules:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Container names must start with a letter or number, and can contain only letters, numbers, and the dash (-) character.</p>
+</li>
+<li>
+<p>Every dash (-) character must be immediately preceded and followed by a letter or number; consecutive dashes are not
+permitted in container names.</p>
+</li>
+<li>
+<p>All letters in a container name must be lowercase.</p>
+</li>
+<li>
+<p>Container names must be from 3 through 63 characters long.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="repository-s3">S3 Repository Plugin</h3>
+<div class="paragraph">
+<p>The S3 repository plugin adds support for using AWS S3 as a repository for
+<a href="https://www.opensearch.org/guide/en/opensearch/reference/{branch}/modules-snapshots.html">Snapshot/Restore</a>.</p>
+</div>
+<h4 id="repository-s3-install" class="discrete">Installation</h4>
+<div class="paragraph">
+<p>This plugin can be installed using the plugin manager:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sh" data-lang="sh">sudo bin/opensearch-plugin install repository-s3</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The plugin must be installed on every node in the cluster, and each node must
+be restarted after installation.</p>
+</div>
+<div class="paragraph">
+<p>You can download this plugin for <a href="plugin-management.html#plugin-management-custom-url">offline
+install</a> from <a href="https://artifacts.opensearch.org/downloads/opensearch-plugins/repository-s3/repository-s3-1.0.0.zip" class="bare">https://artifacts.opensearch.org/downloads/opensearch-plugins/repository-s3/repository-s3-1.0.0.zip</a>. To verify
+the <code>.zip</code> file, use the
+<a href="https://artifacts.opensearch.org/downloads/opensearch-plugins/repository-s3/repository-s3-1.0.0.zip.sha512">SHA hash</a> or
+<a href="https://artifacts.opensearch.org/downloads/opensearch-plugins/repository-s3/repository-s3-1.0.0.zip.asc">ASC key</a>.</p>
+</div>
+<h4 id="repository-s3-remove" class="discrete">Removal</h4>
+<div class="paragraph">
+<p>The plugin can be removed with the following command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sh" data-lang="sh">sudo bin/opensearch-plugin remove repository-s3</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The node must be stopped before removing the plugin.</p>
+</div>
+<div class="sect3">
+<h4 id="repository-s3-usage">Getting Started</h4>
+<div class="paragraph">
+<p>The plugin provides a repository type named <code>s3</code> which may be used when creating
+a repository. The repository defaults to using
+<a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-iam-roles.html">ECS
+IAM Role</a> or
+<a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/iam-roles-for-amazon-ec2.html">EC2
+IAM Role</a> credentials for authentication. The only mandatory setting is the
+bucket name:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">PUT _snapshot/my_s3_repository
+{
+  "type": "s3",
+  "settings": {
+    "bucket": "my-bucket"
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>bucket:</strong>  The name of the bucket to be used for snapshots. (Mandatory)
+Note that the bucket name can be between 3 and 63 characters long, and can contain only lower-case characters, numbers, periods, and dashes it cannot contain underscores, end with a dash, have consecutive periods, or use dashes adjacent to periods</p>
+</div>
+<div class="paragraph">
+<p>The bucket naming convention is outlines in AWS here [<a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-s3-bucket-naming-requirements.html" class="bare">https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-s3-bucket-naming-requirements.html</a>]</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="repository-s3-client">Client Settings</h4>
+<div class="paragraph">
+<p>The client that you use to connect to S3 has a number of settings available.
+The settings have the form <code>s3.client.CLIENT_NAME.SETTING_NAME</code>. By default,
+<code>s3</code> repositories use a client named <code>default</code>, but this can be modified using
+the <a href="repository.html#repository-s3-repository">repository setting</a> <code>client</code>. For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">PUT _snapshot/my_s3_repository
+{
+  "type": "s3",
+  "settings": {
+    "bucket": "my-bucket",
+    "client": "my-alternate-client"
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Most client settings can be added to the <code>opensearch.yml</code> configuration file
+with the exception of the secure settings, which you add to the OpenSearch keystore.
+For more information about creating and updating the OpenSearch keystore, see
+<a href="https://www.opensearch.org/guide/en/opensearch/reference/{branch}/secure-settings.html">Secure settings</a>.</p>
+</div>
+<div class="paragraph">
+<p>For example, if you want to use specific credentials to access S3 then run the
+following commands to add these credentials to the keystore:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sh" data-lang="sh">bin/opensearch-keystore add s3.client.default.access_key
+bin/opensearch-keystore add s3.client.default.secret_key
+# a session token is optional so the following command may not be needed
+bin/opensearch-keystore add s3.client.default.session_token</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If instead you want to use the instance role or container role to access S3
+then you should leave these settings unset. You can switch from using specific
+credentials back to the default of using the instance role or container role by
+removing these settings from the keystore as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sh" data-lang="sh">bin/opensearch-keystore remove s3.client.default.access_key
+bin/opensearch-keystore remove s3.client.default.secret_key
+# a session token is optional so the following command may not be needed
+bin/opensearch-keystore remove s3.client.default.session_token</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>All</strong> client secure settings of this plugin are
+<a href="https://www.opensearch.org/guide/en/opensearch/reference/{branch}/secure-settings.html#reloadable-secure-settings">reloadable</a>. After you
+reload the settings, the internal <code>s3</code> clients, used to transfer the snapshot
+contents, will utilize the latest settings from the keystore. Any existing <code>s3</code>
+repositories, as well as any newly created ones, will pick up the new values
+stored in the keystore.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+In-progress snapshot/restore tasks will not be preempted by a <strong>reload</strong> of
+the client&#8217;s secure settings. The task will complete using the client as it was
+built when the operation started.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The following list contains the available client settings. Those that must be
+stored in the keystore are marked as "secure" and are <strong>reloadable</strong>; the other
+settings belong in the <code>opensearch.yml</code> file.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>access_key</code> (<a href="https://www.opensearch.org/guide/en/opensearch/reference/{branch}/secure-settings.html">Secure</a>, <a href="https://www.opensearch.org/guide/en/opensearch/reference/{branch}/secure-settings.html#reloadable-secure-settings">reloadable</a>)</dt>
+<dd>
+<p>An S3 access key. If set, the <code>secret_key</code> setting must also be specified.
+If unset, the client will use the instance or container role instead.</p>
+</dd>
+<dt class="hdlist1"><code>secret_key</code> (<a href="https://www.opensearch.org/guide/en/opensearch/reference/{branch}/secure-settings.html">Secure</a>, <a href="https://www.opensearch.org/guide/en/opensearch/reference/{branch}/secure-settings.html#reloadable-secure-settings">reloadable</a>)</dt>
+<dd>
+<p>An S3 secret key. If set, the <code>access_key</code> setting must also be specified.</p>
+</dd>
+<dt class="hdlist1"><code>session_token</code> (<a href="https://www.opensearch.org/guide/en/opensearch/reference/{branch}/secure-settings.html">Secure</a>, <a href="https://www.opensearch.org/guide/en/opensearch/reference/{branch}/secure-settings.html#reloadable-secure-settings">reloadable</a>)</dt>
+<dd>
+<p>An S3 session token. If set, the <code>access_key</code> and <code>secret_key</code> settings
+must also be specified.</p>
+</dd>
+<dt class="hdlist1"><code>endpoint</code></dt>
+<dd>
+<p>The S3 service endpoint to connect to. This defaults to <code>s3.amazonaws.com</code>
+but the
+<a href="https://docs.aws.amazon.com/general/latest/gr/rande.html#s3_region">AWS
+documentation</a> lists alternative S3 endpoints. If you are using an
+<a href="repository.html#repository-s3-compatible-services">S3-compatible service</a> then you should
+set this to the service&#8217;s endpoint.</p>
+</dd>
+<dt class="hdlist1"><code>protocol</code></dt>
+<dd>
+<p>The protocol to use to connect to S3. Valid values are either <code>http</code> or
+<code>https</code>. Defaults to <code>https</code>.</p>
+</dd>
+<dt class="hdlist1"><code>proxy.host</code></dt>
+<dd>
+<p>The host name of a proxy to connect to S3 through.</p>
+</dd>
+<dt class="hdlist1"><code>proxy.port</code></dt>
+<dd>
+<p>The port of a proxy to connect to S3 through.</p>
+</dd>
+<dt class="hdlist1"><code>proxy.username</code> (<a href="https://www.opensearch.org/guide/en/opensearch/reference/{branch}/secure-settings.html">Secure</a>, <a href="https://www.opensearch.org/guide/en/opensearch/reference/{branch}/secure-settings.html#reloadable-secure-settings">reloadable</a>)</dt>
+<dd>
+<p>The username to connect to the <code>proxy.host</code> with.</p>
+</dd>
+<dt class="hdlist1"><code>proxy.password</code> (<a href="https://www.opensearch.org/guide/en/opensearch/reference/{branch}/secure-settings.html">Secure</a>, <a href="https://www.opensearch.org/guide/en/opensearch/reference/{branch}/secure-settings.html#reloadable-secure-settings">reloadable</a>)</dt>
+<dd>
+<p>The password to connect to the <code>proxy.host</code> with.</p>
+</dd>
+<dt class="hdlist1"><code>read_timeout</code></dt>
+<dd>
+<p>The socket timeout for connecting to S3. The value should specify the unit.
+For example, a value of <code>5s</code> specifies a 5 second timeout. The default value
+is 50 seconds.</p>
+</dd>
+<dt class="hdlist1"><code>max_retries</code></dt>
+<dd>
+<p>The number of retries to use when an S3 request fails. The default value is
+<code>3</code>.</p>
+</dd>
+<dt class="hdlist1"><code>use_throttle_retries</code></dt>
+<dd>
+<p>Whether retries should be throttled (i.e. should back off). Must be <code>true</code>
+or <code>false</code>. Defaults to <code>true</code>.</p>
+</dd>
+<dt class="hdlist1"><code>path_style_access</code></dt>
+<dd>
+<p>Whether to force the use of the path style access pattern. If <code>true</code>, the
+path style access pattern will be used. If <code>false</code>, the access pattern will
+be automatically determined by the AWS Java SDK (See
+<a href="https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/s3/AmazonS3Builder.html#setPathStyleAccessEnabled-java.lang.Boolean-">AWS
+documentation</a> for details). Defaults to <code>false</code>.</p>
+</dd>
+<dt class="hdlist1"><code>disable_chunked_encoding</code></dt>
+<dd>
+<p>Whether chunked encoding should be disabled or not. If <code>false</code>, chunked
+encoding is enabled and will be used where appropriate. If <code>true</code>, chunked
+encoding is disabled and will not be used, which may mean that snapshot
+operations consume more resources and take longer to complete. It should
+only be set to <code>true</code> if you are using a storage service that does not
+support chunked encoding. See the
+<a href="https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/s3/AmazonS3Builder.html#disableChunkedEncoding--">AWS
+Java SDK documentation</a> for details. Defaults to <code>false</code>.</p>
+</dd>
+<dt class="hdlist1"><code>region</code></dt>
+<dd>
+<p>Allows specifying the signing region to use. Specificing this setting manually should not be necessary for most use cases. Generally,
+the SDK will correctly guess the signing region to use. It should be considered an expert level setting to support S3-compatible APIs
+that require <a href="https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html">v4 signatures</a> and use a region other than the
+default <code>us-east-1</code>. Defaults to empty string which means that the SDK will try to automatically determine the correct signing region.</p>
+</dd>
+<dt class="hdlist1"><code>signer_override</code></dt>
+<dd>
+<p>Allows specifying the name of the signature algorithm to use for signing requests by the S3 client. Specifying this setting should not
+be necessary for most use cases. It should be considered an expert level setting to support S3-compatible APIs that do not support the
+signing algorithm that the SDK automatically determines for them.
+See the
+<a href="https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/ClientConfiguration.html#setSignerOverride-java.lang.String-">AWS
+Java SDK documentation</a> for details. Defaults to empty string which means that no signing algorithm override will be used.</p>
+</dd>
+</dl>
+</div>
+<h5 id="repository-s3-compatible-services" class="discrete">S3-compatible services</h5>
+<div class="paragraph">
+<p>There are a number of storage systems that provide an S3-compatible API, and
+the <code>repository-s3</code> plugin allows you to use these systems in place of AWS S3.
+To do so, you should set the <code>s3.client.CLIENT_NAME.endpoint</code> setting to the
+system&#8217;s endpoint. This setting accepts IP addresses and hostnames and may
+include a port. For example, the endpoint may be <code>172.17.0.2</code> or
+<code>172.17.0.2:9000</code>. You may also need to set <code>s3.client.CLIENT_NAME.protocol</code> to
+<code>http</code> if the endpoint does not support HTTPS.</p>
+</div>
+<div class="paragraph">
+<p><a href="https://minio.io">Minio</a> is an example of a storage system that provides an
+S3-compatible API. The <code>repository-s3</code> plugin allows OpenSearch to work with
+Minio-backed repositories as well as repositories stored on AWS S3. Other
+S3-compatible storage systems may also work with OpenSearch, but these are not
+covered by the OpenSearch test suite.</p>
+</div>
+<div class="paragraph">
+<p>Note that some storage systems claim to be S3-compatible without correctly
+supporting the full S3 API. The <code>repository-s3</code> plugin requires full
+compatibility with S3. In particular it must support the same set of API
+endpoints, return the same errors in case of failures, and offer a consistency
+model no weaker than S3&#8217;s when accessed concurrently by multiple nodes. If you
+wish to use another storage system with the <code>repository-s3</code> plugin then you
+will need to work with the supplier of the storage system to address any
+incompatibilities you encounter. Incompatible error codes and consistency
+models may be particularly hard to track down since errors and consistency
+failures are usually rare and hard to reproduce.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="repository-s3-repository">Repository Settings</h4>
+<div class="paragraph">
+<p>The <code>s3</code> repository type supports a number of settings to customize how data is
+stored in S3. These can be specified when creating the repository. For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">PUT _snapshot/my_s3_repository
+{
+  "type": "s3",
+  "settings": {
+    "bucket": "my-bucket",
+    "another_setting": "setting-value"
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The following settings are supported:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>bucket</code></dt>
+<dd>
+<p>(Required)
+Name of the S3 bucket to use for snapshots.</p>
+<div class="paragraph">
+<p>The bucket name must adhere to Amazon&#8217;s
+<a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html#bucketnamingrules">S3
+bucket naming rules</a>.</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>client</code></dt>
+<dd>
+<p>The name of the <a href="repository.html#repository-s3-client">S3 client</a> to use to connect to S3.
+Defaults to <code>default</code>.</p>
+</dd>
+<dt class="hdlist1"><code>base_path</code></dt>
+<dd>
+<p>Specifies the path within bucket to repository data. Defaults to value of
+<code>repositories.s3.base_path</code> or to root directory if not set.  Previously,
+the base_path could take a leading <code>/</code> (forward slash).  However, this has
+been deprecated and setting the base_path now should omit the leading <code>/</code>.</p>
+</dd>
+<dt class="hdlist1"><code>chunk_size</code></dt>
+<dd>
+<p>Big files can be broken down into chunks during snapshotting if needed.
+Specify the chunk size as a value and unit, for example:
+<code>1GB</code>, <code>10MB</code>, <code>5KB</code>, <code>500B</code>. Defaults to <code>1GB</code>.</p>
+</dd>
+<dt class="hdlist1"><code>compress</code></dt>
+<dd>
+<p>When set to <code>true</code> metadata files are stored in compressed format. This
+setting doesn&#8217;t affect index files that are already compressed by default.
+Defaults to <code>false</code>.</p>
+</dd>
+<dt class="hdlist1"><code>max_restore_bytes_per_sec</code></dt>
+<dd>
+<p>Throttles per node restore rate. Defaults to unlimited.
+Note that restores are also throttled through <a href="https://www.opensearch.org/guide/en/opensearch/reference/{branch}/recovery.html">recovery settings</a>.</p>
+</dd>
+<dt class="hdlist1"><code>max_snapshot_bytes_per_sec</code></dt>
+<dd>
+<p>Throttles per node snapshot rate. Defaults to <code>40mb</code> per second.</p>
+</dd>
+<dt class="hdlist1"><code>readonly</code></dt>
+<dd>
+<p>Makes repository read-only.  Defaults to <code>false</code>.</p>
+</dd>
+<dt class="hdlist1"><code>server_side_encryption</code></dt>
+<dd>
+<p>When set to <code>true</code> files are encrypted on server side using AES256
+algorithm. Defaults to <code>false</code>.</p>
+</dd>
+<dt class="hdlist1"><code>buffer_size</code></dt>
+<dd>
+<p>Minimum threshold below which the chunk is uploaded using a single request.
+Beyond this threshold, the S3 repository will use the
+<a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/uploadobjusingmpu.html">AWS
+Multipart Upload API</a> to split the chunk into several parts, each of
+<code>buffer_size</code> length, and to upload each part in its own request. Note that
+setting a buffer size lower than <code>5mb</code> is not allowed since it will prevent
+the use of the Multipart API and may result in upload errors. It is also not
+possible to set a buffer size greater than <code>5gb</code> as it is the maximum upload
+size allowed by S3. Defaults to the minimum between <code>100mb</code> and <code>5%</code> of the
+heap size.</p>
+</dd>
+<dt class="hdlist1"><code>canned_acl</code></dt>
+<dd>
+<p>The S3 repository supports all
+<a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl">S3
+canned ACLs</a> : <code>private</code>, <code>public-read</code>, <code>public-read-write</code>,
+<code>authenticated-read</code>, <code>log-delivery-write</code>, <code>bucket-owner-read</code>,
+<code>bucket-owner-full-control</code>. Defaults to <code>private</code>.  You could specify a
+canned ACL using the <code>canned_acl</code> setting. When the S3 repository creates
+buckets and objects, it adds the canned ACL into the buckets and objects.</p>
+</dd>
+<dt class="hdlist1"><code>storage_class</code></dt>
+<dd>
+<p>Sets the S3 storage class for objects stored in the snapshot repository.
+Values may be <code>standard</code>, <code>reduced_redundancy</code>, <code>standard_ia</code>, <code>onezone_ia</code>
+and <code>intelligent_tiering</code>. Defaults to <code>standard</code>.
+Changing this setting on an existing repository only affects the
+storage class for newly created objects, resulting in a mixed usage of
+storage classes. Additionally, S3 Lifecycle Policies can be used to manage
+the storage class of existing objects.  Due to the extra complexity with the
+Glacier class lifecycle, it is not currently supported by the plugin.  For
+more information about the different classes, see
+<a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/storage-class-intro.html">AWS
+Storage Classes Guide</a></p>
+</dd>
+</dl>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+The option of defining client settings in the repository settings as
+documented below is considered deprecated, and will be removed in a future
+version.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>In addition to the above settings, you may also specify all non-secure <a href="repository.html#repository-s3-client">client</a>
+settings in the repository settings.  In this case, the client settings found in
+the repository settings will be merged with those of the named client used by
+the repository.  Conflicts between client and repository settings are resolved
+by the repository settings taking precedence over client settings.</p>
+</div>
+<div class="paragraph">
+<p>For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">PUT _snapshot/my_s3_repository
+{
+  "type": "s3",
+  "settings": {
+    "client": "my-client",
+    "bucket": "my-bucket",
+    "endpoint": "my.s3.endpoint"
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This sets up a repository that uses all client settings from the client
+<code>my_client_name</code> except for the <code>endpoint</code> that is overridden to
+<code>my.s3.endpoint</code> by the repository settings.</p>
+</div>
+<div class="sect4">
+<h5 id="repository-s3-permissions">Recommended S3 Permissions</h5>
+<div class="paragraph">
+<p>In order to restrict the OpenSearch snapshot process to the minimum required
+resources, we recommend using Amazon IAM in conjunction with pre-existing S3
+buckets. Here is an example policy which will allow the snapshot access to an S3
+bucket named "snaps.example.com". This may be configured through the AWS IAM
+console, by creating a Custom Policy, and using a Policy Document similar to
+this (changing snaps.example.com to your bucket name).</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-js" data-lang="js">{
+  "Statement": [
+    {
+      "Action": [
+        "s3:ListBucket",
+        "s3:GetBucketLocation",
+        "s3:ListBucketMultipartUploads",
+        "s3:ListBucketVersions"
+      ],
+      "Effect": "Allow",
+      "Resource": [
+        "arn:aws:s3:::snaps.example.com"
+      ]
+    },
+    {
+      "Action": [
+        "s3:GetObject",
+        "s3:PutObject",
+        "s3:DeleteObject",
+        "s3:AbortMultipartUpload",
+        "s3:ListMultipartUploadParts"
+      ],
+      "Effect": "Allow",
+      "Resource": [
+        "arn:aws:s3:::snaps.example.com/*"
+      ]
+    }
+  ],
+  "Version": "2012-10-17"
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You may further restrict the permissions by specifying a prefix within the
+bucket, in this example, named "foo".</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-js" data-lang="js">{
+  "Statement": [
+    {
+      "Action": [
+        "s3:ListBucket",
+        "s3:GetBucketLocation",
+        "s3:ListBucketMultipartUploads",
+        "s3:ListBucketVersions"
+      ],
+      "Condition": {
+        "StringLike": {
+          "s3:prefix": [
+            "foo/*"
+          ]
+        }
+      },
+      "Effect": "Allow",
+      "Resource": [
+        "arn:aws:s3:::snaps.example.com"
+      ]
+    },
+    {
+      "Action": [
+        "s3:GetObject",
+        "s3:PutObject",
+        "s3:DeleteObject",
+        "s3:AbortMultipartUpload",
+        "s3:ListMultipartUploadParts"
+      ],
+      "Effect": "Allow",
+      "Resource": [
+        "arn:aws:s3:::snaps.example.com/foo/*"
+      ]
+    }
+  ],
+  "Version": "2012-10-17"
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The bucket needs to exist to register a repository for snapshots. If you did not
+create the bucket then the repository registration will fail.</p>
+</div>
+<h4 id="repository-s3-aws-vpc" class="discrete">AWS VPC Bandwidth Settings</h4>
+<div class="paragraph">
+<p>AWS instances resolve S3 endpoints to a public IP. If the OpenSearch
+instances reside in a private subnet in an AWS VPC then all traffic to S3 will
+go through the VPC&#8217;s NAT instance. If your VPC&#8217;s NAT instance is a smaller
+instance size (e.g. a t2.micro) or is handling a high volume of network traffic
+your bandwidth to S3 may be limited by that NAT instance&#8217;s networking bandwidth
+limitations. Instead we recommend creating a <a href="https://docs.aws.amazon.com/vpc/latest/userguide/vpc-endpoints.html">VPC endpoint</a>
+that enables connecting to S3 in instances that reside in a private subnet in
+an AWS VPC. This will eliminate any limitations imposed by the network
+bandwidth of your VPC&#8217;s NAT instance.</p>
+</div>
+<div class="paragraph">
+<p>Instances residing in a public subnet in an AWS VPC will connect to S3 via the
+VPC&#8217;s internet gateway and not be bandwidth limited by the VPC&#8217;s NAT instance.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="repository-hdfs">Hadoop HDFS Repository Plugin</h3>
+<div class="paragraph">
+<p>The HDFS repository plugin adds support for using HDFS File System as a repository for
+<a href="https://www.opensearch.org/guide/en/opensearch/reference/{branch}/modules-snapshots.html">Snapshot/Restore</a>.</p>
+</div>
+<h4 id="repository-hdfs-install" class="discrete">Installation</h4>
+<div class="paragraph">
+<p>This plugin can be installed using the plugin manager:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sh" data-lang="sh">sudo bin/opensearch-plugin install repository-hdfs</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The plugin must be installed on every node in the cluster, and each node must
+be restarted after installation.</p>
+</div>
+<div class="paragraph">
+<p>You can download this plugin for <a href="plugin-management.html#plugin-management-custom-url">offline
+install</a> from <a href="https://artifacts.opensearch.org/downloads/opensearch-plugins/repository-hdfs/repository-hdfs-1.0.0.zip" class="bare">https://artifacts.opensearch.org/downloads/opensearch-plugins/repository-hdfs/repository-hdfs-1.0.0.zip</a>. To verify
+the <code>.zip</code> file, use the
+<a href="https://artifacts.opensearch.org/downloads/opensearch-plugins/repository-hdfs/repository-hdfs-1.0.0.zip.sha512">SHA hash</a> or
+<a href="https://artifacts.opensearch.org/downloads/opensearch-plugins/repository-hdfs/repository-hdfs-1.0.0.zip.asc">ASC key</a>.</p>
+</div>
+<h4 id="repository-hdfs-remove" class="discrete">Removal</h4>
+<div class="paragraph">
+<p>The plugin can be removed with the following command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sh" data-lang="sh">sudo bin/opensearch-plugin remove repository-hdfs</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The node must be stopped before removing the plugin.</p>
+</div>
+<div class="sect3">
+<h4 id="repository-hdfs-usage">Getting started with HDFS</h4>
+<div class="paragraph">
+<p>The HDFS snapshot/restore plugin is built against the latest Apache Hadoop 2.x (currently 2.7.1). If the distro you are using is not protocol
+compatible with Apache Hadoop, consider replacing the Hadoop libraries inside the plugin folder with your own (you might have to adjust the security permissions required).</p>
+</div>
+<div class="paragraph">
+<p>Even if Hadoop is already installed on the OpenSearch nodes, for security reasons, the required libraries need to be placed under the plugin folder. Note that in most cases, if the distro is compatible, one simply needs to configure the repository with the appropriate Hadoop configuration files (see below).</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Windows Users</dt>
+<dd>
+<p>Using Apache Hadoop on Windows is problematic and thus it is not recommended. For those <em>really</em> wanting to use it, make sure you place the elusive <code>winutils.exe</code> under the
+plugin folder and point <code>HADOOP_HOME</code> variable to it; this should minimize the amount of permissions Hadoop requires (though one would still have to add some more).</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect3">
+<h4 id="repository-hdfs-config">Configuration Properties</h4>
+<div class="paragraph">
+<p>Once installed, define the configuration for the <code>hdfs</code> repository through the
+<a href="https://www.opensearch.org/guide/en/opensearch/reference/{branch}/modules-snapshots.html">REST API</a>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">PUT _snapshot/my_hdfs_repository
+{
+  "type": "hdfs",
+  "settings": {
+    "uri": "hdfs://namenode:8020/",
+    "path": "opensearch/repositories/my_hdfs_repository",
+    "conf.dfs.client.read.shortcircuit": "true"
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The following settings are supported:</p>
+</div>
+<div class="hdlist">
+<table>
+<tr>
+<td class="hdlist1">
+<code>uri</code>
+</td>
+<td class="hdlist2">
+<p>The uri address for hdfs. ex: "hdfs://&lt;host&gt;:&lt;port&gt;/". (Required)</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+<code>path</code>
+</td>
+<td class="hdlist2">
+<p>The file path within the filesystem where data is stored/loaded. ex: "path/to/file". (Required)</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+<code>load_defaults</code>
+</td>
+<td class="hdlist2">
+<p>Whether to load the default Hadoop configuration or not. (Enabled by default)</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+<code>conf.&lt;key&gt;</code>
+</td>
+<td class="hdlist2">
+<p>Inlined configuration parameter to be added to Hadoop configuration. (Optional)
+Only client oriented properties from the hadoop <a href="https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/core-default.xml">core</a> and <a href="https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/hdfs-default.xml">hdfs</a> configuration files will be recognized by the plugin.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+<code>compress</code>
+</td>
+<td class="hdlist2">
+<p>Whether to compress the metadata or not. (Disabled by default)</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+<code>max_restore_bytes_per_sec</code>
+</td>
+<td class="hdlist2">
+<p>Throttles per node restore rate. Defaults to unlimited.
+Note that restores are also throttled through <a href="https://www.opensearch.org/guide/en/opensearch/reference/{branch}/recovery.html">recovery settings</a>.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+<code>max_snapshot_bytes_per_sec</code>
+</td>
+<td class="hdlist2">
+<p>Throttles per node snapshot rate. Defaults to <code>40mb</code> per second.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+<code>readonly</code>
+</td>
+<td class="hdlist2">
+<p>Makes repository read-only.  Defaults to <code>false</code>.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+<code>chunk_size</code>
+</td>
+<td class="hdlist2">
+<p>Override the chunk size. (Disabled by default)</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+<code>security.principal</code>
+</td>
+<td class="hdlist2">
+<p>Kerberos principal to use when connecting to a secured HDFS cluster.
+If you are using a service principal for your opensearch node, you may
+use the <code>_HOST</code> pattern in the principal name and the plugin will replace
+the pattern with the hostname of the node at runtime (see
+<a href="repository-hdfs-security-runtime">Creating the Secure Repository</a>).</p>
+</td>
+</tr>
+</table>
+</div>
+<h5 id="repository-hdfs-availability" class="discrete">A Note on HDFS Availability</h5>
+<div class="paragraph">
+<p>When you initialize a repository, its settings are persisted in the cluster state. When a node comes online, it will
+attempt to initialize all repositories for which it has settings. If your cluster has an HDFS repository configured, then
+all nodes in the cluster must be able to reach HDFS when starting. If not, then the node will fail to initialize the
+repository at start up and the repository will be unusable. If this happens, you will need to remove and re-add the
+repository or restart the offending node.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="repository-hdfs-security">Hadoop Security</h4>
+<div class="paragraph">
+<p>The HDFS Repository Plugin integrates seamlessly with Hadoop&#8217;s authentication model. The following authentication
+methods are supported by the plugin:</p>
+</div>
+<div class="hdlist">
+<table>
+<tr>
+<td class="hdlist1">
+<code>simple</code>
+</td>
+<td class="hdlist2">
+<p>Also means "no security" and is enabled by default. Uses information from underlying operating system account
+running OpenSearch to inform Hadoop of the name of the current user. Hadoop makes no attempts to verify this
+information.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+<code>kerberos</code>
+</td>
+<td class="hdlist2">
+<p>Authenticates to Hadoop through the usage of a Kerberos principal and keytab. Interfacing with HDFS clusters
+secured with Kerberos requires a few additional steps to enable (See <a href="repository.html#repository-hdfs-security-keytabs">Principals and Keytabs</a> and
+<a href="repository.html#repository-hdfs-security-runtime">Creating the Secure Repository</a> for more info)</p>
+</td>
+</tr>
+</table>
+</div>
+<h5 id="repository-hdfs-security-keytabs" class="discrete">Principals and Keytabs</h5>
+<div class="paragraph">
+<p>Before attempting to connect to a secured HDFS cluster, provision the Kerberos principals and keytabs that the
+OpenSearch nodes will use for authenticating to Kerberos. For maximum security and to avoid tripping up the Kerberos
+replay protection, you should create a service principal per node, following the pattern of
+<code>opensearch/hostname@REALM</code>.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Warning</div>
+</td>
+<td class="content">
+In some cases, if the same principal is authenticating from multiple clients at once, services may reject
+authentication for those principals under the assumption that they could be replay attacks. If you are running the
+plugin in production with multiple nodes you should be using a unique service principal for each node.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>On each OpenSearch node, place the appropriate keytab file in the node&#8217;s configuration location under the
+<code>repository-hdfs</code> directory using the name <code>krb5.keytab</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">$&gt; cd opensearch/config
+$&gt; ls
+opensearch.yml  jvm.options        log4j2.properties  repository-hdfs/   scripts/
+$&gt; cd repository-hdfs
+$&gt; ls
+krb5.keytab</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+Make sure you have the correct keytabs! If you are using a service principal per node (like
+<code>opensearch/hostname@REALM</code>) then each node will need its own unique keytab file for the principal assigned to that
+host!
+</td>
+</tr>
+</table>
+</div>
+<h5 id="repository-hdfs-security-runtime" class="discrete">Creating the Secure Repository</h5>
+<div class="paragraph">
+<p>Once your keytab files are in place and your cluster is started, creating a secured HDFS repository is simple. Just
+add the name of the principal that you will be authenticating as in the repository settings under the
+<code>security.principal</code> option:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">PUT _snapshot/my_hdfs_repository
+{
+  "type": "hdfs",
+  "settings": {
+    "uri": "hdfs://namenode:8020/",
+    "path": "/user/opensearch/repositories/my_hdfs_repository",
+    "security.principal": "opensearch@REALM"
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If you are using different service principals for each node, you can use the <code>_HOST</code> pattern in your principal
+name. OpenSearch will automatically replace the pattern with the hostname of the node at runtime:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">PUT _snapshot/my_hdfs_repository
+{
+  "type": "hdfs",
+  "settings": {
+    "uri": "hdfs://namenode:8020/",
+    "path": "/user/opensearch/repositories/my_hdfs_repository",
+    "security.principal": "opensearch/_HOST@REALM"
+  }
+}</code></pre>
+</div>
+</div>
+<h5 id="repository-hdfs-security-authorization" class="discrete">Authorization</h5>
+<div class="paragraph">
+<p>Once OpenSearch is connected and authenticated to HDFS, HDFS will infer a username to use for
+authorizing file access for the client. By default, it picks this username from the primary part of
+the kerberos principal used to authenticate to the service. For example, in the case of a principal
+like <code>opensearch@REALM</code> or <code>opensearch/hostname@REALM</code> then the username that HDFS
+extracts for file access checks will be <code>opensearch</code>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+The repository plugin makes no assumptions of what OpenSearch&#8217;s principal name is. The main fragment of the
+Kerberos principal is not required to be <code>opensearch</code>. If you have a principal or service name that works better
+for you or your organization then feel free to use it instead!
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="repository-gcs">Google Cloud Storage Repository Plugin</h3>
+<div class="paragraph">
+<p>The GCS repository plugin adds support for using the <a href="https://cloud.google.com/storage/">Google Cloud Storage</a>
+service as a repository for <a href="https://www.opensearch.org/guide/en/opensearch/reference/{branch}/modules-snapshots.html">Snapshot/Restore</a>.</p>
+</div>
+<h4 id="repository-gcs-install" class="discrete">Installation</h4>
+<div class="paragraph">
+<p>This plugin can be installed using the plugin manager:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sh" data-lang="sh">sudo bin/opensearch-plugin install repository-gcs</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The plugin must be installed on every node in the cluster, and each node must
+be restarted after installation.</p>
+</div>
+<div class="paragraph">
+<p>You can download this plugin for <a href="plugin-management.html#plugin-management-custom-url">offline
+install</a> from <a href="https://artifacts.opensearch.org/downloads/opensearch-plugins/repository-gcs/repository-gcs-1.0.0.zip" class="bare">https://artifacts.opensearch.org/downloads/opensearch-plugins/repository-gcs/repository-gcs-1.0.0.zip</a>. To verify
+the <code>.zip</code> file, use the
+<a href="https://artifacts.opensearch.org/downloads/opensearch-plugins/repository-gcs/repository-gcs-1.0.0.zip.sha512">SHA hash</a> or
+<a href="https://artifacts.opensearch.org/downloads/opensearch-plugins/repository-gcs/repository-gcs-1.0.0.zip.asc">ASC key</a>.</p>
+</div>
+<h4 id="repository-gcs-remove" class="discrete">Removal</h4>
+<div class="paragraph">
+<p>The plugin can be removed with the following command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sh" data-lang="sh">sudo bin/opensearch-plugin remove repository-gcs</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The node must be stopped before removing the plugin.</p>
+</div>
+<div class="sect3">
+<h4 id="repository-gcs-usage">Getting started</h4>
+<div class="paragraph">
+<p>The plugin uses the <a href="https://github.com/GoogleCloudPlatform/google-cloud-java/tree/master/google-cloud-clients/google-cloud-storage">Google Cloud Java Client for Storage</a>
+to connect to the Storage service. If you are using
+<a href="https://cloud.google.com/storage/">Google Cloud Storage</a> for the first time, you
+must connect to the <a href="https://console.cloud.google.com/">Google Cloud Platform Console</a>
+and create a new project. After your project is created, you must enable the
+Cloud Storage Service for your project.</p>
+</div>
+<div class="sect4">
+<h5 id="repository-gcs-creating-bucket">Creating a Bucket</h5>
+<div class="paragraph">
+<p>The Google Cloud Storage service uses the concept of a
+<a href="https://cloud.google.com/storage/docs/key-terms">bucket</a> as a container for all
+the data. Buckets are usually created using the
+<a href="https://console.cloud.google.com/">Google Cloud Platform Console</a>. The plugin
+does not automatically create buckets.</p>
+</div>
+<div class="paragraph">
+<p>To create a new bucket:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Connect to the <a href="https://console.cloud.google.com/">Google Cloud Platform Console</a>.</p>
+</li>
+<li>
+<p>Select your project.</p>
+</li>
+<li>
+<p>Go to the <a href="https://console.cloud.google.com/storage/browser">Storage Browser</a>.</p>
+</li>
+<li>
+<p>Click the <strong>Create Bucket</strong> button.</p>
+</li>
+<li>
+<p>Enter the name of the new bucket.</p>
+</li>
+<li>
+<p>Select a storage class.</p>
+</li>
+<li>
+<p>Select a location.</p>
+</li>
+<li>
+<p>Click the <strong>Create</strong> button.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>For more detailed instructions, see the
+<a href="https://cloud.google.com/storage/docs/quickstart-console#create_a_bucket">Google Cloud documentation</a>.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="repository-gcs-service-authentication">Service Authentication</h5>
+<div class="paragraph">
+<p>The plugin must authenticate the requests it makes to the Google Cloud Storage
+service. It is common for Google client libraries to employ a strategy named <a href="https://cloud.google.com/docs/authentication/production#providing_credentials_to_your_application">application default credentials</a>.
+However, that strategy is <strong>not</strong> supported for use with OpenSearch. The
+plugin operates under the OpenSearch process, which runs with the security
+manager enabled. The security manager obstructs the "automatic" credential discovery.
+Therefore, you must configure <a href="repository.html#repository-gcs-using-service-account">service account</a>
+credentials even if you are using an environment that does not normally require
+this configuration (such as Compute Engine, Kubernetes Engine or App Engine).</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="repository-gcs-using-service-account">Using a Service Account</h5>
+<div class="paragraph">
+<p>You have to obtain and provide <a href="https://cloud.google.com/iam/docs/overview#service_account">service account credentials</a>
+manually.</p>
+</div>
+<div class="paragraph">
+<p>For detailed information about generating JSON service account files, see the  <a href="https://cloud.google.com/storage/docs/authentication?hl=en#service_accounts">Google Cloud documentation</a>.
+Note that the PKCS12 format is not supported by this plugin.</p>
+</div>
+<div class="paragraph">
+<p>Here is a summary of the steps:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Connect to the <a href="https://console.cloud.google.com/">Google Cloud Platform Console</a>.</p>
+</li>
+<li>
+<p>Select your project.</p>
+</li>
+<li>
+<p>Go to the <a href="https://console.cloud.google.com/permissions">Permission</a> tab.</p>
+</li>
+<li>
+<p>Select the <a href="https://console.cloud.google.com/permissions/serviceaccounts">Service Accounts</a> tab.</p>
+</li>
+<li>
+<p>Click <strong>Create service account</strong>.</p>
+</li>
+<li>
+<p>After the account is created, select it and download a JSON key file.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>A JSON service account file looks like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-js" data-lang="js">{
+  "type": "service_account",
+  "project_id": "your-project-id",
+  "private_key_id": "...",
+  "private_key": "-----BEGIN PRIVATE KEY-----\n...\n-----END PRIVATE KEY-----\n",
+  "client_email": "service-account-for-your-repository@your-project-id.iam.gserviceaccount.com",
+  "client_id": "...",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/your-bucket@your-project-id.iam.gserviceaccount.com"
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To provide this file to the plugin, it must be stored in the <a href="https://www.opensearch.org/guide/en/opensearch/reference/{branch}/secure-settings.html">OpenSearch keystore</a>.  You must
+add a <code>file</code> setting with the name <code>gcs.client.NAME.credentials_file</code> using the <code>add-file</code> subcommand.
+ <code>NAME</code> is the name of the client configuration for the repository. The implicit client
+name is <code>default</code>, but a different client name can be specified in the
+repository settings with the <code>client</code> key.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+Passing the file path via the GOOGLE_APPLICATION_CREDENTIALS environment
+variable is <strong>not</strong> supported.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>For example, if you added a <code>gcs.client.my_alternate_client.credentials_file</code>
+setting in the keystore, you can configure a repository to use those credentials
+like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">PUT _snapshot/my_gcs_repository
+{
+  "type": "gcs",
+  "settings": {
+    "bucket": "my_bucket",
+    "client": "my_alternate_client"
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>credentials_file</code> settings are <a href="https://www.opensearch.org/guide/en/opensearch/reference/{branch}/secure-settings.html#reloadable-secure-settings">reloadable</a>.
+After you reload the settings, the internal <code>gcs</code> clients, which are used to
+transfer the snapshot contents, utilize the latest settings from the keystore.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+Snapshot or restore jobs that are in progress are not preempted by a <strong>reload</strong>
+of the client&#8217;s <code>credentials_file</code> settings. They complete using the client as
+it was built when the operation started.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="repository-gcs-client">Client Settings</h4>
+<div class="paragraph">
+<p>The client used to connect to Google Cloud Storage has a number of settings available.
+Client setting names are of the form <code>gcs.client.CLIENT_NAME.SETTING_NAME</code> and are specified
+inside <code>opensearch.yml</code>. The default client name looked up by a <code>gcs</code> repository is
+called <code>default</code>, but can be customized with the repository setting <code>client</code>.</p>
+</div>
+<div class="paragraph">
+<p>For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">PUT _snapshot/my_gcs_repository
+{
+  "type": "gcs",
+  "settings": {
+    "bucket": "my_bucket",
+    "client": "my_alternate_client"
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Some settings are sensitive and must be stored in the
+<a href="https://www.opensearch.org/guide/en/opensearch/reference/{branch}/secure-settings.html">OpenSearch keystore</a>. This is the case for the service account file:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sh" data-lang="sh">bin/opensearch-keystore add-file gcs.client.default.credentials_file /path/service-account.json</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The following are the available client settings. Those that must be stored in the keystore
+are marked as <code>Secure</code>.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>credentials_file</code> (<a href="https://www.opensearch.org/guide/en/opensearch/reference/{branch}/secure-settings.html">Secure</a>, <a href="https://www.opensearch.org/guide/en/opensearch/reference/{branch}/secure-settings.html#reloadable-secure-settings">reloadable</a>)</dt>
+<dd>
+<p>The service account file that is used to authenticate to the Google Cloud Storage service.</p>
+</dd>
+<dt class="hdlist1"><code>endpoint</code></dt>
+<dd>
+<p>The Google Cloud Storage service endpoint to connect to. This will be automatically
+determined by the Google Cloud Storage client but can be specified explicitly.</p>
+</dd>
+<dt class="hdlist1"><code>connect_timeout</code></dt>
+<dd>
+<p>The timeout to establish a connection to the Google Cloud Storage service. The value should
+specify the unit. For example, a value of <code>5s</code> specifies a 5 second timeout. The value of <code>-1</code>
+corresponds to an infinite timeout. The default value is 20 seconds.</p>
+</dd>
+<dt class="hdlist1"><code>read_timeout</code></dt>
+<dd>
+<p>The timeout to read data from an established connection. The value should
+specify the unit. For example, a value of <code>5s</code> specifies a 5 second timeout. The value of <code>-1</code>
+corresponds to an infinite timeout. The default value is 20 seconds.</p>
+</dd>
+<dt class="hdlist1"><code>application_name</code></dt>
+<dd>
+<p>Name used by the client when it uses the Google Cloud Storage service. Setting
+a custom name can be useful to authenticate your cluster when requests
+statistics are logged in the Google Cloud Platform. Default to <code>repository-gcs</code></p>
+</dd>
+<dt class="hdlist1"><code>project_id</code></dt>
+<dd>
+<p>The Google Cloud project id. This will be automatically inferred from the credentials file but
+can be specified explicitly. For example, it can be used to switch between projects when the
+same credentials are usable for both the production and the development projects.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect3">
+<h4 id="repository-gcs-repository">Repository Settings</h4>
+<div class="paragraph">
+<p>The <code>gcs</code> repository type supports a number of settings to customize how data
+is stored in Google Cloud Storage.</p>
+</div>
+<div class="paragraph">
+<p>These can be specified when creating the repository. For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">PUT _snapshot/my_gcs_repository
+{
+  "type": "gcs",
+  "settings": {
+    "bucket": "my_other_bucket",
+    "base_path": "dev"
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The following settings are supported:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>bucket</code></dt>
+<dd>
+<p>The name of the bucket to be used for snapshots. (Mandatory)</p>
+</dd>
+<dt class="hdlist1"><code>client</code></dt>
+<dd>
+<p>The name of the client to use to connect to Google Cloud Storage.
+Defaults to <code>default</code>.</p>
+</dd>
+<dt class="hdlist1"><code>base_path</code></dt>
+<dd>
+<p>Specifies the path within bucket to repository data. Defaults to
+the root of the bucket.</p>
+</dd>
+<dt class="hdlist1"><code>chunk_size</code></dt>
+<dd>
+<p>Big files can be broken down into multiple smaller blobs in the blob store during snapshotting.
+It is not recommended to change this value from its default unless there is an explicit reason for limiting the
+size of blobs in the repository. Setting a value lower than the default can result in an increased number of API
+calls to the Google Cloud Storage Service during snapshot create as well as restore operations compared to using
+the default value and thus make both operations slower as well as more costly.
+Specify the chunk size as a value and unit, for example:
+<code>10MB</code>, <code>5KB</code>, <code>500B</code>. Defaults to the maximum size of a blob in the Google Cloud Storage Service which is <code>5TB</code>.</p>
+</dd>
+<dt class="hdlist1"><code>compress</code></dt>
+<dd>
+<p>When set to <code>true</code> metadata files are stored in compressed format. This
+setting doesn&#8217;t affect index files that are already compressed by default.
+Defaults to <code>false</code>.</p>
+</dd>
+<dt class="hdlist1"><code>max_restore_bytes_per_sec</code></dt>
+<dd>
+<p>Throttles per node restore rate. Defaults to unlimited.
+Note that restores are also throttled through <a href="https://www.opensearch.org/guide/en/opensearch/reference/{branch}/recovery.html">recovery settings</a>.</p>
+</dd>
+<dt class="hdlist1"><code>max_snapshot_bytes_per_sec</code></dt>
+<dd>
+<p>Throttles per node snapshot rate. Defaults to <code>40mb</code> per second.</p>
+</dd>
+<dt class="hdlist1"><code>readonly</code></dt>
+<dd>
+<p>Makes repository read-only.  Defaults to <code>false</code>.</p>
+</dd>
+<dt class="hdlist1"><code>application_name</code></dt>
+<dd>
+<p>Deprecated. This setting is now defined in the <a href="repository.html#repository-gcs-client">client settings</a>."
+Name used by the client when it uses the Google Cloud Storage service.</p>
+</dd>
+</dl>
+</div>
+<div class="sect4">
+<h5 id="repository-gcs-bucket-permission">Recommended Bucket Permission</h5>
+<div class="paragraph">
+<p>The service account used to access the bucket must have the "Writer" access to the bucket:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Connect to the <a href="https://console.cloud.google.com/">Google Cloud Platform Console</a>.</p>
+</li>
+<li>
+<p>Select your project.</p>
+</li>
+<li>
+<p>Go to the <a href="https://console.cloud.google.com/storage/browser">Storage Browser</a>.</p>
+</li>
+<li>
+<p>Select the bucket and "Edit bucket permission".</p>
+</li>
+<li>
+<p>The service account must be configured as a "User" with "Writer" access.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph nav-footer">
+<p>← Previous: <a href="mapper.html">Mapper Plugins</a> | ↑ Up: <a href="index.html">OpenSearch Plugins and Integrations</a> | Next: <a href="store.html">Store Plugins</a> →</p>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2021-04-05 12:06:59 -0700
+</div>
+</div>
+</body>
+</html>

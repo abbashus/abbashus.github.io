@@ -1,0 +1,4489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.12">
+<title>OpenSearch Reference</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<style>
+/* Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
+/* Uncomment @import statement to use as custom stylesheet */
+/*@import "https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700";*/
+article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section{display:block}
+audio,video{display:inline-block}
+audio:not([controls]){display:none;height:0}
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}
+a{background:none}
+a:focus{outline:thin dotted}
+a:active,a:hover{outline:0}
+h1{font-size:2em;margin:.67em 0}
+abbr[title]{border-bottom:1px dotted}
+b,strong{font-weight:bold}
+dfn{font-style:italic}
+hr{-moz-box-sizing:content-box;box-sizing:content-box;height:0}
+mark{background:#ff0;color:#000}
+code,kbd,pre,samp{font-family:monospace;font-size:1em}
+pre{white-space:pre-wrap}
+q{quotes:"\201C" "\201D" "\2018" "\2019"}
+small{font-size:80%}
+sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}
+sup{top:-.5em}
+sub{bottom:-.25em}
+img{border:0}
+svg:not(:root){overflow:hidden}
+figure{margin:0}
+fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}
+legend{border:0;padding:0}
+button,input,select,textarea{font-family:inherit;font-size:100%;margin:0}
+button,input{line-height:normal}
+button,select{text-transform:none}
+button,html input[type="button"],input[type="reset"],input[type="submit"]{-webkit-appearance:button;cursor:pointer}
+button[disabled],html input[disabled]{cursor:default}
+input[type="checkbox"],input[type="radio"]{box-sizing:border-box;padding:0}
+button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}
+textarea{overflow:auto;vertical-align:top}
+table{border-collapse:collapse;border-spacing:0}
+*,*::before,*::after{-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box}
+html,body{font-size:100%}
+body{background:#fff;color:rgba(0,0,0,.8);padding:0;margin:0;font-family:"Noto Serif","DejaVu Serif",serif;font-weight:400;font-style:normal;line-height:1;position:relative;cursor:auto;tab-size:4;word-wrap:anywhere;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased}
+a:hover{cursor:pointer}
+img,object,embed{max-width:100%;height:auto}
+object,embed{height:100%}
+img{-ms-interpolation-mode:bicubic}
+.left{float:left!important}
+.right{float:right!important}
+.text-left{text-align:left!important}
+.text-right{text-align:right!important}
+.text-center{text-align:center!important}
+.text-justify{text-align:justify!important}
+.hide{display:none}
+img,object,svg{display:inline-block;vertical-align:middle}
+textarea{height:auto;min-height:50px}
+select{width:100%}
+.subheader,.admonitionblock td.content>.title,.audioblock>.title,.exampleblock>.title,.imageblock>.title,.listingblock>.title,.literalblock>.title,.stemblock>.title,.openblock>.title,.paragraph>.title,.quoteblock>.title,table.tableblock>.title,.verseblock>.title,.videoblock>.title,.dlist>.title,.olist>.title,.ulist>.title,.qlist>.title,.hdlist>.title{line-height:1.45;color:#7a2518;font-weight:400;margin-top:0;margin-bottom:.25em}
+div,dl,dt,dd,ul,ol,li,h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6,pre,form,p,blockquote,th,td{margin:0;padding:0}
+a{color:#2156a5;text-decoration:underline;line-height:inherit}
+a:hover,a:focus{color:#1d4b8f}
+a img{border:0}
+p{font-family:inherit;font-weight:400;font-size:1em;line-height:1.6;margin-bottom:1.25em;text-rendering:optimizeLegibility}
+p aside{font-size:.875em;line-height:1.35;font-style:italic}
+h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{font-family:"Open Sans","DejaVu Sans",sans-serif;font-weight:300;font-style:normal;color:#ba3925;text-rendering:optimizeLegibility;margin-top:1em;margin-bottom:.5em;line-height:1.0125em}
+h1 small,h2 small,h3 small,#toctitle small,.sidebarblock>.content>.title small,h4 small,h5 small,h6 small{font-size:60%;color:#e99b8f;line-height:0}
+h1{font-size:2.125em}
+h2{font-size:1.6875em}
+h3,#toctitle,.sidebarblock>.content>.title{font-size:1.375em}
+h4,h5{font-size:1.125em}
+h6{font-size:1em}
+hr{border:solid #dddddf;border-width:1px 0 0;clear:both;margin:1.25em 0 1.1875em;height:0}
+em,i{font-style:italic;line-height:inherit}
+strong,b{font-weight:bold;line-height:inherit}
+small{font-size:60%;line-height:inherit}
+code{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;font-weight:400;color:rgba(0,0,0,.9)}
+ul,ol,dl{font-size:1em;line-height:1.6;margin-bottom:1.25em;list-style-position:outside;font-family:inherit}
+ul,ol{margin-left:1.5em}
+ul li ul,ul li ol{margin-left:1.25em;margin-bottom:0;font-size:1em}
+ul.square li ul,ul.circle li ul,ul.disc li ul{list-style:inherit}
+ul.square{list-style-type:square}
+ul.circle{list-style-type:circle}
+ul.disc{list-style-type:disc}
+ol li ul,ol li ol{margin-left:1.25em;margin-bottom:0}
+dl dt{margin-bottom:.3125em;font-weight:bold}
+dl dd{margin-bottom:1.25em}
+abbr,acronym{text-transform:uppercase;font-size:90%;color:rgba(0,0,0,.8);border-bottom:1px dotted #ddd;cursor:help}
+abbr{text-transform:none}
+blockquote{margin:0 0 1.25em;padding:.5625em 1.25em 0 1.1875em;border-left:1px solid #ddd}
+blockquote cite{display:block;font-size:.9375em;color:rgba(0,0,0,.6)}
+blockquote cite::before{content:"\2014 \0020"}
+blockquote cite a,blockquote cite a:visited{color:rgba(0,0,0,.6)}
+blockquote,blockquote p{line-height:1.6;color:rgba(0,0,0,.85)}
+@media screen and (min-width:768px){h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{line-height:1.2}
+h1{font-size:2.75em}
+h2{font-size:2.3125em}
+h3,#toctitle,.sidebarblock>.content>.title{font-size:1.6875em}
+h4{font-size:1.4375em}}
+table{background:#fff;margin-bottom:1.25em;border:solid 1px #dedede;word-wrap:normal}
+table thead,table tfoot{background:#f7f8f7}
+table thead tr th,table thead tr td,table tfoot tr th,table tfoot tr td{padding:.5em .625em .625em;font-size:inherit;color:rgba(0,0,0,.8);text-align:left}
+table tr th,table tr td{padding:.5625em .625em;font-size:inherit;color:rgba(0,0,0,.8)}
+table tr.even,table tr.alt{background:#f8f8f7}
+table thead tr th,table tfoot tr th,table tbody tr td,table tr td,table tfoot tr td{line-height:1.6}
+h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{line-height:1.2;word-spacing:-.05em}
+h1 strong,h2 strong,h3 strong,#toctitle strong,.sidebarblock>.content>.title strong,h4 strong,h5 strong,h6 strong{font-weight:400}
+.center{margin-left:auto;margin-right:auto}
+.stretch{width:100%}
+.clearfix::before,.clearfix::after,.float-group::before,.float-group::after{content:" ";display:table}
+.clearfix::after,.float-group::after{clear:both}
+:not(pre).nobreak{word-wrap:normal}
+:not(pre).nowrap{white-space:nowrap}
+:not(pre).pre-wrap{white-space:pre-wrap}
+:not(pre):not([class^=L])>code{font-size:.9375em;font-style:normal!important;letter-spacing:0;padding:.1em .5ex;word-spacing:-.15em;background:#f7f7f8;-webkit-border-radius:4px;border-radius:4px;line-height:1.45;text-rendering:optimizeSpeed}
+pre{color:rgba(0,0,0,.9);font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;line-height:1.45;text-rendering:optimizeSpeed}
+pre code,pre pre{color:inherit;font-size:inherit;line-height:inherit}
+pre>code{display:block}
+pre.nowrap,pre.nowrap pre{white-space:pre;word-wrap:normal}
+em em{font-style:normal}
+strong strong{font-weight:400}
+.keyseq{color:rgba(51,51,51,.8)}
+kbd{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;display:inline-block;color:rgba(0,0,0,.8);font-size:.65em;line-height:1.45;background:#f7f7f7;border:1px solid #ccc;-webkit-border-radius:3px;border-radius:3px;-webkit-box-shadow:0 1px 0 rgba(0,0,0,.2),0 0 0 .1em white inset;box-shadow:0 1px 0 rgba(0,0,0,.2),0 0 0 .1em #fff inset;margin:0 .15em;padding:.2em .5em;vertical-align:middle;position:relative;top:-.1em;white-space:nowrap}
+.keyseq kbd:first-child{margin-left:0}
+.keyseq kbd:last-child{margin-right:0}
+.menuseq,.menuref{color:#000}
+.menuseq b:not(.caret),.menuref{font-weight:inherit}
+.menuseq{word-spacing:-.02em}
+.menuseq b.caret{font-size:1.25em;line-height:.8}
+.menuseq i.caret{font-weight:bold;text-align:center;width:.45em}
+b.button::before,b.button::after{position:relative;top:-1px;font-weight:400}
+b.button::before{content:"[";padding:0 3px 0 2px}
+b.button::after{content:"]";padding:0 2px 0 3px}
+p a>code:hover{color:rgba(0,0,0,.9)}
+#header,#content,#footnotes,#footer{width:100%;margin-left:auto;margin-right:auto;margin-top:0;margin-bottom:0;max-width:62.5em;*zoom:1;position:relative;padding-left:.9375em;padding-right:.9375em}
+#header::before,#header::after,#content::before,#content::after,#footnotes::before,#footnotes::after,#footer::before,#footer::after{content:" ";display:table}
+#header::after,#content::after,#footnotes::after,#footer::after{clear:both}
+#content{margin-top:1.25em}
+#content::before{content:none}
+#header>h1:first-child{color:rgba(0,0,0,.85);margin-top:2.25rem;margin-bottom:0}
+#header>h1:first-child+#toc{margin-top:8px;border-top:1px solid #dddddf}
+#header>h1:only-child,body.toc2 #header>h1:nth-last-child(2){border-bottom:1px solid #dddddf;padding-bottom:8px}
+#header .details{border-bottom:1px solid #dddddf;line-height:1.45;padding-top:.25em;padding-bottom:.25em;padding-left:.25em;color:rgba(0,0,0,.6);display:-ms-flexbox;display:-webkit-flex;display:flex;-ms-flex-flow:row wrap;-webkit-flex-flow:row wrap;flex-flow:row wrap}
+#header .details span:first-child{margin-left:-.125em}
+#header .details span.email a{color:rgba(0,0,0,.85)}
+#header .details br{display:none}
+#header .details br+span::before{content:"\00a0\2013\00a0"}
+#header .details br+span.author::before{content:"\00a0\22c5\00a0";color:rgba(0,0,0,.85)}
+#header .details br+span#revremark::before{content:"\00a0|\00a0"}
+#header #revnumber{text-transform:capitalize}
+#header #revnumber::after{content:"\00a0"}
+#content>h1:first-child:not([class]){color:rgba(0,0,0,.85);border-bottom:1px solid #dddddf;padding-bottom:8px;margin-top:0;padding-top:1rem;margin-bottom:1.25rem}
+#toc{border-bottom:1px solid #e7e7e9;padding-bottom:.5em}
+#toc>ul{margin-left:.125em}
+#toc ul.sectlevel0>li>a{font-style:italic}
+#toc ul.sectlevel0 ul.sectlevel1{margin:.5em 0}
+#toc ul{font-family:"Open Sans","DejaVu Sans",sans-serif;list-style-type:none}
+#toc li{line-height:1.3334;margin-top:.3334em}
+#toc a{text-decoration:none}
+#toc a:active{text-decoration:underline}
+#toctitle{color:#7a2518;font-size:1.2em}
+@media screen and (min-width:768px){#toctitle{font-size:1.375em}
+body.toc2{padding-left:15em;padding-right:0}
+#toc.toc2{margin-top:0!important;background:#f8f8f7;position:fixed;width:15em;left:0;top:0;border-right:1px solid #e7e7e9;border-top-width:0!important;border-bottom-width:0!important;z-index:1000;padding:1.25em 1em;height:100%;overflow:auto}
+#toc.toc2 #toctitle{margin-top:0;margin-bottom:.8rem;font-size:1.2em}
+#toc.toc2>ul{font-size:.9em;margin-bottom:0}
+#toc.toc2 ul ul{margin-left:0;padding-left:1em}
+#toc.toc2 ul.sectlevel0 ul.sectlevel1{padding-left:0;margin-top:.5em;margin-bottom:.5em}
+body.toc2.toc-right{padding-left:0;padding-right:15em}
+body.toc2.toc-right #toc.toc2{border-right-width:0;border-left:1px solid #e7e7e9;left:auto;right:0}}
+@media screen and (min-width:1280px){body.toc2{padding-left:20em;padding-right:0}
+#toc.toc2{width:20em}
+#toc.toc2 #toctitle{font-size:1.375em}
+#toc.toc2>ul{font-size:.95em}
+#toc.toc2 ul ul{padding-left:1.25em}
+body.toc2.toc-right{padding-left:0;padding-right:20em}}
+#content #toc{border-style:solid;border-width:1px;border-color:#e0e0dc;margin-bottom:1.25em;padding:1.25em;background:#f8f8f7;-webkit-border-radius:4px;border-radius:4px}
+#content #toc>:first-child{margin-top:0}
+#content #toc>:last-child{margin-bottom:0}
+#footer{max-width:none;background:rgba(0,0,0,.8);padding:1.25em}
+#footer-text{color:rgba(255,255,255,.8);line-height:1.44}
+#content{margin-bottom:.625em}
+.sect1{padding-bottom:.625em}
+@media screen and (min-width:768px){#content{margin-bottom:1.25em}
+.sect1{padding-bottom:1.25em}}
+.sect1:last-child{padding-bottom:0}
+.sect1+.sect1{border-top:1px solid #e7e7e9}
+#content h1>a.anchor,h2>a.anchor,h3>a.anchor,#toctitle>a.anchor,.sidebarblock>.content>.title>a.anchor,h4>a.anchor,h5>a.anchor,h6>a.anchor{position:absolute;z-index:1001;width:1.5ex;margin-left:-1.5ex;display:block;text-decoration:none!important;visibility:hidden;text-align:center;font-weight:400}
+#content h1>a.anchor::before,h2>a.anchor::before,h3>a.anchor::before,#toctitle>a.anchor::before,.sidebarblock>.content>.title>a.anchor::before,h4>a.anchor::before,h5>a.anchor::before,h6>a.anchor::before{content:"\00A7";font-size:.85em;display:block;padding-top:.1em}
+#content h1:hover>a.anchor,#content h1>a.anchor:hover,h2:hover>a.anchor,h2>a.anchor:hover,h3:hover>a.anchor,#toctitle:hover>a.anchor,.sidebarblock>.content>.title:hover>a.anchor,h3>a.anchor:hover,#toctitle>a.anchor:hover,.sidebarblock>.content>.title>a.anchor:hover,h4:hover>a.anchor,h4>a.anchor:hover,h5:hover>a.anchor,h5>a.anchor:hover,h6:hover>a.anchor,h6>a.anchor:hover{visibility:visible}
+#content h1>a.link,h2>a.link,h3>a.link,#toctitle>a.link,.sidebarblock>.content>.title>a.link,h4>a.link,h5>a.link,h6>a.link{color:#ba3925;text-decoration:none}
+#content h1>a.link:hover,h2>a.link:hover,h3>a.link:hover,#toctitle>a.link:hover,.sidebarblock>.content>.title>a.link:hover,h4>a.link:hover,h5>a.link:hover,h6>a.link:hover{color:#a53221}
+details,.audioblock,.imageblock,.literalblock,.listingblock,.stemblock,.videoblock{margin-bottom:1.25em}
+details>summary:first-of-type{cursor:pointer;display:list-item;outline:none;margin-bottom:.75em}
+.admonitionblock td.content>.title,.audioblock>.title,.exampleblock>.title,.imageblock>.title,.listingblock>.title,.literalblock>.title,.stemblock>.title,.openblock>.title,.paragraph>.title,.quoteblock>.title,table.tableblock>.title,.verseblock>.title,.videoblock>.title,.dlist>.title,.olist>.title,.ulist>.title,.qlist>.title,.hdlist>.title{text-rendering:optimizeLegibility;text-align:left;font-family:"Noto Serif","DejaVu Serif",serif;font-size:1rem;font-style:italic}
+table.tableblock.fit-content>caption.title{white-space:nowrap;width:0}
+.paragraph.lead>p,#preamble>.sectionbody>[class="paragraph"]:first-of-type p{font-size:1.21875em;line-height:1.6;color:rgba(0,0,0,.85)}
+table.tableblock #preamble>.sectionbody>[class="paragraph"]:first-of-type p{font-size:inherit}
+.admonitionblock>table{border-collapse:separate;border:0;background:none;width:100%}
+.admonitionblock>table td.icon{text-align:center;width:80px}
+.admonitionblock>table td.icon img{max-width:none}
+.admonitionblock>table td.icon .title{font-weight:bold;font-family:"Open Sans","DejaVu Sans",sans-serif;text-transform:uppercase}
+.admonitionblock>table td.content{padding-left:1.125em;padding-right:1.25em;border-left:1px solid #dddddf;color:rgba(0,0,0,.6);word-wrap:anywhere}
+.admonitionblock>table td.content>:last-child>:last-child{margin-bottom:0}
+.exampleblock>.content{border-style:solid;border-width:1px;border-color:#e6e6e6;margin-bottom:1.25em;padding:1.25em;background:#fff;-webkit-border-radius:4px;border-radius:4px}
+.exampleblock>.content>:first-child{margin-top:0}
+.exampleblock>.content>:last-child{margin-bottom:0}
+.sidebarblock{border-style:solid;border-width:1px;border-color:#dbdbd6;margin-bottom:1.25em;padding:1.25em;background:#f3f3f2;-webkit-border-radius:4px;border-radius:4px}
+.sidebarblock>:first-child{margin-top:0}
+.sidebarblock>:last-child{margin-bottom:0}
+.sidebarblock>.content>.title{color:#7a2518;margin-top:0;text-align:center}
+.exampleblock>.content>:last-child>:last-child,.exampleblock>.content .olist>ol>li:last-child>:last-child,.exampleblock>.content .ulist>ul>li:last-child>:last-child,.exampleblock>.content .qlist>ol>li:last-child>:last-child,.sidebarblock>.content>:last-child>:last-child,.sidebarblock>.content .olist>ol>li:last-child>:last-child,.sidebarblock>.content .ulist>ul>li:last-child>:last-child,.sidebarblock>.content .qlist>ol>li:last-child>:last-child{margin-bottom:0}
+.literalblock pre,.listingblock>.content>pre{-webkit-border-radius:4px;border-radius:4px;overflow-x:auto;padding:1em;font-size:.8125em}
+@media screen and (min-width:768px){.literalblock pre,.listingblock>.content>pre{font-size:.90625em}}
+@media screen and (min-width:1280px){.literalblock pre,.listingblock>.content>pre{font-size:1em}}
+.literalblock pre,.listingblock>.content>pre:not(.highlight),.listingblock>.content>pre[class="highlight"],.listingblock>.content>pre[class^="highlight "]{background:#f7f7f8}
+.literalblock.output pre{color:#f7f7f8;background:rgba(0,0,0,.9)}
+.listingblock>.content{position:relative}
+.listingblock code[data-lang]::before{display:none;content:attr(data-lang);position:absolute;font-size:.75em;top:.425rem;right:.5rem;line-height:1;text-transform:uppercase;color:inherit;opacity:.5}
+.listingblock:hover code[data-lang]::before{display:block}
+.listingblock.terminal pre .command::before{content:attr(data-prompt);padding-right:.5em;color:inherit;opacity:.5}
+.listingblock.terminal pre .command:not([data-prompt])::before{content:"$"}
+.listingblock pre.highlightjs{padding:0}
+.listingblock pre.highlightjs>code{padding:1em;-webkit-border-radius:4px;border-radius:4px}
+.listingblock pre.prettyprint{border-width:0}
+.prettyprint{background:#f7f7f8}
+pre.prettyprint .linenums{line-height:1.45;margin-left:2em}
+pre.prettyprint li{background:none;list-style-type:inherit;padding-left:0}
+pre.prettyprint li code[data-lang]::before{opacity:1}
+pre.prettyprint li:not(:first-child) code[data-lang]::before{display:none}
+table.linenotable{border-collapse:separate;border:0;margin-bottom:0;background:none}
+table.linenotable td[class]{color:inherit;vertical-align:top;padding:0;line-height:inherit;white-space:normal}
+table.linenotable td.code{padding-left:.75em}
+table.linenotable td.linenos{border-right:1px solid currentColor;opacity:.35;padding-right:.5em}
+pre.pygments .lineno{border-right:1px solid currentColor;opacity:.35;display:inline-block;margin-right:.75em}
+pre.pygments .lineno::before{content:"";margin-right:-.125em}
+.quoteblock{margin:0 1em 1.25em 1.5em;display:table}
+.quoteblock:not(.excerpt)>.title{margin-left:-1.5em;margin-bottom:.75em}
+.quoteblock blockquote,.quoteblock p{color:rgba(0,0,0,.85);font-size:1.15rem;line-height:1.75;word-spacing:.1em;letter-spacing:0;font-style:italic;text-align:justify}
+.quoteblock blockquote{margin:0;padding:0;border:0}
+.quoteblock blockquote::before{content:"\201c";float:left;font-size:2.75em;font-weight:bold;line-height:.6em;margin-left:-.6em;color:#7a2518;text-shadow:0 1px 2px rgba(0,0,0,.1)}
+.quoteblock blockquote>.paragraph:last-child p{margin-bottom:0}
+.quoteblock .attribution{margin-top:.75em;margin-right:.5ex;text-align:right}
+.verseblock{margin:0 1em 1.25em}
+.verseblock pre{font-family:"Open Sans","DejaVu Sans",sans;font-size:1.15rem;color:rgba(0,0,0,.85);font-weight:300;text-rendering:optimizeLegibility}
+.verseblock pre strong{font-weight:400}
+.verseblock .attribution{margin-top:1.25rem;margin-left:.5ex}
+.quoteblock .attribution,.verseblock .attribution{font-size:.9375em;line-height:1.45;font-style:italic}
+.quoteblock .attribution br,.verseblock .attribution br{display:none}
+.quoteblock .attribution cite,.verseblock .attribution cite{display:block;letter-spacing:-.025em;color:rgba(0,0,0,.6)}
+.quoteblock.abstract blockquote::before,.quoteblock.excerpt blockquote::before,.quoteblock .quoteblock blockquote::before{display:none}
+.quoteblock.abstract blockquote,.quoteblock.abstract p,.quoteblock.excerpt blockquote,.quoteblock.excerpt p,.quoteblock .quoteblock blockquote,.quoteblock .quoteblock p{line-height:1.6;word-spacing:0}
+.quoteblock.abstract{margin:0 1em 1.25em;display:block}
+.quoteblock.abstract>.title{margin:0 0 .375em;font-size:1.15em;text-align:center}
+.quoteblock.excerpt>blockquote,.quoteblock .quoteblock{padding:0 0 .25em 1em;border-left:.25em solid #dddddf}
+.quoteblock.excerpt,.quoteblock .quoteblock{margin-left:0}
+.quoteblock.excerpt blockquote,.quoteblock.excerpt p,.quoteblock .quoteblock blockquote,.quoteblock .quoteblock p{color:inherit;font-size:1.0625rem}
+.quoteblock.excerpt .attribution,.quoteblock .quoteblock .attribution{color:inherit;text-align:left;margin-right:0}
+p.tableblock:last-child{margin-bottom:0}
+td.tableblock>.content{margin-bottom:1.25em;word-wrap:anywhere}
+td.tableblock>.content>:last-child{margin-bottom:-1.25em}
+table.tableblock,th.tableblock,td.tableblock{border:0 solid #dedede}
+table.grid-all>*>tr>*{border-width:1px}
+table.grid-cols>*>tr>*{border-width:0 1px}
+table.grid-rows>*>tr>*{border-width:1px 0}
+table.frame-all{border-width:1px}
+table.frame-ends{border-width:1px 0}
+table.frame-sides{border-width:0 1px}
+table.frame-none>colgroup+*>:first-child>*,table.frame-sides>colgroup+*>:first-child>*{border-top-width:0}
+table.frame-none>:last-child>:last-child>*,table.frame-sides>:last-child>:last-child>*{border-bottom-width:0}
+table.frame-none>*>tr>:first-child,table.frame-ends>*>tr>:first-child{border-left-width:0}
+table.frame-none>*>tr>:last-child,table.frame-ends>*>tr>:last-child{border-right-width:0}
+table.stripes-all tr,table.stripes-odd tr:nth-of-type(odd),table.stripes-even tr:nth-of-type(even),table.stripes-hover tr:hover{background:#f8f8f7}
+th.halign-left,td.halign-left{text-align:left}
+th.halign-right,td.halign-right{text-align:right}
+th.halign-center,td.halign-center{text-align:center}
+th.valign-top,td.valign-top{vertical-align:top}
+th.valign-bottom,td.valign-bottom{vertical-align:bottom}
+th.valign-middle,td.valign-middle{vertical-align:middle}
+table thead th,table tfoot th{font-weight:bold}
+tbody tr th{background:#f7f8f7}
+tbody tr th,tbody tr th p,tfoot tr th,tfoot tr th p{color:rgba(0,0,0,.8);font-weight:bold}
+p.tableblock>code:only-child{background:none;padding:0}
+p.tableblock{font-size:1em}
+ol{margin-left:1.75em}
+ul li ol{margin-left:1.5em}
+dl dd{margin-left:1.125em}
+dl dd:last-child,dl dd:last-child>:last-child{margin-bottom:0}
+ol>li p,ul>li p,ul dd,ol dd,.olist .olist,.ulist .ulist,.ulist .olist,.olist .ulist{margin-bottom:.625em}
+ul.checklist,ul.none,ol.none,ul.no-bullet,ol.no-bullet,ol.unnumbered,ul.unstyled,ol.unstyled{list-style-type:none}
+ul.no-bullet,ol.no-bullet,ol.unnumbered{margin-left:.625em}
+ul.unstyled,ol.unstyled{margin-left:0}
+ul.checklist{margin-left:.625em}
+ul.checklist li>p:first-child>.fa-square-o:first-child,ul.checklist li>p:first-child>.fa-check-square-o:first-child{width:1.25em;font-size:.8em;position:relative;bottom:.125em}
+ul.checklist li>p:first-child>input[type="checkbox"]:first-child{margin-right:.25em}
+ul.inline{display:-ms-flexbox;display:-webkit-box;display:flex;-ms-flex-flow:row wrap;-webkit-flex-flow:row wrap;flex-flow:row wrap;list-style:none;margin:0 0 .625em -1.25em}
+ul.inline>li{margin-left:1.25em}
+.unstyled dl dt{font-weight:400;font-style:normal}
+ol.arabic{list-style-type:decimal}
+ol.decimal{list-style-type:decimal-leading-zero}
+ol.loweralpha{list-style-type:lower-alpha}
+ol.upperalpha{list-style-type:upper-alpha}
+ol.lowerroman{list-style-type:lower-roman}
+ol.upperroman{list-style-type:upper-roman}
+ol.lowergreek{list-style-type:lower-greek}
+.hdlist>table,.colist>table{border:0;background:none}
+.hdlist>table>tbody>tr,.colist>table>tbody>tr{background:none}
+td.hdlist1,td.hdlist2{vertical-align:top;padding:0 .625em}
+td.hdlist1{font-weight:bold;padding-bottom:1.25em}
+td.hdlist2{word-wrap:anywhere}
+.literalblock+.colist,.listingblock+.colist{margin-top:-.5em}
+.colist td:not([class]):first-child{padding:.4em .75em 0;line-height:1;vertical-align:top}
+.colist td:not([class]):first-child img{max-width:none}
+.colist td:not([class]):last-child{padding:.25em 0}
+.thumb,.th{line-height:0;display:inline-block;border:solid 4px #fff;-webkit-box-shadow:0 0 0 1px #ddd;box-shadow:0 0 0 1px #ddd}
+.imageblock.left{margin:.25em .625em 1.25em 0}
+.imageblock.right{margin:.25em 0 1.25em .625em}
+.imageblock>.title{margin-bottom:0}
+.imageblock.thumb,.imageblock.th{border-width:6px}
+.imageblock.thumb>.title,.imageblock.th>.title{padding:0 .125em}
+.image.left,.image.right{margin-top:.25em;margin-bottom:.25em;display:inline-block;line-height:0}
+.image.left{margin-right:.625em}
+.image.right{margin-left:.625em}
+a.image{text-decoration:none;display:inline-block}
+a.image object{pointer-events:none}
+sup.footnote,sup.footnoteref{font-size:.875em;position:static;vertical-align:super}
+sup.footnote a,sup.footnoteref a{text-decoration:none}
+sup.footnote a:active,sup.footnoteref a:active{text-decoration:underline}
+#footnotes{padding-top:.75em;padding-bottom:.75em;margin-bottom:.625em}
+#footnotes hr{width:20%;min-width:6.25em;margin:-.25em 0 .75em;border-width:1px 0 0}
+#footnotes .footnote{padding:0 .375em 0 .225em;line-height:1.3334;font-size:.875em;margin-left:1.2em;margin-bottom:.2em}
+#footnotes .footnote a:first-of-type{font-weight:bold;text-decoration:none;margin-left:-1.05em}
+#footnotes .footnote:last-of-type{margin-bottom:0}
+#content #footnotes{margin-top:-.625em;margin-bottom:0;padding:.75em 0}
+.gist .file-data>table{border:0;background:#fff;width:100%;margin-bottom:0}
+.gist .file-data>table td.line-data{width:99%}
+div.unbreakable{page-break-inside:avoid}
+.big{font-size:larger}
+.small{font-size:smaller}
+.underline{text-decoration:underline}
+.overline{text-decoration:overline}
+.line-through{text-decoration:line-through}
+.aqua{color:#00bfbf}
+.aqua-background{background:#00fafa}
+.black{color:#000}
+.black-background{background:#000}
+.blue{color:#0000bf}
+.blue-background{background:#0000fa}
+.fuchsia{color:#bf00bf}
+.fuchsia-background{background:#fa00fa}
+.gray{color:#606060}
+.gray-background{background:#7d7d7d}
+.green{color:#006000}
+.green-background{background:#007d00}
+.lime{color:#00bf00}
+.lime-background{background:#00fa00}
+.maroon{color:#600000}
+.maroon-background{background:#7d0000}
+.navy{color:#000060}
+.navy-background{background:#00007d}
+.olive{color:#606000}
+.olive-background{background:#7d7d00}
+.purple{color:#600060}
+.purple-background{background:#7d007d}
+.red{color:#bf0000}
+.red-background{background:#fa0000}
+.silver{color:#909090}
+.silver-background{background:#bcbcbc}
+.teal{color:#006060}
+.teal-background{background:#007d7d}
+.white{color:#bfbfbf}
+.white-background{background:#fafafa}
+.yellow{color:#bfbf00}
+.yellow-background{background:#fafa00}
+span.icon>.fa{cursor:default}
+a span.icon>.fa{cursor:inherit}
+.admonitionblock td.icon [class^="fa icon-"]{font-size:2.5em;text-shadow:1px 1px 2px rgba(0,0,0,.5);cursor:default}
+.admonitionblock td.icon .icon-note::before{content:"\f05a";color:#19407c}
+.admonitionblock td.icon .icon-tip::before{content:"\f0eb";text-shadow:1px 1px 2px rgba(155,155,0,.8);color:#111}
+.admonitionblock td.icon .icon-warning::before{content:"\f071";color:#bf6900}
+.admonitionblock td.icon .icon-caution::before{content:"\f06d";color:#bf3400}
+.admonitionblock td.icon .icon-important::before{content:"\f06a";color:#bf0000}
+.conum[data-value]{display:inline-block;color:#fff!important;background:rgba(0,0,0,.8);-webkit-border-radius:50%;border-radius:50%;text-align:center;font-size:.75em;width:1.67em;height:1.67em;line-height:1.67em;font-family:"Open Sans","DejaVu Sans",sans-serif;font-style:normal;font-weight:bold}
+.conum[data-value] *{color:#fff!important}
+.conum[data-value]+b{display:none}
+.conum[data-value]::after{content:attr(data-value)}
+pre .conum[data-value]{position:relative;top:-.125em}
+b.conum *{color:inherit!important}
+.conum:not([data-value]):empty{display:none}
+dt,th.tableblock,td.content,div.footnote{text-rendering:optimizeLegibility}
+h1,h2,p,td.content,span.alt{letter-spacing:-.01em}
+p strong,td.content strong,div.footnote strong{letter-spacing:-.005em}
+p,blockquote,dt,td.content,span.alt{font-size:1.0625rem}
+p{margin-bottom:1.25rem}
+.sidebarblock p,.sidebarblock dt,.sidebarblock td.content,p.tableblock{font-size:1em}
+.exampleblock>.content{background:#fffef7;border-color:#e0e0dc;-webkit-box-shadow:0 1px 4px #e0e0dc;box-shadow:0 1px 4px #e0e0dc}
+.print-only{display:none!important}
+@page{margin:1.25cm .75cm}
+@media print{*{-webkit-box-shadow:none!important;box-shadow:none!important;text-shadow:none!important}
+html{font-size:80%}
+a{color:inherit!important;text-decoration:underline!important}
+a.bare,a[href^="#"],a[href^="mailto:"]{text-decoration:none!important}
+a[href^="http:"]:not(.bare)::after,a[href^="https:"]:not(.bare)::after{content:"(" attr(href) ")";display:inline-block;font-size:.875em;padding-left:.25em}
+abbr[title]::after{content:" (" attr(title) ")"}
+pre,blockquote,tr,img,object,svg{page-break-inside:avoid}
+thead{display:table-header-group}
+svg{max-width:100%}
+p,blockquote,dt,td.content{font-size:1em;orphans:3;widows:3}
+h2,h3,#toctitle,.sidebarblock>.content>.title{page-break-after:avoid}
+#header,#content,#footnotes,#footer{max-width:none}
+#toc,.sidebarblock,.exampleblock>.content{background:none!important}
+#toc{border-bottom:1px solid #dddddf!important;padding-bottom:0!important}
+body.book #header{text-align:center}
+body.book #header>h1:first-child{border:0!important;margin:2.5em 0 1em}
+body.book #header .details{border:0!important;display:block;padding:0!important}
+body.book #header .details span:first-child{margin-left:0!important}
+body.book #header .details br{display:block}
+body.book #header .details br+span::before{content:none!important}
+body.book #toc{border:0!important;text-align:left!important;padding:0!important;margin:0!important}
+body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-break-before:always}
+.listingblock code[data-lang]::before{display:block}
+#footer{padding:0 .9375em}
+.hide-on-print{display:none!important}
+.print-only{display:block!important}
+.hide-for-print{display:none!important}
+.show-for-print{display:inherit!important}}
+@media print,amzn-kf8{#header>h1:first-child{margin-top:1.25rem}
+.sect1{padding:0!important}
+.sect1+.sect1{border:0}
+#footer{background:none}
+#footer-text{color:rgba(0,0,0,.6);font-size:.9em}}
+@media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
+</style>
+<style>.toc-current{font-weight: bold;} .toc-root{font-family: "Open Sans","DejaVu Sans",sans-serif;
+                       font-size: 0.9em;} #content{display: flex; flex-direction: column; flex: 1 1 auto;}
+             .nav-footer{text-align: center; margin-top: auto;}
+             .nav-footer > p > a {white-space: nowrap;}</style>
+</head>
+<body id="search-aggregations-metrics" class="book toc2 toc-left">
+<div id="header">
+<h1>OpenSearch Reference</h1>
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<p><span class="toc-root"><a href="index.html">OpenSearch Reference</a></span></p><ul class="sectlevel1">
+<li><a href="opensearch-intro.html">What is OpenSearch?</a>
+</li>
+<li><a href="getting-started.html">Getting started with OpenSearch</a>
+</li>
+<li><a href="setup.html">Set up OpenSearch</a>
+</li>
+<li><a href="setup-upgrade.html">Upgrade OpenSearch</a>
+</li>
+<li><a href="index-modules.html">Index modules</a>
+</li>
+<li><a href="mapping.html">Mapping</a>
+</li>
+<li><a href="analysis.html">Text analysis</a>
+</li>
+<li><a href="index-templates.html">Index templates</a>
+</li>
+<li><a href="ingest.html">Ingest node</a>
+</li>
+<li><a href="search-your-data.html">Search your data</a>
+</li>
+<li><a href="query-dsl.html">Query DSL</a>
+</li>
+<li><a href="search-aggregations.html">Aggregations</a>
+<ul class="sectlevel1">
+<li><a href="search-aggregations-bucket.html">Bucket aggregations</a>
+</li>
+<li><a href="search-aggregations-metrics.html"><span class="toc-current">Metrics aggregations</span></a>
+<ul class="sectlevel2">
+<li><a href="search-aggregations-metrics.html#search-aggregations-metrics-avg-aggregation">Avg aggregation</a>
+</li>
+<li><a href="search-aggregations-metrics.html#search-aggregations-metrics-cardinality-aggregation">Cardinality aggregation</a>
+</li>
+<li><a href="search-aggregations-metrics.html#search-aggregations-metrics-extendedstats-aggregation">Extended stats aggregation</a>
+</li>
+<li><a href="search-aggregations-metrics.html#search-aggregations-metrics-geobounds-aggregation">Geo-bounds aggregation</a>
+</li>
+<li><a href="search-aggregations-metrics.html#search-aggregations-metrics-geocentroid-aggregation">Geo-centroid aggregation</a>
+</li>
+<li><a href="search-aggregations-metrics.html#search-aggregations-matrix-stats-aggregation">Matrix stats aggregation</a>
+</li>
+<li><a href="search-aggregations-metrics.html#search-aggregations-metrics-max-aggregation">Max aggregation</a>
+</li>
+<li><a href="search-aggregations-metrics.html#search-aggregations-metrics-median-absolute-deviation-aggregation">Median absolute deviation aggregation</a>
+</li>
+<li><a href="search-aggregations-metrics.html#search-aggregations-metrics-min-aggregation">Min aggregation</a>
+</li>
+<li><a href="search-aggregations-metrics.html#search-aggregations-metrics-percentile-rank-aggregation">Percentile ranks aggregation</a>
+</li>
+<li><a href="search-aggregations-metrics.html#search-aggregations-metrics-percentile-aggregation">Percentiles aggregation</a>
+</li>
+<li><a href="search-aggregations-metrics.html#search-aggregations-metrics-scripted-metric-aggregation">Scripted metric aggregation</a>
+</li>
+<li><a href="search-aggregations-metrics.html#search-aggregations-metrics-stats-aggregation">Stats aggregation</a>
+</li>
+<li><a href="search-aggregations-metrics.html#search-aggregations-metrics-sum-aggregation">Sum aggregation</a>
+</li>
+<li><a href="search-aggregations-metrics.html#search-aggregations-metrics-top-hits-aggregation">Top hits aggregation</a>
+</li>
+<li><a href="search-aggregations-metrics.html#search-aggregations-metrics-valuecount-aggregation">Value count aggregation</a>
+</li>
+<li><a href="search-aggregations-metrics.html#search-aggregations-metrics-weight-avg-aggregation">Weighted avg aggregation</a>
+</li>
+</ul>
+</li>
+<li><a href="search-aggregations-pipeline.html">Pipeline aggregations</a>
+</li>
+</ul>
+</li>
+<li><a href="modules-scripting.html">Scripting</a>
+</li>
+<li><a href="high-availability.html">Set up a cluster for high availability</a>
+</li>
+<li><a href="snapshot-restore.html">Snapshot and restore</a>
+</li>
+<li><a href="commands.html">Command line tools</a>
+</li>
+<li><a href="how-to.html">How To</a>
+</li>
+<li><a href="glossary.html">Glossary of terms</a>
+</li>
+<li><a href="rest-apis.html">REST APIs</a>
+</li>
+<li><a href="breaking-changes.html">Migration guide</a>
+</li>
+<li><a href="opensearch-release-notes.html">Release notes</a>
+</li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="search-aggregations-metrics">Metrics aggregations</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The aggregations in this family compute metrics based on values extracted in one way or another from the documents that
+are being aggregated. The values are typically extracted from the fields of the document (using the field data), but
+can also be generated using scripts.</p>
+</div>
+<div class="paragraph">
+<p>Numeric metrics aggregations are a special type of metrics aggregation which output numeric values. Some aggregations output
+a single numeric metric (e.g. <code>avg</code>) and are called <code>single-value numeric metrics aggregation</code>, others generate multiple
+metrics (e.g. <code>stats</code>) and are called <code>multi-value numeric metrics aggregation</code>. The distinction between single-value and
+multi-value numeric metrics aggregations plays a role when these aggregations serve as direct sub-aggregations of some
+bucket aggregations (some bucket aggregations enable you to sort the returned buckets based on the numeric metrics in each bucket).</p>
+</div>
+<div class="sect2">
+<h3 id="search-aggregations-metrics-avg-aggregation">Avg aggregation</h3>
+<titleabbrev>Avg</titleabbrev>
+<div class="paragraph">
+<p>A <code>single-value</code> metrics aggregation that computes the average of numeric values that are extracted from the aggregated documents. These values can be extracted either from specific numeric fields in the documents, or be generated by a provided script.</p>
+</div>
+<div class="paragraph">
+<p>Assuming the data consists of documents representing exams grades (between 0
+and 100) of students we can average their scores with:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">POST /exams/_search?size=0
+{
+  "aggs": {
+    "avg_grade": { "avg": { "field": "grade" } }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The above aggregation computes the average grade over all documents. The aggregation type is <code>avg</code> and the <code>field</code> setting defines the numeric field of the documents the average will be computed on. The above will return the following:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console-result" data-lang="console-result">{
+  ...
+  "aggregations": {
+    "avg_grade": {
+      "value": 75.0
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The name of the aggregation (<code>avg_grade</code> above) also serves as the key by which the aggregation result can be retrieved from the returned response.</p>
+</div>
+<div class="sect3">
+<h4 id="_script_2">Script</h4>
+<div class="paragraph">
+<p>Computing the average grade based on a script:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">POST /exams/_search?size=0
+{
+  "aggs": {
+    "avg_grade": {
+      "avg": {
+        "script": {
+          "source": "doc.grade.value"
+        }
+      }
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This will interpret the <code>script</code> parameter as an <code>inline</code> script with the <code>painless</code> script language and no script parameters. To use a stored script use the following syntax:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">POST /exams/_search?size=0
+{
+  "aggs": {
+    "avg_grade": {
+      "avg": {
+        "script": {
+          "id": "my_script",
+          "params": {
+            "field": "grade"
+          }
+        }
+      }
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_value_script_3">Value Script</h5>
+<div class="paragraph">
+<p>It turned out that the exam was way above the level of the students and a grade correction needs to be applied. We can use value script to get the new average:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">POST /exams/_search?size=0
+{
+  "aggs": {
+    "avg_corrected_grade": {
+      "avg": {
+        "field": "grade",
+        "script": {
+          "lang": "painless",
+          "source": "_value * params.correction",
+          "params": {
+            "correction": 1.2
+          }
+        }
+      }
+    }
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_missing_value_5">Missing value</h4>
+<div class="paragraph">
+<p>The <code>missing</code> parameter defines how documents that are missing a value should be treated.
+By default they will be ignored but it is also possible to treat them as if they
+had a value.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">POST /exams/_search?size=0
+{
+  "aggs": {
+    "grade_avg": {
+      "avg": {
+        "field": "grade",
+        "missing": 10     <b class="conum">(1)</b>
+      }
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>Documents without a value in the <code>grade</code> field will fall into the same bucket as documents that have the value <code>10</code>.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="search-aggregations-metrics-cardinality-aggregation">Cardinality aggregation</h3>
+<titleabbrev>Cardinality</titleabbrev>
+<div class="paragraph">
+<p>A <code>single-value</code> metrics aggregation that calculates an approximate count of
+distinct values. Values can be extracted either from specific fields in the
+document or generated by a script.</p>
+</div>
+<div class="paragraph">
+<p>Assume you are indexing store sales and would like to count the unique number of sold products that match a query:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">POST /sales/_search?size=0
+{
+  "aggs": {
+    "type_count": {
+      "cardinality": {
+        "field": "type"
+      }
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Response:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console-result" data-lang="console-result">{
+  ...
+  "aggregations": {
+    "type_count": {
+      "value": 3
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_precision_control">Precision control</h4>
+<div class="paragraph">
+<p>This aggregation also supports the <code>precision_threshold</code> option:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">POST /sales/_search?size=0
+{
+  "aggs": {
+    "type_count": {
+      "cardinality": {
+        "field": "type",
+        "precision_threshold": 100 <b class="conum">(1)</b>
+      }
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>The <code>precision_threshold</code> options allows to trade memory for accuracy, and
+defines a unique count below which counts are expected to be close to
+accurate. Above this value, counts might become a bit more fuzzy. The maximum
+supported value is 40000, thresholds above this number will have the same
+effect as a threshold of 40000. The default value is 3000.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_counts_are_approximate">Counts are approximate</h4>
+<div class="paragraph">
+<p>Computing exact counts requires loading values into a hash set and returning its
+size. This doesn&#8217;t scale when working on high-cardinality sets and/or large
+values as the required memory usage and the need to communicate those
+per-shard sets between nodes would utilize too many resources of the cluster.</p>
+</div>
+<div class="paragraph">
+<p>This <code>cardinality</code> aggregation is based on the
+<a href="https://static.googleusercontent.com/media/research.google.com/fr//pubs/archive/40671.pdf">HyperLogLog++</a>
+algorithm, which counts based on the hashes of the values with some interesting
+properties:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>configurable precision, which decides on how to trade memory for accuracy,</p>
+</li>
+<li>
+<p>excellent accuracy on low-cardinality sets,</p>
+</li>
+<li>
+<p>fixed memory usage: no matter if there are tens or billions of unique values,
+memory usage only depends on the configured precision.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>For a precision threshold of <code>c</code>, the implementation that we are using requires
+about <code>c * 8</code> bytes.</p>
+</div>
+<div class="paragraph">
+<p>The following chart shows how the error varies before and after the threshold:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="images/cardinality_error.png" alt="cardinality error"></span></p>
+</div>
+<div class="paragraph">
+<p>For all 3 thresholds, counts have been accurate up to the configured threshold.
+Although not guaranteed, this is likely to be the case.  Accuracy in practice depends
+on the dataset in question.  In general, most datasets show consistently good
+accuracy. Also note that even with a threshold as low as 100, the error
+remains very low (1-6% as seen in the above graph) even when counting millions of items.</p>
+</div>
+<div class="paragraph">
+<p>The HyperLogLog++ algorithm depends on the leading zeros of hashed
+values, the exact distributions of hashes in a dataset can affect the
+accuracy of the cardinality.</p>
+</div>
+<div class="paragraph">
+<p>Please also note that even with a threshold as low as 100, the error remains
+very low, even when counting millions of items.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_pre_computed_hashes">Pre-computed hashes</h4>
+<div class="paragraph">
+<p>On string fields that have a high cardinality, it might be faster to store the
+hash of your field values in your index and then run the cardinality aggregation
+on this field. This can either be done by providing hash values from client-side
+or by letting OpenSearch compute hash values for you by using the
+<a href="https://www.opensearch.org/guide/en/opensearch/plugins/{branch}/mapper-murmur3.html"><code>mapper-murmur3</code></a> plugin.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+Pre-computing hashes is usually only useful on very large and/or
+high-cardinality fields as it saves CPU and memory. However, on numeric
+fields, hashing is very fast and storing the original values requires as much
+or less memory than storing the hashes. This is also true on low-cardinality
+string fields, especially given that those have an optimization in order to
+make sure that hashes are computed at most once per unique value per segment.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_script_3">Script</h4>
+<div class="paragraph">
+<p>The <code>cardinality</code> metric supports scripting, with a noticeable performance hit
+however since hashes need to be computed on the fly.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">POST /sales/_search?size=0
+{
+  "aggs": {
+    "type_promoted_count": {
+      "cardinality": {
+        "script": {
+          "lang": "painless",
+          "source": "doc['type'].value + ' ' + doc['promoted'].value"
+        }
+      }
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This will interpret the <code>script</code> parameter as an <code>inline</code> script with the <code>painless</code> script language and no script parameters. To use a stored script use the following syntax:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">POST /sales/_search?size=0
+{
+  "aggs": {
+    "type_promoted_count": {
+      "cardinality": {
+        "script": {
+          "id": "my_script",
+          "params": {
+            "type_field": "type",
+            "promoted_field": "promoted"
+          }
+        }
+      }
+    }
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_missing_value_6">Missing value</h4>
+<div class="paragraph">
+<p>The <code>missing</code> parameter defines how documents that are missing a value should be treated.
+By default they will be ignored but it is also possible to treat them as if they
+had a value.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">POST /sales/_search?size=0
+{
+  "aggs": {
+    "tag_cardinality": {
+      "cardinality": {
+        "field": "tag",
+        "missing": "N/A" <b class="conum">(1)</b>
+      }
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>Documents without a value in the <code>tag</code> field will fall into the same bucket as documents that have the value <code>N/A</code>.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="search-aggregations-metrics-extendedstats-aggregation">Extended stats aggregation</h3>
+<titleabbrev>Extended stats</titleabbrev>
+<div class="paragraph">
+<p>A <code>multi-value</code> metrics aggregation that computes stats over numeric values extracted from the aggregated documents. These values can be extracted either from specific numeric fields in the documents, or be generated by a provided script.</p>
+</div>
+<div class="paragraph">
+<p>The <code>extended_stats</code> aggregations is an extended version of the <a href="search-aggregations-metrics.html#search-aggregations-metrics-stats-aggregation"><code>stats</code></a> aggregation, where additional metrics are added such as <code>sum_of_squares</code>, <code>variance</code>, <code>std_deviation</code> and <code>std_deviation_bounds</code>.</p>
+</div>
+<div class="paragraph">
+<p>Assuming the data consists of documents representing exams grades (between 0 and 100) of students</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">GET /exams/_search
+{
+  "size": 0,
+  "aggs": {
+    "grades_stats": { "extended_stats": { "field": "grade" } }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The above aggregation computes the grades statistics over all documents. The aggregation type is <code>extended_stats</code> and the <code>field</code> setting defines the numeric field of the documents the stats will be computed on. The above will return the following:</p>
+</div>
+<div class="paragraph">
+<p>The <code>std_deviation</code> and <code>variance</code> are calculated as population metrics so they are always the same as <code>std_deviation_population</code> and <code>variance_population</code> respectively.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console-result" data-lang="console-result">{
+  ...
+
+  "aggregations": {
+    "grades_stats": {
+      "count": 2,
+      "min": 50.0,
+      "max": 100.0,
+      "avg": 75.0,
+      "sum": 150.0,
+      "sum_of_squares": 12500.0,
+      "variance": 625.0,
+      "variance_population": 625.0,
+      "variance_sampling": 1250.0,
+      "std_deviation": 25.0,
+      "std_deviation_population": 25.0,
+      "std_deviation_sampling": 35.35533905932738,
+      "std_deviation_bounds": {
+        "upper": 125.0,
+        "lower": 25.0,
+        "upper_population": 125.0,
+        "lower_population": 25.0,
+        "upper_sampling": 145.71067811865476,
+        "lower_sampling": 4.289321881345245
+      }
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The name of the aggregation (<code>grades_stats</code> above) also serves as the key by which the aggregation result can be retrieved from the returned response.</p>
+</div>
+<div class="sect3">
+<h4 id="_standard_deviation_bounds">Standard Deviation Bounds</h4>
+<div class="paragraph">
+<p>By default, the <code>extended_stats</code> metric will return an object called <code>std_deviation_bounds</code>, which provides an interval of plus/minus two standard
+deviations from the mean.  This can be a useful way to visualize variance of your data.  If you want a different boundary, for example
+three standard deviations, you can set <code>sigma</code> in the request:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">GET /exams/_search
+{
+  "size": 0,
+  "aggs": {
+    "grades_stats": {
+      "extended_stats": {
+        "field": "grade",
+        "sigma": 3          <b class="conum">(1)</b>
+      }
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p><code>sigma</code> controls how many standard deviations +/- from the mean should be displayed</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><code>sigma</code> can be any non-negative double, meaning you can request non-integer values such as <code>1.5</code>.  A value of <code>0</code> is valid, but will simply
+return the average for both <code>upper</code> and <code>lower</code> bounds.</p>
+</div>
+<div class="paragraph">
+<p>The <code>upper</code> and <code>lower</code> bounds are calculated as population metrics so they are always the same as <code>upper_population</code> and
+<code>lower_population</code> respectively.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="title">Standard Deviation and Bounds require normality</div>
+<div class="paragraph">
+<p>The standard deviation and its bounds are displayed by default, but they are not always applicable to all data-sets.  Your data must
+be normally distributed for the metrics to make sense.  The statistics behind standard deviations assumes normally distributed data, so
+if your data is skewed heavily left or right, the value returned will be misleading.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_script_4">Script</h4>
+<div class="paragraph">
+<p>Computing the grades stats based on a script:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">GET /exams/_search
+{
+  "size": 0,
+  "aggs": {
+    "grades_stats": {
+      "extended_stats": {
+        "script": {
+          "source": "doc['grade'].value",
+          "lang": "painless"
+        }
+      }
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This will interpret the <code>script</code> parameter as an <code>inline</code> script with the <code>painless</code> script language and no script parameters. To use a stored script use the following syntax:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">GET /exams/_search
+{
+  "size": 0,
+  "aggs": {
+    "grades_stats": {
+      "extended_stats": {
+        "script": {
+          "id": "my_script",
+          "params": {
+            "field": "grade"
+          }
+        }
+      }
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_value_script_4">Value Script</h5>
+<div class="paragraph">
+<p>It turned out that the exam was way above the level of the students and a grade correction needs to be applied. We can use value script to get the new stats:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">GET /exams/_search
+{
+  "size": 0,
+  "aggs": {
+    "grades_stats": {
+      "extended_stats": {
+        "field": "grade",
+        "script": {
+          "lang": "painless",
+          "source": "_value * params.correction",
+          "params": {
+            "correction": 1.2
+          }
+        }
+      }
+    }
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_missing_value_7">Missing value</h4>
+<div class="paragraph">
+<p>The <code>missing</code> parameter defines how documents that are missing a value should be treated.
+By default they will be ignored but it is also possible to treat them as if they
+had a value.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">GET /exams/_search
+{
+  "size": 0,
+  "aggs": {
+    "grades_stats": {
+      "extended_stats": {
+        "field": "grade",
+        "missing": 0        <b class="conum">(1)</b>
+      }
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>Documents without a value in the <code>grade</code> field will fall into the same bucket as documents that have the value <code>0</code>.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="search-aggregations-metrics-geobounds-aggregation">Geo-bounds aggregation</h3>
+<titleabbrev>Geo-bounds</titleabbrev>
+<div class="paragraph">
+<p>A metric aggregation that computes the bounding box containing all geo values for a field.</p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">PUT /museums
+{
+  "mappings": {
+    "properties": {
+      "location": {
+        "type": "geo_point"
+      }
+    }
+  }
+}
+
+POST /museums/_bulk?refresh
+{"index":{"_id":1}}
+{"location": "52.374081,4.912350", "name": "NEMO Science Museum"}
+{"index":{"_id":2}}
+{"location": "52.369219,4.901618", "name": "Museum Het Rembrandthuis"}
+{"index":{"_id":3}}
+{"location": "52.371667,4.914722", "name": "Nederlands Scheepvaartmuseum"}
+{"index":{"_id":4}}
+{"location": "51.222900,4.405200", "name": "Letterenhuis"}
+{"index":{"_id":5}}
+{"location": "48.861111,2.336389", "name": "Musée du Louvre"}
+{"index":{"_id":6}}
+{"location": "48.860000,2.327000", "name": "Musée d'Orsay"}
+
+POST /museums/_search?size=0
+{
+  "query": {
+    "match": { "name": "musée" }
+  },
+  "aggs": {
+    "viewport": {
+      "geo_bounds": {
+        "field": "location",    <b class="conum">(1)</b>
+        "wrap_longitude": true  <b class="conum">(2)</b>
+      }
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>The <code>geo_bounds</code> aggregation specifies the field to use to obtain the bounds.</p>
+</li>
+<li>
+<p><a id="geo-bounds-wrap-longitude"></a> <code>wrap_longitude</code> is an optional parameter which specifies whether the bounding box should be allowed to overlap the international date line. The default value is <code>true</code>.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The above aggregation demonstrates how one would compute the bounding box of the location field for all documents with a business type of shop</p>
+</div>
+<div class="paragraph">
+<p>The response for the above aggregation:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console-result" data-lang="console-result">{
+  ...
+  "aggregations": {
+    "viewport": {
+      "bounds": {
+        "top_left": {
+          "lat": 48.86111099738628,
+          "lon": 2.3269999679178
+        },
+        "bottom_right": {
+          "lat": 48.85999997612089,
+          "lon": 2.3363889567553997
+        }
+      }
+    }
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="search-aggregations-metrics-geocentroid-aggregation">Geo-centroid aggregation</h3>
+<titleabbrev>Geo-centroid</titleabbrev>
+<div class="paragraph">
+<p>A metric aggregation that computes the weighted <a href="https://en.wikipedia.org/wiki/Centroid">centroid</a> from all coordinate values for geo fields.</p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">PUT /museums
+{
+  "mappings": {
+    "properties": {
+      "location": {
+        "type": "geo_point"
+      }
+    }
+  }
+}
+
+POST /museums/_bulk?refresh
+{"index":{"_id":1}}
+{"location": "52.374081,4.912350", "city": "Amsterdam", "name": "NEMO Science Museum"}
+{"index":{"_id":2}}
+{"location": "52.369219,4.901618", "city": "Amsterdam", "name": "Museum Het Rembrandthuis"}
+{"index":{"_id":3}}
+{"location": "52.371667,4.914722", "city": "Amsterdam", "name": "Nederlands Scheepvaartmuseum"}
+{"index":{"_id":4}}
+{"location": "51.222900,4.405200", "city": "Antwerp", "name": "Letterenhuis"}
+{"index":{"_id":5}}
+{"location": "48.861111,2.336389", "city": "Paris", "name": "Musée du Louvre"}
+{"index":{"_id":6}}
+{"location": "48.860000,2.327000", "city": "Paris", "name": "Musée d'Orsay"}
+
+POST /museums/_search?size=0
+{
+  "aggs": {
+    "centroid": {
+      "geo_centroid": {
+        "field": "location" <b class="conum">(1)</b>
+      }
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>The <code>geo_centroid</code> aggregation specifies the field to use for computing the centroid. (NOTE: field must be a <a href="mapping-types.html#geo-point">Geo-point field type</a> type)</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The above aggregation demonstrates how one would compute the centroid of the location field for all documents with a crime type of burglary.</p>
+</div>
+<div class="paragraph">
+<p>The response for the above aggregation:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console-result" data-lang="console-result">{
+  ...
+  "aggregations": {
+    "centroid": {
+      "location": {
+        "lat": 51.00982965203002,
+        "lon": 3.9662131341174245
+      },
+      "count": 6
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>geo_centroid</code> aggregation is more interesting when combined as a sub-aggregation to other bucket aggregations.</p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">POST /museums/_search?size=0
+{
+  "aggs": {
+    "cities": {
+      "terms": { "field": "city.keyword" },
+      "aggs": {
+        "centroid": {
+          "geo_centroid": { "field": "location" }
+        }
+      }
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The above example uses <code>geo_centroid</code> as a sub-aggregation to a
+<a href="search-aggregations-bucket.html#search-aggregations-bucket-terms-aggregation">terms</a> bucket aggregation
+for finding the central location for museums in each city.</p>
+</div>
+<div class="paragraph">
+<p>The response for the above aggregation:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console-result" data-lang="console-result">{
+  ...
+  "aggregations": {
+    "cities": {
+      "sum_other_doc_count": 0,
+      "doc_count_error_upper_bound": 0,
+      "buckets": [
+        {
+          "key": "Amsterdam",
+          "doc_count": 3,
+          "centroid": {
+            "location": {
+              "lat": 52.371655656024814,
+              "lon": 4.909563297405839
+            },
+            "count": 3
+          }
+        },
+        {
+          "key": "Paris",
+          "doc_count": 2,
+          "centroid": {
+            "location": {
+              "lat": 48.86055548675358,
+              "lon": 2.3316944623366
+            },
+            "count": 2
+          }
+        },
+        {
+          "key": "Antwerp",
+          "doc_count": 1,
+          "centroid": {
+            "location": {
+              "lat": 51.22289997059852,
+              "lon": 4.40519998781383
+            },
+            "count": 1
+          }
+        }
+      ]
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Warning</div>
+</td>
+<td class="content">
+<div class="title">Using <code>geo_centroid</code> as a sub-aggregation of <code>geohash_grid</code></div>
+<div class="paragraph">
+<p>The <a href="search-aggregations-bucket.html#search-aggregations-bucket-geohashgrid-aggregation"><code>geohash_grid</code></a>
+aggregation places documents, not individual geo-points, into buckets. If a
+document&#8217;s <code>geo_point</code> field contains <a href="mapping-types.html#array">multiple values</a>, the document
+could be assigned to multiple buckets, even if one or more of its geo-points are
+outside the bucket boundaries.</p>
+</div>
+<div class="paragraph">
+<p>If a <code>geocentroid</code> sub-aggregation is also used, each centroid is calculated
+using all geo-points in a bucket, including those outside the bucket boundaries.
+This can result in centroids outside of bucket boundaries.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="search-aggregations-matrix-stats-aggregation">Matrix stats aggregation</h3>
+<titleabbrev>Matrix stats</titleabbrev>
+<div class="paragraph">
+<p>The <code>matrix_stats</code> aggregation is a numeric aggregation that computes the following statistics over a set of document fields:</p>
+</div>
+<div class="hdlist">
+<table>
+<tr>
+<td class="hdlist1">
+<code>count</code>
+</td>
+<td class="hdlist2">
+<p>Number of per field samples included in the calculation.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+<code>mean</code>
+</td>
+<td class="hdlist2">
+<p>The average value for each field.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+<code>variance</code>
+</td>
+<td class="hdlist2">
+<p>Per field Measurement for how spread out the samples are from the mean.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+<code>skewness</code>
+</td>
+<td class="hdlist2">
+<p>Per field measurement quantifying the asymmetric distribution around the mean.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+<code>kurtosis</code>
+</td>
+<td class="hdlist2">
+<p>Per field measurement quantifying the shape of the distribution.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+<code>covariance</code>
+</td>
+<td class="hdlist2">
+<p>A matrix that quantitatively describes how changes in one field are associated with another.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+<code>correlation</code>
+</td>
+<td class="hdlist2">
+<p>The covariance matrix scaled to a range of -1 to 1, inclusive. Describes the relationship between field
+distributions.</p>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Important</div>
+</td>
+<td class="content">
+Unlike other metric aggregations, the <code>matrix_stats</code> aggregation does
+not support scripting.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The following example demonstrates the use of matrix stats to describe the relationship between income and poverty.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">GET /_search
+{
+  "aggs": {
+    "statistics": {
+      "matrix_stats": {
+        "fields": [ "poverty", "income" ]
+      }
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The aggregation type is <code>matrix_stats</code> and the <code>fields</code> setting defines the set of fields (as an array) for computing
+the statistics. The above request returns the following response:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console-result" data-lang="console-result">{
+  ...
+  "aggregations": {
+    "statistics": {
+      "doc_count": 50,
+      "fields": [ {
+          "name": "income",
+          "count": 50,
+          "mean": 51985.1,
+          "variance": 7.383377037755103E7,
+          "skewness": 0.5595114003506483,
+          "kurtosis": 2.5692365287787124,
+          "covariance": {
+            "income": 7.383377037755103E7,
+            "poverty": -21093.65836734694
+          },
+          "correlation": {
+            "income": 1.0,
+            "poverty": -0.8352655256272504
+          }
+        }, {
+          "name": "poverty",
+          "count": 50,
+          "mean": 12.732000000000001,
+          "variance": 8.637730612244896,
+          "skewness": 0.4516049811903419,
+          "kurtosis": 2.8615929677997767,
+          "covariance": {
+            "income": -21093.65836734694,
+            "poverty": 8.637730612244896
+          },
+          "correlation": {
+            "income": -0.8352655256272504,
+            "poverty": 1.0
+          }
+        } ]
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>doc_count</code> field indicates the number of documents involved in the computation of the statistics.</p>
+</div>
+<div class="sect3">
+<h4 id="_multi_value_fields">Multi Value Fields</h4>
+<div class="paragraph">
+<p>The <code>matrix_stats</code> aggregation treats each document field as an independent sample. The <code>mode</code> parameter controls what
+array value the aggregation will use for array or multi-valued fields. This parameter can take one of the following:</p>
+</div>
+<div class="hdlist">
+<table>
+<tr>
+<td class="hdlist1">
+<code>avg</code>
+</td>
+<td class="hdlist2">
+<p>(default) Use the average of all values.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+<code>min</code>
+</td>
+<td class="hdlist2">
+<p>Pick the lowest value.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+<code>max</code>
+</td>
+<td class="hdlist2">
+<p>Pick the highest value.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+<code>sum</code>
+</td>
+<td class="hdlist2">
+<p>Use the sum of all values.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+<code>median</code>
+</td>
+<td class="hdlist2">
+<p>Use the median of all values.</p>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_missing_values_3">Missing Values</h4>
+<div class="paragraph">
+<p>The <code>missing</code> parameter defines how documents that are missing a value should be treated.
+By default they will be ignored but it is also possible to treat them as if they had a value.
+This is done by adding a set of fieldname : value mappings to specify default values per field.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">GET /_search
+{
+  "aggs": {
+    "matrixstats": {
+      "matrix_stats": {
+        "fields": [ "poverty", "income" ],
+        "missing": { "income": 50000 }      <b class="conum">(1)</b>
+      }
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>Documents without a value in the <code>income</code> field will have the default value <code>50000</code>.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_script_5">Script</h4>
+<div class="paragraph">
+<p>This aggregation family does not yet support scripting.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="search-aggregations-metrics-max-aggregation">Max aggregation</h3>
+<titleabbrev>Max</titleabbrev>
+<div class="paragraph">
+<p>A <code>single-value</code> metrics aggregation that keeps track and returns the maximum
+value among the numeric values extracted from the aggregated documents. These
+values can be extracted either from specific numeric fields in the documents,
+or be generated by a provided script.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+The <code>min</code> and <code>max</code> aggregation operate on the <code>double</code> representation of
+the data. As a consequence, the result may be approximate when running on longs
+whose absolute value is greater than 2^53.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Computing the max price value across all documents</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">POST /sales/_search?size=0
+{
+  "aggs": {
+    "max_price": { "max": { "field": "price" } }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Response:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console-result" data-lang="console-result">{
+  ...
+  "aggregations": {
+      "max_price": {
+          "value": 200.0
+      }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As can be seen, the name of the aggregation (<code>max_price</code> above) also serves as
+the key by which the aggregation result can be retrieved from the returned
+response.</p>
+</div>
+<div class="sect3">
+<h4 id="_script_6">Script</h4>
+<div class="paragraph">
+<p>The <code>max</code> aggregation can also calculate the maximum of a script. The example
+below computes the maximum price:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">POST /sales/_search
+{
+  "aggs" : {
+      "max_price" : {
+          "max" : {
+              "script" : {
+                  "source" : "doc.price.value"
+              }
+          }
+      }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This will use the <a href="modules-scripting-painless.html">Painless</a> scripting language
+and no script parameters. To use a stored script use the following syntax:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">POST /sales/_search
+{
+  "aggs" : {
+      "max_price" : {
+          "max" : {
+              "script" : {
+                  "id": "my_script",
+                  "params": {
+                      "field": "price"
+                  }
+              }
+          }
+      }
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_value_script_5">Value Script</h4>
+<div class="paragraph">
+<p>Let&#8217;s say that the prices of the documents in our index are in USD, but we
+would like to compute the max in EURO (and for the sake of this example, let&#8217;s
+say the conversion rate is 1.2). We can use a value script to apply the
+conversion rate to every value before it is aggregated:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">POST /sales/_search
+{
+  "aggs" : {
+      "max_price_in_euros" : {
+          "max" : {
+              "field" : "price",
+              "script" : {
+                  "source" : "_value * params.conversion_rate",
+                  "params" : {
+                      "conversion_rate" : 1.2
+                  }
+              }
+          }
+      }
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_missing_value_8">Missing value</h4>
+<div class="paragraph">
+<p>The <code>missing</code> parameter defines how documents that are missing a value should
+be treated. By default they will be ignored but it is also possible to treat
+them as if they had a value.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">POST /sales/_search
+{
+  "aggs" : {
+      "grade_max" : {
+          "max" : {
+              "field" : "grade",
+              "missing": 10       <b class="conum">(1)</b>
+          }
+      }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>Documents without a value in the <code>grade</code> field will fall into the same
+bucket as documents that have the value <code>10</code>.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="search-aggregations-metrics-median-absolute-deviation-aggregation">Median absolute deviation aggregation</h3>
+<titleabbrev>Median absolute deviation</titleabbrev>
+<div class="paragraph">
+<p>This <code>single-value</code> aggregation approximates the <a href="https://en.wikipedia.org/wiki/Median_absolute_deviation">median absolute deviation</a>
+of its search results.</p>
+</div>
+<div class="paragraph">
+<p>Median absolute deviation is a measure of variability. It is a robust
+statistic, meaning that it is useful for describing data that may have
+outliers, or may not be normally distributed. For such data it can be more
+descriptive than standard deviation.</p>
+</div>
+<div class="paragraph">
+<p>It is calculated as the median of each data point&#8217;s deviation from the median
+of the entire sample. That is, for a random variable X, the median absolute
+deviation is median(|median(X) - X<sub>i</sub>|).</p>
+</div>
+<div class="sect3">
+<h4 id="_example_4">Example</h4>
+<div class="paragraph">
+<p>Assume our data represents product reviews on a one to five star scale.
+Such reviews are usually summarized as a mean, which is easily understandable
+but doesn&#8217;t describe the reviews' variability. Estimating the median absolute
+deviation can provide insight into how much reviews vary from one another.</p>
+</div>
+<div class="paragraph">
+<p>In this example we have a product which has an average rating of
+3 stars. Let&#8217;s look at its ratings' median absolute deviation to determine
+how much they vary</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">GET reviews/_search
+{
+  "size": 0,
+  "aggs": {
+    "review_average": {
+      "avg": {
+        "field": "rating"
+      }
+    },
+    "review_variability": {
+      "median_absolute_deviation": {
+        "field": "rating" <b class="conum">(1)</b>
+      }
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p><code>rating</code> must be a numeric field</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The resulting median absolute deviation of <code>2</code> tells us that there is a fair
+amount of variability in the ratings. Reviewers must have diverse opinions about
+this product.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console-result" data-lang="console-result">{
+  ...
+  "aggregations": {
+    "review_average": {
+      "value": 3.0
+    },
+    "review_variability": {
+      "value": 2.0
+    }
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_approximation">Approximation</h4>
+<div class="paragraph">
+<p>The naive implementation of calculating median absolute deviation stores the
+entire sample in memory, so this aggregation instead calculates an
+approximation. It uses the <a href="https://github.com/tdunning/t-digest">TDigest data structure</a>
+to approximate the sample median and the median of deviations from the sample
+median. For more about the approximation characteristics of TDigests, see
+<a href="search-aggregations-metrics.html#search-aggregations-metrics-percentile-aggregation-approximation">Percentiles are (usually) approximate</a>.</p>
+</div>
+<div class="paragraph">
+<p>The tradeoff between resource usage and accuracy of a TDigest&#8217;s quantile
+approximation, and therefore the accuracy of this aggregation&#8217;s approximation
+of median absolute deviation, is controlled by the <code>compression</code> parameter. A
+higher <code>compression</code> setting provides a more accurate approximation at the
+cost of higher memory usage. For more about the characteristics of the TDigest
+<code>compression</code> parameter see
+<a href="search-aggregations-metrics.html#search-aggregations-metrics-percentile-aggregation-compression">Compression</a>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">GET reviews/_search
+{
+  "size": 0,
+  "aggs": {
+    "review_variability": {
+      "median_absolute_deviation": {
+        "field": "rating",
+        "compression": 100
+      }
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The default <code>compression</code> value for this aggregation is <code>1000</code>. At this
+compression level this aggregation is usually within 5% of the exact result,
+but observed performance will depend on the sample data.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_script_7">Script</h4>
+<div class="paragraph">
+<p>This metric aggregation supports scripting. In our example above, product
+reviews are on a scale of one to five. If we wanted to modify them to a scale
+of one to ten, we can using scripting.</p>
+</div>
+<div class="paragraph">
+<p>To provide an inline script:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">GET reviews/_search
+{
+  "size": 0,
+  "aggs": {
+    "review_variability": {
+      "median_absolute_deviation": {
+        "script": {
+          "lang": "painless",
+          "source": "doc['rating'].value * params.scaleFactor",
+          "params": {
+            "scaleFactor": 2
+          }
+        }
+      }
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To provide a stored script:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">GET reviews/_search
+{
+  "size": 0,
+  "aggs": {
+    "review_variability": {
+      "median_absolute_deviation": {
+        "script": {
+          "id": "my_script",
+          "params": {
+            "field": "rating"
+          }
+        }
+      }
+    }
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_missing_value_9">Missing value</h4>
+<div class="paragraph">
+<p>The <code>missing</code> parameter defines how documents that are missing a value should be
+treated. By default they will be ignored but it is also possible to treat them
+as if they had a value.</p>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s be optimistic and assume some reviewers loved the product so much that
+they forgot to give it a rating. We&#8217;ll assign them five stars</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">GET reviews/_search
+{
+  "size": 0,
+  "aggs": {
+    "review_variability": {
+      "median_absolute_deviation": {
+        "field": "rating",
+        "missing": 5
+      }
+    }
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="search-aggregations-metrics-min-aggregation">Min aggregation</h3>
+<titleabbrev>Min</titleabbrev>
+<div class="paragraph">
+<p>A <code>single-value</code> metrics aggregation that keeps track and returns the minimum
+value among numeric values extracted from the aggregated documents. These
+values can be extracted either from specific numeric fields in the documents,
+or be generated by a provided script.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+The <code>min</code> and <code>max</code> aggregation operate on the <code>double</code> representation of
+the data. As a consequence, the result may be approximate when running on longs
+whose absolute value is greater than 2^53.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Computing the min price value across all documents:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">POST /sales/_search?size=0
+{
+  "aggs": {
+    "min_price": { "min": { "field": "price" } }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Response:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console-result" data-lang="console-result">{
+  ...
+
+  "aggregations": {
+    "min_price": {
+      "value": 10.0
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As can be seen, the name of the aggregation (<code>min_price</code> above) also serves as
+the key by which the aggregation result can be retrieved from the returned
+response.</p>
+</div>
+<div class="sect3">
+<h4 id="_script_8">Script</h4>
+<div class="paragraph">
+<p>The <code>min</code> aggregation can also calculate the minimum of a script. The example
+below computes the minimum price:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">POST /sales/_search
+{
+  "aggs": {
+    "min_price": {
+      "min": {
+        "script": {
+          "source": "doc.price.value"
+        }
+      }
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This will use the <a href="modules-scripting-painless.html">Painless</a> scripting language
+and no script parameters. To use a stored script use the following syntax:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">POST /sales/_search
+{
+  "aggs": {
+    "min_price": {
+      "min": {
+        "script": {
+          "id": "my_script",
+          "params": {
+            "field": "price"
+          }
+        }
+      }
+    }
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_value_script_6">Value Script</h4>
+<div class="paragraph">
+<p>Let&#8217;s say that the prices of the documents in our index are in USD, but we
+would like to compute the min in EURO (and for the sake of this example, let&#8217;s
+say the conversion rate is 1.2). We can use a value script to apply the
+conversion rate to every value before it is aggregated:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">POST /sales/_search
+{
+  "aggs": {
+    "min_price_in_euros": {
+      "min": {
+        "field": "price",
+        "script": {
+          "source": "_value * params.conversion_rate",
+          "params": {
+            "conversion_rate": 1.2
+          }
+        }
+      }
+    }
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_missing_value_10">Missing value</h4>
+<div class="paragraph">
+<p>The <code>missing</code> parameter defines how documents that are missing a value should
+be treated. By default they will be ignored but it is also possible to treat
+them as if they had a value.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">POST /sales/_search
+{
+  "aggs": {
+    "grade_min": {
+      "min": {
+        "field": "grade",
+        "missing": 10 <b class="conum">(1)</b>
+      }
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>Documents without a value in the <code>grade</code> field will fall into the same
+bucket as documents that have the value <code>10</code>.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="search-aggregations-metrics-percentile-rank-aggregation">Percentile ranks aggregation</h3>
+<titleabbrev>Percentile ranks</titleabbrev>
+<div class="paragraph">
+<p>A <code>multi-value</code> metrics aggregation that calculates one or more percentile ranks
+over numeric values extracted from the aggregated documents. These values
+can be extracted either from specific numeric fields in the documents, or
+be generated by a provided script.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Please see <a href="search-aggregations-metrics.html#search-aggregations-metrics-percentile-aggregation-approximation">Percentiles are (usually) approximate</a>
+and <a href="search-aggregations-metrics.html#search-aggregations-metrics-percentile-aggregation-compression">Compression</a> for advice
+regarding approximation and memory use of the percentile ranks aggregation</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Percentile rank show the percentage of observed values which are below certain
+value.  For example, if a value is greater than or equal to 95% of the observed values
+it is said to be at the 95th percentile rank.</p>
+</div>
+<div class="paragraph">
+<p>Assume your data consists of website load times.  You may have a service agreement that
+95% of page loads complete within 500ms and 99% of page loads complete within 600ms.</p>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s look at a range of percentiles representing load time:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">GET latency/_search
+{
+  "size": 0,
+  "aggs": {
+    "load_time_ranks": {
+      "percentile_ranks": {
+        "field": "load_time",   <b class="conum">(1)</b>
+        "values": [ 500, 600 ]
+      }
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>The field <code>load_time</code> must be a numeric field</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The response will look like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console-result" data-lang="console-result">{
+  ...
+
+ "aggregations": {
+    "load_time_ranks": {
+      "values": {
+        "500.0": 90.01,
+        "600.0": 100.0
+      }
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>From this information you can determine you are hitting the 99% load time target but not quite
+hitting the 95% load time target</p>
+</div>
+<div class="sect3">
+<h4 id="_keyed_response_5">Keyed Response</h4>
+<div class="paragraph">
+<p>By default the <code>keyed</code> flag is set to <code>true</code> associates a unique string key with each bucket and returns the ranges as a hash rather than an array. Setting the <code>keyed</code> flag to <code>false</code> will disable this behavior:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">GET latency/_search
+{
+  "size": 0,
+  "aggs": {
+    "load_time_ranks": {
+      "percentile_ranks": {
+        "field": "load_time",
+        "values": [ 500, 600 ],
+        "keyed": false
+      }
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Response:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console-result" data-lang="console-result">{
+  ...
+
+  "aggregations": {
+    "load_time_ranks": {
+      "values": [
+        {
+          "key": 500.0,
+          "value": 90.01
+        },
+        {
+          "key": 600.0,
+          "value": 100.0
+        }
+      ]
+    }
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_script_9">Script</h4>
+<div class="paragraph">
+<p>The percentile rank metric supports scripting.  For example, if our load times
+are in milliseconds but we want to specify values in seconds, we could use
+a script to convert them on-the-fly:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">GET latency/_search
+{
+  "size": 0,
+  "aggs": {
+    "load_time_ranks": {
+      "percentile_ranks": {
+        "values": [ 500, 600 ],
+        "script": {
+          "lang": "painless",
+          "source": "doc['load_time'].value / params.timeUnit", <b class="conum">(1)</b>
+          "params": {
+            "timeUnit": 1000                                    <b class="conum">(2)</b>
+          }
+        }
+      }
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>The <code>field</code> parameter is replaced with a <code>script</code> parameter, which uses the
+script to generate values which percentile ranks are calculated on</p>
+</li>
+<li>
+<p>Scripting supports parameterized input just like any other script</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>This will interpret the <code>script</code> parameter as an <code>inline</code> script with the <code>painless</code> script language and no script parameters. To use a stored script use the following syntax:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">GET latency/_search
+{
+  "size": 0,
+  "aggs": {
+    "load_time_ranks": {
+      "percentile_ranks": {
+        "values": [ 500, 600 ],
+        "script": {
+          "id": "my_script",
+          "params": {
+            "field": "load_time"
+          }
+        }
+      }
+    }
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_hdr_histogram">HDR Histogram</h4>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+This setting exposes the internal implementation of HDR Histogram and the syntax may change in the future.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><a href="https://github.com/HdrHistogram/HdrHistogram">HDR Histogram</a> (High Dynamic Range Histogram) is an alternative implementation
+that can be useful when calculating percentile ranks for latency measurements as it can be faster than the t-digest implementation
+with the trade-off of a larger memory footprint. This implementation maintains a fixed worse-case percentage error (specified as a
+number of significant digits). This means that if data is recorded with values from 1 microsecond up to 1 hour (3,600,000,000
+microseconds) in a histogram set to 3 significant digits, it will maintain a value resolution of 1 microsecond for values up to
+1 millisecond and 3.6 seconds (or better) for the maximum tracked value (1 hour).</p>
+</div>
+<div class="paragraph">
+<p>The HDR Histogram can be used by specifying the <code>hdr</code> object in the request:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">GET latency/_search
+{
+  "size": 0,
+  "aggs": {
+    "load_time_ranks": {
+      "percentile_ranks": {
+        "field": "load_time",
+        "values": [ 500, 600 ],
+        "hdr": {                                  <b class="conum">(1)</b>
+          "number_of_significant_value_digits": 3 <b class="conum">(2)</b>
+        }
+      }
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p><code>hdr</code> object indicates that HDR Histogram should be used to calculate the percentiles and specific settings for this algorithm can be specified inside the object</p>
+</li>
+<li>
+<p><code>number_of_significant_value_digits</code> specifies the resolution of values for the histogram in number of significant digits</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The HDRHistogram only supports positive values and will error if it is passed a negative value. It is also not a good idea to use
+the HDRHistogram if the range of values is unknown as this could lead to high memory usage.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_missing_value_11">Missing value</h4>
+<div class="paragraph">
+<p>The <code>missing</code> parameter defines how documents that are missing a value should be treated.
+By default they will be ignored but it is also possible to treat them as if they
+had a value.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">GET latency/_search
+{
+  "size": 0,
+  "aggs": {
+    "load_time_ranks": {
+      "percentile_ranks": {
+        "field": "load_time",
+        "values": [ 500, 600 ],
+        "missing": 10           <b class="conum">(1)</b>
+      }
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>Documents without a value in the <code>load_time</code> field will fall into the same bucket as documents that have the value <code>10</code>.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="search-aggregations-metrics-percentile-aggregation">Percentiles aggregation</h3>
+<titleabbrev>Percentiles</titleabbrev>
+<div class="paragraph">
+<p>A <code>multi-value</code> metrics aggregation that calculates one or more percentiles
+over numeric values extracted from the aggregated documents. These values
+can be extracted either from specific numeric fields in the documents, or
+be generated by a provided script.</p>
+</div>
+<div class="paragraph">
+<p>Percentiles show the point at which a certain percentage of observed values
+occur.  For example, the 95th percentile is the value which is greater than 95%
+of the observed values.</p>
+</div>
+<div class="paragraph">
+<p>Percentiles are often used to find outliers.  In normal distributions, the
+0.13th and 99.87th percentiles represents three standard deviations from the
+mean.  Any data which falls outside three standard deviations is often considered
+an anomaly.</p>
+</div>
+<div class="paragraph">
+<p>When a range of percentiles are retrieved, they can be used to estimate the
+data distribution and determine if the data is skewed, bimodal, etc.</p>
+</div>
+<div class="paragraph">
+<p>Assume your data consists of website load times.  The average and median
+load times are not overly useful to an administrator.  The max may be interesting,
+but it can be easily skewed by a single slow response.</p>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s look at a range of percentiles representing load time:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">GET latency/_search
+{
+  "size": 0,
+  "aggs": {
+    "load_time_outlier": {
+      "percentiles": {
+        "field": "load_time" <b class="conum">(1)</b>
+      }
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>The field <code>load_time</code> must be a numeric field</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>By default, the <code>percentile</code> metric will generate a range of
+percentiles: <code>[ 1, 5, 25, 50, 75, 95, 99 ]</code>.  The response will look like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console-result" data-lang="console-result">{
+  ...
+
+ "aggregations": {
+    "load_time_outlier": {
+      "values": {
+        "1.0": 5.0,
+        "5.0": 25.0,
+        "25.0": 165.0,
+        "50.0": 445.0,
+        "75.0": 725.0,
+        "95.0": 945.0,
+        "99.0": 985.0
+      }
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As you can see, the aggregation will return a calculated value for each percentile
+in the default range.  If we assume response times are in milliseconds, it is
+immediately obvious that the webpage normally loads in 10-725ms, but occasionally
+spikes to 945-985ms.</p>
+</div>
+<div class="paragraph">
+<p>Often, administrators are only interested in outliers&#8201;&#8212;&#8201;the extreme percentiles.
+We can specify just the percents we are interested in (requested percentiles
+must be a value between 0-100 inclusive):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">GET latency/_search
+{
+  "size": 0,
+  "aggs": {
+    "load_time_outlier": {
+      "percentiles": {
+        "field": "load_time",
+        "percents": [ 95, 99, 99.9 ] <b class="conum">(1)</b>
+      }
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>Use the <code>percents</code> parameter to specify particular percentiles to calculate</p>
+</li>
+</ol>
+</div>
+<div class="sect3">
+<h4 id="_keyed_response_6">Keyed Response</h4>
+<div class="paragraph">
+<p>By default the <code>keyed</code> flag is set to <code>true</code> which associates a unique string key with each bucket and returns the ranges as a hash rather than an array. Setting the <code>keyed</code> flag to <code>false</code> will disable this behavior:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">GET latency/_search
+{
+  "size": 0,
+  "aggs": {
+    "load_time_outlier": {
+      "percentiles": {
+        "field": "load_time",
+        "keyed": false
+      }
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Response:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console-result" data-lang="console-result">{
+  ...
+
+  "aggregations": {
+    "load_time_outlier": {
+      "values": [
+        {
+          "key": 1.0,
+          "value": 5.0
+        },
+        {
+          "key": 5.0,
+          "value": 25.0
+        },
+        {
+          "key": 25.0,
+          "value": 165.0
+        },
+        {
+          "key": 50.0,
+          "value": 445.0
+        },
+        {
+          "key": 75.0,
+          "value": 725.0
+        },
+        {
+          "key": 95.0,
+          "value": 945.0
+        },
+        {
+          "key": 99.0,
+          "value": 985.0
+        }
+      ]
+    }
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_script_10">Script</h4>
+<div class="paragraph">
+<p>The percentile metric supports scripting.  For example, if our load times
+are in milliseconds but we want percentiles calculated in seconds, we could use
+a script to convert them on-the-fly:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">GET latency/_search
+{
+  "size": 0,
+  "aggs": {
+    "load_time_outlier": {
+      "percentiles": {
+        "script": {
+          "lang": "painless",
+          "source": "doc['load_time'].value / params.timeUnit", <b class="conum">(1)</b>
+          "params": {
+            "timeUnit": 1000                                    <b class="conum">(2)</b>
+          }
+        }
+      }
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>The <code>field</code> parameter is replaced with a <code>script</code> parameter, which uses the
+script to generate values which percentiles are calculated on</p>
+</li>
+<li>
+<p>Scripting supports parameterized input just like any other script</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>This will interpret the <code>script</code> parameter as an <code>inline</code> script with the <code>painless</code> script language and no script parameters. To use a stored script use the following syntax:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">GET latency/_search
+{
+  "size": 0,
+  "aggs": {
+    "load_time_outlier": {
+      "percentiles": {
+        "script": {
+          "id": "my_script",
+          "params": {
+            "field": "load_time"
+          }
+        }
+      }
+    }
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="search-aggregations-metrics-percentile-aggregation-approximation">Percentiles are (usually) approximate</h4>
+<div class="paragraph">
+<p>There are many different algorithms to calculate percentiles.  The naive
+implementation simply stores all the values in a sorted array.  To find the 50th
+percentile, you simply find the value that is at <code>my_array[count(my_array) * 0.5]</code>.</p>
+</div>
+<div class="paragraph">
+<p>Clearly, the naive implementation does not scale&#8201;&#8212;&#8201;the sorted array grows
+linearly with the number of values in your dataset.  To calculate percentiles
+across potentially billions of values in an OpenSearch cluster, <em>approximate</em>
+percentiles are calculated.</p>
+</div>
+<div class="paragraph">
+<p>The algorithm used by the <code>percentile</code> metric is called TDigest (introduced by
+Ted Dunning in
+<a href="https://github.com/tdunning/t-digest/blob/master/docs/t-digest-paper/histo.pdf">Computing Accurate Quantiles using T-Digests</a>).</p>
+</div>
+<div class="paragraph">
+<p>When using this metric, there are a few guidelines to keep in mind:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Accuracy is proportional to <code>q(1-q)</code>.  This means that extreme percentiles (e.g. 99%)
+are more accurate than less extreme percentiles, such as the median</p>
+</li>
+<li>
+<p>For small sets of values, percentiles are highly accurate (and potentially
+100% accurate if the data is small enough).</p>
+</li>
+<li>
+<p>As the quantity of values in a bucket grows, the algorithm begins to approximate
+the percentiles.  It is effectively trading accuracy for memory savings.  The
+exact level of inaccuracy is difficult to generalize, since it depends on your
+data distribution and volume of data being aggregated</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The following chart shows the relative error on a uniform distribution depending
+on the number of collected values and the requested percentile:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="images/percentiles_error.png" alt="percentiles error"></span></p>
+</div>
+<div class="paragraph">
+<p>It shows how precision is better for extreme percentiles. The reason why error diminishes
+for large number of values is that the law of large numbers makes the distribution of
+values more and more uniform and the t-digest tree can do a better job at summarizing
+it. It would not be the case on more skewed distributions.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Warning</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Percentile aggregations are also
+<a href="https://en.wikipedia.org/wiki/Nondeterministic_algorithm">non-deterministic</a>.
+This means you can get slightly different results using the same data.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="search-aggregations-metrics-percentile-aggregation-compression">Compression</h4>
+<div class="paragraph">
+<p>Approximate algorithms must balance memory utilization with estimation accuracy.
+This balance can be controlled using a <code>compression</code> parameter:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">GET latency/_search
+{
+  "size": 0,
+  "aggs": {
+    "load_time_outlier": {
+      "percentiles": {
+        "field": "load_time",
+        "tdigest": {
+          "compression": 200    <b class="conum">(1)</b>
+        }
+      }
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>Compression controls memory usage and approximation error</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The TDigest algorithm uses a number of "nodes" to approximate percentiles&#8201;&#8212;&#8201;the
+more nodes available, the higher the accuracy (and large memory footprint) proportional
+to the volume of data.  The <code>compression</code> parameter limits the maximum number of
+nodes to <code>20 * compression</code>.</p>
+</div>
+<div class="paragraph">
+<p>Therefore, by increasing the compression value, you can increase the accuracy of
+your percentiles at the cost of more memory.  Larger compression values also
+make the algorithm slower since the underlying tree data structure grows in size,
+resulting in more expensive operations.  The default compression value is
+<code>100</code>.</p>
+</div>
+<div class="paragraph">
+<p>A "node" uses roughly 32 bytes of memory, so under worst-case scenarios (large amount
+of data which arrives sorted and in-order) the default settings will produce a
+TDigest roughly 64KB in size.  In practice data tends to be more random and
+the TDigest will use less memory.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_hdr_histogram_2">HDR Histogram</h4>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+This setting exposes the internal implementation of HDR Histogram and the syntax may change in the future.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><a href="https://github.com/HdrHistogram/HdrHistogram">HDR Histogram</a> (High Dynamic Range Histogram) is an alternative implementation
+that can be useful when calculating percentiles for latency measurements as it can be faster than the t-digest implementation
+with the trade-off of a larger memory footprint. This implementation maintains a fixed worse-case percentage error (specified
+as a number of significant digits). This means that if data is recorded with values from 1 microsecond up to 1 hour
+(3,600,000,000 microseconds) in a histogram set to 3 significant digits, it will maintain a value resolution of 1 microsecond
+for values up to 1 millisecond and 3.6 seconds (or better) for the maximum tracked value (1 hour).</p>
+</div>
+<div class="paragraph">
+<p>The HDR Histogram can be used by specifying the <code>method</code> parameter in the request:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">GET latency/_search
+{
+  "size": 0,
+  "aggs": {
+    "load_time_outlier": {
+      "percentiles": {
+        "field": "load_time",
+        "percents": [ 95, 99, 99.9 ],
+        "hdr": {                                  <b class="conum">(1)</b>
+          "number_of_significant_value_digits": 3 <b class="conum">(2)</b>
+        }
+      }
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p><code>hdr</code> object indicates that HDR Histogram should be used to calculate the percentiles and specific settings for this algorithm can be specified inside the object</p>
+</li>
+<li>
+<p><code>number_of_significant_value_digits</code> specifies the resolution of values for the histogram in number of significant digits</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The HDRHistogram only supports positive values and will error if it is passed a negative value. It is also not a good idea to use
+the HDRHistogram if the range of values is unknown as this could lead to high memory usage.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_missing_value_12">Missing value</h4>
+<div class="paragraph">
+<p>The <code>missing</code> parameter defines how documents that are missing a value should be treated.
+By default they will be ignored but it is also possible to treat them as if they
+had a value.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">GET latency/_search
+{
+  "size": 0,
+  "aggs": {
+    "grade_percentiles": {
+      "percentiles": {
+        "field": "grade",
+        "missing": 10       <b class="conum">(1)</b>
+      }
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>Documents without a value in the <code>grade</code> field will fall into the same bucket as documents that have the value <code>10</code>.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="search-aggregations-metrics-scripted-metric-aggregation">Scripted metric aggregation</h3>
+<titleabbrev>Scripted metric</titleabbrev>
+<div class="paragraph">
+<p>A metric aggregation that executes using scripts to provide a metric output.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Warning</div>
+</td>
+<td class="content">
+Using scripts can result in slower search speeds. See
+<a href="modules-scripting-using.html#scripts-and-search-speed">Scripts and search speed</a>.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">POST ledger/_search?size=0
+{
+  "query": {
+    "match_all": {}
+  },
+  "aggs": {
+    "profit": {
+      "scripted_metric": {
+        "init_script": "state.transactions = []", <b class="conum">(1)</b>
+        "map_script": "state.transactions.add(doc.type.value == 'sale' ? doc.amount.value : -1 * doc.amount.value)",
+        "combine_script": "double profit = 0; for (t in state.transactions) { profit += t } return profit",
+        "reduce_script": "double profit = 0; for (a in states) { profit += a } return profit"
+      }
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p><code>init_script</code> is an optional parameter, all other scripts are required.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The above aggregation demonstrates how one would use the script aggregation compute the total profit from sale and cost transactions.</p>
+</div>
+<div class="paragraph">
+<p>The response for the above aggregation:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console-result" data-lang="console-result">{
+  "took": 218,
+  ...
+  "aggregations": {
+    "profit": {
+      "value": 240.0
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The above example can also be specified using stored scripts as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">POST ledger/_search?size=0
+{
+  "aggs": {
+    "profit": {
+      "scripted_metric": {
+        "init_script": {
+          "id": "my_init_script"
+        },
+        "map_script": {
+          "id": "my_map_script"
+        },
+        "combine_script": {
+          "id": "my_combine_script"
+        },
+        "params": {
+          "field": "amount"           <b class="conum">(1)</b>
+        },
+        "reduce_script": {
+          "id": "my_reduce_script"
+        }
+      }
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>script parameters for <code>init</code>, <code>map</code> and <code>combine</code> scripts must be specified
+in a global <code>params</code> object so that it can be shared between the scripts.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>For more details on specifying scripts see <a href="modules-scripting.html">script documentation</a>.</p>
+</div>
+<div class="sect3">
+<h4 id="scripted-metric-aggregation-return-types">Allowed return types</h4>
+<div class="paragraph">
+<p>Whilst any valid script object can be used within a single script, the scripts must return or store in the <code>state</code> object only the following types:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>primitive types</p>
+</li>
+<li>
+<p>String</p>
+</li>
+<li>
+<p>Map (containing only keys and values of the types listed here)</p>
+</li>
+<li>
+<p>Array (containing elements of only the types listed here)</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="scripted-metric-aggregation-scope">Scope of scripts</h4>
+<div class="paragraph">
+<p>The scripted metric aggregation uses scripts at 4 stages of its execution:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">init_script</dt>
+<dd>
+<p>Executed prior to any collection of documents. Allows the aggregation to set up any initial state.</p>
+<div class="paragraph">
+<p>In the above example, the <code>init_script</code> creates an array <code>transactions</code> in the <code>state</code> object.</p>
+</div>
+</dd>
+<dt class="hdlist1">map_script</dt>
+<dd>
+<p>Executed once per document collected. This is a required script. If no combine_script is specified, the resulting state
+needs to be stored in the <code>state</code> object.</p>
+<div class="paragraph">
+<p>In the above example, the <code>map_script</code> checks the value of the type field. If the value is 'sale' the value of the amount field
+is added to the transactions array. If the value of the type field is not 'sale' the negated value of the amount field is added
+to transactions.</p>
+</div>
+</dd>
+<dt class="hdlist1">combine_script</dt>
+<dd>
+<p>Executed once on each shard after document collection is complete. This is a required script. Allows the aggregation to
+consolidate the state returned from each shard.</p>
+<div class="paragraph">
+<p>In the above example, the <code>combine_script</code> iterates through all the stored transactions, summing the values in the <code>profit</code> variable
+and finally returns <code>profit</code>.</p>
+</div>
+</dd>
+<dt class="hdlist1">reduce_script</dt>
+<dd>
+<p>Executed once on the coordinating node after all shards have returned their results. This is a required script. The
+script is provided with access to a variable <code>states</code> which is an array of the result of the combine_script on each
+shard.</p>
+<div class="paragraph">
+<p>In the above example, the <code>reduce_script</code> iterates through the <code>profit</code> returned by each shard summing the values before returning the
+final combined profit which will be returned in the response of the aggregation.</p>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect3">
+<h4 id="scripted-metric-aggregation-example">Worked example</h4>
+<div class="paragraph">
+<p>Imagine a situation where you index the following documents into an index with 2 shards:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">PUT /transactions/_bulk?refresh
+{"index":{"_id":1}}
+{"type": "sale","amount": 80}
+{"index":{"_id":2}}
+{"type": "cost","amount": 10}
+{"index":{"_id":3}}
+{"type": "cost","amount": 30}
+{"index":{"_id":4}}
+{"type": "sale","amount": 130}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Lets say that documents 1 and 3 end up on shard A and documents 2 and 4 end up on shard B. The following is a breakdown of what the aggregation result is
+at each stage of the example above.</p>
+</div>
+<div class="sect4">
+<h5 id="_before_init_script">Before init_script</h5>
+<div class="paragraph">
+<p><code>state</code> is initialized as a new empty object.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-js" data-lang="js">"state" : {}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_after_init_script">After init_script</h5>
+<div class="paragraph">
+<p>This is run once on each shard before any document collection is performed, and so we will have a copy on each shard:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Shard A</dt>
+<dd>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-js" data-lang="js">"state" : {
+    "transactions" : []
+}</code></pre>
+</div>
+</div>
+</dd>
+<dt class="hdlist1">Shard B</dt>
+<dd>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-js" data-lang="js">"state" : {
+    "transactions" : []
+}</code></pre>
+</div>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_after_map_script">After map_script</h5>
+<div class="paragraph">
+<p>Each shard collects its documents and runs the map_script on each document that is collected:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Shard A</dt>
+<dd>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-js" data-lang="js">"state" : {
+    "transactions" : [ 80, -30 ]
+}</code></pre>
+</div>
+</div>
+</dd>
+<dt class="hdlist1">Shard B</dt>
+<dd>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-js" data-lang="js">"state" : {
+    "transactions" : [ -10, 130 ]
+}</code></pre>
+</div>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_after_combine_script">After combine_script</h5>
+<div class="paragraph">
+<p>The combine_script is executed on each shard after document collection is complete and reduces all the transactions down to a single profit figure for each
+shard (by summing the values in the transactions array) which is passed back to the coordinating node:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Shard A</dt>
+<dd>
+<p>50</p>
+</dd>
+<dt class="hdlist1">Shard B</dt>
+<dd>
+<p>120</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_after_reduce_script">After reduce_script</h5>
+<div class="paragraph">
+<p>The reduce_script receives a <code>states</code> array containing the result of the combine script for each shard:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-js" data-lang="js">"states" : [
+    50,
+    120
+]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>It reduces the responses for the shards down to a final overall profit figure (by summing the values) and returns this as the result of the aggregation to
+produce the response:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-js" data-lang="js">{
+  ...
+
+  "aggregations": {
+    "profit": {
+      "value": 170
+    }
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="scripted-metric-aggregation-parameters">Other parameters</h4>
+<div class="hdlist">
+<table>
+<tr>
+<td class="hdlist1">
+params
+</td>
+<td class="hdlist2">
+<p>Optional. An object whose contents will be passed as variables to the  <code>init_script</code>, <code>map_script</code> and <code>combine_script</code>. This can be
+useful to allow the user to control the behavior of the aggregation and for storing state between the scripts. If this is not specified,
+the default is the equivalent of providing:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-js" data-lang="js">"params" : {}</code></pre>
+</div>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="scripted-metric-aggregation-empty-buckets">Empty buckets</h4>
+<div class="paragraph">
+<p>If a parent bucket of the scripted metric aggregation does not collect any documents an empty aggregation response will be returned from the
+shard with a <code>null</code> value. In this case the <code>reduce_script&#8217;s `states</code> variable will contain <code>null</code> as a response from that shard.
+<code>reduce_script&#8217;s should therefore expect and deal with `null</code> responses from shards.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="search-aggregations-metrics-stats-aggregation">Stats aggregation</h3>
+<titleabbrev>Stats</titleabbrev>
+<div class="paragraph">
+<p>A <code>multi-value</code> metrics aggregation that computes stats over numeric values extracted from the aggregated documents. These values can be extracted either from specific numeric fields in the documents, or be generated by a provided script.</p>
+</div>
+<div class="paragraph">
+<p>The stats that are returned consist of: <code>min</code>, <code>max</code>, <code>sum</code>, <code>count</code> and <code>avg</code>.</p>
+</div>
+<div class="paragraph">
+<p>Assuming the data consists of documents representing exams grades (between 0 and 100) of students</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">POST /exams/_search?size=0
+{
+  "aggs": {
+    "grades_stats": { "stats": { "field": "grade" } }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The above aggregation computes the grades statistics over all documents. The aggregation type is <code>stats</code> and the <code>field</code> setting defines the numeric field of the documents the stats will be computed on. The above will return the following:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console-result" data-lang="console-result">{
+  ...
+
+  "aggregations": {
+    "grades_stats": {
+      "count": 2,
+      "min": 50.0,
+      "max": 100.0,
+      "avg": 75.0,
+      "sum": 150.0
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The name of the aggregation (<code>grades_stats</code> above) also serves as the key by which the aggregation result can be retrieved from the returned response.</p>
+</div>
+<div class="sect3">
+<h4 id="_script_11">Script</h4>
+<div class="paragraph">
+<p>Computing the grades stats based on a script:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">POST /exams/_search?size=0
+{
+  "aggs": {
+    "grades_stats": {
+      "stats": {
+        "script": {
+          "lang": "painless",
+          "source": "doc['grade'].value"
+        }
+      }
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This will interpret the <code>script</code> parameter as an <code>inline</code> script with the <code>painless</code> script language and no script parameters. To use a stored script use the following syntax:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">POST /exams/_search?size=0
+{
+  "aggs": {
+    "grades_stats": {
+      "stats": {
+        "script": {
+          "id": "my_script",
+          "params": {
+            "field": "grade"
+          }
+        }
+      }
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_value_script_7">Value Script</h5>
+<div class="paragraph">
+<p>It turned out that the exam was way above the level of the students and a grade correction needs to be applied. We can use a value script to get the new stats:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">POST /exams/_search?size=0
+{
+  "aggs": {
+    "grades_stats": {
+      "stats": {
+        "field": "grade",
+        "script": {
+          "lang": "painless",
+          "source": "_value * params.correction",
+          "params": {
+            "correction": 1.2
+          }
+        }
+      }
+    }
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_missing_value_13">Missing value</h4>
+<div class="paragraph">
+<p>The <code>missing</code> parameter defines how documents that are missing a value should be treated.
+By default they will be ignored but it is also possible to treat them as if they
+had a value.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">POST /exams/_search?size=0
+{
+  "aggs": {
+    "grades_stats": {
+      "stats": {
+        "field": "grade",
+        "missing": 0      <b class="conum">(1)</b>
+      }
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>Documents without a value in the <code>grade</code> field will fall into the same bucket as documents that have the value <code>0</code>.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="search-aggregations-metrics-sum-aggregation">Sum aggregation</h3>
+<titleabbrev>Sum</titleabbrev>
+<div class="paragraph">
+<p>A <code>single-value</code> metrics aggregation that sums up numeric values that are extracted from the aggregated documents.
+These values can be extracted either from specific numeric fields in the documents,
+or be generated by a provided script.</p>
+</div>
+<div class="paragraph">
+<p>Assuming the data consists of documents representing sales records we can sum
+the sale price of all hats with:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">POST /sales/_search?size=0
+{
+  "query": {
+    "constant_score": {
+      "filter": {
+        "match": { "type": "hat" }
+      }
+    }
+  },
+  "aggs": {
+    "hat_prices": { "sum": { "field": "price" } }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Resulting in:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console-result" data-lang="console-result">{
+  ...
+  "aggregations": {
+    "hat_prices": {
+      "value": 450.0
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The name of the aggregation (<code>hat_prices</code> above) also serves as the key by which the aggregation result can be retrieved from the returned response.</p>
+</div>
+<div class="sect3">
+<h4 id="_script_12">Script</h4>
+<div class="paragraph">
+<p>We could also use a script to fetch the sales price:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">POST /sales/_search?size=0
+{
+  "query": {
+    "constant_score": {
+      "filter": {
+        "match": { "type": "hat" }
+      }
+    }
+  },
+  "aggs": {
+    "hat_prices": {
+      "sum": {
+        "script": {
+          "source": "doc.price.value"
+        }
+      }
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This will interpret the <code>script</code> parameter as an <code>inline</code> script with the <code>painless</code> script language and no script parameters. To use a stored script use the following syntax:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">POST /sales/_search?size=0
+{
+  "query": {
+    "constant_score": {
+      "filter": {
+        "match": { "type": "hat" }
+      }
+    }
+  },
+  "aggs": {
+    "hat_prices": {
+      "sum": {
+        "script": {
+          "id": "my_script",
+          "params": {
+            "field": "price"
+          }
+        }
+      }
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_value_script_8">Value Script</h5>
+<div class="paragraph">
+<p>It is also possible to access the field value from the script using <code>_value</code>.
+For example, this will sum the square of the prices for all hats:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">POST /sales/_search?size=0
+{
+  "query": {
+    "constant_score": {
+      "filter": {
+        "match": { "type": "hat" }
+      }
+    }
+  },
+  "aggs": {
+    "square_hats": {
+      "sum": {
+        "field": "price",
+        "script": {
+          "source": "_value * _value"
+        }
+      }
+    }
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_missing_value_14">Missing value</h4>
+<div class="paragraph">
+<p>The <code>missing</code> parameter defines how documents that are missing a value should
+be treated. By default documents missing the value will be ignored but it is
+also possible to treat them as if they had a value. For example, this treats
+all hat sales without a price as being <code>100</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">POST /sales/_search?size=0
+{
+  "query": {
+    "constant_score": {
+      "filter": {
+        "match": { "type": "hat" }
+      }
+    }
+  },
+  "aggs": {
+    "hat_prices": {
+      "sum": {
+        "field": "price",
+        "missing": 100 <b class="conum">(1)</b>
+      }
+    }
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="search-aggregations-metrics-top-hits-aggregation">Top hits aggregation</h3>
+<titleabbrev>Top hits</titleabbrev>
+<div class="paragraph">
+<p>A <code>top_hits</code> metric aggregator keeps track of the most relevant document being aggregated. This aggregator is intended
+to be used as a sub aggregator, so that the top matching documents can be aggregated per bucket.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+We do not recommend using <code>top_hits</code> as a top-level aggregation. If you
+want to group search hits, use the <a href="collapse-search-results.html"><code>collapse</code></a>
+parameter instead.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The <code>top_hits</code> aggregator can effectively be used to group result sets by certain fields via a bucket aggregator.
+One or more bucket aggregators determines by which properties a result set get sliced into.</p>
+</div>
+<div class="sect3">
+<h4 id="_options_5">Options</h4>
+<div class="ulist">
+<ul>
+<li>
+<p><code>from</code> - The offset from the first result you want to fetch.</p>
+</li>
+<li>
+<p><code>size</code> - The maximum number of top matching hits to return per bucket. By default the top three matching hits are returned.</p>
+</li>
+<li>
+<p><code>sort</code> - How the top matching hits should be sorted. By default the hits are sorted by the score of the main query.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_supported_per_hit_features">Supported per hit features</h4>
+<div class="paragraph">
+<p>The top_hits aggregation returns regular search hits, because of this many per hit features can be supported:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="highlighting.html">Highlighting</a></p>
+</li>
+<li>
+<p><a href="search.html#request-body-search-explain">Explain</a></p>
+</li>
+<li>
+<p><a href="compound-queries.html#named-queries">Named queries</a></p>
+</li>
+<li>
+<p><a href="search-fields.html#search-fields-param">Search fields</a></p>
+</li>
+<li>
+<p><a href="search-fields.html#source-filtering">Source filtering</a></p>
+</li>
+<li>
+<p><a href="search-fields.html#stored-fields">Stored fields</a></p>
+</li>
+<li>
+<p><a href="search-fields.html#script-fields">Script fields</a></p>
+</li>
+<li>
+<p><a href="search-fields.html#docvalue-fields">Doc value fields</a></p>
+</li>
+<li>
+<p><a href="search.html#request-body-search-version">Include versions</a></p>
+</li>
+<li>
+<p><a href="search.html#request-body-search-seq-no-primary-term">Include Sequence Numbers and Primary Terms</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><code>top_hits</code> does not support the <a href="filter-search-results.html#rescore"><code>rescore</code></a> parameter. Query rescoring
+applies only to search hits, not aggregation results. To change the scores used
+by aggregations, use a <a href="compound-queries.html#query-dsl-function-score-query"><code>function_score</code></a> or
+<a href="specialized-queries.html#query-dsl-script-score-query"><code>script_score</code></a> query.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_example_5">Example</h4>
+<div class="paragraph">
+<p>In the following example we group the sales by type and per type we show the last sale.
+For each sale only the date and price fields are being included in the source.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">POST /sales/_search?size=0
+{
+  "aggs": {
+    "top_tags": {
+      "terms": {
+        "field": "type",
+        "size": 3
+      },
+      "aggs": {
+        "top_sales_hits": {
+          "top_hits": {
+            "sort": [
+              {
+                "date": {
+                  "order": "desc"
+                }
+              }
+            ],
+            "_source": {
+              "includes": [ "date", "price" ]
+            },
+            "size": 1
+          }
+        }
+      }
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Possible response:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console-result" data-lang="console-result">{
+  ...
+  "aggregations": {
+    "top_tags": {
+       "doc_count_error_upper_bound": 0,
+       "sum_other_doc_count": 0,
+       "buckets": [
+          {
+             "key": "hat",
+             "doc_count": 3,
+             "top_sales_hits": {
+                "hits": {
+                   "total" : {
+                       "value": 3,
+                       "relation": "eq"
+                   },
+                   "max_score": null,
+                   "hits": [
+                      {
+                         "_index": "sales",
+                         "_type": "_doc",
+                         "_id": "AVnNBmauCQpcRyxw6ChK",
+                         "_source": {
+                            "date": "2015/03/01 00:00:00",
+                            "price": 200
+                         },
+                         "sort": [
+                            1425168000000
+                         ],
+                         "_score": null
+                      }
+                   ]
+                }
+             }
+          },
+          {
+             "key": "t-shirt",
+             "doc_count": 3,
+             "top_sales_hits": {
+                "hits": {
+                   "total" : {
+                       "value": 3,
+                       "relation": "eq"
+                   },
+                   "max_score": null,
+                   "hits": [
+                      {
+                         "_index": "sales",
+                         "_type": "_doc",
+                         "_id": "AVnNBmauCQpcRyxw6ChL",
+                         "_source": {
+                            "date": "2015/03/01 00:00:00",
+                            "price": 175
+                         },
+                         "sort": [
+                            1425168000000
+                         ],
+                         "_score": null
+                      }
+                   ]
+                }
+             }
+          },
+          {
+             "key": "bag",
+             "doc_count": 1,
+             "top_sales_hits": {
+                "hits": {
+                   "total" : {
+                       "value": 1,
+                       "relation": "eq"
+                   },
+                   "max_score": null,
+                   "hits": [
+                      {
+                         "_index": "sales",
+                         "_type": "_doc",
+                         "_id": "AVnNBmatCQpcRyxw6ChH",
+                         "_source": {
+                            "date": "2015/01/01 00:00:00",
+                            "price": 150
+                         },
+                         "sort": [
+                            1420070400000
+                         ],
+                         "_score": null
+                      }
+                   ]
+                }
+             }
+          }
+       ]
+    }
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_field_collapse_example">Field collapse example</h4>
+<div class="paragraph">
+<p>Field collapsing or result grouping is a feature that logically groups a result set into groups and per group returns
+top documents. The ordering of the groups is determined by the relevancy of the first document in a group. In
+OpenSearch this can be implemented via a bucket aggregator that wraps a <code>top_hits</code> aggregator as sub-aggregator.</p>
+</div>
+<div class="paragraph">
+<p>In the example below we search across crawled webpages. For each webpage we store the body and the domain the webpage
+belong to. By defining a <code>terms</code> aggregator on the <code>domain</code> field we group the result set of webpages by domain. The
+<code>top_hits</code> aggregator is then defined as sub-aggregator, so that the top matching hits are collected per bucket.</p>
+</div>
+<div class="paragraph">
+<p>Also a <code>max</code> aggregator is defined which is used by the <code>terms</code> aggregator&#8217;s order feature to return the buckets by
+relevancy order of the most relevant document in a bucket.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">POST /sales/_search
+{
+  "query": {
+    "match": {
+      "body": "elections"
+    }
+  },
+  "aggs": {
+    "top_sites": {
+      "terms": {
+        "field": "domain",
+        "order": {
+          "top_hit": "desc"
+        }
+      },
+      "aggs": {
+        "top_tags_hits": {
+          "top_hits": {}
+        },
+        "top_hit" : {
+          "max": {
+            "script": {
+              "source": "_score"
+            }
+          }
+        }
+      }
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>At the moment the <code>max</code> (or <code>min</code>) aggregator is needed to make sure the buckets from the <code>terms</code> aggregator are
+ordered according to the score of the most relevant webpage per domain. Unfortunately the <code>top_hits</code> aggregator
+can&#8217;t be used in the <code>order</code> option of the <code>terms</code> aggregator yet.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_top_hits_support_in_a_nested_or_reverse_nested_aggregator">top_hits support in a nested or reverse_nested aggregator</h4>
+<div class="paragraph">
+<p>If the <code>top_hits</code> aggregator is wrapped in a <code>nested</code> or <code>reverse_nested</code> aggregator then nested hits are being returned.
+Nested hits are in a sense hidden mini documents that are part of regular document where in the mapping a nested field type
+has been configured. The <code>top_hits</code> aggregator has the ability to un-hide these documents if it is wrapped in a <code>nested</code>
+or <code>reverse_nested</code> aggregator. Read more about nested in the <a href="mapping-types.html#nested">nested type mapping</a>.</p>
+</div>
+<div class="paragraph">
+<p>If nested type has been configured a single document is actually indexed as multiple Lucene documents and they share
+the same id. In order to determine the identity of a nested hit there is more needed than just the id, so that is why
+nested hits also include their nested identity. The nested identity is kept under the <code>_nested</code> field in the search hit
+and includes the array field and the offset in the array field the nested hit belongs to. The offset is zero based.</p>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s see how it works with a real sample. Considering the following mapping:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">PUT /sales
+{
+  "mappings": {
+    "properties": {
+      "tags": { "type": "keyword" },
+      "comments": {                           <b class="conum">(1)</b>
+        "type": "nested",
+        "properties": {
+          "username": { "type": "keyword" },
+          "comment": { "type": "text" }
+        }
+      }
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>The <code>comments</code> is an array that holds nested documents under the <code>product</code> object.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>And some documents:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">PUT /sales/_doc/1?refresh
+{
+  "tags": [ "car", "auto" ],
+  "comments": [
+    { "username": "baddriver007", "comment": "This car could have better brakes" },
+    { "username": "dr_who", "comment": "Where's the autopilot? Can't find it" },
+    { "username": "ilovemotorbikes", "comment": "This car has two extra wheels" }
+  ]
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>It&#8217;s now possible to execute the following <code>top_hits</code> aggregation (wrapped in a <code>nested</code> aggregation):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">POST /sales/_search
+{
+  "query": {
+    "term": { "tags": "car" }
+  },
+  "aggs": {
+    "by_sale": {
+      "nested": {
+        "path": "comments"
+      },
+      "aggs": {
+        "by_user": {
+          "terms": {
+            "field": "comments.username",
+            "size": 1
+          },
+          "aggs": {
+            "by_nested": {
+              "top_hits": {}
+            }
+          }
+        }
+      }
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Top hits response snippet with a nested hit, which resides in the first slot of array field <code>comments</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console-result" data-lang="console-result">{
+  ...
+  "aggregations": {
+    "by_sale": {
+      "by_user": {
+        "buckets": [
+          {
+            "key": "baddriver007",
+            "doc_count": 1,
+            "by_nested": {
+              "hits": {
+                "total" : {
+                   "value": 1,
+                   "relation": "eq"
+                },
+                "max_score": 0.3616575,
+                "hits": [
+                  {
+                    "_index": "sales",
+                    "_type" : "_doc",
+                    "_id": "1",
+                    "_nested": {
+                      "field": "comments",  <b class="conum">(1)</b>
+                      "offset": 0 <b class="conum">(2)</b>
+                    },
+                    "_score": 0.3616575,
+                    "_source": {
+                      "comment": "This car could have better brakes", <b class="conum">(3)</b>
+                      "username": "baddriver007"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+          ...
+        ]
+      }
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>Name of the array field containing the nested hit</p>
+</li>
+<li>
+<p>Position if the nested hit in the containing array</p>
+</li>
+<li>
+<p>Source of the nested hit</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>If <code>_source</code> is requested then just the part of the source of the nested object is returned, not the entire source of the document.
+Also stored fields on the <strong>nested</strong> inner object level are accessible via <code>top_hits</code> aggregator residing in a <code>nested</code> or <code>reverse_nested</code> aggregator.</p>
+</div>
+<div class="paragraph">
+<p>Only nested hits will have a <code>_nested</code> field in the hit, non nested (regular) hits will not have a <code>_nested</code> field.</p>
+</div>
+<div class="paragraph">
+<p>The information in <code>_nested</code> can also be used to parse the original source somewhere else if <code>_source</code> isn&#8217;t enabled.</p>
+</div>
+<div class="paragraph">
+<p>If there are multiple levels of nested object types defined in mappings then the <code>_nested</code> information can also be hierarchical
+in order to express the identity of nested hits that are two layers deep or more.</p>
+</div>
+<div class="paragraph">
+<p>In the example below a nested hit resides in the first slot of the field <code>nested_grand_child_field</code> which then resides in
+the second slow of the <code>nested_child_field</code> field:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-js" data-lang="js">...
+"hits": {
+ "total" : {
+     "value": 2565,
+     "relation": "eq"
+ },
+ "max_score": 1,
+ "hits": [
+   {
+     "_index": "a",
+     "_type": "b",
+     "_id": "1",
+     "_score": 1,
+     "_nested" : {
+       "field" : "nested_child_field",
+       "offset" : 1,
+       "_nested" : {
+         "field" : "nested_grand_child_field",
+         "offset" : 0
+       }
+     }
+     "_source": ...
+   },
+   ...
+ ]
+}
+...</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="search-aggregations-metrics-valuecount-aggregation">Value count aggregation</h3>
+<titleabbrev>Value count</titleabbrev>
+<div class="paragraph">
+<p>A <code>single-value</code> metrics aggregation that counts the number of values that are extracted from the aggregated documents.
+These values can be extracted either from specific fields in the documents, or be generated by a provided script. Typically,
+this aggregator will be used in conjunction with other single-value aggregations. For example, when computing the <code>avg</code>
+one might be interested in the number of values the average is computed over.</p>
+</div>
+<div class="paragraph">
+<p><code>value_count</code> does not de-duplicate values, so even if a field has duplicates (or a script generates multiple
+identical values for a single document), each value will be counted individually.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">POST /sales/_search?size=0
+{
+  "aggs" : {
+    "types_count" : { "value_count" : { "field" : "type" } }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Response:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console-result" data-lang="console-result">{
+  ...
+  "aggregations": {
+    "types_count": {
+      "value": 7
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The name of the aggregation (<code>types_count</code> above) also serves as the key by which the aggregation result can be
+retrieved from the returned response.</p>
+</div>
+<div class="sect3">
+<h4 id="_script_13">Script</h4>
+<div class="paragraph">
+<p>Counting the values generated by a script:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">POST /sales/_search?size=0
+{
+  "aggs": {
+    "type_count": {
+      "value_count": {
+        "script": {
+          "source": "doc['type'].value"
+        }
+      }
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This will interpret the <code>script</code> parameter as an <code>inline</code> script with the <code>painless</code> script language and no script parameters. To use a stored script use the following syntax:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">POST /sales/_search?size=0
+{
+  "aggs": {
+    "types_count": {
+      "value_count": {
+        "script": {
+          "id": "my_script",
+          "params": {
+            "field": "type"
+          }
+        }
+      }
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">NOTE</dt>
+<dd>
+<p>Because <code>value_count</code> is designed to work with any field it internally treats all values as simple bytes.
+Due to this implementation, if <code>_value</code> script variable is used to fetch a value instead of accessing the field
+directly (e.g. a "value script"), the field value will be returned as a string instead of it&#8217;s native format.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="search-aggregations-metrics-weight-avg-aggregation">Weighted avg aggregation</h3>
+<titleabbrev>Weighted avg</titleabbrev>
+<div class="paragraph">
+<p>A <code>single-value</code> metrics aggregation that computes the weighted average of numeric values that are extracted from the aggregated documents.
+These values can be extracted either from specific numeric fields in the documents.</p>
+</div>
+<div class="paragraph">
+<p>When calculating a regular average, each datapoint has an equal "weight" &#8230;&#8203; it contributes equally to the final value.  Weighted averages,
+on the other hand, weight each datapoint differently.  The amount that each datapoint contributes to the final value is extracted from the
+document, or provided by a script.</p>
+</div>
+<div class="paragraph">
+<p>As a formula, a weighted average is the <code>∑(value * weight) / ∑(weight)</code></p>
+</div>
+<div class="paragraph">
+<p>A regular average can be thought of as a weighted average where every value has an implicit weight of <code>1</code>.</p>
+</div>
+<table id="weighted-avg-params" class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 35. <code>weighted_avg</code> Parameters</caption>
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Required</th>
+<th class="tableblock halign-left valign-top">Default Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>value</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The configuration for the field or script that provides the values</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Required</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>weight</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The configuration for the field or script that provides the weights</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Required</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>format</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The numeric response formatter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Optional</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>value_type</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A hint about the values for pure scripts or unmapped fields</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Optional</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>The <code>value</code> and <code>weight</code> objects have per-field specific configuration:</p>
+</div>
+<table id="value-params" class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 36. <code>value</code> Parameters</caption>
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Required</th>
+<th class="tableblock halign-left valign-top">Default Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>field</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The field that values should be extracted from</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Required</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>missing</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A value to use if the field is missing entirely</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Optional</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+<table id="weight-params" class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 37. <code>weight</code> Parameters</caption>
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Required</th>
+<th class="tableblock halign-left valign-top">Default Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>field</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The field that weights should be extracted from</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Required</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>missing</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A weight to use if the field is missing entirely</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Optional</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+<div class="sect3">
+<h4 id="_examples_2">Examples</h4>
+<div class="paragraph">
+<p>If our documents have a <code>"grade"</code> field that holds a 0-100 numeric score, and a <code>"weight"</code> field which holds an arbitrary numeric weight,
+we can calculate the weighted average using:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">POST /exams/_search
+{
+  "size": 0,
+  "aggs": {
+    "weighted_grade": {
+      "weighted_avg": {
+        "value": {
+          "field": "grade"
+        },
+        "weight": {
+          "field": "weight"
+        }
+      }
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Which yields a response like:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console-result" data-lang="console-result">{
+  ...
+  "aggregations": {
+    "weighted_grade": {
+      "value": 70.0
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>While multiple values-per-field are allowed, only one weight is allowed.  If the aggregation encounters
+a document that has more than one weight (e.g. the weight field is a multi-valued field) it will throw an exception.
+If you have this situation, you will need to specify a <code>script</code> for the weight field, and use the script
+to combine the multiple values into a single value to be used.</p>
+</div>
+<div class="paragraph">
+<p>This single weight will be applied independently to each value extracted from the <code>value</code> field.</p>
+</div>
+<div class="paragraph">
+<p>This example show how a single document with multiple values will be averaged with a single weight:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">POST /exams/_doc?refresh
+{
+  "grade": [1, 2, 3],
+  "weight": 2
+}
+
+POST /exams/_search
+{
+  "size": 0,
+  "aggs": {
+    "weighted_grade": {
+      "weighted_avg": {
+        "value": {
+          "field": "grade"
+        },
+        "weight": {
+          "field": "weight"
+        }
+      }
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The three values (<code>1</code>, <code>2</code>, and <code>3</code>) will be included as independent values, all with the weight of <code>2</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console-result" data-lang="console-result">{
+  ...
+  "aggregations": {
+    "weighted_grade": {
+      "value": 2.0
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The aggregation returns <code>2.0</code> as the result, which matches what we would expect when calculating by hand:
+<code>1*2) + (2*2) + (3*2 / (2+2+2) == 2</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_script_14">Script</h4>
+<div class="paragraph">
+<p>Both the value and the weight can be derived from a script, instead of a field.  As a simple example, the following
+will add one to the grade and weight in the document using a script:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">POST /exams/_search
+{
+  "size": 0,
+  "aggs": {
+    "weighted_grade": {
+      "weighted_avg": {
+        "value": {
+          "script": "doc.grade.value + 1"
+        },
+        "weight": {
+          "script": "doc.weight.value + 1"
+        }
+      }
+    }
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_missing_values_4">Missing values</h4>
+<div class="paragraph">
+<p>The <code>missing</code> parameter defines how documents that are missing a value should be treated.
+The default behavior is different for <code>value</code> and <code>weight</code>:</p>
+</div>
+<div class="paragraph">
+<p>By default, if the <code>value</code> field is missing the document is ignored and the aggregation moves on to the next document.
+If the <code>weight</code> field is missing, it is assumed to have a weight of <code>1</code> (like a normal average).</p>
+</div>
+<div class="paragraph">
+<p>Both of these defaults can be overridden with the <code>missing</code> parameter:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">POST /exams/_search
+{
+  "size": 0,
+  "aggs": {
+    "weighted_grade": {
+      "weighted_avg": {
+        "value": {
+          "field": "grade",
+          "missing": 2
+        },
+        "weight": {
+          "field": "weight",
+          "missing": 3
+        }
+      }
+    }
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph nav-footer">
+<p>← Previous: <a href="search-aggregations-bucket.html">Bucket aggregations</a> | ↑ Up: <a href="search-aggregations.html">Aggregations</a> | ⌂ Home: <a href="index.html">OpenSearch Reference</a> | Next: <a href="search-aggregations-pipeline.html">Pipeline aggregations</a> →</p>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2021-04-12 14:08:20 -0700
+</div>
+</div>
+</body>
+</html>

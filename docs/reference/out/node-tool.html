@@ -1,0 +1,1264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.12">
+<title>OpenSearch Reference</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<style>
+/* Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
+/* Uncomment @import statement to use as custom stylesheet */
+/*@import "https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700";*/
+article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section{display:block}
+audio,video{display:inline-block}
+audio:not([controls]){display:none;height:0}
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}
+a{background:none}
+a:focus{outline:thin dotted}
+a:active,a:hover{outline:0}
+h1{font-size:2em;margin:.67em 0}
+abbr[title]{border-bottom:1px dotted}
+b,strong{font-weight:bold}
+dfn{font-style:italic}
+hr{-moz-box-sizing:content-box;box-sizing:content-box;height:0}
+mark{background:#ff0;color:#000}
+code,kbd,pre,samp{font-family:monospace;font-size:1em}
+pre{white-space:pre-wrap}
+q{quotes:"\201C" "\201D" "\2018" "\2019"}
+small{font-size:80%}
+sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}
+sup{top:-.5em}
+sub{bottom:-.25em}
+img{border:0}
+svg:not(:root){overflow:hidden}
+figure{margin:0}
+fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}
+legend{border:0;padding:0}
+button,input,select,textarea{font-family:inherit;font-size:100%;margin:0}
+button,input{line-height:normal}
+button,select{text-transform:none}
+button,html input[type="button"],input[type="reset"],input[type="submit"]{-webkit-appearance:button;cursor:pointer}
+button[disabled],html input[disabled]{cursor:default}
+input[type="checkbox"],input[type="radio"]{box-sizing:border-box;padding:0}
+button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}
+textarea{overflow:auto;vertical-align:top}
+table{border-collapse:collapse;border-spacing:0}
+*,*::before,*::after{-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box}
+html,body{font-size:100%}
+body{background:#fff;color:rgba(0,0,0,.8);padding:0;margin:0;font-family:"Noto Serif","DejaVu Serif",serif;font-weight:400;font-style:normal;line-height:1;position:relative;cursor:auto;tab-size:4;word-wrap:anywhere;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased}
+a:hover{cursor:pointer}
+img,object,embed{max-width:100%;height:auto}
+object,embed{height:100%}
+img{-ms-interpolation-mode:bicubic}
+.left{float:left!important}
+.right{float:right!important}
+.text-left{text-align:left!important}
+.text-right{text-align:right!important}
+.text-center{text-align:center!important}
+.text-justify{text-align:justify!important}
+.hide{display:none}
+img,object,svg{display:inline-block;vertical-align:middle}
+textarea{height:auto;min-height:50px}
+select{width:100%}
+.subheader,.admonitionblock td.content>.title,.audioblock>.title,.exampleblock>.title,.imageblock>.title,.listingblock>.title,.literalblock>.title,.stemblock>.title,.openblock>.title,.paragraph>.title,.quoteblock>.title,table.tableblock>.title,.verseblock>.title,.videoblock>.title,.dlist>.title,.olist>.title,.ulist>.title,.qlist>.title,.hdlist>.title{line-height:1.45;color:#7a2518;font-weight:400;margin-top:0;margin-bottom:.25em}
+div,dl,dt,dd,ul,ol,li,h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6,pre,form,p,blockquote,th,td{margin:0;padding:0}
+a{color:#2156a5;text-decoration:underline;line-height:inherit}
+a:hover,a:focus{color:#1d4b8f}
+a img{border:0}
+p{font-family:inherit;font-weight:400;font-size:1em;line-height:1.6;margin-bottom:1.25em;text-rendering:optimizeLegibility}
+p aside{font-size:.875em;line-height:1.35;font-style:italic}
+h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{font-family:"Open Sans","DejaVu Sans",sans-serif;font-weight:300;font-style:normal;color:#ba3925;text-rendering:optimizeLegibility;margin-top:1em;margin-bottom:.5em;line-height:1.0125em}
+h1 small,h2 small,h3 small,#toctitle small,.sidebarblock>.content>.title small,h4 small,h5 small,h6 small{font-size:60%;color:#e99b8f;line-height:0}
+h1{font-size:2.125em}
+h2{font-size:1.6875em}
+h3,#toctitle,.sidebarblock>.content>.title{font-size:1.375em}
+h4,h5{font-size:1.125em}
+h6{font-size:1em}
+hr{border:solid #dddddf;border-width:1px 0 0;clear:both;margin:1.25em 0 1.1875em;height:0}
+em,i{font-style:italic;line-height:inherit}
+strong,b{font-weight:bold;line-height:inherit}
+small{font-size:60%;line-height:inherit}
+code{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;font-weight:400;color:rgba(0,0,0,.9)}
+ul,ol,dl{font-size:1em;line-height:1.6;margin-bottom:1.25em;list-style-position:outside;font-family:inherit}
+ul,ol{margin-left:1.5em}
+ul li ul,ul li ol{margin-left:1.25em;margin-bottom:0;font-size:1em}
+ul.square li ul,ul.circle li ul,ul.disc li ul{list-style:inherit}
+ul.square{list-style-type:square}
+ul.circle{list-style-type:circle}
+ul.disc{list-style-type:disc}
+ol li ul,ol li ol{margin-left:1.25em;margin-bottom:0}
+dl dt{margin-bottom:.3125em;font-weight:bold}
+dl dd{margin-bottom:1.25em}
+abbr,acronym{text-transform:uppercase;font-size:90%;color:rgba(0,0,0,.8);border-bottom:1px dotted #ddd;cursor:help}
+abbr{text-transform:none}
+blockquote{margin:0 0 1.25em;padding:.5625em 1.25em 0 1.1875em;border-left:1px solid #ddd}
+blockquote cite{display:block;font-size:.9375em;color:rgba(0,0,0,.6)}
+blockquote cite::before{content:"\2014 \0020"}
+blockquote cite a,blockquote cite a:visited{color:rgba(0,0,0,.6)}
+blockquote,blockquote p{line-height:1.6;color:rgba(0,0,0,.85)}
+@media screen and (min-width:768px){h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{line-height:1.2}
+h1{font-size:2.75em}
+h2{font-size:2.3125em}
+h3,#toctitle,.sidebarblock>.content>.title{font-size:1.6875em}
+h4{font-size:1.4375em}}
+table{background:#fff;margin-bottom:1.25em;border:solid 1px #dedede;word-wrap:normal}
+table thead,table tfoot{background:#f7f8f7}
+table thead tr th,table thead tr td,table tfoot tr th,table tfoot tr td{padding:.5em .625em .625em;font-size:inherit;color:rgba(0,0,0,.8);text-align:left}
+table tr th,table tr td{padding:.5625em .625em;font-size:inherit;color:rgba(0,0,0,.8)}
+table tr.even,table tr.alt{background:#f8f8f7}
+table thead tr th,table tfoot tr th,table tbody tr td,table tr td,table tfoot tr td{line-height:1.6}
+h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{line-height:1.2;word-spacing:-.05em}
+h1 strong,h2 strong,h3 strong,#toctitle strong,.sidebarblock>.content>.title strong,h4 strong,h5 strong,h6 strong{font-weight:400}
+.center{margin-left:auto;margin-right:auto}
+.stretch{width:100%}
+.clearfix::before,.clearfix::after,.float-group::before,.float-group::after{content:" ";display:table}
+.clearfix::after,.float-group::after{clear:both}
+:not(pre).nobreak{word-wrap:normal}
+:not(pre).nowrap{white-space:nowrap}
+:not(pre).pre-wrap{white-space:pre-wrap}
+:not(pre):not([class^=L])>code{font-size:.9375em;font-style:normal!important;letter-spacing:0;padding:.1em .5ex;word-spacing:-.15em;background:#f7f7f8;-webkit-border-radius:4px;border-radius:4px;line-height:1.45;text-rendering:optimizeSpeed}
+pre{color:rgba(0,0,0,.9);font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;line-height:1.45;text-rendering:optimizeSpeed}
+pre code,pre pre{color:inherit;font-size:inherit;line-height:inherit}
+pre>code{display:block}
+pre.nowrap,pre.nowrap pre{white-space:pre;word-wrap:normal}
+em em{font-style:normal}
+strong strong{font-weight:400}
+.keyseq{color:rgba(51,51,51,.8)}
+kbd{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;display:inline-block;color:rgba(0,0,0,.8);font-size:.65em;line-height:1.45;background:#f7f7f7;border:1px solid #ccc;-webkit-border-radius:3px;border-radius:3px;-webkit-box-shadow:0 1px 0 rgba(0,0,0,.2),0 0 0 .1em white inset;box-shadow:0 1px 0 rgba(0,0,0,.2),0 0 0 .1em #fff inset;margin:0 .15em;padding:.2em .5em;vertical-align:middle;position:relative;top:-.1em;white-space:nowrap}
+.keyseq kbd:first-child{margin-left:0}
+.keyseq kbd:last-child{margin-right:0}
+.menuseq,.menuref{color:#000}
+.menuseq b:not(.caret),.menuref{font-weight:inherit}
+.menuseq{word-spacing:-.02em}
+.menuseq b.caret{font-size:1.25em;line-height:.8}
+.menuseq i.caret{font-weight:bold;text-align:center;width:.45em}
+b.button::before,b.button::after{position:relative;top:-1px;font-weight:400}
+b.button::before{content:"[";padding:0 3px 0 2px}
+b.button::after{content:"]";padding:0 2px 0 3px}
+p a>code:hover{color:rgba(0,0,0,.9)}
+#header,#content,#footnotes,#footer{width:100%;margin-left:auto;margin-right:auto;margin-top:0;margin-bottom:0;max-width:62.5em;*zoom:1;position:relative;padding-left:.9375em;padding-right:.9375em}
+#header::before,#header::after,#content::before,#content::after,#footnotes::before,#footnotes::after,#footer::before,#footer::after{content:" ";display:table}
+#header::after,#content::after,#footnotes::after,#footer::after{clear:both}
+#content{margin-top:1.25em}
+#content::before{content:none}
+#header>h1:first-child{color:rgba(0,0,0,.85);margin-top:2.25rem;margin-bottom:0}
+#header>h1:first-child+#toc{margin-top:8px;border-top:1px solid #dddddf}
+#header>h1:only-child,body.toc2 #header>h1:nth-last-child(2){border-bottom:1px solid #dddddf;padding-bottom:8px}
+#header .details{border-bottom:1px solid #dddddf;line-height:1.45;padding-top:.25em;padding-bottom:.25em;padding-left:.25em;color:rgba(0,0,0,.6);display:-ms-flexbox;display:-webkit-flex;display:flex;-ms-flex-flow:row wrap;-webkit-flex-flow:row wrap;flex-flow:row wrap}
+#header .details span:first-child{margin-left:-.125em}
+#header .details span.email a{color:rgba(0,0,0,.85)}
+#header .details br{display:none}
+#header .details br+span::before{content:"\00a0\2013\00a0"}
+#header .details br+span.author::before{content:"\00a0\22c5\00a0";color:rgba(0,0,0,.85)}
+#header .details br+span#revremark::before{content:"\00a0|\00a0"}
+#header #revnumber{text-transform:capitalize}
+#header #revnumber::after{content:"\00a0"}
+#content>h1:first-child:not([class]){color:rgba(0,0,0,.85);border-bottom:1px solid #dddddf;padding-bottom:8px;margin-top:0;padding-top:1rem;margin-bottom:1.25rem}
+#toc{border-bottom:1px solid #e7e7e9;padding-bottom:.5em}
+#toc>ul{margin-left:.125em}
+#toc ul.sectlevel0>li>a{font-style:italic}
+#toc ul.sectlevel0 ul.sectlevel1{margin:.5em 0}
+#toc ul{font-family:"Open Sans","DejaVu Sans",sans-serif;list-style-type:none}
+#toc li{line-height:1.3334;margin-top:.3334em}
+#toc a{text-decoration:none}
+#toc a:active{text-decoration:underline}
+#toctitle{color:#7a2518;font-size:1.2em}
+@media screen and (min-width:768px){#toctitle{font-size:1.375em}
+body.toc2{padding-left:15em;padding-right:0}
+#toc.toc2{margin-top:0!important;background:#f8f8f7;position:fixed;width:15em;left:0;top:0;border-right:1px solid #e7e7e9;border-top-width:0!important;border-bottom-width:0!important;z-index:1000;padding:1.25em 1em;height:100%;overflow:auto}
+#toc.toc2 #toctitle{margin-top:0;margin-bottom:.8rem;font-size:1.2em}
+#toc.toc2>ul{font-size:.9em;margin-bottom:0}
+#toc.toc2 ul ul{margin-left:0;padding-left:1em}
+#toc.toc2 ul.sectlevel0 ul.sectlevel1{padding-left:0;margin-top:.5em;margin-bottom:.5em}
+body.toc2.toc-right{padding-left:0;padding-right:15em}
+body.toc2.toc-right #toc.toc2{border-right-width:0;border-left:1px solid #e7e7e9;left:auto;right:0}}
+@media screen and (min-width:1280px){body.toc2{padding-left:20em;padding-right:0}
+#toc.toc2{width:20em}
+#toc.toc2 #toctitle{font-size:1.375em}
+#toc.toc2>ul{font-size:.95em}
+#toc.toc2 ul ul{padding-left:1.25em}
+body.toc2.toc-right{padding-left:0;padding-right:20em}}
+#content #toc{border-style:solid;border-width:1px;border-color:#e0e0dc;margin-bottom:1.25em;padding:1.25em;background:#f8f8f7;-webkit-border-radius:4px;border-radius:4px}
+#content #toc>:first-child{margin-top:0}
+#content #toc>:last-child{margin-bottom:0}
+#footer{max-width:none;background:rgba(0,0,0,.8);padding:1.25em}
+#footer-text{color:rgba(255,255,255,.8);line-height:1.44}
+#content{margin-bottom:.625em}
+.sect1{padding-bottom:.625em}
+@media screen and (min-width:768px){#content{margin-bottom:1.25em}
+.sect1{padding-bottom:1.25em}}
+.sect1:last-child{padding-bottom:0}
+.sect1+.sect1{border-top:1px solid #e7e7e9}
+#content h1>a.anchor,h2>a.anchor,h3>a.anchor,#toctitle>a.anchor,.sidebarblock>.content>.title>a.anchor,h4>a.anchor,h5>a.anchor,h6>a.anchor{position:absolute;z-index:1001;width:1.5ex;margin-left:-1.5ex;display:block;text-decoration:none!important;visibility:hidden;text-align:center;font-weight:400}
+#content h1>a.anchor::before,h2>a.anchor::before,h3>a.anchor::before,#toctitle>a.anchor::before,.sidebarblock>.content>.title>a.anchor::before,h4>a.anchor::before,h5>a.anchor::before,h6>a.anchor::before{content:"\00A7";font-size:.85em;display:block;padding-top:.1em}
+#content h1:hover>a.anchor,#content h1>a.anchor:hover,h2:hover>a.anchor,h2>a.anchor:hover,h3:hover>a.anchor,#toctitle:hover>a.anchor,.sidebarblock>.content>.title:hover>a.anchor,h3>a.anchor:hover,#toctitle>a.anchor:hover,.sidebarblock>.content>.title>a.anchor:hover,h4:hover>a.anchor,h4>a.anchor:hover,h5:hover>a.anchor,h5>a.anchor:hover,h6:hover>a.anchor,h6>a.anchor:hover{visibility:visible}
+#content h1>a.link,h2>a.link,h3>a.link,#toctitle>a.link,.sidebarblock>.content>.title>a.link,h4>a.link,h5>a.link,h6>a.link{color:#ba3925;text-decoration:none}
+#content h1>a.link:hover,h2>a.link:hover,h3>a.link:hover,#toctitle>a.link:hover,.sidebarblock>.content>.title>a.link:hover,h4>a.link:hover,h5>a.link:hover,h6>a.link:hover{color:#a53221}
+details,.audioblock,.imageblock,.literalblock,.listingblock,.stemblock,.videoblock{margin-bottom:1.25em}
+details>summary:first-of-type{cursor:pointer;display:list-item;outline:none;margin-bottom:.75em}
+.admonitionblock td.content>.title,.audioblock>.title,.exampleblock>.title,.imageblock>.title,.listingblock>.title,.literalblock>.title,.stemblock>.title,.openblock>.title,.paragraph>.title,.quoteblock>.title,table.tableblock>.title,.verseblock>.title,.videoblock>.title,.dlist>.title,.olist>.title,.ulist>.title,.qlist>.title,.hdlist>.title{text-rendering:optimizeLegibility;text-align:left;font-family:"Noto Serif","DejaVu Serif",serif;font-size:1rem;font-style:italic}
+table.tableblock.fit-content>caption.title{white-space:nowrap;width:0}
+.paragraph.lead>p,#preamble>.sectionbody>[class="paragraph"]:first-of-type p{font-size:1.21875em;line-height:1.6;color:rgba(0,0,0,.85)}
+table.tableblock #preamble>.sectionbody>[class="paragraph"]:first-of-type p{font-size:inherit}
+.admonitionblock>table{border-collapse:separate;border:0;background:none;width:100%}
+.admonitionblock>table td.icon{text-align:center;width:80px}
+.admonitionblock>table td.icon img{max-width:none}
+.admonitionblock>table td.icon .title{font-weight:bold;font-family:"Open Sans","DejaVu Sans",sans-serif;text-transform:uppercase}
+.admonitionblock>table td.content{padding-left:1.125em;padding-right:1.25em;border-left:1px solid #dddddf;color:rgba(0,0,0,.6);word-wrap:anywhere}
+.admonitionblock>table td.content>:last-child>:last-child{margin-bottom:0}
+.exampleblock>.content{border-style:solid;border-width:1px;border-color:#e6e6e6;margin-bottom:1.25em;padding:1.25em;background:#fff;-webkit-border-radius:4px;border-radius:4px}
+.exampleblock>.content>:first-child{margin-top:0}
+.exampleblock>.content>:last-child{margin-bottom:0}
+.sidebarblock{border-style:solid;border-width:1px;border-color:#dbdbd6;margin-bottom:1.25em;padding:1.25em;background:#f3f3f2;-webkit-border-radius:4px;border-radius:4px}
+.sidebarblock>:first-child{margin-top:0}
+.sidebarblock>:last-child{margin-bottom:0}
+.sidebarblock>.content>.title{color:#7a2518;margin-top:0;text-align:center}
+.exampleblock>.content>:last-child>:last-child,.exampleblock>.content .olist>ol>li:last-child>:last-child,.exampleblock>.content .ulist>ul>li:last-child>:last-child,.exampleblock>.content .qlist>ol>li:last-child>:last-child,.sidebarblock>.content>:last-child>:last-child,.sidebarblock>.content .olist>ol>li:last-child>:last-child,.sidebarblock>.content .ulist>ul>li:last-child>:last-child,.sidebarblock>.content .qlist>ol>li:last-child>:last-child{margin-bottom:0}
+.literalblock pre,.listingblock>.content>pre{-webkit-border-radius:4px;border-radius:4px;overflow-x:auto;padding:1em;font-size:.8125em}
+@media screen and (min-width:768px){.literalblock pre,.listingblock>.content>pre{font-size:.90625em}}
+@media screen and (min-width:1280px){.literalblock pre,.listingblock>.content>pre{font-size:1em}}
+.literalblock pre,.listingblock>.content>pre:not(.highlight),.listingblock>.content>pre[class="highlight"],.listingblock>.content>pre[class^="highlight "]{background:#f7f7f8}
+.literalblock.output pre{color:#f7f7f8;background:rgba(0,0,0,.9)}
+.listingblock>.content{position:relative}
+.listingblock code[data-lang]::before{display:none;content:attr(data-lang);position:absolute;font-size:.75em;top:.425rem;right:.5rem;line-height:1;text-transform:uppercase;color:inherit;opacity:.5}
+.listingblock:hover code[data-lang]::before{display:block}
+.listingblock.terminal pre .command::before{content:attr(data-prompt);padding-right:.5em;color:inherit;opacity:.5}
+.listingblock.terminal pre .command:not([data-prompt])::before{content:"$"}
+.listingblock pre.highlightjs{padding:0}
+.listingblock pre.highlightjs>code{padding:1em;-webkit-border-radius:4px;border-radius:4px}
+.listingblock pre.prettyprint{border-width:0}
+.prettyprint{background:#f7f7f8}
+pre.prettyprint .linenums{line-height:1.45;margin-left:2em}
+pre.prettyprint li{background:none;list-style-type:inherit;padding-left:0}
+pre.prettyprint li code[data-lang]::before{opacity:1}
+pre.prettyprint li:not(:first-child) code[data-lang]::before{display:none}
+table.linenotable{border-collapse:separate;border:0;margin-bottom:0;background:none}
+table.linenotable td[class]{color:inherit;vertical-align:top;padding:0;line-height:inherit;white-space:normal}
+table.linenotable td.code{padding-left:.75em}
+table.linenotable td.linenos{border-right:1px solid currentColor;opacity:.35;padding-right:.5em}
+pre.pygments .lineno{border-right:1px solid currentColor;opacity:.35;display:inline-block;margin-right:.75em}
+pre.pygments .lineno::before{content:"";margin-right:-.125em}
+.quoteblock{margin:0 1em 1.25em 1.5em;display:table}
+.quoteblock:not(.excerpt)>.title{margin-left:-1.5em;margin-bottom:.75em}
+.quoteblock blockquote,.quoteblock p{color:rgba(0,0,0,.85);font-size:1.15rem;line-height:1.75;word-spacing:.1em;letter-spacing:0;font-style:italic;text-align:justify}
+.quoteblock blockquote{margin:0;padding:0;border:0}
+.quoteblock blockquote::before{content:"\201c";float:left;font-size:2.75em;font-weight:bold;line-height:.6em;margin-left:-.6em;color:#7a2518;text-shadow:0 1px 2px rgba(0,0,0,.1)}
+.quoteblock blockquote>.paragraph:last-child p{margin-bottom:0}
+.quoteblock .attribution{margin-top:.75em;margin-right:.5ex;text-align:right}
+.verseblock{margin:0 1em 1.25em}
+.verseblock pre{font-family:"Open Sans","DejaVu Sans",sans;font-size:1.15rem;color:rgba(0,0,0,.85);font-weight:300;text-rendering:optimizeLegibility}
+.verseblock pre strong{font-weight:400}
+.verseblock .attribution{margin-top:1.25rem;margin-left:.5ex}
+.quoteblock .attribution,.verseblock .attribution{font-size:.9375em;line-height:1.45;font-style:italic}
+.quoteblock .attribution br,.verseblock .attribution br{display:none}
+.quoteblock .attribution cite,.verseblock .attribution cite{display:block;letter-spacing:-.025em;color:rgba(0,0,0,.6)}
+.quoteblock.abstract blockquote::before,.quoteblock.excerpt blockquote::before,.quoteblock .quoteblock blockquote::before{display:none}
+.quoteblock.abstract blockquote,.quoteblock.abstract p,.quoteblock.excerpt blockquote,.quoteblock.excerpt p,.quoteblock .quoteblock blockquote,.quoteblock .quoteblock p{line-height:1.6;word-spacing:0}
+.quoteblock.abstract{margin:0 1em 1.25em;display:block}
+.quoteblock.abstract>.title{margin:0 0 .375em;font-size:1.15em;text-align:center}
+.quoteblock.excerpt>blockquote,.quoteblock .quoteblock{padding:0 0 .25em 1em;border-left:.25em solid #dddddf}
+.quoteblock.excerpt,.quoteblock .quoteblock{margin-left:0}
+.quoteblock.excerpt blockquote,.quoteblock.excerpt p,.quoteblock .quoteblock blockquote,.quoteblock .quoteblock p{color:inherit;font-size:1.0625rem}
+.quoteblock.excerpt .attribution,.quoteblock .quoteblock .attribution{color:inherit;text-align:left;margin-right:0}
+p.tableblock:last-child{margin-bottom:0}
+td.tableblock>.content{margin-bottom:1.25em;word-wrap:anywhere}
+td.tableblock>.content>:last-child{margin-bottom:-1.25em}
+table.tableblock,th.tableblock,td.tableblock{border:0 solid #dedede}
+table.grid-all>*>tr>*{border-width:1px}
+table.grid-cols>*>tr>*{border-width:0 1px}
+table.grid-rows>*>tr>*{border-width:1px 0}
+table.frame-all{border-width:1px}
+table.frame-ends{border-width:1px 0}
+table.frame-sides{border-width:0 1px}
+table.frame-none>colgroup+*>:first-child>*,table.frame-sides>colgroup+*>:first-child>*{border-top-width:0}
+table.frame-none>:last-child>:last-child>*,table.frame-sides>:last-child>:last-child>*{border-bottom-width:0}
+table.frame-none>*>tr>:first-child,table.frame-ends>*>tr>:first-child{border-left-width:0}
+table.frame-none>*>tr>:last-child,table.frame-ends>*>tr>:last-child{border-right-width:0}
+table.stripes-all tr,table.stripes-odd tr:nth-of-type(odd),table.stripes-even tr:nth-of-type(even),table.stripes-hover tr:hover{background:#f8f8f7}
+th.halign-left,td.halign-left{text-align:left}
+th.halign-right,td.halign-right{text-align:right}
+th.halign-center,td.halign-center{text-align:center}
+th.valign-top,td.valign-top{vertical-align:top}
+th.valign-bottom,td.valign-bottom{vertical-align:bottom}
+th.valign-middle,td.valign-middle{vertical-align:middle}
+table thead th,table tfoot th{font-weight:bold}
+tbody tr th{background:#f7f8f7}
+tbody tr th,tbody tr th p,tfoot tr th,tfoot tr th p{color:rgba(0,0,0,.8);font-weight:bold}
+p.tableblock>code:only-child{background:none;padding:0}
+p.tableblock{font-size:1em}
+ol{margin-left:1.75em}
+ul li ol{margin-left:1.5em}
+dl dd{margin-left:1.125em}
+dl dd:last-child,dl dd:last-child>:last-child{margin-bottom:0}
+ol>li p,ul>li p,ul dd,ol dd,.olist .olist,.ulist .ulist,.ulist .olist,.olist .ulist{margin-bottom:.625em}
+ul.checklist,ul.none,ol.none,ul.no-bullet,ol.no-bullet,ol.unnumbered,ul.unstyled,ol.unstyled{list-style-type:none}
+ul.no-bullet,ol.no-bullet,ol.unnumbered{margin-left:.625em}
+ul.unstyled,ol.unstyled{margin-left:0}
+ul.checklist{margin-left:.625em}
+ul.checklist li>p:first-child>.fa-square-o:first-child,ul.checklist li>p:first-child>.fa-check-square-o:first-child{width:1.25em;font-size:.8em;position:relative;bottom:.125em}
+ul.checklist li>p:first-child>input[type="checkbox"]:first-child{margin-right:.25em}
+ul.inline{display:-ms-flexbox;display:-webkit-box;display:flex;-ms-flex-flow:row wrap;-webkit-flex-flow:row wrap;flex-flow:row wrap;list-style:none;margin:0 0 .625em -1.25em}
+ul.inline>li{margin-left:1.25em}
+.unstyled dl dt{font-weight:400;font-style:normal}
+ol.arabic{list-style-type:decimal}
+ol.decimal{list-style-type:decimal-leading-zero}
+ol.loweralpha{list-style-type:lower-alpha}
+ol.upperalpha{list-style-type:upper-alpha}
+ol.lowerroman{list-style-type:lower-roman}
+ol.upperroman{list-style-type:upper-roman}
+ol.lowergreek{list-style-type:lower-greek}
+.hdlist>table,.colist>table{border:0;background:none}
+.hdlist>table>tbody>tr,.colist>table>tbody>tr{background:none}
+td.hdlist1,td.hdlist2{vertical-align:top;padding:0 .625em}
+td.hdlist1{font-weight:bold;padding-bottom:1.25em}
+td.hdlist2{word-wrap:anywhere}
+.literalblock+.colist,.listingblock+.colist{margin-top:-.5em}
+.colist td:not([class]):first-child{padding:.4em .75em 0;line-height:1;vertical-align:top}
+.colist td:not([class]):first-child img{max-width:none}
+.colist td:not([class]):last-child{padding:.25em 0}
+.thumb,.th{line-height:0;display:inline-block;border:solid 4px #fff;-webkit-box-shadow:0 0 0 1px #ddd;box-shadow:0 0 0 1px #ddd}
+.imageblock.left{margin:.25em .625em 1.25em 0}
+.imageblock.right{margin:.25em 0 1.25em .625em}
+.imageblock>.title{margin-bottom:0}
+.imageblock.thumb,.imageblock.th{border-width:6px}
+.imageblock.thumb>.title,.imageblock.th>.title{padding:0 .125em}
+.image.left,.image.right{margin-top:.25em;margin-bottom:.25em;display:inline-block;line-height:0}
+.image.left{margin-right:.625em}
+.image.right{margin-left:.625em}
+a.image{text-decoration:none;display:inline-block}
+a.image object{pointer-events:none}
+sup.footnote,sup.footnoteref{font-size:.875em;position:static;vertical-align:super}
+sup.footnote a,sup.footnoteref a{text-decoration:none}
+sup.footnote a:active,sup.footnoteref a:active{text-decoration:underline}
+#footnotes{padding-top:.75em;padding-bottom:.75em;margin-bottom:.625em}
+#footnotes hr{width:20%;min-width:6.25em;margin:-.25em 0 .75em;border-width:1px 0 0}
+#footnotes .footnote{padding:0 .375em 0 .225em;line-height:1.3334;font-size:.875em;margin-left:1.2em;margin-bottom:.2em}
+#footnotes .footnote a:first-of-type{font-weight:bold;text-decoration:none;margin-left:-1.05em}
+#footnotes .footnote:last-of-type{margin-bottom:0}
+#content #footnotes{margin-top:-.625em;margin-bottom:0;padding:.75em 0}
+.gist .file-data>table{border:0;background:#fff;width:100%;margin-bottom:0}
+.gist .file-data>table td.line-data{width:99%}
+div.unbreakable{page-break-inside:avoid}
+.big{font-size:larger}
+.small{font-size:smaller}
+.underline{text-decoration:underline}
+.overline{text-decoration:overline}
+.line-through{text-decoration:line-through}
+.aqua{color:#00bfbf}
+.aqua-background{background:#00fafa}
+.black{color:#000}
+.black-background{background:#000}
+.blue{color:#0000bf}
+.blue-background{background:#0000fa}
+.fuchsia{color:#bf00bf}
+.fuchsia-background{background:#fa00fa}
+.gray{color:#606060}
+.gray-background{background:#7d7d7d}
+.green{color:#006000}
+.green-background{background:#007d00}
+.lime{color:#00bf00}
+.lime-background{background:#00fa00}
+.maroon{color:#600000}
+.maroon-background{background:#7d0000}
+.navy{color:#000060}
+.navy-background{background:#00007d}
+.olive{color:#606000}
+.olive-background{background:#7d7d00}
+.purple{color:#600060}
+.purple-background{background:#7d007d}
+.red{color:#bf0000}
+.red-background{background:#fa0000}
+.silver{color:#909090}
+.silver-background{background:#bcbcbc}
+.teal{color:#006060}
+.teal-background{background:#007d7d}
+.white{color:#bfbfbf}
+.white-background{background:#fafafa}
+.yellow{color:#bfbf00}
+.yellow-background{background:#fafa00}
+span.icon>.fa{cursor:default}
+a span.icon>.fa{cursor:inherit}
+.admonitionblock td.icon [class^="fa icon-"]{font-size:2.5em;text-shadow:1px 1px 2px rgba(0,0,0,.5);cursor:default}
+.admonitionblock td.icon .icon-note::before{content:"\f05a";color:#19407c}
+.admonitionblock td.icon .icon-tip::before{content:"\f0eb";text-shadow:1px 1px 2px rgba(155,155,0,.8);color:#111}
+.admonitionblock td.icon .icon-warning::before{content:"\f071";color:#bf6900}
+.admonitionblock td.icon .icon-caution::before{content:"\f06d";color:#bf3400}
+.admonitionblock td.icon .icon-important::before{content:"\f06a";color:#bf0000}
+.conum[data-value]{display:inline-block;color:#fff!important;background:rgba(0,0,0,.8);-webkit-border-radius:50%;border-radius:50%;text-align:center;font-size:.75em;width:1.67em;height:1.67em;line-height:1.67em;font-family:"Open Sans","DejaVu Sans",sans-serif;font-style:normal;font-weight:bold}
+.conum[data-value] *{color:#fff!important}
+.conum[data-value]+b{display:none}
+.conum[data-value]::after{content:attr(data-value)}
+pre .conum[data-value]{position:relative;top:-.125em}
+b.conum *{color:inherit!important}
+.conum:not([data-value]):empty{display:none}
+dt,th.tableblock,td.content,div.footnote{text-rendering:optimizeLegibility}
+h1,h2,p,td.content,span.alt{letter-spacing:-.01em}
+p strong,td.content strong,div.footnote strong{letter-spacing:-.005em}
+p,blockquote,dt,td.content,span.alt{font-size:1.0625rem}
+p{margin-bottom:1.25rem}
+.sidebarblock p,.sidebarblock dt,.sidebarblock td.content,p.tableblock{font-size:1em}
+.exampleblock>.content{background:#fffef7;border-color:#e0e0dc;-webkit-box-shadow:0 1px 4px #e0e0dc;box-shadow:0 1px 4px #e0e0dc}
+.print-only{display:none!important}
+@page{margin:1.25cm .75cm}
+@media print{*{-webkit-box-shadow:none!important;box-shadow:none!important;text-shadow:none!important}
+html{font-size:80%}
+a{color:inherit!important;text-decoration:underline!important}
+a.bare,a[href^="#"],a[href^="mailto:"]{text-decoration:none!important}
+a[href^="http:"]:not(.bare)::after,a[href^="https:"]:not(.bare)::after{content:"(" attr(href) ")";display:inline-block;font-size:.875em;padding-left:.25em}
+abbr[title]::after{content:" (" attr(title) ")"}
+pre,blockquote,tr,img,object,svg{page-break-inside:avoid}
+thead{display:table-header-group}
+svg{max-width:100%}
+p,blockquote,dt,td.content{font-size:1em;orphans:3;widows:3}
+h2,h3,#toctitle,.sidebarblock>.content>.title{page-break-after:avoid}
+#header,#content,#footnotes,#footer{max-width:none}
+#toc,.sidebarblock,.exampleblock>.content{background:none!important}
+#toc{border-bottom:1px solid #dddddf!important;padding-bottom:0!important}
+body.book #header{text-align:center}
+body.book #header>h1:first-child{border:0!important;margin:2.5em 0 1em}
+body.book #header .details{border:0!important;display:block;padding:0!important}
+body.book #header .details span:first-child{margin-left:0!important}
+body.book #header .details br{display:block}
+body.book #header .details br+span::before{content:none!important}
+body.book #toc{border:0!important;text-align:left!important;padding:0!important;margin:0!important}
+body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-break-before:always}
+.listingblock code[data-lang]::before{display:block}
+#footer{padding:0 .9375em}
+.hide-on-print{display:none!important}
+.print-only{display:block!important}
+.hide-for-print{display:none!important}
+.show-for-print{display:inherit!important}}
+@media print,amzn-kf8{#header>h1:first-child{margin-top:1.25rem}
+.sect1{padding:0!important}
+.sect1+.sect1{border:0}
+#footer{background:none}
+#footer-text{color:rgba(0,0,0,.6);font-size:.9em}}
+@media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
+</style>
+<style>.toc-current{font-weight: bold;} .toc-root{font-family: "Open Sans","DejaVu Sans",sans-serif;
+                       font-size: 0.9em;} #content{display: flex; flex-direction: column; flex: 1 1 auto;}
+             .nav-footer{text-align: center; margin-top: auto;}
+             .nav-footer > p > a {white-space: nowrap;}</style>
+</head>
+<body id="node-tool" class="book toc2 toc-left">
+<div id="header">
+<h1>OpenSearch Reference</h1>
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<p><span class="toc-root"><a href="index.html">OpenSearch Reference</a></span></p><ul class="sectlevel1">
+<li><a href="opensearch-intro.html">What is OpenSearch?</a>
+</li>
+<li><a href="getting-started.html">Getting started with OpenSearch</a>
+</li>
+<li><a href="setup.html">Set up OpenSearch</a>
+</li>
+<li><a href="setup-upgrade.html">Upgrade OpenSearch</a>
+</li>
+<li><a href="index-modules.html">Index modules</a>
+</li>
+<li><a href="mapping.html">Mapping</a>
+</li>
+<li><a href="analysis.html">Text analysis</a>
+</li>
+<li><a href="index-templates.html">Index templates</a>
+</li>
+<li><a href="ingest.html">Ingest node</a>
+</li>
+<li><a href="search-your-data.html">Search your data</a>
+</li>
+<li><a href="query-dsl.html">Query DSL</a>
+</li>
+<li><a href="search-aggregations.html">Aggregations</a>
+</li>
+<li><a href="modules-scripting.html">Scripting</a>
+</li>
+<li><a href="high-availability.html">Set up a cluster for high availability</a>
+</li>
+<li><a href="snapshot-restore.html">Snapshot and restore</a>
+</li>
+<li><a href="commands.html">Command line tools</a>
+<ul class="sectlevel1">
+<li><a href="opensearch-keystore.html">opensearch-keystore</a>
+</li>
+<li><a href="node-tool.html"><span class="toc-current">opensearch-node</span></a>
+</li>
+<li><a href="shard-tool.html">opensearch-shard</a>
+</li>
+</ul>
+</li>
+<li><a href="how-to.html">How To</a>
+</li>
+<li><a href="glossary.html">Glossary of terms</a>
+</li>
+<li><a href="rest-apis.html">REST APIs</a>
+</li>
+<li><a href="breaking-changes.html">Migration guide</a>
+</li>
+<li><a href="opensearch-release-notes.html">Release notes</a>
+</li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="node-tool">opensearch-node</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <code>opensearch-node</code> command enables you to perform certain unsafe
+operations on a node that are only possible while it is shut down. This command
+allows you to adjust the <a href="settings.html#modules-node">role</a> of a node, unsafely edit cluster
+settings and may be able to recover some data after a disaster or start a node
+even if it is incompatible with the data on disk.</p>
+</div>
+<h3 id="_synopsis" class="discrete">Synopsis</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">bin/opensearch-node repurpose|unsafe-bootstrap|detach-cluster|override-version
+  [--ordinal &lt;Integer&gt;] [-E &lt;KeyValuePair&gt;]
+  [-h, --help] ([-s, --silent] | [-v, --verbose])</code></pre>
+</div>
+</div>
+<h3 id="_description" class="discrete">Description</h3>
+<div class="paragraph">
+<p>This tool has a number of modes:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>opensearch-node repurpose</code> can be used to delete unwanted data from a
+node if it used to be a <a href="settings.html#data-node">data node</a> or a
+<a href="settings.html#master-node">master-eligible node</a> but has been repurposed not to have one
+or other of these roles.</p>
+</li>
+<li>
+<p><code>opensearch-node remove-settings</code> can be used to remove persistent settings
+from the cluster state in case where it contains incompatible settings that
+prevent the cluster from forming.</p>
+</li>
+<li>
+<p><code>opensearch-node remove-customs</code> can be used to remove custom metadata
+from the cluster state in case where it contains broken metadata that
+prevents the cluster state from being loaded.</p>
+</li>
+<li>
+<p><code>opensearch-node unsafe-bootstrap</code> can be used to perform <em>unsafe cluster
+bootstrapping</em>.  It forces one of the nodes to form a brand-new cluster on
+its own, using its local copy of the cluster metadata.</p>
+</li>
+<li>
+<p><code>opensearch-node detach-cluster</code> enables you to move nodes from one
+cluster to another.  This can be used to move nodes into a new cluster
+created with the <code>opensearch-node unsafe-bootstrap</code> command. If unsafe
+cluster bootstrapping was not possible, it also enables you to move nodes
+into a brand-new cluster.</p>
+</li>
+<li>
+<p><code>opensearch-node override-version</code> enables you to start up a node
+even if the data in the data path was written by an incompatible version of
+OpenSearch.</p>
+</li>
+</ul>
+</div>
+<h4 id="node-tool-repurpose" class="discrete">Changing the role of a node</h4>
+<div class="paragraph">
+<p>There may be situations where you want to repurpose a node without following
+the <a href="settings.html#change-node-role">proper repurposing processes</a>. The <code>opensearch-node
+repurpose</code> tool allows you to delete any excess on-disk data and start a node
+after repurposing it.</p>
+</div>
+<div class="paragraph">
+<p>The intended use is:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Stop the node</p>
+</li>
+<li>
+<p>Update <code>opensearch.yml</code> by setting <code>node.roles</code> as desired.</p>
+</li>
+<li>
+<p>Run <code>opensearch-node repurpose</code> on the node</p>
+</li>
+<li>
+<p>Start the node</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>If you run <code>opensearch-node repurpose</code> on a node without the <code>data</code> role and
+with the <code>master</code> role then it will delete any remaining shard data on that
+node, but it will leave the index and cluster metadata alone. If you run
+<code>opensearch-node repurpose</code> on a node without the <code>data</code> and <code>master</code> roles
+then it will delete any remaining shard data and index metadata, but it will
+leave the cluster metadata alone.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Warning</div>
+</td>
+<td class="content">
+Running this command can lead to data loss for the indices mentioned if the
+data contained is not available on other nodes in the cluster. Only run this
+tool if you understand and accept the possible consequences, and only after
+determining that the node cannot be repurposed cleanly.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The tool provides a summary of the data to be deleted and asks for confirmation
+before making any changes. You can get detailed information about the affected
+indices and shards by passing the verbose (<code>-v</code>) option.</p>
+</div>
+<h4 id="_removing_persistent_cluster_settings" class="discrete">Removing persistent cluster settings</h4>
+<div class="paragraph">
+<p>There may be situations where a node contains persistent cluster
+settings that prevent the cluster from forming. Since the cluster cannot form,
+it is not possible to remove these settings using the
+<a href="cluster.html#cluster-update-settings">Cluster update settings API</a> API.</p>
+</div>
+<div class="paragraph">
+<p>The <code>opensearch-node remove-settings</code> tool allows you to forcefully remove
+those persistent settings from the on-disk cluster state. The tool takes a
+list of settings as parameters that should be removed, and also supports
+wildcard patterns.</p>
+</div>
+<div class="paragraph">
+<p>The intended use is:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Stop the node</p>
+</li>
+<li>
+<p>Run <code>opensearch-node remove-settings name-of-setting-to-remove</code> on the node</p>
+</li>
+<li>
+<p>Repeat for all other master-eligible nodes</p>
+</li>
+<li>
+<p>Start the nodes</p>
+</li>
+</ul>
+</div>
+<h4 id="_removing_custom_metadata_from_the_cluster_state" class="discrete">Removing custom metadata from the cluster state</h4>
+<div class="paragraph">
+<p>There may be situations where a node contains custom metadata, typically
+provided by plugins, that prevent the node from starting up and loading
+the cluster from disk.</p>
+</div>
+<div class="paragraph">
+<p>The <code>opensearch-node remove-customs</code> tool allows you to forcefully remove
+the problematic custom metadata. The tool takes a list of custom metadata names
+as parameters that should be removed, and also supports wildcard patterns.</p>
+</div>
+<div class="paragraph">
+<p>The intended use is:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Stop the node</p>
+</li>
+<li>
+<p>Run <code>opensearch-node remove-customs name-of-custom-to-remove</code> on the node</p>
+</li>
+<li>
+<p>Repeat for all other master-eligible nodes</p>
+</li>
+<li>
+<p>Start the nodes</p>
+</li>
+</ul>
+</div>
+<h4 id="_recovering_data_after_a_disaster" class="discrete">Recovering data after a disaster</h4>
+<div class="paragraph">
+<p>Sometimes OpenSearch nodes are temporarily stopped, perhaps because of the need to
+perform some maintenance activity or perhaps because of a hardware failure.
+After you resolve the temporary condition and restart the node,
+it will rejoin the cluster and continue normally. Depending on your
+configuration, your cluster may be able to remain completely available even
+while one or more of its nodes are stopped.</p>
+</div>
+<div class="paragraph">
+<p>Sometimes it might not be possible to restart a node after it has stopped. For
+example, the node&#8217;s host may suffer from a hardware problem that cannot be
+repaired. If the cluster is still available then you can start up a fresh node
+on another host and OpenSearch will bring this node into the cluster in place of the
+failed node.</p>
+</div>
+<div class="paragraph">
+<p>Each node stores its data in the data directories defined by the
+<a href="important-settings.html#path-settings"><code>path.data</code> setting</a>. This means that in a disaster you can
+also restart a node by moving its data directories to another host, presuming
+that those data directories can be recovered from the faulty host.</p>
+</div>
+<div class="paragraph">
+<p>OpenSearch <a href="modules-discovery.html#modules-discovery-quorums">requires a response from a majority of the
+master-eligible nodes</a> in order to elect a master and to update the cluster
+state. This means that if you have three master-eligible nodes then the cluster
+will remain available even if one of them has failed. However if two of the
+three master-eligible nodes fail then the cluster will be unavailable until at
+least one of them is restarted.</p>
+</div>
+<div class="paragraph">
+<p>In very rare circumstances it may not be possible to restart enough nodes to
+restore the cluster&#8217;s availability. If such a disaster occurs, you should
+build a new cluster from a recent snapshot and re-import any data that was
+ingested since that snapshot was taken.</p>
+</div>
+<div class="paragraph">
+<p>However, if the disaster is serious enough then it may not be possible to
+recover from a recent snapshot either. Unfortunately in this case there is no
+way forward that does not risk data loss, but it may be possible to use the
+<code>opensearch-node</code> tool to construct a new cluster that contains some of the
+data from the failed cluster.</p>
+</div>
+<h4 id="node-tool-override-version" class="discrete">Bypassing version checks</h4>
+<div class="paragraph">
+<p>The data that OpenSearch writes to disk is designed to be read by the current version
+and a limited set of future versions. It cannot generally be read by older
+versions, nor by versions that are more than one major version newer. The data
+stored on disk includes the version of the node that wrote it, and OpenSearch checks
+that it is compatible with this version when starting up.</p>
+</div>
+<div class="paragraph">
+<p>In rare circumstances it may be desirable to bypass this check and start up an
+OpenSearch node using data that was written by an incompatible version. This may not
+work if the format of the stored data has changed, and it is a risky process
+because it is possible for the format to change in ways that OpenSearch may
+misinterpret, silently leading to data loss.</p>
+</div>
+<div class="paragraph">
+<p>To bypass this check, you can use the <code>opensearch-node override-version</code>
+tool to overwrite the version number stored in the data path with the current
+version, causing OpenSearch to believe that it is compatible with the on-disk data.</p>
+</div>
+<h5 id="node-tool-unsafe-bootstrap" class="discrete">Unsafe cluster bootstrapping</h5>
+<div class="paragraph">
+<p>If there is at least one remaining master-eligible node, but it is not possible
+to restart a majority of them, then the <code>opensearch-node unsafe-bootstrap</code>
+command will unsafely override the cluster&#8217;s <a href="modules-discovery.html#modules-discovery-voting">voting
+configuration</a> as if performing another
+<a href="modules-discovery.html#modules-discovery-bootstrap-cluster">cluster bootstrapping process</a>.
+The target node can then form a new cluster on its own by using
+the cluster metadata held locally on the target node.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Warning</div>
+</td>
+<td class="content">
+These steps can lead to arbitrary data loss since the target node may not hold the latest cluster
+metadata, and this out-of-date metadata may make it impossible to use some or
+all of the indices in the cluster.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Since unsafe bootstrapping forms a new cluster containing a single node, once
+you have run it you must use the <a href="node-tool.html#node-tool-detach-cluster"><code>opensearch-node
+detach-cluster</code> tool</a> to migrate any other surviving nodes from the failed
+cluster into this new cluster.</p>
+</div>
+<div class="paragraph">
+<p>When you run the <code>opensearch-node unsafe-bootstrap</code> tool it will analyse the
+state of the node and ask for confirmation before taking any action. Before
+asking for confirmation it reports the term and version of the cluster state on
+the node on which it runs as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-txt" data-lang="txt">Current node cluster state (term, version) pair is (4, 12)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If you have a choice of nodes on which to run this tool then you should choose
+one with a term that is as large as possible. If there is more than one
+node with the same term, pick the one with the largest version.
+This information identifies the node with the freshest cluster state, which minimizes the
+quantity of data that might be lost. For example, if the first node reports
+<code>(4, 12)</code> and a second node reports <code>(5, 3)</code>, then the second node is preferred
+since its term is larger.  However if the second node reports <code>(3, 17)</code> then
+the first node is preferred since its term is larger. If the second node
+reports <code>(4, 10)</code> then it has the same term as the first node, but has a
+smaller version, so the first node is preferred.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Warning</div>
+</td>
+<td class="content">
+Running this command can lead to arbitrary data loss. Only run this tool if you
+understand and accept the possible consequences and have exhausted all other
+possibilities for recovery of your cluster.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The sequence of operations for using this tool are as follows:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Make sure you have really lost access to at least half of the
+master-eligible nodes in the cluster, and they cannot be repaired or recovered
+by moving their data paths to healthy hardware.</p>
+</li>
+<li>
+<p>Stop <strong>all</strong> remaining nodes.</p>
+</li>
+<li>
+<p>Choose one of the remaining master-eligible nodes to become the new elected
+master as described above.</p>
+</li>
+<li>
+<p>On this node, run the <code>opensearch-node unsafe-bootstrap</code> command as shown
+below. Verify that the tool reported <code>Master node was successfully
+bootstrapped</code>.</p>
+</li>
+<li>
+<p>Start this node and verify that it is elected as the master node.</p>
+</li>
+<li>
+<p>Run the <a href="node-tool.html#node-tool-detach-cluster"><code>opensearch-node detach-cluster</code>
+tool</a>, described below, on every other node in the cluster.</p>
+</li>
+<li>
+<p>Start all other nodes and verify that each one joins the cluster.</p>
+</li>
+<li>
+<p>Investigate the data in the cluster to discover if any was lost during this
+process.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>When you run the tool it will make sure that the node that is being used to
+bootstrap the cluster is not running. It is important that all other
+master-eligible nodes are also stopped while this tool is running, but the tool
+does not check this.</p>
+</div>
+<div class="paragraph">
+<p>The message <code>Master node was successfully bootstrapped</code> does not mean that
+there has been no data loss, it just means that tool was able to complete its
+job.</p>
+</div>
+<h5 id="node-tool-detach-cluster" class="discrete">Detaching nodes from their cluster</h5>
+<div class="paragraph">
+<p>It is unsafe for nodes to move between clusters, because different clusters
+have completely different cluster metadata. There is no way to safely merge the
+metadata from two clusters together.</p>
+</div>
+<div class="paragraph">
+<p>To protect against inadvertently joining the wrong cluster, each cluster
+creates a unique identifier, known as the <em>cluster UUID</em>, when it first starts
+up. Every node records the UUID of its cluster and refuses to join a
+cluster with a different UUID.</p>
+</div>
+<div class="paragraph">
+<p>However, if a node&#8217;s cluster has permanently failed then it may be desirable to
+try and move it into a new cluster. The <code>opensearch-node detach-cluster</code>
+command lets you detach a node from its cluster by resetting its cluster UUID.
+It can then join another cluster with a different UUID.</p>
+</div>
+<div class="paragraph">
+<p>For example, after unsafe cluster bootstrapping you will need to detach all the
+other surviving nodes from their old cluster so they can join the new,
+unsafely-bootstrapped cluster.</p>
+</div>
+<div class="paragraph">
+<p>Unsafe cluster bootstrapping is only possible if there is at least one
+surviving master-eligible node. If there are no remaining master-eligible nodes
+then the cluster metadata is completely lost. However, the individual data
+nodes also contain a copy of the index metadata corresponding with their
+shards. This sometimes allows a new cluster to import these shards as
+<a href="getting-started-modify-data.html#modules-gateway-dangling-indices">dangling indices</a>. You can sometimes
+recover some indices after the loss of all master-eligible nodes in a cluster
+by creating a new cluster and then using the <code>opensearch-node
+detach-cluster</code> command to move any surviving nodes into this new cluster.</p>
+</div>
+<div class="paragraph">
+<p>There is a risk of data loss when importing a dangling index because data nodes
+may not have the most recent copy of the index metadata and do not have any
+information about <a href="docs.html#docs-replication">which shard copies are in-sync</a>. This
+means that a stale shard copy may be selected to be the primary, and some of
+the shards may be incompatible with the imported mapping.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Warning</div>
+</td>
+<td class="content">
+Execution of this command can lead to arbitrary data loss. Only run this tool
+if you understand and accept the possible consequences and have exhausted all
+other possibilities for recovery of your cluster.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The sequence of operations for using this tool are as follows:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Make sure you have really lost access to every one of the master-eligible
+nodes in the cluster, and they cannot be repaired or recovered by moving their
+data paths to healthy hardware.</p>
+</li>
+<li>
+<p>Start a new cluster and verify that it is healthy. This cluster may comprise
+one or more brand-new master-eligible nodes, or may be an unsafely-bootstrapped
+cluster formed as described above.</p>
+</li>
+<li>
+<p>Stop <strong>all</strong> remaining data nodes.</p>
+</li>
+<li>
+<p>On each data node, run the <code>opensearch-node detach-cluster</code> tool as shown
+below. Verify that the tool reported <code>Node was successfully detached from the
+cluster</code>.</p>
+</li>
+<li>
+<p>If necessary, configure each data node to
+<a href="modules-discovery.html#modules-discovery-hosts-providers">discover the new cluster</a>.</p>
+</li>
+<li>
+<p>Start each data node and verify that it has joined the new cluster.</p>
+</li>
+<li>
+<p>Wait for all recoveries to have completed, and investigate the data in the
+cluster to discover if any was lost during this process.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The message <code>Node was successfully detached from the cluster</code> does not mean
+that there has been no data loss, it just means that tool was able to complete
+its job.</p>
+</div>
+<h3 id="node-tool-parameters" class="discrete">Parameters</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>repurpose</code></dt>
+<dd>
+<p>Delete excess data when a node&#8217;s roles are changed.</p>
+</dd>
+<dt class="hdlist1"><code>unsafe-bootstrap</code></dt>
+<dd>
+<p>Specifies to unsafely bootstrap this node as a new
+one-node cluster.</p>
+</dd>
+<dt class="hdlist1"><code>detach-cluster</code></dt>
+<dd>
+<p>Specifies to unsafely detach this node from its cluster so
+it can join a different cluster.</p>
+</dd>
+<dt class="hdlist1"><code>override-version</code></dt>
+<dd>
+<p>Overwrites the version number stored in the data path so
+that a node can start despite being incompatible with the on-disk data.</p>
+</dd>
+<dt class="hdlist1"><code>remove-settings</code></dt>
+<dd>
+<p>Forcefully removes the provided persistent cluster settings
+from the on-disk cluster state.</p>
+</dd>
+<dt class="hdlist1"><code>--ordinal &lt;Integer&gt;</code></dt>
+<dd>
+<p>If there is <a href="settings.html#max-local-storage-nodes">more than one
+node sharing a data path</a> then this specifies which node to target. Defaults
+to <code>0</code>, meaning to use the first node in the data path.</p>
+</dd>
+<dt class="hdlist1"><code>-E &lt;KeyValuePair&gt;</code></dt>
+<dd>
+<p>Configures a setting.</p>
+</dd>
+<dt class="hdlist1"><code>-h, --help</code></dt>
+<dd>
+<p>Returns all of the command parameters.</p>
+</dd>
+<dt class="hdlist1"><code>-s, --silent</code></dt>
+<dd>
+<p>Shows minimal output.</p>
+</dd>
+<dt class="hdlist1"><code>-v, --verbose</code></dt>
+<dd>
+<p>Shows verbose output.</p>
+</dd>
+</dl>
+</div>
+<h3 id="_examples_3" class="discrete">Examples</h3>
+<h4 id="_repurposing_a_node_as_a_dedicated_master_node" class="discrete">Repurposing a node as a dedicated master node</h4>
+<div class="paragraph">
+<p>In this example, a former data node is repurposed as a dedicated master node.
+First update the node&#8217;s settings to <code>node.roles: [ "master" ]</code> in its
+<code>opensearch.yml</code> config file. Then run the <code>opensearch-node repurpose</code>
+command to find and remove excess shard data:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-txt" data-lang="txt">node$ ./bin/opensearch-node repurpose
+
+    WARNING: OpenSearch MUST be stopped before running this tool.
+
+Found 2 shards in 2 indices to clean up
+Use -v to see list of paths and indices affected
+Node is being re-purposed as master and no-data. Clean-up of shard data will be performed.
+Do you want to proceed?
+Confirm [y/N] y
+Node successfully repurposed to master and no-data.</code></pre>
+</div>
+</div>
+<h4 id="_repurposing_a_node_as_a_coordinating_only_node" class="discrete">Repurposing a node as a coordinating-only node</h4>
+<div class="paragraph">
+<p>In this example, a node that previously held data is repurposed as a
+coordinating-only node. First update the node&#8217;s settings to <code>node.roles: []</code> in
+its <code>opensearch.yml</code> config file. Then run the <code>opensearch-node repurpose</code>
+command to find and remove excess shard data and index metadata:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-txt" data-lang="txt">node$./bin/opensearch-node repurpose
+
+    WARNING: OpenSearch MUST be stopped before running this tool.
+
+Found 2 indices (2 shards and 2 index meta data) to clean up
+Use -v to see list of paths and indices affected
+Node is being re-purposed as no-master and no-data. Clean-up of index data will be performed.
+Do you want to proceed?
+Confirm [y/N] y
+Node successfully repurposed to no-master and no-data.</code></pre>
+</div>
+</div>
+<h4 id="_removing_persistent_cluster_settings_2" class="discrete">Removing persistent cluster settings</h4>
+<div class="paragraph">
+<p>If your nodes contain persistent cluster settings that prevent the cluster
+from forming, i.e., can&#8217;t be removed using the <a href="cluster.html#cluster-update-settings">Cluster update settings API</a> API,
+you can run the following commands to remove one or more cluster settings.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-txt" data-lang="txt">node$ ./bin/opensearch-node remove-settings &lt;setting_name&gt;
+
+    WARNING: OpenSearch MUST be stopped before running this tool.
+
+The following settings will be removed:
+&lt;setting_name&gt;: &lt;setting_value&gt;
+
+You should only run this tool if you have incompatible settings in the
+cluster state that prevent the cluster from forming.
+This tool can cause data loss and its use should be your last resort.
+
+Do you want to proceed?
+
+Confirm [y/N] y
+
+Settings were successfully removed from the cluster state</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can also use wildcards to remove multiple settings, for example using</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-txt" data-lang="txt">node$ ./bin/opensearch-node remove-settings &lt;setting_name&gt;</code></pre>
+</div>
+</div>
+<h4 id="_removing_custom_metadata_from_the_cluster_state_2" class="discrete">Removing custom metadata from the cluster state</h4>
+<div class="paragraph">
+<p>If the on-disk cluster state contains custom metadata that prevents the node
+from starting up and loading the cluster state, you can run the following
+commands to remove this custom metadata.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-txt" data-lang="txt">node$ ./bin/opensearch-node remove-customs &lt;custom-metadata&gt;
+
+    WARNING: OpenSearch MUST be stopped before running this tool.
+
+The following customs will be removed:
+&lt;custom-metadata&gt;
+
+You should only run this tool if you have broken custom metadata in the
+cluster state that prevents the cluster state from being loaded.
+This tool can cause data loss and its use should be your last resort.
+
+Do you want to proceed?
+
+Confirm [y/N] y
+
+Customs were successfully removed from the cluster state</code></pre>
+</div>
+</div>
+<h4 id="_unsafe_cluster_bootstrapping" class="discrete">Unsafe cluster bootstrapping</h4>
+<div class="paragraph">
+<p>Suppose your cluster had five master-eligible nodes and you have permanently
+lost three of them, leaving two nodes remaining.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Run the tool on the first remaining node, but answer <code>n</code> at the confirmation
+step.</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-txt" data-lang="txt">node_1$ ./bin/opensearch-node unsafe-bootstrap
+
+    WARNING: OpenSearch MUST be stopped before running this tool.
+
+Current node cluster state (term, version) pair is (4, 12)
+
+You should only run this tool if you have permanently lost half or more
+of the master-eligible nodes in this cluster, and you cannot restore the
+cluster from a snapshot. This tool can cause arbitrary data loss and its
+use should be your last resort. If you have multiple surviving master
+eligible nodes, you should run this tool on the node with the highest
+cluster state (term, version) pair.
+
+Do you want to proceed?
+
+Confirm [y/N] n</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Run the tool on the second remaining node, and again answer <code>n</code> at the
+confirmation step.</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-txt" data-lang="txt">node_2$ ./bin/opensearch-node unsafe-bootstrap
+
+    WARNING: OpenSearch MUST be stopped before running this tool.
+
+Current node cluster state (term, version) pair is (5, 3)
+
+You should only run this tool if you have permanently lost half or more
+of the master-eligible nodes in this cluster, and you cannot restore the
+cluster from a snapshot. This tool can cause arbitrary data loss and its
+use should be your last resort. If you have multiple surviving master
+eligible nodes, you should run this tool on the node with the highest
+cluster state (term, version) pair.
+
+Do you want to proceed?
+
+Confirm [y/N] n</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Since the second node has a greater term it has a fresher cluster state, so
+it is better to unsafely bootstrap the cluster using this node:</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-txt" data-lang="txt">node_2$ ./bin/opensearch-node unsafe-bootstrap
+
+    WARNING: OpenSearch MUST be stopped before running this tool.
+
+Current node cluster state (term, version) pair is (5, 3)
+
+You should only run this tool if you have permanently lost half or more
+of the master-eligible nodes in this cluster, and you cannot restore the
+cluster from a snapshot. This tool can cause arbitrary data loss and its
+use should be your last resort. If you have multiple surviving master
+eligible nodes, you should run this tool on the node with the highest
+cluster state (term, version) pair.
+
+Do you want to proceed?
+
+Confirm [y/N] y
+Master node was successfully bootstrapped</code></pre>
+</div>
+</div>
+<h4 id="_detaching_nodes_from_their_cluster" class="discrete">Detaching nodes from their cluster</h4>
+<div class="paragraph">
+<p>After unsafely bootstrapping a new cluster, run the <code>opensearch-node
+detach-cluster</code> command to detach all remaining nodes from the failed cluster
+so they can join the new cluster:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-txt" data-lang="txt">node_3$ ./bin/opensearch-node detach-cluster
+
+    WARNING: OpenSearch MUST be stopped before running this tool.
+
+You should only run this tool if you have permanently lost all of the
+master-eligible nodes in this cluster and you cannot restore the cluster
+from a snapshot, or you have already unsafely bootstrapped a new cluster
+by running `opensearch-node unsafe-bootstrap` on a master-eligible
+node that belonged to the same cluster as this node. This tool can cause
+arbitrary data loss and its use should be your last resort.
+
+Do you want to proceed?
+
+Confirm [y/N] y
+Node was successfully detached from the cluster</code></pre>
+</div>
+</div>
+<h4 id="_bypassing_version_checks" class="discrete">Bypassing version checks</h4>
+<div class="paragraph">
+<p>Run the <code>opensearch-node override-version</code> command to overwrite the version
+stored in the data path so that a node can start despite being incompatible
+with the data stored in the data path:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-txt" data-lang="txt">node$ ./bin/opensearch-node override-version
+
+    WARNING: OpenSearch MUST be stopped before running this tool.
+
+This data path was last written by OpenSearch version [x.x.x] and may no
+longer be compatible with OpenSearch version [y.y.y]. This tool will bypass
+this compatibility check, allowing a version [y.y.y] node to start on this data
+path, but a version [y.y.y] node may not be able to read this data or may read
+it incorrectly leading to data loss.
+
+You should not use this tool. Instead, continue to use a version [x.x.x] node
+on this data path. If necessary, you can use reindex-from-remote to copy the
+data from here into an older cluster.
+
+Do you want to proceed?
+
+Confirm [y/N] y
+Successfully overwrote this node's metadata to bypass its version compatibility checks.</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph nav-footer">
+<p>← Previous: <a href="opensearch-keystore.html">opensearch-keystore</a> | ↑ Up: <a href="commands.html">Command line tools</a> | ⌂ Home: <a href="index.html">OpenSearch Reference</a> | Next: <a href="shard-tool.html">opensearch-shard</a> →</p>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2021-04-12 14:08:20 -0700
+</div>
+</div>
+</body>
+</html>

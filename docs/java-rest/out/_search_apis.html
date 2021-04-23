@@ -1,0 +1,3189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.12">
+<title>Java REST Client</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<style>
+/* Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
+/* Uncomment @import statement to use as custom stylesheet */
+/*@import "https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700";*/
+article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section{display:block}
+audio,video{display:inline-block}
+audio:not([controls]){display:none;height:0}
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}
+a{background:none}
+a:focus{outline:thin dotted}
+a:active,a:hover{outline:0}
+h1{font-size:2em;margin:.67em 0}
+abbr[title]{border-bottom:1px dotted}
+b,strong{font-weight:bold}
+dfn{font-style:italic}
+hr{-moz-box-sizing:content-box;box-sizing:content-box;height:0}
+mark{background:#ff0;color:#000}
+code,kbd,pre,samp{font-family:monospace;font-size:1em}
+pre{white-space:pre-wrap}
+q{quotes:"\201C" "\201D" "\2018" "\2019"}
+small{font-size:80%}
+sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}
+sup{top:-.5em}
+sub{bottom:-.25em}
+img{border:0}
+svg:not(:root){overflow:hidden}
+figure{margin:0}
+fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}
+legend{border:0;padding:0}
+button,input,select,textarea{font-family:inherit;font-size:100%;margin:0}
+button,input{line-height:normal}
+button,select{text-transform:none}
+button,html input[type="button"],input[type="reset"],input[type="submit"]{-webkit-appearance:button;cursor:pointer}
+button[disabled],html input[disabled]{cursor:default}
+input[type="checkbox"],input[type="radio"]{box-sizing:border-box;padding:0}
+button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}
+textarea{overflow:auto;vertical-align:top}
+table{border-collapse:collapse;border-spacing:0}
+*,*::before,*::after{-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box}
+html,body{font-size:100%}
+body{background:#fff;color:rgba(0,0,0,.8);padding:0;margin:0;font-family:"Noto Serif","DejaVu Serif",serif;font-weight:400;font-style:normal;line-height:1;position:relative;cursor:auto;tab-size:4;word-wrap:anywhere;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased}
+a:hover{cursor:pointer}
+img,object,embed{max-width:100%;height:auto}
+object,embed{height:100%}
+img{-ms-interpolation-mode:bicubic}
+.left{float:left!important}
+.right{float:right!important}
+.text-left{text-align:left!important}
+.text-right{text-align:right!important}
+.text-center{text-align:center!important}
+.text-justify{text-align:justify!important}
+.hide{display:none}
+img,object,svg{display:inline-block;vertical-align:middle}
+textarea{height:auto;min-height:50px}
+select{width:100%}
+.subheader,.admonitionblock td.content>.title,.audioblock>.title,.exampleblock>.title,.imageblock>.title,.listingblock>.title,.literalblock>.title,.stemblock>.title,.openblock>.title,.paragraph>.title,.quoteblock>.title,table.tableblock>.title,.verseblock>.title,.videoblock>.title,.dlist>.title,.olist>.title,.ulist>.title,.qlist>.title,.hdlist>.title{line-height:1.45;color:#7a2518;font-weight:400;margin-top:0;margin-bottom:.25em}
+div,dl,dt,dd,ul,ol,li,h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6,pre,form,p,blockquote,th,td{margin:0;padding:0}
+a{color:#2156a5;text-decoration:underline;line-height:inherit}
+a:hover,a:focus{color:#1d4b8f}
+a img{border:0}
+p{font-family:inherit;font-weight:400;font-size:1em;line-height:1.6;margin-bottom:1.25em;text-rendering:optimizeLegibility}
+p aside{font-size:.875em;line-height:1.35;font-style:italic}
+h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{font-family:"Open Sans","DejaVu Sans",sans-serif;font-weight:300;font-style:normal;color:#ba3925;text-rendering:optimizeLegibility;margin-top:1em;margin-bottom:.5em;line-height:1.0125em}
+h1 small,h2 small,h3 small,#toctitle small,.sidebarblock>.content>.title small,h4 small,h5 small,h6 small{font-size:60%;color:#e99b8f;line-height:0}
+h1{font-size:2.125em}
+h2{font-size:1.6875em}
+h3,#toctitle,.sidebarblock>.content>.title{font-size:1.375em}
+h4,h5{font-size:1.125em}
+h6{font-size:1em}
+hr{border:solid #dddddf;border-width:1px 0 0;clear:both;margin:1.25em 0 1.1875em;height:0}
+em,i{font-style:italic;line-height:inherit}
+strong,b{font-weight:bold;line-height:inherit}
+small{font-size:60%;line-height:inherit}
+code{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;font-weight:400;color:rgba(0,0,0,.9)}
+ul,ol,dl{font-size:1em;line-height:1.6;margin-bottom:1.25em;list-style-position:outside;font-family:inherit}
+ul,ol{margin-left:1.5em}
+ul li ul,ul li ol{margin-left:1.25em;margin-bottom:0;font-size:1em}
+ul.square li ul,ul.circle li ul,ul.disc li ul{list-style:inherit}
+ul.square{list-style-type:square}
+ul.circle{list-style-type:circle}
+ul.disc{list-style-type:disc}
+ol li ul,ol li ol{margin-left:1.25em;margin-bottom:0}
+dl dt{margin-bottom:.3125em;font-weight:bold}
+dl dd{margin-bottom:1.25em}
+abbr,acronym{text-transform:uppercase;font-size:90%;color:rgba(0,0,0,.8);border-bottom:1px dotted #ddd;cursor:help}
+abbr{text-transform:none}
+blockquote{margin:0 0 1.25em;padding:.5625em 1.25em 0 1.1875em;border-left:1px solid #ddd}
+blockquote cite{display:block;font-size:.9375em;color:rgba(0,0,0,.6)}
+blockquote cite::before{content:"\2014 \0020"}
+blockquote cite a,blockquote cite a:visited{color:rgba(0,0,0,.6)}
+blockquote,blockquote p{line-height:1.6;color:rgba(0,0,0,.85)}
+@media screen and (min-width:768px){h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{line-height:1.2}
+h1{font-size:2.75em}
+h2{font-size:2.3125em}
+h3,#toctitle,.sidebarblock>.content>.title{font-size:1.6875em}
+h4{font-size:1.4375em}}
+table{background:#fff;margin-bottom:1.25em;border:solid 1px #dedede;word-wrap:normal}
+table thead,table tfoot{background:#f7f8f7}
+table thead tr th,table thead tr td,table tfoot tr th,table tfoot tr td{padding:.5em .625em .625em;font-size:inherit;color:rgba(0,0,0,.8);text-align:left}
+table tr th,table tr td{padding:.5625em .625em;font-size:inherit;color:rgba(0,0,0,.8)}
+table tr.even,table tr.alt{background:#f8f8f7}
+table thead tr th,table tfoot tr th,table tbody tr td,table tr td,table tfoot tr td{line-height:1.6}
+h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{line-height:1.2;word-spacing:-.05em}
+h1 strong,h2 strong,h3 strong,#toctitle strong,.sidebarblock>.content>.title strong,h4 strong,h5 strong,h6 strong{font-weight:400}
+.center{margin-left:auto;margin-right:auto}
+.stretch{width:100%}
+.clearfix::before,.clearfix::after,.float-group::before,.float-group::after{content:" ";display:table}
+.clearfix::after,.float-group::after{clear:both}
+:not(pre).nobreak{word-wrap:normal}
+:not(pre).nowrap{white-space:nowrap}
+:not(pre).pre-wrap{white-space:pre-wrap}
+:not(pre):not([class^=L])>code{font-size:.9375em;font-style:normal!important;letter-spacing:0;padding:.1em .5ex;word-spacing:-.15em;background:#f7f7f8;-webkit-border-radius:4px;border-radius:4px;line-height:1.45;text-rendering:optimizeSpeed}
+pre{color:rgba(0,0,0,.9);font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;line-height:1.45;text-rendering:optimizeSpeed}
+pre code,pre pre{color:inherit;font-size:inherit;line-height:inherit}
+pre>code{display:block}
+pre.nowrap,pre.nowrap pre{white-space:pre;word-wrap:normal}
+em em{font-style:normal}
+strong strong{font-weight:400}
+.keyseq{color:rgba(51,51,51,.8)}
+kbd{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;display:inline-block;color:rgba(0,0,0,.8);font-size:.65em;line-height:1.45;background:#f7f7f7;border:1px solid #ccc;-webkit-border-radius:3px;border-radius:3px;-webkit-box-shadow:0 1px 0 rgba(0,0,0,.2),0 0 0 .1em white inset;box-shadow:0 1px 0 rgba(0,0,0,.2),0 0 0 .1em #fff inset;margin:0 .15em;padding:.2em .5em;vertical-align:middle;position:relative;top:-.1em;white-space:nowrap}
+.keyseq kbd:first-child{margin-left:0}
+.keyseq kbd:last-child{margin-right:0}
+.menuseq,.menuref{color:#000}
+.menuseq b:not(.caret),.menuref{font-weight:inherit}
+.menuseq{word-spacing:-.02em}
+.menuseq b.caret{font-size:1.25em;line-height:.8}
+.menuseq i.caret{font-weight:bold;text-align:center;width:.45em}
+b.button::before,b.button::after{position:relative;top:-1px;font-weight:400}
+b.button::before{content:"[";padding:0 3px 0 2px}
+b.button::after{content:"]";padding:0 2px 0 3px}
+p a>code:hover{color:rgba(0,0,0,.9)}
+#header,#content,#footnotes,#footer{width:100%;margin-left:auto;margin-right:auto;margin-top:0;margin-bottom:0;max-width:62.5em;*zoom:1;position:relative;padding-left:.9375em;padding-right:.9375em}
+#header::before,#header::after,#content::before,#content::after,#footnotes::before,#footnotes::after,#footer::before,#footer::after{content:" ";display:table}
+#header::after,#content::after,#footnotes::after,#footer::after{clear:both}
+#content{margin-top:1.25em}
+#content::before{content:none}
+#header>h1:first-child{color:rgba(0,0,0,.85);margin-top:2.25rem;margin-bottom:0}
+#header>h1:first-child+#toc{margin-top:8px;border-top:1px solid #dddddf}
+#header>h1:only-child,body.toc2 #header>h1:nth-last-child(2){border-bottom:1px solid #dddddf;padding-bottom:8px}
+#header .details{border-bottom:1px solid #dddddf;line-height:1.45;padding-top:.25em;padding-bottom:.25em;padding-left:.25em;color:rgba(0,0,0,.6);display:-ms-flexbox;display:-webkit-flex;display:flex;-ms-flex-flow:row wrap;-webkit-flex-flow:row wrap;flex-flow:row wrap}
+#header .details span:first-child{margin-left:-.125em}
+#header .details span.email a{color:rgba(0,0,0,.85)}
+#header .details br{display:none}
+#header .details br+span::before{content:"\00a0\2013\00a0"}
+#header .details br+span.author::before{content:"\00a0\22c5\00a0";color:rgba(0,0,0,.85)}
+#header .details br+span#revremark::before{content:"\00a0|\00a0"}
+#header #revnumber{text-transform:capitalize}
+#header #revnumber::after{content:"\00a0"}
+#content>h1:first-child:not([class]){color:rgba(0,0,0,.85);border-bottom:1px solid #dddddf;padding-bottom:8px;margin-top:0;padding-top:1rem;margin-bottom:1.25rem}
+#toc{border-bottom:1px solid #e7e7e9;padding-bottom:.5em}
+#toc>ul{margin-left:.125em}
+#toc ul.sectlevel0>li>a{font-style:italic}
+#toc ul.sectlevel0 ul.sectlevel1{margin:.5em 0}
+#toc ul{font-family:"Open Sans","DejaVu Sans",sans-serif;list-style-type:none}
+#toc li{line-height:1.3334;margin-top:.3334em}
+#toc a{text-decoration:none}
+#toc a:active{text-decoration:underline}
+#toctitle{color:#7a2518;font-size:1.2em}
+@media screen and (min-width:768px){#toctitle{font-size:1.375em}
+body.toc2{padding-left:15em;padding-right:0}
+#toc.toc2{margin-top:0!important;background:#f8f8f7;position:fixed;width:15em;left:0;top:0;border-right:1px solid #e7e7e9;border-top-width:0!important;border-bottom-width:0!important;z-index:1000;padding:1.25em 1em;height:100%;overflow:auto}
+#toc.toc2 #toctitle{margin-top:0;margin-bottom:.8rem;font-size:1.2em}
+#toc.toc2>ul{font-size:.9em;margin-bottom:0}
+#toc.toc2 ul ul{margin-left:0;padding-left:1em}
+#toc.toc2 ul.sectlevel0 ul.sectlevel1{padding-left:0;margin-top:.5em;margin-bottom:.5em}
+body.toc2.toc-right{padding-left:0;padding-right:15em}
+body.toc2.toc-right #toc.toc2{border-right-width:0;border-left:1px solid #e7e7e9;left:auto;right:0}}
+@media screen and (min-width:1280px){body.toc2{padding-left:20em;padding-right:0}
+#toc.toc2{width:20em}
+#toc.toc2 #toctitle{font-size:1.375em}
+#toc.toc2>ul{font-size:.95em}
+#toc.toc2 ul ul{padding-left:1.25em}
+body.toc2.toc-right{padding-left:0;padding-right:20em}}
+#content #toc{border-style:solid;border-width:1px;border-color:#e0e0dc;margin-bottom:1.25em;padding:1.25em;background:#f8f8f7;-webkit-border-radius:4px;border-radius:4px}
+#content #toc>:first-child{margin-top:0}
+#content #toc>:last-child{margin-bottom:0}
+#footer{max-width:none;background:rgba(0,0,0,.8);padding:1.25em}
+#footer-text{color:rgba(255,255,255,.8);line-height:1.44}
+#content{margin-bottom:.625em}
+.sect1{padding-bottom:.625em}
+@media screen and (min-width:768px){#content{margin-bottom:1.25em}
+.sect1{padding-bottom:1.25em}}
+.sect1:last-child{padding-bottom:0}
+.sect1+.sect1{border-top:1px solid #e7e7e9}
+#content h1>a.anchor,h2>a.anchor,h3>a.anchor,#toctitle>a.anchor,.sidebarblock>.content>.title>a.anchor,h4>a.anchor,h5>a.anchor,h6>a.anchor{position:absolute;z-index:1001;width:1.5ex;margin-left:-1.5ex;display:block;text-decoration:none!important;visibility:hidden;text-align:center;font-weight:400}
+#content h1>a.anchor::before,h2>a.anchor::before,h3>a.anchor::before,#toctitle>a.anchor::before,.sidebarblock>.content>.title>a.anchor::before,h4>a.anchor::before,h5>a.anchor::before,h6>a.anchor::before{content:"\00A7";font-size:.85em;display:block;padding-top:.1em}
+#content h1:hover>a.anchor,#content h1>a.anchor:hover,h2:hover>a.anchor,h2>a.anchor:hover,h3:hover>a.anchor,#toctitle:hover>a.anchor,.sidebarblock>.content>.title:hover>a.anchor,h3>a.anchor:hover,#toctitle>a.anchor:hover,.sidebarblock>.content>.title>a.anchor:hover,h4:hover>a.anchor,h4>a.anchor:hover,h5:hover>a.anchor,h5>a.anchor:hover,h6:hover>a.anchor,h6>a.anchor:hover{visibility:visible}
+#content h1>a.link,h2>a.link,h3>a.link,#toctitle>a.link,.sidebarblock>.content>.title>a.link,h4>a.link,h5>a.link,h6>a.link{color:#ba3925;text-decoration:none}
+#content h1>a.link:hover,h2>a.link:hover,h3>a.link:hover,#toctitle>a.link:hover,.sidebarblock>.content>.title>a.link:hover,h4>a.link:hover,h5>a.link:hover,h6>a.link:hover{color:#a53221}
+details,.audioblock,.imageblock,.literalblock,.listingblock,.stemblock,.videoblock{margin-bottom:1.25em}
+details>summary:first-of-type{cursor:pointer;display:list-item;outline:none;margin-bottom:.75em}
+.admonitionblock td.content>.title,.audioblock>.title,.exampleblock>.title,.imageblock>.title,.listingblock>.title,.literalblock>.title,.stemblock>.title,.openblock>.title,.paragraph>.title,.quoteblock>.title,table.tableblock>.title,.verseblock>.title,.videoblock>.title,.dlist>.title,.olist>.title,.ulist>.title,.qlist>.title,.hdlist>.title{text-rendering:optimizeLegibility;text-align:left;font-family:"Noto Serif","DejaVu Serif",serif;font-size:1rem;font-style:italic}
+table.tableblock.fit-content>caption.title{white-space:nowrap;width:0}
+.paragraph.lead>p,#preamble>.sectionbody>[class="paragraph"]:first-of-type p{font-size:1.21875em;line-height:1.6;color:rgba(0,0,0,.85)}
+table.tableblock #preamble>.sectionbody>[class="paragraph"]:first-of-type p{font-size:inherit}
+.admonitionblock>table{border-collapse:separate;border:0;background:none;width:100%}
+.admonitionblock>table td.icon{text-align:center;width:80px}
+.admonitionblock>table td.icon img{max-width:none}
+.admonitionblock>table td.icon .title{font-weight:bold;font-family:"Open Sans","DejaVu Sans",sans-serif;text-transform:uppercase}
+.admonitionblock>table td.content{padding-left:1.125em;padding-right:1.25em;border-left:1px solid #dddddf;color:rgba(0,0,0,.6);word-wrap:anywhere}
+.admonitionblock>table td.content>:last-child>:last-child{margin-bottom:0}
+.exampleblock>.content{border-style:solid;border-width:1px;border-color:#e6e6e6;margin-bottom:1.25em;padding:1.25em;background:#fff;-webkit-border-radius:4px;border-radius:4px}
+.exampleblock>.content>:first-child{margin-top:0}
+.exampleblock>.content>:last-child{margin-bottom:0}
+.sidebarblock{border-style:solid;border-width:1px;border-color:#dbdbd6;margin-bottom:1.25em;padding:1.25em;background:#f3f3f2;-webkit-border-radius:4px;border-radius:4px}
+.sidebarblock>:first-child{margin-top:0}
+.sidebarblock>:last-child{margin-bottom:0}
+.sidebarblock>.content>.title{color:#7a2518;margin-top:0;text-align:center}
+.exampleblock>.content>:last-child>:last-child,.exampleblock>.content .olist>ol>li:last-child>:last-child,.exampleblock>.content .ulist>ul>li:last-child>:last-child,.exampleblock>.content .qlist>ol>li:last-child>:last-child,.sidebarblock>.content>:last-child>:last-child,.sidebarblock>.content .olist>ol>li:last-child>:last-child,.sidebarblock>.content .ulist>ul>li:last-child>:last-child,.sidebarblock>.content .qlist>ol>li:last-child>:last-child{margin-bottom:0}
+.literalblock pre,.listingblock>.content>pre{-webkit-border-radius:4px;border-radius:4px;overflow-x:auto;padding:1em;font-size:.8125em}
+@media screen and (min-width:768px){.literalblock pre,.listingblock>.content>pre{font-size:.90625em}}
+@media screen and (min-width:1280px){.literalblock pre,.listingblock>.content>pre{font-size:1em}}
+.literalblock pre,.listingblock>.content>pre:not(.highlight),.listingblock>.content>pre[class="highlight"],.listingblock>.content>pre[class^="highlight "]{background:#f7f7f8}
+.literalblock.output pre{color:#f7f7f8;background:rgba(0,0,0,.9)}
+.listingblock>.content{position:relative}
+.listingblock code[data-lang]::before{display:none;content:attr(data-lang);position:absolute;font-size:.75em;top:.425rem;right:.5rem;line-height:1;text-transform:uppercase;color:inherit;opacity:.5}
+.listingblock:hover code[data-lang]::before{display:block}
+.listingblock.terminal pre .command::before{content:attr(data-prompt);padding-right:.5em;color:inherit;opacity:.5}
+.listingblock.terminal pre .command:not([data-prompt])::before{content:"$"}
+.listingblock pre.highlightjs{padding:0}
+.listingblock pre.highlightjs>code{padding:1em;-webkit-border-radius:4px;border-radius:4px}
+.listingblock pre.prettyprint{border-width:0}
+.prettyprint{background:#f7f7f8}
+pre.prettyprint .linenums{line-height:1.45;margin-left:2em}
+pre.prettyprint li{background:none;list-style-type:inherit;padding-left:0}
+pre.prettyprint li code[data-lang]::before{opacity:1}
+pre.prettyprint li:not(:first-child) code[data-lang]::before{display:none}
+table.linenotable{border-collapse:separate;border:0;margin-bottom:0;background:none}
+table.linenotable td[class]{color:inherit;vertical-align:top;padding:0;line-height:inherit;white-space:normal}
+table.linenotable td.code{padding-left:.75em}
+table.linenotable td.linenos{border-right:1px solid currentColor;opacity:.35;padding-right:.5em}
+pre.pygments .lineno{border-right:1px solid currentColor;opacity:.35;display:inline-block;margin-right:.75em}
+pre.pygments .lineno::before{content:"";margin-right:-.125em}
+.quoteblock{margin:0 1em 1.25em 1.5em;display:table}
+.quoteblock:not(.excerpt)>.title{margin-left:-1.5em;margin-bottom:.75em}
+.quoteblock blockquote,.quoteblock p{color:rgba(0,0,0,.85);font-size:1.15rem;line-height:1.75;word-spacing:.1em;letter-spacing:0;font-style:italic;text-align:justify}
+.quoteblock blockquote{margin:0;padding:0;border:0}
+.quoteblock blockquote::before{content:"\201c";float:left;font-size:2.75em;font-weight:bold;line-height:.6em;margin-left:-.6em;color:#7a2518;text-shadow:0 1px 2px rgba(0,0,0,.1)}
+.quoteblock blockquote>.paragraph:last-child p{margin-bottom:0}
+.quoteblock .attribution{margin-top:.75em;margin-right:.5ex;text-align:right}
+.verseblock{margin:0 1em 1.25em}
+.verseblock pre{font-family:"Open Sans","DejaVu Sans",sans;font-size:1.15rem;color:rgba(0,0,0,.85);font-weight:300;text-rendering:optimizeLegibility}
+.verseblock pre strong{font-weight:400}
+.verseblock .attribution{margin-top:1.25rem;margin-left:.5ex}
+.quoteblock .attribution,.verseblock .attribution{font-size:.9375em;line-height:1.45;font-style:italic}
+.quoteblock .attribution br,.verseblock .attribution br{display:none}
+.quoteblock .attribution cite,.verseblock .attribution cite{display:block;letter-spacing:-.025em;color:rgba(0,0,0,.6)}
+.quoteblock.abstract blockquote::before,.quoteblock.excerpt blockquote::before,.quoteblock .quoteblock blockquote::before{display:none}
+.quoteblock.abstract blockquote,.quoteblock.abstract p,.quoteblock.excerpt blockquote,.quoteblock.excerpt p,.quoteblock .quoteblock blockquote,.quoteblock .quoteblock p{line-height:1.6;word-spacing:0}
+.quoteblock.abstract{margin:0 1em 1.25em;display:block}
+.quoteblock.abstract>.title{margin:0 0 .375em;font-size:1.15em;text-align:center}
+.quoteblock.excerpt>blockquote,.quoteblock .quoteblock{padding:0 0 .25em 1em;border-left:.25em solid #dddddf}
+.quoteblock.excerpt,.quoteblock .quoteblock{margin-left:0}
+.quoteblock.excerpt blockquote,.quoteblock.excerpt p,.quoteblock .quoteblock blockquote,.quoteblock .quoteblock p{color:inherit;font-size:1.0625rem}
+.quoteblock.excerpt .attribution,.quoteblock .quoteblock .attribution{color:inherit;text-align:left;margin-right:0}
+p.tableblock:last-child{margin-bottom:0}
+td.tableblock>.content{margin-bottom:1.25em;word-wrap:anywhere}
+td.tableblock>.content>:last-child{margin-bottom:-1.25em}
+table.tableblock,th.tableblock,td.tableblock{border:0 solid #dedede}
+table.grid-all>*>tr>*{border-width:1px}
+table.grid-cols>*>tr>*{border-width:0 1px}
+table.grid-rows>*>tr>*{border-width:1px 0}
+table.frame-all{border-width:1px}
+table.frame-ends{border-width:1px 0}
+table.frame-sides{border-width:0 1px}
+table.frame-none>colgroup+*>:first-child>*,table.frame-sides>colgroup+*>:first-child>*{border-top-width:0}
+table.frame-none>:last-child>:last-child>*,table.frame-sides>:last-child>:last-child>*{border-bottom-width:0}
+table.frame-none>*>tr>:first-child,table.frame-ends>*>tr>:first-child{border-left-width:0}
+table.frame-none>*>tr>:last-child,table.frame-ends>*>tr>:last-child{border-right-width:0}
+table.stripes-all tr,table.stripes-odd tr:nth-of-type(odd),table.stripes-even tr:nth-of-type(even),table.stripes-hover tr:hover{background:#f8f8f7}
+th.halign-left,td.halign-left{text-align:left}
+th.halign-right,td.halign-right{text-align:right}
+th.halign-center,td.halign-center{text-align:center}
+th.valign-top,td.valign-top{vertical-align:top}
+th.valign-bottom,td.valign-bottom{vertical-align:bottom}
+th.valign-middle,td.valign-middle{vertical-align:middle}
+table thead th,table tfoot th{font-weight:bold}
+tbody tr th{background:#f7f8f7}
+tbody tr th,tbody tr th p,tfoot tr th,tfoot tr th p{color:rgba(0,0,0,.8);font-weight:bold}
+p.tableblock>code:only-child{background:none;padding:0}
+p.tableblock{font-size:1em}
+ol{margin-left:1.75em}
+ul li ol{margin-left:1.5em}
+dl dd{margin-left:1.125em}
+dl dd:last-child,dl dd:last-child>:last-child{margin-bottom:0}
+ol>li p,ul>li p,ul dd,ol dd,.olist .olist,.ulist .ulist,.ulist .olist,.olist .ulist{margin-bottom:.625em}
+ul.checklist,ul.none,ol.none,ul.no-bullet,ol.no-bullet,ol.unnumbered,ul.unstyled,ol.unstyled{list-style-type:none}
+ul.no-bullet,ol.no-bullet,ol.unnumbered{margin-left:.625em}
+ul.unstyled,ol.unstyled{margin-left:0}
+ul.checklist{margin-left:.625em}
+ul.checklist li>p:first-child>.fa-square-o:first-child,ul.checklist li>p:first-child>.fa-check-square-o:first-child{width:1.25em;font-size:.8em;position:relative;bottom:.125em}
+ul.checklist li>p:first-child>input[type="checkbox"]:first-child{margin-right:.25em}
+ul.inline{display:-ms-flexbox;display:-webkit-box;display:flex;-ms-flex-flow:row wrap;-webkit-flex-flow:row wrap;flex-flow:row wrap;list-style:none;margin:0 0 .625em -1.25em}
+ul.inline>li{margin-left:1.25em}
+.unstyled dl dt{font-weight:400;font-style:normal}
+ol.arabic{list-style-type:decimal}
+ol.decimal{list-style-type:decimal-leading-zero}
+ol.loweralpha{list-style-type:lower-alpha}
+ol.upperalpha{list-style-type:upper-alpha}
+ol.lowerroman{list-style-type:lower-roman}
+ol.upperroman{list-style-type:upper-roman}
+ol.lowergreek{list-style-type:lower-greek}
+.hdlist>table,.colist>table{border:0;background:none}
+.hdlist>table>tbody>tr,.colist>table>tbody>tr{background:none}
+td.hdlist1,td.hdlist2{vertical-align:top;padding:0 .625em}
+td.hdlist1{font-weight:bold;padding-bottom:1.25em}
+td.hdlist2{word-wrap:anywhere}
+.literalblock+.colist,.listingblock+.colist{margin-top:-.5em}
+.colist td:not([class]):first-child{padding:.4em .75em 0;line-height:1;vertical-align:top}
+.colist td:not([class]):first-child img{max-width:none}
+.colist td:not([class]):last-child{padding:.25em 0}
+.thumb,.th{line-height:0;display:inline-block;border:solid 4px #fff;-webkit-box-shadow:0 0 0 1px #ddd;box-shadow:0 0 0 1px #ddd}
+.imageblock.left{margin:.25em .625em 1.25em 0}
+.imageblock.right{margin:.25em 0 1.25em .625em}
+.imageblock>.title{margin-bottom:0}
+.imageblock.thumb,.imageblock.th{border-width:6px}
+.imageblock.thumb>.title,.imageblock.th>.title{padding:0 .125em}
+.image.left,.image.right{margin-top:.25em;margin-bottom:.25em;display:inline-block;line-height:0}
+.image.left{margin-right:.625em}
+.image.right{margin-left:.625em}
+a.image{text-decoration:none;display:inline-block}
+a.image object{pointer-events:none}
+sup.footnote,sup.footnoteref{font-size:.875em;position:static;vertical-align:super}
+sup.footnote a,sup.footnoteref a{text-decoration:none}
+sup.footnote a:active,sup.footnoteref a:active{text-decoration:underline}
+#footnotes{padding-top:.75em;padding-bottom:.75em;margin-bottom:.625em}
+#footnotes hr{width:20%;min-width:6.25em;margin:-.25em 0 .75em;border-width:1px 0 0}
+#footnotes .footnote{padding:0 .375em 0 .225em;line-height:1.3334;font-size:.875em;margin-left:1.2em;margin-bottom:.2em}
+#footnotes .footnote a:first-of-type{font-weight:bold;text-decoration:none;margin-left:-1.05em}
+#footnotes .footnote:last-of-type{margin-bottom:0}
+#content #footnotes{margin-top:-.625em;margin-bottom:0;padding:.75em 0}
+.gist .file-data>table{border:0;background:#fff;width:100%;margin-bottom:0}
+.gist .file-data>table td.line-data{width:99%}
+div.unbreakable{page-break-inside:avoid}
+.big{font-size:larger}
+.small{font-size:smaller}
+.underline{text-decoration:underline}
+.overline{text-decoration:overline}
+.line-through{text-decoration:line-through}
+.aqua{color:#00bfbf}
+.aqua-background{background:#00fafa}
+.black{color:#000}
+.black-background{background:#000}
+.blue{color:#0000bf}
+.blue-background{background:#0000fa}
+.fuchsia{color:#bf00bf}
+.fuchsia-background{background:#fa00fa}
+.gray{color:#606060}
+.gray-background{background:#7d7d7d}
+.green{color:#006000}
+.green-background{background:#007d00}
+.lime{color:#00bf00}
+.lime-background{background:#00fa00}
+.maroon{color:#600000}
+.maroon-background{background:#7d0000}
+.navy{color:#000060}
+.navy-background{background:#00007d}
+.olive{color:#606000}
+.olive-background{background:#7d7d00}
+.purple{color:#600060}
+.purple-background{background:#7d007d}
+.red{color:#bf0000}
+.red-background{background:#fa0000}
+.silver{color:#909090}
+.silver-background{background:#bcbcbc}
+.teal{color:#006060}
+.teal-background{background:#007d7d}
+.white{color:#bfbfbf}
+.white-background{background:#fafafa}
+.yellow{color:#bfbf00}
+.yellow-background{background:#fafa00}
+span.icon>.fa{cursor:default}
+a span.icon>.fa{cursor:inherit}
+.admonitionblock td.icon [class^="fa icon-"]{font-size:2.5em;text-shadow:1px 1px 2px rgba(0,0,0,.5);cursor:default}
+.admonitionblock td.icon .icon-note::before{content:"\f05a";color:#19407c}
+.admonitionblock td.icon .icon-tip::before{content:"\f0eb";text-shadow:1px 1px 2px rgba(155,155,0,.8);color:#111}
+.admonitionblock td.icon .icon-warning::before{content:"\f071";color:#bf6900}
+.admonitionblock td.icon .icon-caution::before{content:"\f06d";color:#bf3400}
+.admonitionblock td.icon .icon-important::before{content:"\f06a";color:#bf0000}
+.conum[data-value]{display:inline-block;color:#fff!important;background:rgba(0,0,0,.8);-webkit-border-radius:50%;border-radius:50%;text-align:center;font-size:.75em;width:1.67em;height:1.67em;line-height:1.67em;font-family:"Open Sans","DejaVu Sans",sans-serif;font-style:normal;font-weight:bold}
+.conum[data-value] *{color:#fff!important}
+.conum[data-value]+b{display:none}
+.conum[data-value]::after{content:attr(data-value)}
+pre .conum[data-value]{position:relative;top:-.125em}
+b.conum *{color:inherit!important}
+.conum:not([data-value]):empty{display:none}
+dt,th.tableblock,td.content,div.footnote{text-rendering:optimizeLegibility}
+h1,h2,p,td.content,span.alt{letter-spacing:-.01em}
+p strong,td.content strong,div.footnote strong{letter-spacing:-.005em}
+p,blockquote,dt,td.content,span.alt{font-size:1.0625rem}
+p{margin-bottom:1.25rem}
+.sidebarblock p,.sidebarblock dt,.sidebarblock td.content,p.tableblock{font-size:1em}
+.exampleblock>.content{background:#fffef7;border-color:#e0e0dc;-webkit-box-shadow:0 1px 4px #e0e0dc;box-shadow:0 1px 4px #e0e0dc}
+.print-only{display:none!important}
+@page{margin:1.25cm .75cm}
+@media print{*{-webkit-box-shadow:none!important;box-shadow:none!important;text-shadow:none!important}
+html{font-size:80%}
+a{color:inherit!important;text-decoration:underline!important}
+a.bare,a[href^="#"],a[href^="mailto:"]{text-decoration:none!important}
+a[href^="http:"]:not(.bare)::after,a[href^="https:"]:not(.bare)::after{content:"(" attr(href) ")";display:inline-block;font-size:.875em;padding-left:.25em}
+abbr[title]::after{content:" (" attr(title) ")"}
+pre,blockquote,tr,img,object,svg{page-break-inside:avoid}
+thead{display:table-header-group}
+svg{max-width:100%}
+p,blockquote,dt,td.content{font-size:1em;orphans:3;widows:3}
+h2,h3,#toctitle,.sidebarblock>.content>.title{page-break-after:avoid}
+#header,#content,#footnotes,#footer{max-width:none}
+#toc,.sidebarblock,.exampleblock>.content{background:none!important}
+#toc{border-bottom:1px solid #dddddf!important;padding-bottom:0!important}
+body.book #header{text-align:center}
+body.book #header>h1:first-child{border:0!important;margin:2.5em 0 1em}
+body.book #header .details{border:0!important;display:block;padding:0!important}
+body.book #header .details span:first-child{margin-left:0!important}
+body.book #header .details br{display:block}
+body.book #header .details br+span::before{content:none!important}
+body.book #toc{border:0!important;text-align:left!important;padding:0!important;margin:0!important}
+body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-break-before:always}
+.listingblock code[data-lang]::before{display:block}
+#footer{padding:0 .9375em}
+.hide-on-print{display:none!important}
+.print-only{display:block!important}
+.hide-for-print{display:none!important}
+.show-for-print{display:inherit!important}}
+@media print,amzn-kf8{#header>h1:first-child{margin-top:1.25rem}
+.sect1{padding:0!important}
+.sect1+.sect1{border:0}
+#footer{background:none}
+#footer-text{color:rgba(0,0,0,.6);font-size:.9em}}
+@media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
+</style>
+<style>.toc-current{font-weight: bold;} .toc-root{font-family: "Open Sans","DejaVu Sans",sans-serif;
+                       font-size: 0.9em;} #content{display: flex; flex-direction: column; flex: 1 1 auto;}
+             .nav-footer{text-align: center; margin-top: auto;}
+             .nav-footer > p > a {white-space: nowrap;}</style>
+</head>
+<body id="_search_apis" class="book toc2 toc-left">
+<div id="header">
+<h1>Java REST Client</h1>
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<p><span class="toc-root"><a href="index.html">Java REST Client</a></span></p><ul class="sectlevel1">
+<li><a href="java-rest-overview.html">Overview</a>
+</li>
+<li><a href="java-rest-low.html">Java Low Level REST Client</a>
+</li>
+<li><a href="java-rest-high.html">Java High Level REST Client</a>
+<ul class="sectlevel1">
+<li><a href="java-rest-high-getting-started.html">Getting started</a>
+</li>
+<li><a href="java-rest-high-supported-apis.html">Document APIs</a>
+</li>
+<li><a href="_search_apis.html"><span class="toc-current">Search APIs</span></a>
+<ul class="sectlevel2">
+<li><a href="_search_apis.html#java-rest-high-search">Search API</a>
+</li>
+<li><a href="_search_apis.html#java-rest-high-search-scroll">Search Scroll API</a>
+</li>
+<li><a href="_search_apis.html#java-rest-high-clear-scroll">Clear Scroll API</a>
+</li>
+<li><a href="_search_apis.html#java-rest-high-multi-search">Multi-Search API</a>
+</li>
+<li><a href="_search_apis.html#java-rest-high-search-template">Search Template API</a>
+</li>
+<li><a href="_search_apis.html#java-rest-high-multi-search-template">Multi-Search-Template API</a>
+</li>
+<li><a href="_search_apis.html#java-rest-high-field-caps">Field Capabilities API</a>
+</li>
+<li><a href="_search_apis.html#java-rest-high-rank-eval">Ranking Evaluation API</a>
+</li>
+<li><a href="_search_apis.html#java-rest-high-explain">Explain API</a>
+</li>
+<li><a href="_search_apis.html#java-rest-high-count">Count API</a>
+</li>
+</ul>
+</li>
+<li><a href="_miscellaneous_apis.html">Miscellaneous APIs</a>
+</li>
+<li><a href="_index_apis.html">Index APIs</a>
+</li>
+<li><a href="_cluster_apis.html">Cluster APIs</a>
+</li>
+<li><a href="_ingest_apis.html">Ingest APIs</a>
+</li>
+<li><a href="_snapshot_apis.html">Snapshot APIs</a>
+</li>
+<li><a href="_tasks_apis.html">Tasks APIs</a>
+</li>
+<li><a href="_script_apis.html">Script APIs</a>
+</li>
+<li><a href="java-rest-high-java-builders.html">Using Java Builders</a>
+</li>
+<li><a href="java-rest-high-level-migration.html">Migration Guide</a>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_search_apis">Search APIs</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Java High Level REST Client supports the following Search APIs:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="_search_apis.html#java-rest-high-search">Search API</a></p>
+</li>
+<li>
+<p><a href="_search_apis.html#java-rest-high-search-scroll">Search Scroll API</a></p>
+</li>
+<li>
+<p><a href="_search_apis.html#java-rest-high-clear-scroll">Clear Scroll API</a></p>
+</li>
+<li>
+<p><a href="_search_apis.html#java-rest-high-search-template">Search Template API</a></p>
+</li>
+<li>
+<p><a href="_search_apis.html#java-rest-high-multi-search-template">Multi-Search-Template API</a></p>
+</li>
+<li>
+<p><a href="_search_apis.html#java-rest-high-multi-search">Multi-Search API</a></p>
+</li>
+<li>
+<p><a href="_search_apis.html#java-rest-high-field-caps">Field Capabilities API</a></p>
+</li>
+<li>
+<p><a href="_search_apis.html#java-rest-high-rank-eval">Ranking Evaluation API</a></p>
+</li>
+<li>
+<p><a href="_search_apis.html#java-rest-high-explain">Explain API</a></p>
+</li>
+<li>
+<p><a href="_search_apis.html#java-rest-high-count">Count API</a></p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="java-rest-high-search">Search API</h3>
+<div class="sect3">
+<h4 id="java-rest-high-search-request">Search Request</h4>
+<div class="paragraph">
+<p>The <code>SearchRequest</code> is used for any operation that has to do with searching
+documents, aggregations, suggestions and also offers ways of requesting
+highlighting on the resulting documents.</p>
+</div>
+<div class="paragraph">
+<p>In its most basic form, we can add a query to the request:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">            SearchRequest searchRequest = new SearchRequest(); // <b class="conum">(1)</b>
+            SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder(); // <b class="conum">(2)</b>
+            searchSourceBuilder.query(QueryBuilders.matchAllQuery()); // <b class="conum">(3)</b>
+            searchRequest.source(searchSourceBuilder); // <b class="conum">(4)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>Creates the <code>SearchRequest</code>. Without arguments this runs against all indices.</p>
+</li>
+<li>
+<p>Most search parameters are added to the <code>SearchSourceBuilder</code>. It offers setters for everything that goes into the search request body.</p>
+</li>
+<li>
+<p>Add a <code>match_all</code> query to the <code>SearchSourceBuilder</code>.</p>
+</li>
+<li>
+<p>Add the <code>SearchSourceBuilder</code> to the <code>SearchRequest</code>.</p>
+</li>
+</ol>
+</div>
+<div class="sect4">
+<h5 id="java-rest-high-search-request-optional">Optional arguments</h5>
+<div class="paragraph">
+<p>Let&#8217;s first look at some of the optional arguments of a <code>SearchRequest</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">            SearchRequest searchRequest = new SearchRequest("posts"); // <b class="conum">(1)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>Restricts the request to an index</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>There are a couple of other interesting optional parameters:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">            searchRequest.routing("routing"); // <b class="conum">(1)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>Set a routing parameter</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">            searchRequest.indicesOptions(IndicesOptions.lenientExpandOpen()); // <b class="conum">(1)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>Setting <code>IndicesOptions</code> controls how unavailable indices are resolved and
+how wildcard expressions are expanded</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">            searchRequest.preference("_local"); // <b class="conum">(1)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>Use the preference parameter e.g. to execute the search to prefer local
+shards. The default is to randomize across shards.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_using_the_searchsourcebuilder">Using the SearchSourceBuilder</h5>
+<div class="paragraph">
+<p>Most options controlling the search behavior can be set on the
+<code>SearchSourceBuilder</code>,
+which contains more or less the equivalent of the options in the search request
+body of the Rest API.</p>
+</div>
+<div class="paragraph">
+<p>Here are a few examples of some common options:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">            SearchSourceBuilder sourceBuilder = new SearchSourceBuilder(); // <b class="conum">(1)</b>
+            sourceBuilder.query(QueryBuilders.termQuery("user", "kimchy")); // <b class="conum">(2)</b>
+            sourceBuilder.from(0); // <b class="conum">(3)</b>
+            sourceBuilder.size(5); // <b class="conum">(4)</b>
+            sourceBuilder.timeout(new TimeValue(60, TimeUnit.SECONDS)); // <b class="conum">(5)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>Create a <code>SearchSourceBuilder</code> with default options.</p>
+</li>
+<li>
+<p>Set the query. Can be any type of <code>QueryBuilder</code></p>
+</li>
+<li>
+<p>Set the <code>from</code> option that determines the result index to start searching
+from. Defaults to 0.</p>
+</li>
+<li>
+<p>Set the <code>size</code> option that determines the number of search hits to return.
+Defaults to 10.</p>
+</li>
+<li>
+<p>Set an optional timeout that controls how long the search is allowed to
+take.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>After this, the <code>SearchSourceBuilder</code> only needs to be added to the
+<code>SearchRequest</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">            SearchRequest searchRequest = new SearchRequest();
+            searchRequest.indices("posts");
+            searchRequest.source(sourceBuilder);</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="java-rest-high-search-request-building-queries">Building queries</h5>
+<div class="paragraph">
+<p>Search queries are created using <code>QueryBuilder</code> objects. A <code>QueryBuilder</code> exists
+ for every search query type supported by OpenSearch&#8217;s <a href="https://www.opensearch.org/guide/en/opensearch/reference/{branch}/query-dsl.html">Query DSL</a>.</p>
+</div>
+<div class="paragraph">
+<p>A <code>QueryBuilder</code> can be created using its constructor:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">            MatchQueryBuilder matchQueryBuilder = new MatchQueryBuilder("user", "kimchy"); // <b class="conum">(1)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>Create a full text <a href="https://www.opensearch.org/guide/en/opensearch/reference/{branch}/query-dsl-match-query.html">Match Query</a> that matches
+the text "bilbo" over the field "user".</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Once created, the <code>QueryBuilder</code> object provides methods to configure the options
+of the search query it creates:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">            matchQueryBuilder.fuzziness(Fuzziness.AUTO); // <b class="conum">(1)</b>
+            matchQueryBuilder.prefixLength(3); // <b class="conum">(2)</b>
+            matchQueryBuilder.maxExpansions(10); // <b class="conum">(3)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>Enable fuzzy matching on the match query</p>
+</li>
+<li>
+<p>Set the prefix length option on the match query</p>
+</li>
+<li>
+<p>Set the max expansion options to control the fuzzy
+process of the query</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><code>QueryBuilder</code> objects can also be created using the <code>QueryBuilders</code> utility class.
+This class provides helper methods that can be used to create <code>QueryBuilder</code> objects
+ using a fluent programming style:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">            QueryBuilder matchQueryBuilder = QueryBuilders.matchQuery("user", "kimchy")
+                                                            .fuzziness(Fuzziness.AUTO)
+                                                            .prefixLength(3)
+                                                            .maxExpansions(10);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Whatever the method used to create it, the <code>QueryBuilder</code> object must be added
+to the <code>SearchSourceBuilder</code> as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">            searchSourceBuilder.query(matchQueryBuilder);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <a href="java-rest-high-java-builders.html#java-rest-high-query-builders">Building Queries</a> page gives a list of all available search queries with
+their corresponding <code>QueryBuilder</code> objects and <code>QueryBuilders</code> helper methods.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_specifying_sorting">Specifying Sorting</h5>
+<div class="paragraph">
+<p>The <code>SearchSourceBuilder</code> allows to add one or more <code>SortBuilder</code> instances. There are four special implementations (Field-, Score-, GeoDistance- and ScriptSortBuilder).</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">            sourceBuilder.sort(new ScoreSortBuilder().order(SortOrder.DESC)); // <b class="conum">(1)</b>
+            sourceBuilder.sort(new FieldSortBuilder("id").order(SortOrder.ASC));  // <b class="conum">(2)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>Sort descending by <code>_score</code> (the default)</p>
+</li>
+<li>
+<p>Also sort ascending by <code>_id</code> field</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_source_filtering">Source filtering</h5>
+<div class="paragraph">
+<p>By default, search requests return the contents of the document <code>_source</code> but like in the Rest API you can overwrite this behavior. For example, you can turn off <code>_source</code> retrieval completely:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">            sourceBuilder.fetchSource(false);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The method also accepts an array of one or more wildcard patterns to control which fields get included or excluded in a more fine grained way:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">            String[] includeFields = new String[] {"title", "innerObject.*"};
+            String[] excludeFields = new String[] {"user"};
+            sourceBuilder.fetchSource(includeFields, excludeFields);</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="java-rest-high-search-request-highlighting">Requesting Highlighting</h5>
+<div class="paragraph">
+<p>Highlighting search results can be achieved by setting a <code>HighlightBuilder</code> on the
+<code>SearchSourceBuilder</code>. Different highlighting behaviour can be defined for each
+fields by adding one or more <code>HighlightBuilder.Field</code> instances to a <code>HighlightBuilder</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">            SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
+            HighlightBuilder highlightBuilder = new HighlightBuilder(); // <b class="conum">(1)</b>
+            HighlightBuilder.Field highlightTitle =
+                    new HighlightBuilder.Field("title"); // <b class="conum">(2)</b>
+            highlightTitle.highlighterType("unified");  // <b class="conum">(3)</b>
+            highlightBuilder.field(highlightTitle);  // <b class="conum">(4)</b>
+            HighlightBuilder.Field highlightUser = new HighlightBuilder.Field("user");
+            highlightBuilder.field(highlightUser);
+            searchSourceBuilder.highlighter(highlightBuilder);</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>Creates a new <code>HighlightBuilder</code></p>
+</li>
+<li>
+<p>Create a field highlighter for the <code>title</code> field</p>
+</li>
+<li>
+<p>Set the field highlighter type</p>
+</li>
+<li>
+<p>Add the field highlighter to the highlight builder</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>There are many options which are explained in detail in the Rest API documentation. The Rest
+API parameters (e.g. <code>pre_tags</code>) are usually changed by
+setters with a similar name (e.g. <code>#preTags(String &#8230;&#8203;)</code>).</p>
+</div>
+<div class="paragraph">
+<p>Highlighted text fragments can <a href="_search_apis.html#java-rest-high-search-response-highlighting">later be retrieved</a> from the <code>SearchResponse</code>.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="java-rest-high-search-request-building-aggs">Requesting Aggregations</h5>
+<div class="paragraph">
+<p>Aggregations can be added to the search by first creating the appropriate
+<code>AggregationBuilder</code> and then setting it on the <code>SearchSourceBuilder</code>. In the
+following example we create a <code>terms</code> aggregation on company names with a
+sub-aggregation on the average age of employees in the company:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">            SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
+            TermsAggregationBuilder aggregation = AggregationBuilders.terms("by_company")
+                    .field("company.keyword");
+            aggregation.subAggregation(AggregationBuilders.avg("average_age")
+                    .field("age"));
+            searchSourceBuilder.aggregation(aggregation);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <a href="java-rest-high-java-builders.html#java-rest-high-aggregation-builders">Building Aggregations</a> page gives a list of all available aggregations with
+their corresponding <code>AggregationBuilder</code> objects and <code>AggregationBuilders</code> helper methods.</p>
+</div>
+<div class="paragraph">
+<p>We will later see how to <a href="_search_apis.html#java-rest-high-search-response-aggs">access aggregations</a> in the <code>SearchResponse</code>.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_requesting_suggestions">Requesting Suggestions</h5>
+<div class="paragraph">
+<p>To add Suggestions to the search request, use one of the <code>SuggestionBuilder</code> implementations
+that are easily accessible from the <code>SuggestBuilders</code> factory class. Suggestion builders
+need to be added to the top level <code>SuggestBuilder</code>, which itself can be set on the  <code>SearchSourceBuilder</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">            SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
+            SuggestionBuilder termSuggestionBuilder =
+                SuggestBuilders.termSuggestion("user").text("kmichy"); // <b class="conum">(1)</b>
+            SuggestBuilder suggestBuilder = new SuggestBuilder();
+            suggestBuilder.addSuggestion("suggest_user", termSuggestionBuilder); // <b class="conum">(2)</b>
+            searchSourceBuilder.suggest(suggestBuilder);</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>Creates a new <code>TermSuggestionBuilder</code> for the <code>user</code> field and
+the text <code>kmichy</code></p>
+</li>
+<li>
+<p>Adds the suggestion builder and names it <code>suggest_user</code></p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>We will later see how to <a href="_search_apis.html#java-rest-high-search-response-suggestions">retrieve suggestions</a> from the
+<code>SearchResponse</code>.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_profiling_queries_and_aggregations">Profiling Queries and Aggregations</h5>
+<div class="paragraph">
+<p>The <a href="https://www.opensearch.org/guide/en/opensearch/reference/{branch}/search-profile.html">Profile API</a> can be used to profile the execution of queries and aggregations for
+a specific search request. in order to use it, the profile flag must be set to true on the <code>SearchSourceBuilder</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">            SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
+            searchSourceBuilder.profile(true);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Once the <code>SearchRequest</code> is executed the corresponding <code>SearchResponse</code> will
+<a href="_search_apis.html#java-rest-high-search-response-profile">contain the profiling results</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="java-rest-high-search-sync">Synchronous execution</h4>
+<div class="paragraph">
+<p>When executing a <code>SearchRequest</code> in the following manner, the client waits
+for the <code>SearchResponse</code> to be returned before continuing with code execution:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">            SearchResponse searchResponse = client.search(searchRequest, RequestOptions.DEFAULT);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Synchronous calls may throw an <code>IOException</code> in case of either failing to
+parse the REST response in the high-level REST client, the request times out
+or similar cases where there is no response coming back from the server.</p>
+</div>
+<div class="paragraph">
+<p>In cases where the server returns a <code>4xx</code> or <code>5xx</code> error code, the high-level
+client tries to parse the response body error details instead and then throws
+a generic <code>OpenSearchException</code> and adds the original <code>ResponseException</code> as a
+suppressed exception to it.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="java-rest-high-search-async">Asynchronous execution</h4>
+<div class="paragraph">
+<p>Executing a <code>SearchRequest</code> can also be done in an asynchronous fashion so that
+the client can return directly. Users need to specify how the response or
+potential failures will be handled by passing the request and a listener to the
+asynchronous search method:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">            client.searchAsync(searchRequest, RequestOptions.DEFAULT, listener); // <b class="conum">(1)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>The <code>SearchRequest</code> to execute and the <code>ActionListener</code> to use when
+the execution completes</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The asynchronous method does not block and returns immediately. Once it is
+completed the <code>ActionListener</code> is called back using the <code>onResponse</code> method
+if the execution successfully completed or using the <code>onFailure</code> method if
+it failed. Failure scenarios and expected exceptions are the same as in the
+synchronous execution case.</p>
+</div>
+<div class="paragraph">
+<p>A typical listener for <code>search</code> looks like:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">            ActionListener&lt;SearchResponse&gt; listener = new ActionListener&lt;SearchResponse&gt;() {
+                @Override
+                public void onResponse(SearchResponse searchResponse) {
+                    // <b class="conum">(1)</b>
+                }
+
+                @Override
+                public void onFailure(Exception e) {
+                    // <b class="conum">(2)</b>
+                }
+            };</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>Called when the execution is successfully completed.</p>
+</li>
+<li>
+<p>Called when the whole <code>SearchRequest</code> fails.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="java-rest-high-search-response">SearchResponse</h4>
+<div class="paragraph">
+<p>The <code>SearchResponse</code> that is returned by executing the search provides details
+about the search execution itself as well as access to the documents returned.
+First, there is useful information about the request execution itself, like the
+HTTP status code, execution time or whether the request terminated early or timed
+out:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">            RestStatus status = searchResponse.status();
+            TimeValue took = searchResponse.getTook();
+            Boolean terminatedEarly = searchResponse.isTerminatedEarly();
+            boolean timedOut = searchResponse.isTimedOut();</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Second, the response also provides information about the execution on the
+shard level by offering statistics about the total number of shards that were
+affected by the search, and the successful vs. unsuccessful shards. Possible
+failures can also be handled by iterating over an array off
+<code>ShardSearchFailures</code> like in the following example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">            int totalShards = searchResponse.getTotalShards();
+            int successfulShards = searchResponse.getSuccessfulShards();
+            int failedShards = searchResponse.getFailedShards();
+            for (ShardSearchFailure failure : searchResponse.getShardFailures()) {
+                // failures should be handled here
+            }</code></pre>
+</div>
+</div>
+<div class="sect4">
+<h5 id="java-rest-high-search-response-search-hits">Retrieving SearchHits</h5>
+<div class="paragraph">
+<p>To get access to the returned documents, we need to first get the <code>SearchHits</code>
+contained in the response:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">            SearchHits hits = searchResponse.getHits();</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>SearchHits</code> provides global information about all hits, like total number
+of hits or the maximum score:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">            TotalHits totalHits = hits.getTotalHits();
+            // the total number of hits, must be interpreted in the context of totalHits.relation
+            long numHits = totalHits.value;
+            // whether the number of hits is accurate (EQUAL_TO) or a lower bound of the total (GREATER_THAN_OR_EQUAL_TO)
+            TotalHits.Relation relation = totalHits.relation;
+            float maxScore = hits.getMaxScore();</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Nested inside the <code>SearchHits</code> are the individual search results that can
+be iterated over:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">            SearchHit[] searchHits = hits.getHits();
+            for (SearchHit hit : searchHits) {
+                // do something with the SearchHit
+            }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>SearchHit</code> provides access to basic information like index, document ID
+and score of each search hit:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">                String index = hit.getIndex();
+                String id = hit.getId();
+                float score = hit.getScore();</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Furthermore, it lets you get back the document source, either as a simple
+JSON-String or as a map of key/value pairs. In this map, regular fields
+are keyed by the field name and contain the field value. Multi-valued fields are
+returned as lists of objects, nested objects as another key/value map. These
+cases need to be cast accordingly:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">                String sourceAsString = hit.getSourceAsString();
+                Map&lt;String, Object&gt; sourceAsMap = hit.getSourceAsMap();
+                String documentTitle = (String) sourceAsMap.get("title");
+                List&lt;Object&gt; users = (List&lt;Object&gt;) sourceAsMap.get("user");
+                Map&lt;String, Object&gt; innerObject =
+                        (Map&lt;String, Object&gt;) sourceAsMap.get("innerObject");</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="java-rest-high-search-response-highlighting">Retrieving Highlighting</h5>
+<div class="paragraph">
+<p>If <a href="_search_apis.html#java-rest-high-search-request-highlighting">requested</a>, highlighted text fragments can be retrieved from each <code>SearchHit</code> in the result. The hit object offers
+access to a map of field names to <code>HighlightField</code> instances, each of which contains one
+or many highlighted text fragments:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">                SearchHits hits = searchResponse.getHits();
+                for (SearchHit hit : hits.getHits()) {
+                    Map&lt;String, HighlightField&gt; highlightFields = hit.getHighlightFields();
+                    HighlightField highlight = highlightFields.get("title"); // <b class="conum">(1)</b>
+                    Text[] fragments = highlight.fragments();  // <b class="conum">(2)</b>
+                    String fragmentString = fragments[0].string();
+                }</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>Get the highlighting for the <code>title</code> field</p>
+</li>
+<li>
+<p>Get one or many fragments containing the highlighted field content</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect4">
+<h5 id="java-rest-high-search-response-aggs">Retrieving Aggregations</h5>
+<div class="paragraph">
+<p>Aggregations can be retrieved from the <code>SearchResponse</code> by first getting the
+root of the aggregation tree, the <code>Aggregations</code> object, and then getting the
+aggregation by name.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">                Aggregations aggregations = searchResponse.getAggregations();
+                Terms byCompanyAggregation = aggregations.get("by_company"); // <b class="conum">(1)</b>
+                Bucket elasticBucket = byCompanyAggregation.getBucketByKey("Elastic"); // <b class="conum">(2)</b>
+                Avg averageAge = elasticBucket.getAggregations().get("average_age"); // <b class="conum">(3)</b>
+                double avg = averageAge.getValue();</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>Get the <code>by_company</code> terms aggregation</p>
+</li>
+<li>
+<p>Get the buckets that is keyed with <code>OpenSearch</code></p>
+</li>
+<li>
+<p>Get the <code>average_age</code> sub-aggregation from that bucket</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Note that if you access aggregations by name, you need to specify the
+aggregation interface according to the type of aggregation you requested,
+otherwise a <code>ClassCastException</code> will be thrown:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">                    Range range = aggregations.get("by_company"); // <b class="conum">(1)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>This will throw an exception because "by_company" is a <code>terms</code> aggregation
+but we try to retrieve it as a <code>range</code> aggregation</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>It is also possible to access all aggregations as a map that is keyed by the
+aggregation name. In this case, the cast to the proper aggregation interface
+needs to happen explicitly:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">                Map&lt;String, Aggregation&gt; aggregationMap = aggregations.getAsMap();
+                Terms companyAggregation = (Terms) aggregationMap.get("by_company");</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>There are also getters that return all top level aggregations as a list:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">                List&lt;Aggregation&gt; aggregationList = aggregations.asList();</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>And last but not least you can iterate over all aggregations and then e.g.
+decide how to further process them based on their type:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">                for (Aggregation agg : aggregations) {
+                    String type = agg.getType();
+                    if (type.equals(TermsAggregationBuilder.NAME)) {
+                        Bucket elasticBucket = ((Terms) agg).getBucketByKey("Elastic");
+                        long numberOfDocs = elasticBucket.getDocCount();
+                    }
+                }</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="java-rest-high-search-response-suggestions">Retrieving Suggestions</h5>
+<div class="paragraph">
+<p>To get back the suggestions from a <code>SearchResponse</code>, use the <code>Suggest</code> object as an entry point and then retrieve the nested suggestion objects:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">                Suggest suggest = searchResponse.getSuggest(); // <b class="conum">(1)</b>
+                TermSuggestion termSuggestion = suggest.getSuggestion("suggest_user"); // <b class="conum">(2)</b>
+                for (TermSuggestion.Entry entry : termSuggestion.getEntries()) { // <b class="conum">(3)</b>
+                    for (TermSuggestion.Entry.Option option : entry) { // <b class="conum">(4)</b>
+                        String suggestText = option.getText().string();
+                    }
+                }</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>Use the <code>Suggest</code> class to access suggestions</p>
+</li>
+<li>
+<p>Suggestions can be retrieved by name. You need to assign them to the correct
+type of Suggestion class (here <code>TermSuggestion</code>), otherwise a <code>ClassCastException</code> is thrown</p>
+</li>
+<li>
+<p>Iterate over the suggestion entries</p>
+</li>
+<li>
+<p>Iterate over the options in one entry</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect4">
+<h5 id="java-rest-high-search-response-profile">Retrieving Profiling Results</h5>
+<div class="paragraph">
+<p>Profiling results are retrieved from a <code>SearchResponse</code> using the <code>getProfileResults()</code> method. This
+ method returns a <code>Map</code> containing a <code>ProfileShardResult</code> object for every shard involved in the
+ <code>SearchRequest</code> execution. <code>ProfileShardResult</code> are stored in the <code>Map</code> using a key that uniquely
+ identifies the shard the profile result corresponds to.</p>
+</div>
+<div class="paragraph">
+<p>Here is a sample code that shows how to iterate over all the profiling results of every shard:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">            Map&lt;String, ProfileShardResult&gt; profilingResults =
+                    searchResponse.getProfileResults(); // <b class="conum">(1)</b>
+            for (Map.Entry&lt;String, ProfileShardResult&gt; profilingResult : profilingResults.entrySet()) { // <b class="conum">(2)</b>
+                String key = profilingResult.getKey(); // <b class="conum">(3)</b>
+                ProfileShardResult profileShardResult = profilingResult.getValue(); // <b class="conum">(4)</b>
+            }</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>Retrieve the <code>Map</code> of <code>ProfileShardResult</code> from the <code>SearchResponse</code></p>
+</li>
+<li>
+<p>Profiling results can be retrieved by shard&#8217;s key if the key is known, otherwise it might be simpler
+to iterate over all the profiling results</p>
+</li>
+<li>
+<p>Retrieve the key that identifies which shard the <code>ProfileShardResult</code> belongs to</p>
+</li>
+<li>
+<p>Retrieve the <code>ProfileShardResult</code> for the given shard</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The <code>ProfileShardResult</code> object itself contains one or more query profile results, one for each query
+executed against the underlying Lucene index:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">            List&lt;QueryProfileShardResult&gt; queryProfileShardResults =
+                    profileShardResult.getQueryProfileResults(); // <b class="conum">(1)</b>
+            for (QueryProfileShardResult queryProfileResult : queryProfileShardResults) { // <b class="conum">(2)</b>
+
+            }</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>Retrieve the list of <code>QueryProfileShardResult</code></p>
+</li>
+<li>
+<p>Iterate over each <code>QueryProfileShardResult</code></p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Each <code>QueryProfileShardResult</code> gives access to the detailed query tree execution, returned as a list of
+<code>ProfileResult</code> objects:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">                for (ProfileResult profileResult : queryProfileResult.getQueryResults()) { // <b class="conum">(1)</b>
+                    String queryName = profileResult.getQueryName(); // <b class="conum">(2)</b>
+                    long queryTimeInMillis = profileResult.getTime(); // <b class="conum">(3)</b>
+                    List&lt;ProfileResult&gt; profiledChildren = profileResult.getProfiledChildren(); // <b class="conum">(4)</b>
+                }</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>Iterate over the profile results</p>
+</li>
+<li>
+<p>Retrieve the name of the Lucene query</p>
+</li>
+<li>
+<p>Retrieve the time in millis spent executing the Lucene query</p>
+</li>
+<li>
+<p>Retrieve the profile results for the sub-queries (if any)</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The Rest API documentation contains more information about <a href="https://www.opensearch.org/guide/en/opensearch/reference/{branch}/search-profile.html#profiling-queries">Profiling Queries</a> with
+a description of the query profiling information.</p>
+</div>
+<div class="paragraph">
+<p>The <code>QueryProfileShardResult</code> also gives access to the profiling information for the Lucene collectors:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">                CollectorResult collectorResult = queryProfileResult.getCollectorResult();  // <b class="conum">(1)</b>
+                String collectorName = collectorResult.getName();  // <b class="conum">(2)</b>
+                Long collectorTimeInMillis = collectorResult.getTime(); // <b class="conum">(3)</b>
+                List&lt;CollectorResult&gt; profiledChildren = collectorResult.getProfiledChildren(); // <b class="conum">(4)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>Retrieve the profiling result of the Lucene collector</p>
+</li>
+<li>
+<p>Retrieve the name of the Lucene collector</p>
+</li>
+<li>
+<p>Retrieve the time in millis spent executing the Lucene collector</p>
+</li>
+<li>
+<p>Retrieve the profile results for the sub-collectors (if any)</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The Rest API documentation contains more information about profiling information
+for Lucene collectors. See <a href="https://www.opensearch.org/guide/en/opensearch/reference/{branch}/search-profile.html#profiling-queries">Profiling queries</a>.</p>
+</div>
+<div class="paragraph">
+<p>In a very similar manner to the query tree execution, the <code>QueryProfileShardResult</code> objects gives access
+to the detailed aggregations tree execution:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">            AggregationProfileShardResult aggsProfileResults =
+                    profileShardResult.getAggregationProfileResults(); // <b class="conum">(1)</b>
+            for (ProfileResult profileResult : aggsProfileResults.getProfileResults()) { // <b class="conum">(2)</b>
+                String aggName = profileResult.getQueryName(); // <b class="conum">(3)</b>
+                long aggTimeInMillis = profileResult.getTime(); // <b class="conum">(4)</b>
+                List&lt;ProfileResult&gt; profiledChildren = profileResult.getProfiledChildren(); // <b class="conum">(5)</b>
+            }</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>Retrieve the <code>AggregationProfileShardResult</code></p>
+</li>
+<li>
+<p>Iterate over the aggregation profile results</p>
+</li>
+<li>
+<p>Retrieve the type of the aggregation (corresponds to Java class used to execute the aggregation)</p>
+</li>
+<li>
+<p>Retrieve the time in millis spent executing the Lucene collector</p>
+</li>
+<li>
+<p>Retrieve the profile results for the sub-aggregations (if any)</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The Rest API documentation contains more information about
+<a href="https://www.opensearch.org/guide/en/opensearch/reference/{branch}/search-profile.html#profiling-aggregations">Profiling aggregations</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="java-rest-high-search-scroll">Search Scroll API</h3>
+<div class="paragraph">
+<p>The Scroll API can be used to retrieve a large number of results from
+a search request.</p>
+</div>
+<div class="paragraph">
+<p>In order to use scrolling, the following steps need to be executed in the
+given order.</p>
+</div>
+<div class="sect3">
+<h4 id="_initialize_the_search_scroll_context">Initialize the search scroll context</h4>
+<div class="paragraph">
+<p>An initial search request with a <code>scroll</code> parameter must be executed to
+initialize the scroll session through the <a href="_search_apis.html#java-rest-high-search">Search API</a>.
+When processing this <code>SearchRequest</code>, OpenSearch detects the presence of
+the <code>scroll</code> parameter and keeps the search context alive for the
+corresponding time interval.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">            SearchRequest searchRequest = new SearchRequest("posts");
+            SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
+            searchSourceBuilder.query(matchQuery("title", "OpenSearch"));
+            searchSourceBuilder.size(size); // <b class="conum">(1)</b>
+            searchRequest.source(searchSourceBuilder);
+            searchRequest.scroll(TimeValue.timeValueMinutes(1L)); // <b class="conum">(2)</b>
+            SearchResponse searchResponse = client.search(searchRequest, RequestOptions.DEFAULT);
+            String scrollId = searchResponse.getScrollId(); // <b class="conum">(3)</b>
+            SearchHits hits = searchResponse.getHits();  // <b class="conum">(4)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>Create the <code>SearchRequest</code> and its corresponding <code>SearchSourceBuilder</code>.
+Also optionally set the <code>size</code> to control how many results to retrieve at
+a time.</p>
+</li>
+<li>
+<p>Set the scroll interval</p>
+</li>
+<li>
+<p>Read the returned scroll id, which points to the search context that&#8217;s
+being kept alive and will be needed in the following search scroll call</p>
+</li>
+<li>
+<p>Retrieve the first batch of search hits</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_retrieve_all_the_relevant_documents">Retrieve all the relevant documents</h4>
+<div class="paragraph">
+<p>As a second step, the received scroll identifier must be set to a
+<code>SearchScrollRequest</code> along with a new scroll interval and sent through the
+<code>searchScroll</code> method. OpenSearch returns another batch of results with
+a new scroll identifier. This new scroll identifier can then be used in a
+subsequent <code>SearchScrollRequest</code> to retrieve the next batch of results,
+and so on. This process should be repeated in a loop until no more results are
+returned, meaning that the scroll has been exhausted and all the matching
+documents have been retrieved.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">            SearchScrollRequest scrollRequest = new SearchScrollRequest(scrollId); // <b class="conum">(1)</b>
+            scrollRequest.scroll(TimeValue.timeValueSeconds(30));
+            SearchResponse searchScrollResponse = client.scroll(scrollRequest, RequestOptions.DEFAULT);
+            scrollId = searchScrollResponse.getScrollId();  // <b class="conum">(2)</b>
+            hits = searchScrollResponse.getHits(); // <b class="conum">(3)</b>
+            assertEquals(3, hits.getTotalHits().value);
+            assertEquals(1, hits.getHits().length);
+            assertNotNull(scrollId);</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>Create the <code>SearchScrollRequest</code> by setting the required scroll id and
+the scroll interval</p>
+</li>
+<li>
+<p>Read the new scroll id, which points to the search context that&#8217;s
+being kept alive and will be needed in the following search scroll call</p>
+</li>
+<li>
+<p>Retrieve another batch of search hits
+&lt;4&gt;</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_clear_the_scroll_context">Clear the scroll context</h4>
+<div class="paragraph">
+<p>Finally, the last scroll identifier can be deleted using the <a href="_search_apis.html#java-rest-high-clear-scroll">Clear Scroll API</a>
+in order to release the search context. This happens automatically when the
+scroll expires, but it&#8217;s good practice to do it as soon as the scroll session
+is completed.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_optional_arguments_10">Optional arguments</h4>
+<div class="paragraph">
+<p>The following arguments can optionally be provided when constructing
+the <code>SearchScrollRequest</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">            scrollRequest.scroll(TimeValue.timeValueSeconds(60L)); // <b class="conum">(1)</b>
+            scrollRequest.scroll("60s"); // <b class="conum">(2)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>Scroll interval as a <code>TimeValue</code></p>
+</li>
+<li>
+<p>Scroll interval as a <code>String</code></p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>If no <code>scroll</code> value is set for the <code>SearchScrollRequest</code>, the search context will
+expire once the initial scroll time expired (ie, the scroll time set in the
+initial search request).</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="java-rest-high-search-scroll-sync">Synchronous Execution</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">            SearchResponse searchResponse = client.scroll(scrollRequest, RequestOptions.DEFAULT);</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="java-rest-high-search-scroll-async">Asynchronous Execution</h4>
+<div class="paragraph">
+<p>The asynchronous execution of a search scroll request requires both the <code>SearchScrollRequest</code>
+instance and an <code>ActionListener</code> instance to be passed to the asynchronous
+method:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">            client.scrollAsync(scrollRequest, RequestOptions.DEFAULT, scrollListener); // <b class="conum">(1)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>The <code>SearchScrollRequest</code> to execute and the <code>ActionListener</code> to use when
+the execution completes</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The asynchronous method does not block and returns immediately. Once it is
+completed the <code>ActionListener</code> is called back using the <code>onResponse</code> method
+if the execution successfully completed or using the <code>onFailure</code> method if
+it failed.</p>
+</div>
+<div class="paragraph">
+<p>A typical listener for <code>SearchResponse</code> looks like:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">            ActionListener&lt;SearchResponse&gt; scrollListener =
+                    new ActionListener&lt;SearchResponse&gt;() {
+                @Override
+                public void onResponse(SearchResponse searchResponse) {
+                    // <b class="conum">(1)</b>
+                }
+
+                @Override
+                public void onFailure(Exception e) {
+                    // <b class="conum">(2)</b>
+                }
+            };</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>Called when the execution is successfully completed. The response is
+provided as an argument</p>
+</li>
+<li>
+<p>Called in case of failure. The raised exception is provided as an argument</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="java-rest-high-search-scroll-response">Response</h4>
+<div class="paragraph">
+<p>The search scroll API returns a <code>SearchResponse</code> object, same as the
+Search API.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="java-rest-high-search-scroll-example">Full example</h4>
+<div class="paragraph">
+<p>The following is a complete example of a scrolled search.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">            final Scroll scroll = new Scroll(TimeValue.timeValueMinutes(1L));
+            SearchRequest searchRequest = new SearchRequest("posts");
+            searchRequest.scroll(scroll);
+            SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
+            searchSourceBuilder.query(matchQuery("title", "OpenSearch"));
+            searchRequest.source(searchSourceBuilder);
+
+            SearchResponse searchResponse = client.search(searchRequest, RequestOptions.DEFAULT); // <b class="conum">(1)</b>
+            String scrollId = searchResponse.getScrollId();
+            SearchHit[] searchHits = searchResponse.getHits().getHits();
+
+            while (searchHits != null &amp;&amp; searchHits.length &gt; 0) { // <b class="conum">(2)</b>
+                // <b class="conum">(3)</b>
+                SearchScrollRequest scrollRequest = new SearchScrollRequest(scrollId); // <b class="conum">(4)</b>
+                scrollRequest.scroll(scroll);
+                searchResponse = client.scroll(scrollRequest, RequestOptions.DEFAULT);
+                scrollId = searchResponse.getScrollId();
+                searchHits = searchResponse.getHits().getHits();
+            }
+
+            ClearScrollRequest clearScrollRequest = new ClearScrollRequest(); // <b class="conum">(5)</b>
+            clearScrollRequest.addScrollId(scrollId);
+            ClearScrollResponse clearScrollResponse = client.clearScroll(clearScrollRequest, RequestOptions.DEFAULT);
+            boolean succeeded = clearScrollResponse.isSucceeded();</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>Initialize the search context by sending the initial <code>SearchRequest</code></p>
+</li>
+<li>
+<p>Retrieve all the search hits by calling the Search Scroll api in a loop
+until no documents are returned</p>
+</li>
+<li>
+<p>Process the returned search results</p>
+</li>
+<li>
+<p>Create a new <code>SearchScrollRequest</code> holding the last returned scroll
+identifier and the scroll interval</p>
+</li>
+<li>
+<p>Clear the scroll context once the scroll is completed</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="java-rest-high-clear-scroll">Clear Scroll API</h3>
+<div class="paragraph">
+<p>The search contexts used by the Search Scroll API are automatically deleted when the scroll
+times out. But it is advised to release search contexts as soon as they are not
+necessary anymore using the Clear Scroll API.</p>
+</div>
+<div class="sect3">
+<h4 id="java-rest-high-clear-scroll-request">Clear Scroll Request</h4>
+<div class="paragraph">
+<p>A <code>ClearScrollRequest</code> can be created as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">            ClearScrollRequest request = new ClearScrollRequest(); // <b class="conum">(1)</b>
+            request.addScrollId(scrollId); // <b class="conum">(2)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>Create a new <code>ClearScrollRequest</code></p>
+</li>
+<li>
+<p>Adds a scroll id to the list of scroll identifiers to clear</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_providing_the_scroll_identifiers">Providing the scroll identifiers</h4>
+<div class="paragraph">
+<p>The <code>ClearScrollRequest</code> allows to clear one or more scroll identifiers in a single request.</p>
+</div>
+<div class="paragraph">
+<p>The scroll identifiers can be added to the request one by one:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">            request.addScrollId(scrollId);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Or all together using:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">            request.setScrollIds(scrollIds);</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="java-rest-high-clear-scroll-sync">Synchronous Execution</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">            ClearScrollResponse response = client.clearScroll(request, RequestOptions.DEFAULT);</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="java-rest-high-clear-scroll-async">Asynchronous Execution</h4>
+<div class="paragraph">
+<p>The asynchronous execution of a clear scroll request requires both the <code>ClearScrollRequest</code>
+instance and an <code>ActionListener</code> instance to be passed to the asynchronous
+method:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">            client.clearScrollAsync(request, RequestOptions.DEFAULT, listener); // <b class="conum">(1)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>The <code>ClearScrollRequest</code> to execute and the <code>ActionListener</code> to use when
+the execution completes</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The asynchronous method does not block and returns immediately. Once it is
+completed the <code>ActionListener</code> is called back using the <code>onResponse</code> method
+if the execution successfully completed or using the <code>onFailure</code> method if
+it failed.</p>
+</div>
+<div class="paragraph">
+<p>A typical listener for <code>ClearScrollResponse</code> looks like:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">            ActionListener&lt;ClearScrollResponse&gt; listener =
+                    new ActionListener&lt;ClearScrollResponse&gt;() {
+                @Override
+                public void onResponse(ClearScrollResponse clearScrollResponse) {
+                    // <b class="conum">(1)</b>
+                }
+
+                @Override
+                public void onFailure(Exception e) {
+                    // <b class="conum">(2)</b>
+                }
+            };</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>Called when the execution is successfully completed. The response is
+provided as an argument</p>
+</li>
+<li>
+<p>Called in case of failure. The raised exception is provided as an argument</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="java-rest-high-clear-scroll-response">Clear Scroll Response</h4>
+<div class="paragraph">
+<p>The returned <code>ClearScrollResponse</code> allows to retrieve information about the released
+ search contexts:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">            boolean success = response.isSucceeded(); // <b class="conum">(1)</b>
+            int released = response.getNumFreed(); // <b class="conum">(2)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>Return true if the request succeeded</p>
+</li>
+<li>
+<p>Return the number of released search contexts</p>
+</li>
+</ol>
+</div>
+<div class="openblock">
+<div class="content">
+
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="java-rest-high-multi-search">Multi-Search API</h3>
+<div class="paragraph">
+<p>The <code>multiSearch</code> API executes multiple <a href="_search_apis.html#java-rest-high-search"><code>search</code></a>
+requests in a single http request in parallel.</p>
+</div>
+<div class="sect3">
+<h4 id="java-rest-high-multi-search-request">Multi-Search Request</h4>
+<div class="paragraph">
+<p>The <code>MultiSearchRequest</code> is built empty and you add all of the searches that
+you wish to execute to it:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">            MultiSearchRequest request = new MultiSearchRequest();    // <b class="conum">(1)</b>
+            SearchRequest firstSearchRequest = new SearchRequest();   // <b class="conum">(2)</b>
+            SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
+            searchSourceBuilder.query(QueryBuilders.matchQuery("user", "kimchy"));
+            firstSearchRequest.source(searchSourceBuilder);
+            request.add(firstSearchRequest);                          // <b class="conum">(3)</b>
+            SearchRequest secondSearchRequest = new SearchRequest();  // <b class="conum">(4)</b>
+            searchSourceBuilder = new SearchSourceBuilder();
+            searchSourceBuilder.query(QueryBuilders.matchQuery("user", "luca"));
+            secondSearchRequest.source(searchSourceBuilder);
+            request.add(secondSearchRequest);</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>Create an empty <code>MultiSearchRequest</code>.</p>
+</li>
+<li>
+<p>Create an empty <code>SearchRequest</code> and populate it just like you
+would for a regular <a href="_search_apis.html#java-rest-high-search"><code>search</code></a>.</p>
+</li>
+<li>
+<p>Add the <code>SearchRequest</code> to the <code>MultiSearchRequest</code>.</p>
+</li>
+<li>
+<p>Build a second <code>SearchRequest</code> and add it to the <code>MultiSearchRequest</code>.</p>
+</li>
+</ol>
+</div>
+<div class="sect4">
+<h5 id="_optional_arguments_11">Optional arguments</h5>
+<div class="paragraph">
+<p>The <code>SearchRequest`s inside of `MultiSearchRequest</code> support all of
+<a href="_search_apis.html#java-rest-high-search-request-optional"><code>search</code></a>'s optional arguments.
+For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">            SearchRequest searchRequest = new SearchRequest("posts"); // <b class="conum">(1)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>Restricts the request to an index</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="java-rest-high-multi-search-sync">Synchronous Execution</h4>
+<div class="paragraph">
+<p>The <code>multiSearch</code> method executes `MultiSearchRequest`s synchronously:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">            MultiSearchResponse response = client.msearch(request, RequestOptions.DEFAULT);</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="java-rest-high-multi-search-async">Asynchronous Execution</h4>
+<div class="paragraph">
+<p>The <code>multiSearchAsync</code> method executes <code>MultiSearchRequest`s asynchronously,
+calling the provided `ActionListener</code> when the response is ready.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">            client.msearchAsync(request, RequestOptions.DEFAULT, listener); // <b class="conum">(1)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>The <code>MultiSearchRequest</code> to execute and the <code>ActionListener</code> to use when
+the execution completes</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The asynchronous method does not block and returns immediately. Once it is
+completed the <code>ActionListener</code> is called back using the <code>onResponse</code> method
+if the execution successfully completed or using the <code>onFailure</code> method if
+it failed.</p>
+</div>
+<div class="paragraph">
+<p>A typical listener for <code>MultiSearchResponse</code> looks like:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">            ActionListener&lt;MultiSearchResponse&gt; listener = new ActionListener&lt;MultiSearchResponse&gt;() {
+                @Override
+                public void onResponse(MultiSearchResponse response) {
+                    // <b class="conum">(1)</b>
+                }
+
+                @Override
+                public void onFailure(Exception e) {
+                    // <b class="conum">(2)</b>
+                }
+            };</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>Called when the execution is successfully completed.</p>
+</li>
+<li>
+<p>Called when the whole <code>SearchRequest</code> fails.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_multisearchresponse">MultiSearchResponse</h4>
+<div class="paragraph">
+<p>The <code>MultiSearchResponse</code> that is returned by executing the <code>multiSearch</code> method contains
+a <code>MultiSearchResponse.Item</code> for each <code>SearchRequest</code> in the
+<code>MultiSearchRequest</code>. Each <code>MultiSearchResponse.Item</code> contains an
+exception in <code>getFailure</code> if the request failed or a
+<a href="_search_apis.html#java-rest-high-search-response"><code>SearchResponse</code></a> in <code>getResponse</code> if
+the request succeeded:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">            MultiSearchResponse.Item firstResponse = response.getResponses()[0];   // <b class="conum">(1)</b>
+            assertNull(firstResponse.getFailure());                                // <b class="conum">(2)</b>
+            SearchResponse searchResponse = firstResponse.getResponse();           // <b class="conum">(3)</b>
+            assertEquals(4, searchResponse.getHits().getTotalHits().value);
+            MultiSearchResponse.Item secondResponse = response.getResponses()[1];  // <b class="conum">(4)</b>
+            assertNull(secondResponse.getFailure());
+            searchResponse = secondResponse.getResponse();
+            assertEquals(1, searchResponse.getHits().getTotalHits().value);</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>The item for the first search.</p>
+</li>
+<li>
+<p>It succeeded so <code>getFailure</code> returns null.</p>
+</li>
+<li>
+<p>And there is a <a href="_search_apis.html#java-rest-high-search-response"><code>SearchResponse</code></a> in
+<code>getResponse</code>.</p>
+</li>
+<li>
+<p>The item for the second search.</p>
+</li>
+</ol>
+</div>
+<div class="openblock">
+<div class="content">
+
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="java-rest-high-search-template">Search Template API</h3>
+<div class="paragraph">
+<p>The search template API allows for searches to be executed from a template based
+on the mustache language, and also for previewing rendered templates.</p>
+</div>
+<div class="sect3">
+<h4 id="java-rest-high-search-template-request">Search Template Request</h4>
+<div class="sect4">
+<h5 id="_inline_templates">Inline Templates</h5>
+<div class="paragraph">
+<p>In the most basic form of request, the search template is specified inline:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">        SearchTemplateRequest request = new SearchTemplateRequest();
+        request.setRequest(new SearchRequest("posts")); // <b class="conum">(1)</b>
+
+        request.setScriptType(ScriptType.INLINE);
+        request.setScript( // <b class="conum">(2)</b>
+            "{" +
+            "  \"query\": { \"match\" : { \"{{field}}\" : \"{{value}}\" } }," +
+            "  \"size\" : \"{{size}}\"" +
+            "}");
+
+        Map&lt;String, Object&gt; scriptParams = new HashMap&lt;&gt;();
+        scriptParams.put("field", "title");
+        scriptParams.put("value", "opensearch");
+        scriptParams.put("size", 5);
+        request.setScriptParams(scriptParams); // <b class="conum">(3)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>The search is executed against the <code>posts</code> index.</p>
+</li>
+<li>
+<p>The template defines the structure of the search source. It is passed
+as a string because mustache templates are not always valid JSON.</p>
+</li>
+<li>
+<p>Before running the search, the template is rendered with the provided parameters.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_registered_templates">Registered Templates</h5>
+<div class="paragraph">
+<p>Search templates can be registered in advance through stored scripts API. Note that
+the stored scripts API is not yet available in the high-level REST client, so in this
+example we use the low-level REST client.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">        Request scriptRequest = new Request("POST", "_scripts/title_search");
+        scriptRequest.setJsonEntity(
+            "{" +
+            "  \"script\": {" +
+            "    \"lang\": \"mustache\"," +
+            "    \"source\": {" +
+            "      \"query\": { \"match\" : { \"{{field}}\" : \"{{value}}\" } }," +
+            "      \"size\" : \"{{size}}\"" +
+            "    }" +
+            "  }" +
+            "}");
+        Response scriptResponse = restClient.performRequest(scriptRequest);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Instead of providing an inline script, we can refer to this registered template in the request:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">        SearchTemplateRequest request = new SearchTemplateRequest();
+        request.setRequest(new SearchRequest("posts"));
+
+        request.setScriptType(ScriptType.STORED);
+        request.setScript("title_search");
+
+        Map&lt;String, Object&gt; params = new HashMap&lt;&gt;();
+        params.put("field", "title");
+        params.put("value", "opensearch");
+        params.put("size", 5);
+        request.setScriptParams(params);</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_rendering_templates">Rendering Templates</h5>
+<div class="paragraph">
+<p>Given parameter values, a template can be rendered without executing a search:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">        request.setSimulate(true); // <b class="conum">(1)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>Setting <code>simulate</code> to <code>true</code> causes the search template to only be rendered.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Both inline and pre-registered templates can be rendered.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_optional_arguments_12">Optional Arguments</h5>
+<div class="paragraph">
+<p>As in standard search requests, the <code>explain</code> and <code>profile</code> options are supported:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">        request.setExplain(true);
+        request.setProfile(true);</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_additional_references">Additional References</h5>
+<div class="paragraph">
+<p>The <a href="https://www.opensearch.org/guide/en/opensearch/reference/{branch}/search-template.html">Search Template documentation</a> contains further examples of how search requests can be templated.</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="java-rest-high-search-template-sync">Synchronous Execution</h4>
+<div class="paragraph">
+<p>The <code>searchTemplate</code> method executes the request synchronously:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">        SearchTemplateResponse response = client.searchTemplate(request, RequestOptions.DEFAULT);</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_asynchronous_execution">Asynchronous Execution</h4>
+<div class="paragraph">
+<p>A search template request can be executed asynchronously through the <code>searchTemplateAsync</code>
+method:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">        client.searchTemplateAsync(request, RequestOptions.DEFAULT, listener); // <b class="conum">(1)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>The <code>SearchTemplateRequest</code> to execute and the <code>ActionListener</code> to call when the execution completes.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The asynchronous method does not block and returns immediately. Once the request completes, the
+<code>ActionListener</code> is called back using the <code>onResponse</code> method if the execution completed successfully,
+or using the <code>onFailure</code> method if it failed.</p>
+</div>
+<div class="paragraph">
+<p>A typical listener for <code>SearchTemplateResponse</code> is constructed as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">        ActionListener&lt;SearchTemplateResponse&gt; listener = new ActionListener&lt;SearchTemplateResponse&gt;() {
+            @Override
+            public void onResponse(SearchTemplateResponse response) {
+                // <b class="conum">(1)</b>
+            }
+
+            @Override
+            public void onFailure(Exception e) {
+                // <b class="conum">(2)</b>
+            }
+        };</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>Called when the execution is successfully completed.</p>
+</li>
+<li>
+<p>Called when the whole <code>SearchTemplateRequest</code> fails.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_search_template_response">Search Template Response</h4>
+<div class="paragraph">
+<p>For a standard search template request, the response contains a <code>SearchResponse</code> object
+with the result of executing the search:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">        SearchTemplateResponse response = client.searchTemplate(request, RequestOptions.DEFAULT);
+        SearchResponse searchResponse = response.getResponse();</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If <code>simulate</code> was set to <code>true</code> in the request, then the response
+will contain the rendered search source instead of a <code>SearchResponse</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">        SearchTemplateResponse renderResponse = client.searchTemplate(request, RequestOptions.DEFAULT);
+        BytesReference source = renderResponse.getSource(); // <b class="conum">(1)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>The rendered source in bytes, in our example <code>{"query": { "match" : { "title" : "opensearch" }}, "size" : 5}</code>.</p>
+</li>
+</ol>
+</div>
+<div class="openblock">
+<div class="content">
+
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="java-rest-high-multi-search-template">Multi-Search-Template API</h3>
+<div class="paragraph">
+<p>The <code>multiSearchTemplate</code> API executes multiple <a href="_search_apis.html#java-rest-high-search-template"><code>search template</code></a>
+requests in a single http request in parallel.</p>
+</div>
+<div class="sect3">
+<h4 id="java-rest-high-multi-search-template-request">Multi-Search-Template Request</h4>
+<div class="paragraph">
+<p>The <code>MultiSearchTemplateRequest</code> is built empty and you add all of the searches that
+you wish to execute to it:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">        String [] searchTerms = {"opensearch", "opensearch-dashboards"};
+
+        MultiSearchTemplateRequest multiRequest = new MultiSearchTemplateRequest(); // <b class="conum">(1)</b>
+        for (String searchTerm : searchTerms) {
+            SearchTemplateRequest request = new SearchTemplateRequest();  // <b class="conum">(2)</b>
+            request.setRequest(new SearchRequest("posts"));
+
+            request.setScriptType(ScriptType.INLINE);
+            request.setScript(
+                "{" +
+                "  \"query\": { \"match\" : { \"{{field}}\" : \"{{value}}\" } }," +
+                "  \"size\" : \"{{size}}\"" +
+                "}");
+
+            Map&lt;String, Object&gt; scriptParams = new HashMap&lt;&gt;();
+            scriptParams.put("field", "title");
+            scriptParams.put("value", searchTerm);
+            scriptParams.put("size", 5);
+            request.setScriptParams(scriptParams);
+
+            multiRequest.add(request);  // <b class="conum">(3)</b>
+        }</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>Create an empty <code>MultiSearchTemplateRequest</code>.</p>
+</li>
+<li>
+<p>Create one or more <code>SearchTemplateRequest</code> objects and populate them just like you
+would for a regular <a href="_search_apis.html#java-rest-high-search-template"><code>search template</code></a>.</p>
+</li>
+<li>
+<p>Add the <code>SearchTemplateRequest</code> to the <code>MultiSearchTemplateRequest</code>.</p>
+</li>
+</ol>
+</div>
+<div class="sect4">
+<h5 id="_optional_arguments_13">Optional arguments</h5>
+<div class="paragraph">
+<p>The multiSearchTemplate&#8217;s <code>max_concurrent_searches</code> request parameter can be used to control
+the maximum number of concurrent searches the multi search api will execute.
+This default is based on the number of data nodes and the default search thread pool size.</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="java-rest-high-multi-search-template-sync">Synchronous Execution</h4>
+<div class="paragraph">
+<p>The <code>multiSearchTemplate</code> method executes `MultiSearchTemplateRequest`s synchronously:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">        MultiSearchTemplateResponse multiResponse = client.msearchTemplate(multiRequest, RequestOptions.DEFAULT);</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="java-rest-high-multi-search-template-async">Asynchronous Execution</h4>
+<div class="paragraph">
+<p>The <code>multiSearchTemplateAsync</code> method executes <code>MultiSearchTemplateRequest`s asynchronously,
+calling the provided `ActionListener</code> when the response is ready.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">        client.msearchTemplateAsync(multiRequest, RequestOptions.DEFAULT, listener);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The parameters are the <code>MultiSearchTemplateRequest</code> to execute and the <code>ActionListener</code> to use when
+the execution completes</p>
+</div>
+<div class="paragraph">
+<p>The asynchronous method does not block and returns immediately. Once it is
+completed the <code>ActionListener</code> is called back using the <code>onResponse</code> method
+if the execution successfully completed or using the <code>onFailure</code> method if
+it failed.</p>
+</div>
+<div class="paragraph">
+<p>A typical listener for <code>MultiSearchTemplateResponse</code> looks like:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">        ActionListener&lt;MultiSearchTemplateResponse&gt; listener = new ActionListener&lt;MultiSearchTemplateResponse&gt;() {
+            @Override
+            public void onResponse(MultiSearchTemplateResponse response) {
+                // <b class="conum">(1)</b>
+            }
+
+            @Override
+            public void onFailure(Exception e) {
+                // <b class="conum">(2)</b>
+            }
+        };</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>Called when the execution is successfully completed.</p>
+</li>
+<li>
+<p>Called when the whole <code>MultiSearchTemplateRequest</code> fails.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_multisearchtemplateresponse">MultiSearchTemplateResponse</h4>
+<div class="paragraph">
+<p>The <code>MultiSearchTemplateResponse</code> that is returned by executing the <code>multiSearchTemplate</code> method contains
+a <code>MultiSearchTemplateResponse.Item</code> for each <code>SearchTemplateRequest</code> in the
+<code>MultiSearchTemplateRequest</code>. Each <code>MultiSearchTemplateResponse.Item</code> contains an
+exception in <code>getFailure</code> if the request failed or a
+<a href="_search_apis.html#java-rest-high-search-response"><code>SearchResponse</code></a> in <code>getResponse</code> if
+the request succeeded:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">        for (Item item : multiResponse.getResponses()) { // <b class="conum">(1)</b>
+            if (item.isFailure()) {
+                String error = item.getFailureMessage(); // <b class="conum">(2)</b>
+            } else {
+                SearchTemplateResponse searchTemplateResponse = item.getResponse(); // <b class="conum">(3)</b>
+                SearchResponse searchResponse = searchTemplateResponse.getResponse();
+                searchResponse.getHits();
+            }
+        }</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>An array of responses is returned - one response for each request</p>
+</li>
+<li>
+<p>Failed search template requests have error messages</p>
+</li>
+<li>
+<p>Successful requests contain a <a href="_search_apis.html#java-rest-high-search-response"><code>SearchResponse</code></a> in
+<code>getResponse</code>.</p>
+</li>
+</ol>
+</div>
+<div class="openblock">
+<div class="content">
+
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="java-rest-high-field-caps">Field Capabilities API</h3>
+<div class="paragraph">
+<p>The field capabilities API allows for retrieving the capabilities of fields across multiple indices.</p>
+</div>
+<div class="sect3">
+<h4 id="java-rest-high-field-caps-request">Field Capabilities Request</h4>
+<div class="paragraph">
+<p>A <code>FieldCapabilitiesRequest</code> contains a list of fields to get capabilities for,
+should be returned, plus an optional list of target indices. If no indices
+are provided, the request will be executed on all indices.</p>
+</div>
+<div class="paragraph">
+<p>Note that fields parameter supports wildcard notation. For example, providing <code>text_*</code>
+will cause all fields that match the expression to be returned.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">        FieldCapabilitiesRequest request = new FieldCapabilitiesRequest()
+            .fields("user")
+            .indices("posts", "authors", "contributors");</code></pre>
+</div>
+</div>
+<div class="sect4">
+<h5 id="java-rest-high-field-caps-request-optional">Optional arguments</h5>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">        request.indicesOptions(IndicesOptions.lenientExpandOpen()); // <b class="conum">(1)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>Setting <code>IndicesOptions</code> controls how unavailable indices are resolved and
+how wildcard expressions are expanded.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="java-rest-high-field-caps-sync">Synchronous Execution</h4>
+<div class="paragraph">
+<p>The <code>fieldCaps</code> method executes the request synchronously:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">        FieldCapabilitiesResponse response = client.fieldCaps(request, RequestOptions.DEFAULT);</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="java-rest-high-field-caps-async">Asynchronous Execution</h4>
+<div class="paragraph">
+<p>The <code>fieldCapsAsync</code> method executes the request asynchronously,
+calling the provided <code>ActionListener</code> when the response is ready:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">        client.fieldCapsAsync(request, RequestOptions.DEFAULT, listener); // <b class="conum">(1)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>The <code>FieldCapabilitiesRequest</code> to execute and the <code>ActionListener</code> to use when
+the execution completes.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The asynchronous method does not block and returns immediately. Once the request
+completes, the <code>ActionListener</code> is called back using the <code>onResponse</code> method
+if the execution successfully completed or using the <code>onFailure</code> method if
+it failed.</p>
+</div>
+<div class="paragraph">
+<p>A typical listener for <code>FieldCapabilitiesResponse</code> is constructed as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">        ActionListener&lt;FieldCapabilitiesResponse&gt; listener = new ActionListener&lt;FieldCapabilitiesResponse&gt;() {
+            @Override
+            public void onResponse(FieldCapabilitiesResponse response) {
+                // <b class="conum">(1)</b>
+            }
+
+            @Override
+            public void onFailure(Exception e) {
+                // <b class="conum">(2)</b>
+            }
+        };</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>Called when the execution is successfully completed.</p>
+</li>
+<li>
+<p>Called when the whole <code>FieldCapabilitiesRequest</code> fails.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="java-rest-high-field-caps-response">FieldCapabilitiesResponse</h4>
+<div class="paragraph">
+<p>For each requested field, the returned <code>FieldCapabilitiesResponse</code> contains its type
+and whether or not it can be searched or aggregated on. The response also gives
+information about how each index contributes to the field&#8217;s capabilities.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">        Map&lt;String, FieldCapabilities&gt; userResponse = response.getField("user");  // <b class="conum">(1)</b>
+        FieldCapabilities textCapabilities = userResponse.get("keyword");
+
+        boolean isSearchable = textCapabilities.isSearchable();
+        boolean isAggregatable = textCapabilities.isAggregatable();
+
+        String[] indices = textCapabilities.indices(); // <b class="conum">(2)</b>
+        String[] nonSearchableIndices = textCapabilities.nonSearchableIndices(); // <b class="conum">(3)</b>
+        String[] nonAggregatableIndices = textCapabilities.nonAggregatableIndices();//<b class="conum">(4)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>A map with entries for the field&#8217;s possible types, in this case <code>keyword</code> and <code>text</code>.</p>
+</li>
+<li>
+<p>All indices where the <code>user</code> field has type <code>keyword</code>.</p>
+</li>
+<li>
+<p>The subset of these indices where the <code>user</code> field isn&#8217;t searchable, or null if it&#8217;s always searchable.</p>
+</li>
+<li>
+<p>Another subset of these indices where the <code>user</code> field isn&#8217;t aggregatable, or null if it&#8217;s always aggregatable.</p>
+</li>
+</ol>
+</div>
+<div class="openblock">
+<div class="content">
+
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="java-rest-high-rank-eval">Ranking Evaluation API</h3>
+<div class="paragraph">
+<p>The <code>rankEval</code> method allows to evaluate the quality of ranked search
+results over a set of search request. Given sets of manually rated
+documents for each search request, ranking evaluation performs a
+<a href="_search_apis.html#java-rest-high-multi-search">multi search</a> request and calculates
+information retrieval metrics like <em>mean reciprocal rank</em>, <em>precision</em>
+or <em>discounted cumulative gain</em> on the returned results.</p>
+</div>
+<div class="sect3">
+<h4 id="java-rest-high-rank-eval-request">Ranking Evaluation Request</h4>
+<div class="paragraph">
+<p>In order to build a <code>RankEvalRequest</code>, you first need to create an
+evaluation specification (<code>RankEvalSpec</code>). This specification requires
+to define the evaluation metric that is going to be calculated, as well
+as a list of rated documents per search requests. Creating the ranking
+evaluation request then takes the specification and a list of target
+indices as arguments:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">            EvaluationMetric metric = new PrecisionAtK();                 // <b class="conum">(1)</b>
+            List&lt;RatedDocument&gt; ratedDocs = new ArrayList&lt;&gt;();
+            ratedDocs.add(new RatedDocument("posts", "1", 1));            // <b class="conum">(2)</b>
+            SearchSourceBuilder searchQuery = new SearchSourceBuilder();
+            searchQuery.query(QueryBuilders.matchQuery("user", "kimchy"));// <b class="conum">(3)</b>
+            RatedRequest ratedRequest =                                   // <b class="conum">(4)</b>
+                    new RatedRequest("kimchy_query", ratedDocs, searchQuery);
+            List&lt;RatedRequest&gt; ratedRequests = Arrays.asList(ratedRequest);
+            RankEvalSpec specification =
+                    new RankEvalSpec(ratedRequests, metric);              // <b class="conum">(5)</b>
+            RankEvalRequest request =                                     // <b class="conum">(6)</b>
+                    new RankEvalRequest(specification, new String[] { "posts" });</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>Define the metric used in the evaluation</p>
+</li>
+<li>
+<p>Add rated documents, specified by index name, id and rating</p>
+</li>
+<li>
+<p>Create the search query to evaluate</p>
+</li>
+<li>
+<p>Combine the three former parts into a <code>RatedRequest</code></p>
+</li>
+<li>
+<p>Create the ranking evaluation specification</p>
+</li>
+<li>
+<p>Create the ranking evaluation request</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="java-rest-high-rank-eval-sync">Synchronous Execution</h4>
+<div class="paragraph">
+<p>The <code>rankEval</code> method executes `RankEvalRequest`s synchronously:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">            RankEvalResponse response = client.rankEval(request, RequestOptions.DEFAULT);</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="java-rest-high-rank-eval-async">Asynchronous Execution</h4>
+<div class="paragraph">
+<p>The <code>rankEvalAsync</code> method executes <code>RankEvalRequest`s asynchronously,
+calling the provided `ActionListener</code> when the response is ready.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">            client.rankEvalAsync(request, RequestOptions.DEFAULT, listener); // <b class="conum">(1)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>The <code>RankEvalRequest</code> to execute and the <code>ActionListener</code> to use when
+the execution completes</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The asynchronous method does not block and returns immediately. Once it is
+completed the <code>ActionListener</code> is called back using the <code>onResponse</code> method
+if the execution successfully completed or using the <code>onFailure</code> method if
+it failed.</p>
+</div>
+<div class="paragraph">
+<p>A typical listener for <code>RankEvalResponse</code> looks like:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">            ActionListener&lt;RankEvalResponse&gt; listener = new ActionListener&lt;RankEvalResponse&gt;() {
+                @Override
+                public void onResponse(RankEvalResponse response) {
+                    // <b class="conum">(1)</b>
+                }
+
+                @Override
+                public void onFailure(Exception e) {
+                    // <b class="conum">(2)</b>
+                }
+            };</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>Called when the execution is successfully completed.</p>
+</li>
+<li>
+<p>Called when the whole <code>RankEvalRequest</code> fails.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_rankevalresponse">RankEvalResponse</h4>
+<div class="paragraph">
+<p>The <code>RankEvalResponse</code> that is returned by executing the request
+contains information about the overall evaluation score, the
+scores of each individual search request in the set of queries and
+detailed information about search hits and details about the metric
+calculation per partial result.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">            double evaluationResult = response.getMetricScore();   // <b class="conum">(1)</b>
+            assertEquals(1.0 / 3.0, evaluationResult, 0.0);
+            Map&lt;String, EvalQueryQuality&gt; partialResults =
+                    response.getPartialResults();
+            EvalQueryQuality evalQuality =
+                    partialResults.get("kimchy_query");                 // <b class="conum">(2)</b>
+            assertEquals("kimchy_query", evalQuality.getId());
+            double qualityLevel = evalQuality.metricScore();        // <b class="conum">(3)</b>
+            assertEquals(1.0 / 3.0, qualityLevel, 0.0);
+            List&lt;RatedSearchHit&gt; hitsAndRatings = evalQuality.getHitsAndRatings();
+            RatedSearchHit ratedSearchHit = hitsAndRatings.get(2);
+            assertEquals("3", ratedSearchHit.getSearchHit().getId());   // <b class="conum">(4)</b>
+            assertFalse(ratedSearchHit.getRating().isPresent());        // <b class="conum">(5)</b>
+            MetricDetail metricDetails = evalQuality.getMetricDetails();
+            String metricName = metricDetails.getMetricName();
+            assertEquals(PrecisionAtK.NAME, metricName);                // <b class="conum">(6)</b>
+            PrecisionAtK.Detail detail = (PrecisionAtK.Detail) metricDetails;
+            assertEquals(1, detail.getRelevantRetrieved());             // <b class="conum">(7)</b>
+            assertEquals(3, detail.getRetrieved());</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>The overall evaluation result</p>
+</li>
+<li>
+<p>Partial results that are keyed by their query id</p>
+</li>
+<li>
+<p>The metric score for each partial result</p>
+</li>
+<li>
+<p>Rated search hits contain a fully fledged <code>SearchHit</code></p>
+</li>
+<li>
+<p>Rated search hits also contain an <code>Optional&lt;Integer&gt;</code> rating that
+is not present if the document did not get a rating in the request</p>
+</li>
+<li>
+<p>Metric details are named after the metric used in the request</p>
+</li>
+<li>
+<p>After casting to the metric used in the request, the
+metric details offers insight into parts of the metric calculation</p>
+</li>
+</ol>
+</div>
+<div class="openblock">
+<div class="content">
+
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="java-rest-high-explain">Explain API</h3>
+<div class="paragraph">
+<p>The explain api computes a score explanation for a query and a specific document.
+This can give useful feedback whether a document matches or didn’t match a specific query.</p>
+</div>
+<div class="sect3">
+<h4 id="java-rest-high-explain-request">Explain Request</h4>
+<div class="paragraph">
+<p>An <code>ExplainRequest</code> expects an <code>index</code> and an <code>id</code> to specify a certain document,
+and a query represented by <code>QueryBuilder</code> to run against it (the way of <a href="java-rest-high-java-builders.html#java-rest-high-query-builders">building queries</a>).</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">        ExplainRequest request = new ExplainRequest("contributors", "1");
+        request.query(QueryBuilders.termQuery("user", "tanguy"));</code></pre>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_optional_arguments_14">Optional arguments</h5>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">        request.routing("routing"); // <b class="conum">(1)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>Set a routing parameter</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">        request.preference("_local"); // <b class="conum">(1)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>Use the preference parameter e.g. to execute the search to prefer local
+shards. The default is to randomize across shards.</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">        request.fetchSourceContext(new FetchSourceContext(true, new String[]{"user"}, null)); // <b class="conum">(1)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>Set to true to retrieve the _source of the document explained. You can also
+retrieve part of the document by using _source_include &amp; _source_exclude
+(see <a href="java-rest-high-supported-apis.html#java-rest-high-document-get-request-optional-arguments">Get API</a> for more details)</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">        request.storedFields(new String[]{"user"}); // <b class="conum">(1)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>Allows to control which stored fields to return as part of the document explained
+(requires the field to be stored separately in the mappings).</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="java-rest-high-explain-sync">Synchronous Execution</h4>
+<div class="paragraph">
+<p>The <code>explain</code> method executes the request synchronously:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">        ExplainResponse response = client.explain(request, RequestOptions.DEFAULT);</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="java-rest-high-explain-async">Asynchronous Execution</h4>
+<div class="paragraph">
+<p>The <code>explainAsync</code> method executes the request asynchronously,
+calling the provided <code>ActionListener</code> when the response is ready:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">        client.explainAsync(request, RequestOptions.DEFAULT, listener); // <b class="conum">(1)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>The <code>ExplainRequest</code> to execute and the <code>ActionListener</code> to use when
+the execution completes.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The asynchronous method does not block and returns immediately. Once the request
+completes, the <code>ActionListener</code> is called back using the <code>onResponse</code> method
+if the execution successfully completed or using the <code>onFailure</code> method if
+it failed.</p>
+</div>
+<div class="paragraph">
+<p>A typical listener for <code>ExplainResponse</code> is constructed as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">        ActionListener&lt;ExplainResponse&gt; listener = new ActionListener&lt;ExplainResponse&gt;() {
+            @Override
+            public void onResponse(ExplainResponse explainResponse) {
+                // <b class="conum">(1)</b>
+            }
+
+            @Override
+            public void onFailure(Exception e) {
+                // <b class="conum">(2)</b>
+            }
+        };</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>Called when the execution is successfully completed.</p>
+</li>
+<li>
+<p>Called when the whole <code>ExplainRequest</code> fails.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="java-rest-high-explain-response">ExplainResponse</h4>
+<div class="paragraph">
+<p>The <code>ExplainResponse</code> contains the following information:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">        String index = response.getIndex(); // <b class="conum">(1)</b>
+        String id = response.getId(); // <b class="conum">(2)</b>
+        boolean exists = response.isExists(); // <b class="conum">(3)</b>
+        boolean match = response.isMatch(); // <b class="conum">(4)</b>
+        boolean hasExplanation = response.hasExplanation(); // <b class="conum">(5)</b>
+        Explanation explanation = response.getExplanation(); // <b class="conum">(6)</b>
+        GetResult getResult = response.getGetResult(); // <b class="conum">(7)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>The index name of the explained document.</p>
+</li>
+<li>
+<p>The id of the explained document.</p>
+</li>
+<li>
+<p>Indicates whether or not the explained document exists.</p>
+</li>
+<li>
+<p>Indicates whether or not there is a match between the explained document and
+the provided query (the <code>match</code> is retrieved from the lucene <code>Explanation</code> behind the scenes
+if the lucene <code>Explanation</code> models a match, it returns <code>true</code>, otherwise it returns <code>false</code>).</p>
+</li>
+<li>
+<p>Indicates whether or not there exists a lucene <code>Explanation</code> for this request.</p>
+</li>
+<li>
+<p>Get the lucene <code>Explanation</code> object if there exists.</p>
+</li>
+<li>
+<p>Get the <code>GetResult</code> object if the <code>_source</code> or the stored fields are retrieved.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The <code>GetResult</code> contains two maps internally to store the fetched <code>_source</code> and stored fields.
+You can use the following methods to get them:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">        Map&lt;String, Object&gt; source = getResult.getSource(); // <b class="conum">(1)</b>
+        Map&lt;String, DocumentField&gt; fields = getResult.getFields(); // <b class="conum">(2)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>Retrieve the <code>_source</code> as a map.</p>
+</li>
+<li>
+<p>Retrieve the specified stored fields as a map.</p>
+</li>
+</ol>
+</div>
+<div class="openblock">
+<div class="content">
+
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="java-rest-high-count">Count API</h3>
+<div class="sect3">
+<h4 id="java-rest-high-count-request">Count Request</h4>
+<div class="paragraph">
+<p>The <code>CountRequest</code> is used to execute a query and get the number of matches for the query. The query to use in <code>CountRequest</code> can be
+set in similar way as query in <code>SearchRequest</code> using <code>SearchSourceBuilder</code>.</p>
+</div>
+<div class="paragraph">
+<p>In its most basic form, we can add a query to the request:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">            CountRequest countRequest = new CountRequest(); // <b class="conum">(1)</b>
+            SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder(); // <b class="conum">(2)</b>
+            searchSourceBuilder.query(QueryBuilders.matchAllQuery()); // <b class="conum">(3)</b>
+            countRequest.source(searchSourceBuilder); // <b class="conum">(4)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>Creates the <code>CountRequest</code>. Without arguments this runs against all indices.</p>
+</li>
+<li>
+<p>Most search parameters are added to the <code>SearchSourceBuilder</code>.</p>
+</li>
+<li>
+<p>Add a <code>match_all</code> query to the <code>SearchSourceBuilder</code>.</p>
+</li>
+<li>
+<p>Add the <code>SearchSourceBuilder</code> to the <code>CountRequest</code>.</p>
+</li>
+</ol>
+</div>
+<div class="sect4">
+<h5 id="java-rest-high-count-request-optional">Count Request optional arguments</h5>
+<div class="paragraph">
+<p>A <code>CountRequest</code> also takes the following optional arguments:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">            CountRequest countRequest = new CountRequest("blog") // <b class="conum">(1)</b>
+                .routing("routing") // <b class="conum">(2)</b>
+                .indicesOptions(IndicesOptions.lenientExpandOpen()) // <b class="conum">(3)</b>
+                .preference("_local"); // <b class="conum">(4)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>Restricts the request to an index</p>
+</li>
+<li>
+<p>Set a routing parameter</p>
+</li>
+<li>
+<p>Setting <code>IndicesOptions</code> controls how unavailable indices are resolved and how wildcard expressions are expanded</p>
+</li>
+<li>
+<p>Use the preference parameter e.g. to execute the search to prefer local shards. The default is to randomize across shards.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_using_the_searchsourcebuilder_in_countrequest">Using the SearchSourceBuilder in CountRequest</h5>
+<div class="paragraph">
+<p>Both in search and count API calls, most options controlling the search behavior can be set on the <code>SearchSourceBuilder</code>,
+which contains more or less the equivalent of the options in the search request body of the Rest API.</p>
+</div>
+<div class="paragraph">
+<p>Here are a few examples of some common options:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">            SearchSourceBuilder sourceBuilder = new SearchSourceBuilder(); // <b class="conum">(1)</b>
+            sourceBuilder.query(QueryBuilders.termQuery("user", "kimchy")); // <b class="conum">(2)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>Create a <code>SearchSourceBuilder</code> with default options.</p>
+</li>
+<li>
+<p>Set the query. Can be any type of <code>QueryBuilder</code></p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>After this, the <code>SearchSourceBuilder</code> only needs to be added to the
+<code>CountRequest</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">            CountRequest countRequest = new CountRequest();
+            countRequest.indices("blog", "author");
+            countRequest.source(sourceBuilder);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Note subtle difference when using <code>SearchSourceBuilder</code> in <code>SearchRequest</code> and using <code>SearchSourceBuilder</code> in <code>CountRequest</code> - using
+<code>SearchSourceBuilder</code> in <code>SearchRequest</code> one can use <code>SearchSourceBuilder.size()</code> and <code>SearchSourceBuilder.from()</code> methods to set the
+number of search hits to return, and the starting index. In <code>CountRequest</code> we&#8217;re interested in total number of matches and these methods
+have no meaning.</p>
+</div>
+<div class="paragraph">
+<p>The <a href="java-rest-high-java-builders.html#java-rest-high-query-builders">Building Queries</a> page gives a list of all available search queries with
+their corresponding <code>QueryBuilder</code> objects and <code>QueryBuilders</code> helper methods.</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="java-rest-high-count-sync">Synchronous execution</h4>
+<div class="paragraph">
+<p>When executing a <code>CountRequest</code> in the following manner, the client waits
+for the <code>CountResponse</code> to be returned before continuing with code execution:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">            CountResponse countResponse = client
+                .count(countRequest, RequestOptions.DEFAULT);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Synchronous calls may throw an <code>IOException</code> in case of either failing to
+parse the REST response in the high-level REST client, the request times out
+or similar cases where there is no response coming back from the server.</p>
+</div>
+<div class="paragraph">
+<p>In cases where the server returns a <code>4xx</code> or <code>5xx</code> error code, the high-level
+client tries to parse the response body error details instead and then throws
+a generic <code>OpenSearchException</code> and adds the original <code>ResponseException</code> as a
+suppressed exception to it.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="java-rest-high-count-async">Asynchronous execution</h4>
+<div class="paragraph">
+<p>Executing a <code>CountRequest</code> can also be done in an asynchronous fashion so that
+the client can return directly. Users need to specify how the response or
+potential failures will be handled by passing the request and a listener to the
+asynchronous count method:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">            client.countAsync(countRequest, RequestOptions.DEFAULT, listener); // <b class="conum">(1)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>The <code>CountRequest</code> to execute and the <code>ActionListener</code> to use when
+the execution completes</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The asynchronous method does not block and returns immediately. Once it is
+completed the <code>ActionListener</code> is called back using the <code>onResponse</code> method
+if the execution successfully completed or using the <code>onFailure</code> method if
+it failed. Failure scenarios and expected exceptions are the same as in the
+synchronous execution case.</p>
+</div>
+<div class="paragraph">
+<p>A typical listener for <code>count</code> looks like:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">            ActionListener&lt;CountResponse&gt; listener =
+                new ActionListener&lt;CountResponse&gt;() {
+
+                    @Override
+                    public void onResponse(CountResponse countResponse) {
+                        // <b class="conum">(1)</b>
+                    }
+
+                    @Override
+                    public void onFailure(Exception e) {
+                        // <b class="conum">(2)</b>
+                    }
+                };</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>Called when the execution is successfully completed.</p>
+</li>
+<li>
+<p>Called when the whole <code>CountRequest</code> fails.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="java-rest-high-count-response">CountResponse</h4>
+<div class="paragraph">
+<p>The <code>CountResponse</code> that is returned by executing the count API call provides total count of hits and details about the count execution
+itself, like the HTTP status code, or whether the request terminated early:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">            long count = countResponse.getCount();
+            RestStatus status = countResponse.status();
+            Boolean terminatedEarly = countResponse.isTerminatedEarly();</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The response also provides information about the execution on the
+shard level by offering statistics about the total number of shards that were
+affected by the underlying search, and the successful vs. unsuccessful shards. Possible
+failures can also be handled by iterating over an array off
+<code>ShardSearchFailures</code> like in the following example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">            int totalShards = countResponse.getTotalShards();
+            int skippedShards = countResponse.getSkippedShards();
+            int successfulShards = countResponse.getSuccessfulShards();
+            int failedShards = countResponse.getFailedShards();
+            for (ShardSearchFailure failure : countResponse.getShardFailures()) {
+                // failures should be handled here
+            }</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph nav-footer">
+<p>← Previous: <a href="java-rest-high-supported-apis.html">Document APIs</a> | ↑ Up: <a href="java-rest-high.html">Java High Level REST Client</a> | ⌂ Home: <a href="index.html">Java REST Client</a> | Next: <a href="_miscellaneous_apis.html">Miscellaneous APIs</a> →</p>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2021-04-05 12:06:59 -0700
+</div>
+</div>
+</body>
+</html>

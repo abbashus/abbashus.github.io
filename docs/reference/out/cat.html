@@ -1,0 +1,4240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.12">
+<title>OpenSearch Reference</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<style>
+/* Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
+/* Uncomment @import statement to use as custom stylesheet */
+/*@import "https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700";*/
+article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section{display:block}
+audio,video{display:inline-block}
+audio:not([controls]){display:none;height:0}
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}
+a{background:none}
+a:focus{outline:thin dotted}
+a:active,a:hover{outline:0}
+h1{font-size:2em;margin:.67em 0}
+abbr[title]{border-bottom:1px dotted}
+b,strong{font-weight:bold}
+dfn{font-style:italic}
+hr{-moz-box-sizing:content-box;box-sizing:content-box;height:0}
+mark{background:#ff0;color:#000}
+code,kbd,pre,samp{font-family:monospace;font-size:1em}
+pre{white-space:pre-wrap}
+q{quotes:"\201C" "\201D" "\2018" "\2019"}
+small{font-size:80%}
+sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}
+sup{top:-.5em}
+sub{bottom:-.25em}
+img{border:0}
+svg:not(:root){overflow:hidden}
+figure{margin:0}
+fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}
+legend{border:0;padding:0}
+button,input,select,textarea{font-family:inherit;font-size:100%;margin:0}
+button,input{line-height:normal}
+button,select{text-transform:none}
+button,html input[type="button"],input[type="reset"],input[type="submit"]{-webkit-appearance:button;cursor:pointer}
+button[disabled],html input[disabled]{cursor:default}
+input[type="checkbox"],input[type="radio"]{box-sizing:border-box;padding:0}
+button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}
+textarea{overflow:auto;vertical-align:top}
+table{border-collapse:collapse;border-spacing:0}
+*,*::before,*::after{-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box}
+html,body{font-size:100%}
+body{background:#fff;color:rgba(0,0,0,.8);padding:0;margin:0;font-family:"Noto Serif","DejaVu Serif",serif;font-weight:400;font-style:normal;line-height:1;position:relative;cursor:auto;tab-size:4;word-wrap:anywhere;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased}
+a:hover{cursor:pointer}
+img,object,embed{max-width:100%;height:auto}
+object,embed{height:100%}
+img{-ms-interpolation-mode:bicubic}
+.left{float:left!important}
+.right{float:right!important}
+.text-left{text-align:left!important}
+.text-right{text-align:right!important}
+.text-center{text-align:center!important}
+.text-justify{text-align:justify!important}
+.hide{display:none}
+img,object,svg{display:inline-block;vertical-align:middle}
+textarea{height:auto;min-height:50px}
+select{width:100%}
+.subheader,.admonitionblock td.content>.title,.audioblock>.title,.exampleblock>.title,.imageblock>.title,.listingblock>.title,.literalblock>.title,.stemblock>.title,.openblock>.title,.paragraph>.title,.quoteblock>.title,table.tableblock>.title,.verseblock>.title,.videoblock>.title,.dlist>.title,.olist>.title,.ulist>.title,.qlist>.title,.hdlist>.title{line-height:1.45;color:#7a2518;font-weight:400;margin-top:0;margin-bottom:.25em}
+div,dl,dt,dd,ul,ol,li,h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6,pre,form,p,blockquote,th,td{margin:0;padding:0}
+a{color:#2156a5;text-decoration:underline;line-height:inherit}
+a:hover,a:focus{color:#1d4b8f}
+a img{border:0}
+p{font-family:inherit;font-weight:400;font-size:1em;line-height:1.6;margin-bottom:1.25em;text-rendering:optimizeLegibility}
+p aside{font-size:.875em;line-height:1.35;font-style:italic}
+h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{font-family:"Open Sans","DejaVu Sans",sans-serif;font-weight:300;font-style:normal;color:#ba3925;text-rendering:optimizeLegibility;margin-top:1em;margin-bottom:.5em;line-height:1.0125em}
+h1 small,h2 small,h3 small,#toctitle small,.sidebarblock>.content>.title small,h4 small,h5 small,h6 small{font-size:60%;color:#e99b8f;line-height:0}
+h1{font-size:2.125em}
+h2{font-size:1.6875em}
+h3,#toctitle,.sidebarblock>.content>.title{font-size:1.375em}
+h4,h5{font-size:1.125em}
+h6{font-size:1em}
+hr{border:solid #dddddf;border-width:1px 0 0;clear:both;margin:1.25em 0 1.1875em;height:0}
+em,i{font-style:italic;line-height:inherit}
+strong,b{font-weight:bold;line-height:inherit}
+small{font-size:60%;line-height:inherit}
+code{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;font-weight:400;color:rgba(0,0,0,.9)}
+ul,ol,dl{font-size:1em;line-height:1.6;margin-bottom:1.25em;list-style-position:outside;font-family:inherit}
+ul,ol{margin-left:1.5em}
+ul li ul,ul li ol{margin-left:1.25em;margin-bottom:0;font-size:1em}
+ul.square li ul,ul.circle li ul,ul.disc li ul{list-style:inherit}
+ul.square{list-style-type:square}
+ul.circle{list-style-type:circle}
+ul.disc{list-style-type:disc}
+ol li ul,ol li ol{margin-left:1.25em;margin-bottom:0}
+dl dt{margin-bottom:.3125em;font-weight:bold}
+dl dd{margin-bottom:1.25em}
+abbr,acronym{text-transform:uppercase;font-size:90%;color:rgba(0,0,0,.8);border-bottom:1px dotted #ddd;cursor:help}
+abbr{text-transform:none}
+blockquote{margin:0 0 1.25em;padding:.5625em 1.25em 0 1.1875em;border-left:1px solid #ddd}
+blockquote cite{display:block;font-size:.9375em;color:rgba(0,0,0,.6)}
+blockquote cite::before{content:"\2014 \0020"}
+blockquote cite a,blockquote cite a:visited{color:rgba(0,0,0,.6)}
+blockquote,blockquote p{line-height:1.6;color:rgba(0,0,0,.85)}
+@media screen and (min-width:768px){h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{line-height:1.2}
+h1{font-size:2.75em}
+h2{font-size:2.3125em}
+h3,#toctitle,.sidebarblock>.content>.title{font-size:1.6875em}
+h4{font-size:1.4375em}}
+table{background:#fff;margin-bottom:1.25em;border:solid 1px #dedede;word-wrap:normal}
+table thead,table tfoot{background:#f7f8f7}
+table thead tr th,table thead tr td,table tfoot tr th,table tfoot tr td{padding:.5em .625em .625em;font-size:inherit;color:rgba(0,0,0,.8);text-align:left}
+table tr th,table tr td{padding:.5625em .625em;font-size:inherit;color:rgba(0,0,0,.8)}
+table tr.even,table tr.alt{background:#f8f8f7}
+table thead tr th,table tfoot tr th,table tbody tr td,table tr td,table tfoot tr td{line-height:1.6}
+h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{line-height:1.2;word-spacing:-.05em}
+h1 strong,h2 strong,h3 strong,#toctitle strong,.sidebarblock>.content>.title strong,h4 strong,h5 strong,h6 strong{font-weight:400}
+.center{margin-left:auto;margin-right:auto}
+.stretch{width:100%}
+.clearfix::before,.clearfix::after,.float-group::before,.float-group::after{content:" ";display:table}
+.clearfix::after,.float-group::after{clear:both}
+:not(pre).nobreak{word-wrap:normal}
+:not(pre).nowrap{white-space:nowrap}
+:not(pre).pre-wrap{white-space:pre-wrap}
+:not(pre):not([class^=L])>code{font-size:.9375em;font-style:normal!important;letter-spacing:0;padding:.1em .5ex;word-spacing:-.15em;background:#f7f7f8;-webkit-border-radius:4px;border-radius:4px;line-height:1.45;text-rendering:optimizeSpeed}
+pre{color:rgba(0,0,0,.9);font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;line-height:1.45;text-rendering:optimizeSpeed}
+pre code,pre pre{color:inherit;font-size:inherit;line-height:inherit}
+pre>code{display:block}
+pre.nowrap,pre.nowrap pre{white-space:pre;word-wrap:normal}
+em em{font-style:normal}
+strong strong{font-weight:400}
+.keyseq{color:rgba(51,51,51,.8)}
+kbd{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;display:inline-block;color:rgba(0,0,0,.8);font-size:.65em;line-height:1.45;background:#f7f7f7;border:1px solid #ccc;-webkit-border-radius:3px;border-radius:3px;-webkit-box-shadow:0 1px 0 rgba(0,0,0,.2),0 0 0 .1em white inset;box-shadow:0 1px 0 rgba(0,0,0,.2),0 0 0 .1em #fff inset;margin:0 .15em;padding:.2em .5em;vertical-align:middle;position:relative;top:-.1em;white-space:nowrap}
+.keyseq kbd:first-child{margin-left:0}
+.keyseq kbd:last-child{margin-right:0}
+.menuseq,.menuref{color:#000}
+.menuseq b:not(.caret),.menuref{font-weight:inherit}
+.menuseq{word-spacing:-.02em}
+.menuseq b.caret{font-size:1.25em;line-height:.8}
+.menuseq i.caret{font-weight:bold;text-align:center;width:.45em}
+b.button::before,b.button::after{position:relative;top:-1px;font-weight:400}
+b.button::before{content:"[";padding:0 3px 0 2px}
+b.button::after{content:"]";padding:0 2px 0 3px}
+p a>code:hover{color:rgba(0,0,0,.9)}
+#header,#content,#footnotes,#footer{width:100%;margin-left:auto;margin-right:auto;margin-top:0;margin-bottom:0;max-width:62.5em;*zoom:1;position:relative;padding-left:.9375em;padding-right:.9375em}
+#header::before,#header::after,#content::before,#content::after,#footnotes::before,#footnotes::after,#footer::before,#footer::after{content:" ";display:table}
+#header::after,#content::after,#footnotes::after,#footer::after{clear:both}
+#content{margin-top:1.25em}
+#content::before{content:none}
+#header>h1:first-child{color:rgba(0,0,0,.85);margin-top:2.25rem;margin-bottom:0}
+#header>h1:first-child+#toc{margin-top:8px;border-top:1px solid #dddddf}
+#header>h1:only-child,body.toc2 #header>h1:nth-last-child(2){border-bottom:1px solid #dddddf;padding-bottom:8px}
+#header .details{border-bottom:1px solid #dddddf;line-height:1.45;padding-top:.25em;padding-bottom:.25em;padding-left:.25em;color:rgba(0,0,0,.6);display:-ms-flexbox;display:-webkit-flex;display:flex;-ms-flex-flow:row wrap;-webkit-flex-flow:row wrap;flex-flow:row wrap}
+#header .details span:first-child{margin-left:-.125em}
+#header .details span.email a{color:rgba(0,0,0,.85)}
+#header .details br{display:none}
+#header .details br+span::before{content:"\00a0\2013\00a0"}
+#header .details br+span.author::before{content:"\00a0\22c5\00a0";color:rgba(0,0,0,.85)}
+#header .details br+span#revremark::before{content:"\00a0|\00a0"}
+#header #revnumber{text-transform:capitalize}
+#header #revnumber::after{content:"\00a0"}
+#content>h1:first-child:not([class]){color:rgba(0,0,0,.85);border-bottom:1px solid #dddddf;padding-bottom:8px;margin-top:0;padding-top:1rem;margin-bottom:1.25rem}
+#toc{border-bottom:1px solid #e7e7e9;padding-bottom:.5em}
+#toc>ul{margin-left:.125em}
+#toc ul.sectlevel0>li>a{font-style:italic}
+#toc ul.sectlevel0 ul.sectlevel1{margin:.5em 0}
+#toc ul{font-family:"Open Sans","DejaVu Sans",sans-serif;list-style-type:none}
+#toc li{line-height:1.3334;margin-top:.3334em}
+#toc a{text-decoration:none}
+#toc a:active{text-decoration:underline}
+#toctitle{color:#7a2518;font-size:1.2em}
+@media screen and (min-width:768px){#toctitle{font-size:1.375em}
+body.toc2{padding-left:15em;padding-right:0}
+#toc.toc2{margin-top:0!important;background:#f8f8f7;position:fixed;width:15em;left:0;top:0;border-right:1px solid #e7e7e9;border-top-width:0!important;border-bottom-width:0!important;z-index:1000;padding:1.25em 1em;height:100%;overflow:auto}
+#toc.toc2 #toctitle{margin-top:0;margin-bottom:.8rem;font-size:1.2em}
+#toc.toc2>ul{font-size:.9em;margin-bottom:0}
+#toc.toc2 ul ul{margin-left:0;padding-left:1em}
+#toc.toc2 ul.sectlevel0 ul.sectlevel1{padding-left:0;margin-top:.5em;margin-bottom:.5em}
+body.toc2.toc-right{padding-left:0;padding-right:15em}
+body.toc2.toc-right #toc.toc2{border-right-width:0;border-left:1px solid #e7e7e9;left:auto;right:0}}
+@media screen and (min-width:1280px){body.toc2{padding-left:20em;padding-right:0}
+#toc.toc2{width:20em}
+#toc.toc2 #toctitle{font-size:1.375em}
+#toc.toc2>ul{font-size:.95em}
+#toc.toc2 ul ul{padding-left:1.25em}
+body.toc2.toc-right{padding-left:0;padding-right:20em}}
+#content #toc{border-style:solid;border-width:1px;border-color:#e0e0dc;margin-bottom:1.25em;padding:1.25em;background:#f8f8f7;-webkit-border-radius:4px;border-radius:4px}
+#content #toc>:first-child{margin-top:0}
+#content #toc>:last-child{margin-bottom:0}
+#footer{max-width:none;background:rgba(0,0,0,.8);padding:1.25em}
+#footer-text{color:rgba(255,255,255,.8);line-height:1.44}
+#content{margin-bottom:.625em}
+.sect1{padding-bottom:.625em}
+@media screen and (min-width:768px){#content{margin-bottom:1.25em}
+.sect1{padding-bottom:1.25em}}
+.sect1:last-child{padding-bottom:0}
+.sect1+.sect1{border-top:1px solid #e7e7e9}
+#content h1>a.anchor,h2>a.anchor,h3>a.anchor,#toctitle>a.anchor,.sidebarblock>.content>.title>a.anchor,h4>a.anchor,h5>a.anchor,h6>a.anchor{position:absolute;z-index:1001;width:1.5ex;margin-left:-1.5ex;display:block;text-decoration:none!important;visibility:hidden;text-align:center;font-weight:400}
+#content h1>a.anchor::before,h2>a.anchor::before,h3>a.anchor::before,#toctitle>a.anchor::before,.sidebarblock>.content>.title>a.anchor::before,h4>a.anchor::before,h5>a.anchor::before,h6>a.anchor::before{content:"\00A7";font-size:.85em;display:block;padding-top:.1em}
+#content h1:hover>a.anchor,#content h1>a.anchor:hover,h2:hover>a.anchor,h2>a.anchor:hover,h3:hover>a.anchor,#toctitle:hover>a.anchor,.sidebarblock>.content>.title:hover>a.anchor,h3>a.anchor:hover,#toctitle>a.anchor:hover,.sidebarblock>.content>.title>a.anchor:hover,h4:hover>a.anchor,h4>a.anchor:hover,h5:hover>a.anchor,h5>a.anchor:hover,h6:hover>a.anchor,h6>a.anchor:hover{visibility:visible}
+#content h1>a.link,h2>a.link,h3>a.link,#toctitle>a.link,.sidebarblock>.content>.title>a.link,h4>a.link,h5>a.link,h6>a.link{color:#ba3925;text-decoration:none}
+#content h1>a.link:hover,h2>a.link:hover,h3>a.link:hover,#toctitle>a.link:hover,.sidebarblock>.content>.title>a.link:hover,h4>a.link:hover,h5>a.link:hover,h6>a.link:hover{color:#a53221}
+details,.audioblock,.imageblock,.literalblock,.listingblock,.stemblock,.videoblock{margin-bottom:1.25em}
+details>summary:first-of-type{cursor:pointer;display:list-item;outline:none;margin-bottom:.75em}
+.admonitionblock td.content>.title,.audioblock>.title,.exampleblock>.title,.imageblock>.title,.listingblock>.title,.literalblock>.title,.stemblock>.title,.openblock>.title,.paragraph>.title,.quoteblock>.title,table.tableblock>.title,.verseblock>.title,.videoblock>.title,.dlist>.title,.olist>.title,.ulist>.title,.qlist>.title,.hdlist>.title{text-rendering:optimizeLegibility;text-align:left;font-family:"Noto Serif","DejaVu Serif",serif;font-size:1rem;font-style:italic}
+table.tableblock.fit-content>caption.title{white-space:nowrap;width:0}
+.paragraph.lead>p,#preamble>.sectionbody>[class="paragraph"]:first-of-type p{font-size:1.21875em;line-height:1.6;color:rgba(0,0,0,.85)}
+table.tableblock #preamble>.sectionbody>[class="paragraph"]:first-of-type p{font-size:inherit}
+.admonitionblock>table{border-collapse:separate;border:0;background:none;width:100%}
+.admonitionblock>table td.icon{text-align:center;width:80px}
+.admonitionblock>table td.icon img{max-width:none}
+.admonitionblock>table td.icon .title{font-weight:bold;font-family:"Open Sans","DejaVu Sans",sans-serif;text-transform:uppercase}
+.admonitionblock>table td.content{padding-left:1.125em;padding-right:1.25em;border-left:1px solid #dddddf;color:rgba(0,0,0,.6);word-wrap:anywhere}
+.admonitionblock>table td.content>:last-child>:last-child{margin-bottom:0}
+.exampleblock>.content{border-style:solid;border-width:1px;border-color:#e6e6e6;margin-bottom:1.25em;padding:1.25em;background:#fff;-webkit-border-radius:4px;border-radius:4px}
+.exampleblock>.content>:first-child{margin-top:0}
+.exampleblock>.content>:last-child{margin-bottom:0}
+.sidebarblock{border-style:solid;border-width:1px;border-color:#dbdbd6;margin-bottom:1.25em;padding:1.25em;background:#f3f3f2;-webkit-border-radius:4px;border-radius:4px}
+.sidebarblock>:first-child{margin-top:0}
+.sidebarblock>:last-child{margin-bottom:0}
+.sidebarblock>.content>.title{color:#7a2518;margin-top:0;text-align:center}
+.exampleblock>.content>:last-child>:last-child,.exampleblock>.content .olist>ol>li:last-child>:last-child,.exampleblock>.content .ulist>ul>li:last-child>:last-child,.exampleblock>.content .qlist>ol>li:last-child>:last-child,.sidebarblock>.content>:last-child>:last-child,.sidebarblock>.content .olist>ol>li:last-child>:last-child,.sidebarblock>.content .ulist>ul>li:last-child>:last-child,.sidebarblock>.content .qlist>ol>li:last-child>:last-child{margin-bottom:0}
+.literalblock pre,.listingblock>.content>pre{-webkit-border-radius:4px;border-radius:4px;overflow-x:auto;padding:1em;font-size:.8125em}
+@media screen and (min-width:768px){.literalblock pre,.listingblock>.content>pre{font-size:.90625em}}
+@media screen and (min-width:1280px){.literalblock pre,.listingblock>.content>pre{font-size:1em}}
+.literalblock pre,.listingblock>.content>pre:not(.highlight),.listingblock>.content>pre[class="highlight"],.listingblock>.content>pre[class^="highlight "]{background:#f7f7f8}
+.literalblock.output pre{color:#f7f7f8;background:rgba(0,0,0,.9)}
+.listingblock>.content{position:relative}
+.listingblock code[data-lang]::before{display:none;content:attr(data-lang);position:absolute;font-size:.75em;top:.425rem;right:.5rem;line-height:1;text-transform:uppercase;color:inherit;opacity:.5}
+.listingblock:hover code[data-lang]::before{display:block}
+.listingblock.terminal pre .command::before{content:attr(data-prompt);padding-right:.5em;color:inherit;opacity:.5}
+.listingblock.terminal pre .command:not([data-prompt])::before{content:"$"}
+.listingblock pre.highlightjs{padding:0}
+.listingblock pre.highlightjs>code{padding:1em;-webkit-border-radius:4px;border-radius:4px}
+.listingblock pre.prettyprint{border-width:0}
+.prettyprint{background:#f7f7f8}
+pre.prettyprint .linenums{line-height:1.45;margin-left:2em}
+pre.prettyprint li{background:none;list-style-type:inherit;padding-left:0}
+pre.prettyprint li code[data-lang]::before{opacity:1}
+pre.prettyprint li:not(:first-child) code[data-lang]::before{display:none}
+table.linenotable{border-collapse:separate;border:0;margin-bottom:0;background:none}
+table.linenotable td[class]{color:inherit;vertical-align:top;padding:0;line-height:inherit;white-space:normal}
+table.linenotable td.code{padding-left:.75em}
+table.linenotable td.linenos{border-right:1px solid currentColor;opacity:.35;padding-right:.5em}
+pre.pygments .lineno{border-right:1px solid currentColor;opacity:.35;display:inline-block;margin-right:.75em}
+pre.pygments .lineno::before{content:"";margin-right:-.125em}
+.quoteblock{margin:0 1em 1.25em 1.5em;display:table}
+.quoteblock:not(.excerpt)>.title{margin-left:-1.5em;margin-bottom:.75em}
+.quoteblock blockquote,.quoteblock p{color:rgba(0,0,0,.85);font-size:1.15rem;line-height:1.75;word-spacing:.1em;letter-spacing:0;font-style:italic;text-align:justify}
+.quoteblock blockquote{margin:0;padding:0;border:0}
+.quoteblock blockquote::before{content:"\201c";float:left;font-size:2.75em;font-weight:bold;line-height:.6em;margin-left:-.6em;color:#7a2518;text-shadow:0 1px 2px rgba(0,0,0,.1)}
+.quoteblock blockquote>.paragraph:last-child p{margin-bottom:0}
+.quoteblock .attribution{margin-top:.75em;margin-right:.5ex;text-align:right}
+.verseblock{margin:0 1em 1.25em}
+.verseblock pre{font-family:"Open Sans","DejaVu Sans",sans;font-size:1.15rem;color:rgba(0,0,0,.85);font-weight:300;text-rendering:optimizeLegibility}
+.verseblock pre strong{font-weight:400}
+.verseblock .attribution{margin-top:1.25rem;margin-left:.5ex}
+.quoteblock .attribution,.verseblock .attribution{font-size:.9375em;line-height:1.45;font-style:italic}
+.quoteblock .attribution br,.verseblock .attribution br{display:none}
+.quoteblock .attribution cite,.verseblock .attribution cite{display:block;letter-spacing:-.025em;color:rgba(0,0,0,.6)}
+.quoteblock.abstract blockquote::before,.quoteblock.excerpt blockquote::before,.quoteblock .quoteblock blockquote::before{display:none}
+.quoteblock.abstract blockquote,.quoteblock.abstract p,.quoteblock.excerpt blockquote,.quoteblock.excerpt p,.quoteblock .quoteblock blockquote,.quoteblock .quoteblock p{line-height:1.6;word-spacing:0}
+.quoteblock.abstract{margin:0 1em 1.25em;display:block}
+.quoteblock.abstract>.title{margin:0 0 .375em;font-size:1.15em;text-align:center}
+.quoteblock.excerpt>blockquote,.quoteblock .quoteblock{padding:0 0 .25em 1em;border-left:.25em solid #dddddf}
+.quoteblock.excerpt,.quoteblock .quoteblock{margin-left:0}
+.quoteblock.excerpt blockquote,.quoteblock.excerpt p,.quoteblock .quoteblock blockquote,.quoteblock .quoteblock p{color:inherit;font-size:1.0625rem}
+.quoteblock.excerpt .attribution,.quoteblock .quoteblock .attribution{color:inherit;text-align:left;margin-right:0}
+p.tableblock:last-child{margin-bottom:0}
+td.tableblock>.content{margin-bottom:1.25em;word-wrap:anywhere}
+td.tableblock>.content>:last-child{margin-bottom:-1.25em}
+table.tableblock,th.tableblock,td.tableblock{border:0 solid #dedede}
+table.grid-all>*>tr>*{border-width:1px}
+table.grid-cols>*>tr>*{border-width:0 1px}
+table.grid-rows>*>tr>*{border-width:1px 0}
+table.frame-all{border-width:1px}
+table.frame-ends{border-width:1px 0}
+table.frame-sides{border-width:0 1px}
+table.frame-none>colgroup+*>:first-child>*,table.frame-sides>colgroup+*>:first-child>*{border-top-width:0}
+table.frame-none>:last-child>:last-child>*,table.frame-sides>:last-child>:last-child>*{border-bottom-width:0}
+table.frame-none>*>tr>:first-child,table.frame-ends>*>tr>:first-child{border-left-width:0}
+table.frame-none>*>tr>:last-child,table.frame-ends>*>tr>:last-child{border-right-width:0}
+table.stripes-all tr,table.stripes-odd tr:nth-of-type(odd),table.stripes-even tr:nth-of-type(even),table.stripes-hover tr:hover{background:#f8f8f7}
+th.halign-left,td.halign-left{text-align:left}
+th.halign-right,td.halign-right{text-align:right}
+th.halign-center,td.halign-center{text-align:center}
+th.valign-top,td.valign-top{vertical-align:top}
+th.valign-bottom,td.valign-bottom{vertical-align:bottom}
+th.valign-middle,td.valign-middle{vertical-align:middle}
+table thead th,table tfoot th{font-weight:bold}
+tbody tr th{background:#f7f8f7}
+tbody tr th,tbody tr th p,tfoot tr th,tfoot tr th p{color:rgba(0,0,0,.8);font-weight:bold}
+p.tableblock>code:only-child{background:none;padding:0}
+p.tableblock{font-size:1em}
+ol{margin-left:1.75em}
+ul li ol{margin-left:1.5em}
+dl dd{margin-left:1.125em}
+dl dd:last-child,dl dd:last-child>:last-child{margin-bottom:0}
+ol>li p,ul>li p,ul dd,ol dd,.olist .olist,.ulist .ulist,.ulist .olist,.olist .ulist{margin-bottom:.625em}
+ul.checklist,ul.none,ol.none,ul.no-bullet,ol.no-bullet,ol.unnumbered,ul.unstyled,ol.unstyled{list-style-type:none}
+ul.no-bullet,ol.no-bullet,ol.unnumbered{margin-left:.625em}
+ul.unstyled,ol.unstyled{margin-left:0}
+ul.checklist{margin-left:.625em}
+ul.checklist li>p:first-child>.fa-square-o:first-child,ul.checklist li>p:first-child>.fa-check-square-o:first-child{width:1.25em;font-size:.8em;position:relative;bottom:.125em}
+ul.checklist li>p:first-child>input[type="checkbox"]:first-child{margin-right:.25em}
+ul.inline{display:-ms-flexbox;display:-webkit-box;display:flex;-ms-flex-flow:row wrap;-webkit-flex-flow:row wrap;flex-flow:row wrap;list-style:none;margin:0 0 .625em -1.25em}
+ul.inline>li{margin-left:1.25em}
+.unstyled dl dt{font-weight:400;font-style:normal}
+ol.arabic{list-style-type:decimal}
+ol.decimal{list-style-type:decimal-leading-zero}
+ol.loweralpha{list-style-type:lower-alpha}
+ol.upperalpha{list-style-type:upper-alpha}
+ol.lowerroman{list-style-type:lower-roman}
+ol.upperroman{list-style-type:upper-roman}
+ol.lowergreek{list-style-type:lower-greek}
+.hdlist>table,.colist>table{border:0;background:none}
+.hdlist>table>tbody>tr,.colist>table>tbody>tr{background:none}
+td.hdlist1,td.hdlist2{vertical-align:top;padding:0 .625em}
+td.hdlist1{font-weight:bold;padding-bottom:1.25em}
+td.hdlist2{word-wrap:anywhere}
+.literalblock+.colist,.listingblock+.colist{margin-top:-.5em}
+.colist td:not([class]):first-child{padding:.4em .75em 0;line-height:1;vertical-align:top}
+.colist td:not([class]):first-child img{max-width:none}
+.colist td:not([class]):last-child{padding:.25em 0}
+.thumb,.th{line-height:0;display:inline-block;border:solid 4px #fff;-webkit-box-shadow:0 0 0 1px #ddd;box-shadow:0 0 0 1px #ddd}
+.imageblock.left{margin:.25em .625em 1.25em 0}
+.imageblock.right{margin:.25em 0 1.25em .625em}
+.imageblock>.title{margin-bottom:0}
+.imageblock.thumb,.imageblock.th{border-width:6px}
+.imageblock.thumb>.title,.imageblock.th>.title{padding:0 .125em}
+.image.left,.image.right{margin-top:.25em;margin-bottom:.25em;display:inline-block;line-height:0}
+.image.left{margin-right:.625em}
+.image.right{margin-left:.625em}
+a.image{text-decoration:none;display:inline-block}
+a.image object{pointer-events:none}
+sup.footnote,sup.footnoteref{font-size:.875em;position:static;vertical-align:super}
+sup.footnote a,sup.footnoteref a{text-decoration:none}
+sup.footnote a:active,sup.footnoteref a:active{text-decoration:underline}
+#footnotes{padding-top:.75em;padding-bottom:.75em;margin-bottom:.625em}
+#footnotes hr{width:20%;min-width:6.25em;margin:-.25em 0 .75em;border-width:1px 0 0}
+#footnotes .footnote{padding:0 .375em 0 .225em;line-height:1.3334;font-size:.875em;margin-left:1.2em;margin-bottom:.2em}
+#footnotes .footnote a:first-of-type{font-weight:bold;text-decoration:none;margin-left:-1.05em}
+#footnotes .footnote:last-of-type{margin-bottom:0}
+#content #footnotes{margin-top:-.625em;margin-bottom:0;padding:.75em 0}
+.gist .file-data>table{border:0;background:#fff;width:100%;margin-bottom:0}
+.gist .file-data>table td.line-data{width:99%}
+div.unbreakable{page-break-inside:avoid}
+.big{font-size:larger}
+.small{font-size:smaller}
+.underline{text-decoration:underline}
+.overline{text-decoration:overline}
+.line-through{text-decoration:line-through}
+.aqua{color:#00bfbf}
+.aqua-background{background:#00fafa}
+.black{color:#000}
+.black-background{background:#000}
+.blue{color:#0000bf}
+.blue-background{background:#0000fa}
+.fuchsia{color:#bf00bf}
+.fuchsia-background{background:#fa00fa}
+.gray{color:#606060}
+.gray-background{background:#7d7d7d}
+.green{color:#006000}
+.green-background{background:#007d00}
+.lime{color:#00bf00}
+.lime-background{background:#00fa00}
+.maroon{color:#600000}
+.maroon-background{background:#7d0000}
+.navy{color:#000060}
+.navy-background{background:#00007d}
+.olive{color:#606000}
+.olive-background{background:#7d7d00}
+.purple{color:#600060}
+.purple-background{background:#7d007d}
+.red{color:#bf0000}
+.red-background{background:#fa0000}
+.silver{color:#909090}
+.silver-background{background:#bcbcbc}
+.teal{color:#006060}
+.teal-background{background:#007d7d}
+.white{color:#bfbfbf}
+.white-background{background:#fafafa}
+.yellow{color:#bfbf00}
+.yellow-background{background:#fafa00}
+span.icon>.fa{cursor:default}
+a span.icon>.fa{cursor:inherit}
+.admonitionblock td.icon [class^="fa icon-"]{font-size:2.5em;text-shadow:1px 1px 2px rgba(0,0,0,.5);cursor:default}
+.admonitionblock td.icon .icon-note::before{content:"\f05a";color:#19407c}
+.admonitionblock td.icon .icon-tip::before{content:"\f0eb";text-shadow:1px 1px 2px rgba(155,155,0,.8);color:#111}
+.admonitionblock td.icon .icon-warning::before{content:"\f071";color:#bf6900}
+.admonitionblock td.icon .icon-caution::before{content:"\f06d";color:#bf3400}
+.admonitionblock td.icon .icon-important::before{content:"\f06a";color:#bf0000}
+.conum[data-value]{display:inline-block;color:#fff!important;background:rgba(0,0,0,.8);-webkit-border-radius:50%;border-radius:50%;text-align:center;font-size:.75em;width:1.67em;height:1.67em;line-height:1.67em;font-family:"Open Sans","DejaVu Sans",sans-serif;font-style:normal;font-weight:bold}
+.conum[data-value] *{color:#fff!important}
+.conum[data-value]+b{display:none}
+.conum[data-value]::after{content:attr(data-value)}
+pre .conum[data-value]{position:relative;top:-.125em}
+b.conum *{color:inherit!important}
+.conum:not([data-value]):empty{display:none}
+dt,th.tableblock,td.content,div.footnote{text-rendering:optimizeLegibility}
+h1,h2,p,td.content,span.alt{letter-spacing:-.01em}
+p strong,td.content strong,div.footnote strong{letter-spacing:-.005em}
+p,blockquote,dt,td.content,span.alt{font-size:1.0625rem}
+p{margin-bottom:1.25rem}
+.sidebarblock p,.sidebarblock dt,.sidebarblock td.content,p.tableblock{font-size:1em}
+.exampleblock>.content{background:#fffef7;border-color:#e0e0dc;-webkit-box-shadow:0 1px 4px #e0e0dc;box-shadow:0 1px 4px #e0e0dc}
+.print-only{display:none!important}
+@page{margin:1.25cm .75cm}
+@media print{*{-webkit-box-shadow:none!important;box-shadow:none!important;text-shadow:none!important}
+html{font-size:80%}
+a{color:inherit!important;text-decoration:underline!important}
+a.bare,a[href^="#"],a[href^="mailto:"]{text-decoration:none!important}
+a[href^="http:"]:not(.bare)::after,a[href^="https:"]:not(.bare)::after{content:"(" attr(href) ")";display:inline-block;font-size:.875em;padding-left:.25em}
+abbr[title]::after{content:" (" attr(title) ")"}
+pre,blockquote,tr,img,object,svg{page-break-inside:avoid}
+thead{display:table-header-group}
+svg{max-width:100%}
+p,blockquote,dt,td.content{font-size:1em;orphans:3;widows:3}
+h2,h3,#toctitle,.sidebarblock>.content>.title{page-break-after:avoid}
+#header,#content,#footnotes,#footer{max-width:none}
+#toc,.sidebarblock,.exampleblock>.content{background:none!important}
+#toc{border-bottom:1px solid #dddddf!important;padding-bottom:0!important}
+body.book #header{text-align:center}
+body.book #header>h1:first-child{border:0!important;margin:2.5em 0 1em}
+body.book #header .details{border:0!important;display:block;padding:0!important}
+body.book #header .details span:first-child{margin-left:0!important}
+body.book #header .details br{display:block}
+body.book #header .details br+span::before{content:none!important}
+body.book #toc{border:0!important;text-align:left!important;padding:0!important;margin:0!important}
+body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-break-before:always}
+.listingblock code[data-lang]::before{display:block}
+#footer{padding:0 .9375em}
+.hide-on-print{display:none!important}
+.print-only{display:block!important}
+.hide-for-print{display:none!important}
+.show-for-print{display:inherit!important}}
+@media print,amzn-kf8{#header>h1:first-child{margin-top:1.25rem}
+.sect1{padding:0!important}
+.sect1+.sect1{border:0}
+#footer{background:none}
+#footer-text{color:rgba(0,0,0,.6);font-size:.9em}}
+@media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
+</style>
+<style>.toc-current{font-weight: bold;} .toc-root{font-family: "Open Sans","DejaVu Sans",sans-serif;
+                       font-size: 0.9em;} #content{display: flex; flex-direction: column; flex: 1 1 auto;}
+             .nav-footer{text-align: center; margin-top: auto;}
+             .nav-footer > p > a {white-space: nowrap;}</style>
+</head>
+<body id="cat" class="book toc2 toc-left">
+<div id="header">
+<h1>OpenSearch Reference</h1>
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<p><span class="toc-root"><a href="index.html">OpenSearch Reference</a></span></p><ul class="sectlevel1">
+<li><a href="opensearch-intro.html">What is OpenSearch?</a>
+</li>
+<li><a href="getting-started.html">Getting started with OpenSearch</a>
+</li>
+<li><a href="setup.html">Set up OpenSearch</a>
+</li>
+<li><a href="setup-upgrade.html">Upgrade OpenSearch</a>
+</li>
+<li><a href="index-modules.html">Index modules</a>
+</li>
+<li><a href="mapping.html">Mapping</a>
+</li>
+<li><a href="analysis.html">Text analysis</a>
+</li>
+<li><a href="index-templates.html">Index templates</a>
+</li>
+<li><a href="ingest.html">Ingest node</a>
+</li>
+<li><a href="search-your-data.html">Search your data</a>
+</li>
+<li><a href="query-dsl.html">Query DSL</a>
+</li>
+<li><a href="search-aggregations.html">Aggregations</a>
+</li>
+<li><a href="modules-scripting.html">Scripting</a>
+</li>
+<li><a href="high-availability.html">Set up a cluster for high availability</a>
+</li>
+<li><a href="snapshot-restore.html">Snapshot and restore</a>
+</li>
+<li><a href="commands.html">Command line tools</a>
+</li>
+<li><a href="how-to.html">How To</a>
+</li>
+<li><a href="glossary.html">Glossary of terms</a>
+</li>
+<li><a href="rest-apis.html">REST APIs</a>
+<ul class="sectlevel1">
+<li><a href="api-conventions.html">API conventions</a>
+</li>
+<li><a href="cat.html"><span class="toc-current">Compact and aligned text (CAT) APIs</span></a>
+<ul class="sectlevel2">
+<li><a href="cat.html#cat-alias">cat aliases API</a>
+</li>
+<li><a href="cat.html#cat-allocation">cat allocation API</a>
+</li>
+<li><a href="cat.html#cat-count">cat count API</a>
+</li>
+<li><a href="cat.html#cat-fielddata">cat fielddata API</a>
+</li>
+<li><a href="cat.html#cat-health">cat health API</a>
+</li>
+<li><a href="cat.html#cat-indices">cat indices API</a>
+</li>
+<li><a href="cat.html#cat-master">cat master API</a>
+</li>
+<li><a href="cat.html#cat-nodeattrs">cat nodeattrs API</a>
+</li>
+<li><a href="cat.html#cat-nodes">cat nodes API</a>
+</li>
+<li><a href="cat.html#cat-pending-tasks">cat pending tasks API</a>
+</li>
+<li><a href="cat.html#cat-plugins">cat plugins API</a>
+</li>
+<li><a href="cat.html#cat-recovery">cat recovery API</a>
+</li>
+<li><a href="cat.html#cat-repositories">cat repositories API</a>
+</li>
+<li><a href="cat.html#cat-segments">cat segments API</a>
+</li>
+<li><a href="cat.html#cat-shards">cat shards API</a>
+</li>
+<li><a href="cat.html#cat-snapshots">cat snapshots API</a>
+</li>
+<li><a href="cat.html#cat-tasks">cat task management API</a>
+</li>
+<li><a href="cat.html#cat-templates">cat templates API</a>
+</li>
+<li><a href="cat.html#cat-thread-pool">cat thread pool API</a>
+</li>
+</ul>
+</li>
+<li><a href="cluster.html">Cluster APIs</a>
+</li>
+<li><a href="docs.html">Document APIs</a>
+</li>
+<li><a href="indices.html">Index APIs</a>
+</li>
+<li><a href="ingest-apis.html">Ingest APIs</a>
+</li>
+<li><a href="search.html">Search APIs</a>
+</li>
+</ul>
+</li>
+<li><a href="breaking-changes.html">Migration guide</a>
+</li>
+<li><a href="opensearch-release-notes.html">Release notes</a>
+</li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="cat">Compact and aligned text (CAT) APIs</h2>
+<div class="sectionbody">
+<h3 id="intro" class="float">Introduction</h3>
+<div class="paragraph">
+<p>JSON is great&#8230;&#8203; for computers. Even if it&#8217;s pretty-printed, trying
+to find relationships in the data is tedious. Human eyes, especially
+when looking at a terminal, need compact and aligned text. The compact and
+aligned text (CAT) APIs aim to meet this need.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Important</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>cat APIs are only intended for human consumption using the
+<a href="https://www.opensearch.org/guide/en/kibana/{branch}/console-kibana.html">OpenSearch Dashboards console</a> or command line. They are <em>not</em>
+intended for use by applications. For application consumption, we recommend
+using a corresponding JSON API.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>All the cat commands accept a query string parameter <code>help</code> to see all
+the headers and info they provide, and the <code>/_cat</code> command alone lists all
+the available commands.</p>
+</div>
+<h3 id="common-parameters" class="discrete">Common parameters</h3>
+<h4 id="verbose" class="discrete">Verbose</h4>
+<div class="paragraph">
+<p>Each of the commands accepts a query string parameter <code>v</code> to turn on
+verbose output. For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">GET /_cat/master?v=true</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Might respond with:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-txt" data-lang="txt">id                     host      ip        node
+u_n93zwxThWHi1PDBJAGAg 127.0.0.1 127.0.0.1 u_n93zw</code></pre>
+</div>
+</div>
+<h4 id="help" class="discrete">Help</h4>
+<div class="paragraph">
+<p>Each of the commands accepts a query string parameter <code>help</code> which will
+output its available columns. For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">GET /_cat/master?help</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Might respond with:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-txt" data-lang="txt">id   |   | node id
+host | h | host name
+ip   |   | ip address
+node | n | node name</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<code>help</code> is not supported if any optional url parameter is used.
+For example <code>GET _cat/shards/my-index-000001?help</code> or <code>GET _cat/indices/my-index-*?help</code>
+results in an error. Use <code>GET _cat/shards?help</code> or <code>GET _cat/indices?help</code>
+instead.
+</td>
+</tr>
+</table>
+</div>
+<h4 id="headers" class="discrete">Headers</h4>
+<div class="paragraph">
+<p>Each of the commands accepts a query string parameter <code>h</code> which forces
+only those columns to appear. For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">GET /_cat/nodes?h=ip,port,heapPercent,name</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Responds with:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-txt" data-lang="txt">127.0.0.1 9300 27 sLBaIGK</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can also request multiple columns using simple wildcards like
+<code>/_cat/thread_pool?h=ip,queue*</code> to get all headers (or aliases) starting
+with <code>queue</code>.</p>
+</div>
+<h4 id="numeric-formats" class="discrete">Numeric formats</h4>
+<div class="paragraph">
+<p>Many commands provide a few types of numeric output, either a byte, size
+or a time value.  By default, these types are human-formatted,
+for example, <code>3.5mb</code> instead of <code>3763212</code>.  The human values are not
+sortable numerically, so in order to operate on these values where
+order is important, you can change it.</p>
+</div>
+<div class="paragraph">
+<p>Say you want to find the largest index in your cluster (storage used
+by all the shards, not number of documents).  The <code>/_cat/indices</code> API
+is ideal.  You only need to add three things to the API request:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The <code>bytes</code> query string parameter with a value of <code>b</code> to get byte-level resolution.</p>
+</li>
+<li>
+<p>The <code>s</code> (sort) parameter with a value of <code>store.size:desc</code> to sort the output
+by shard storage in descending order.</p>
+</li>
+<li>
+<p>The <code>v</code> (verbose) parameter to include column headings in the response.</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">GET /_cat/indices?bytes=b&amp;s=store.size:desc&amp;v=true</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The API returns the following response:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-txt" data-lang="txt">health status index            uuid                   pri rep docs.count docs.deleted store.size pri.store.size
+yellow open   my-index-000001  u8FNjxh8Rfy_awN11oDKYQ   1   1       1200            0      72171         72171
+green  open   my-index-000002  nYFWZEO7TUiOjLQXBaYJpA   1   0          0            0        230          230</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If you want to change the <a href="api-conventions.html#time-units">time units</a>, use <code>time</code> parameter.</p>
+</div>
+<div class="paragraph">
+<p>If you want to change the <a href="api-conventions.html#size-units">size units</a>, use <code>size</code> parameter.</p>
+</div>
+<div class="paragraph">
+<p>If you want to change the <a href="api-conventions.html#byte-units">byte units</a>, use <code>bytes</code> parameter.</p>
+</div>
+<h4 id="_response_as_text_json_smile_yaml_or_cbor" class="discrete">Response as text, json, smile, yaml or cbor</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sh" data-lang="sh">% curl 'localhost:9200/_cat/indices?format=json&amp;pretty'
+[
+  {
+    "pri.store.size": "650b",
+    "health": "yellow",
+    "status": "open",
+    "index": "my-index-000001",
+    "pri": "5",
+    "rep": "1",
+    "docs.count": "0",
+    "docs.deleted": "0",
+    "store.size": "650b"
+  }
+]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Currently supported formats (for the <code>?format=</code> parameter):
+- text (default)
+- json
+- smile
+- yaml
+- cbor</p>
+</div>
+<div class="paragraph">
+<p>Alternatively you can set the "Accept" HTTP header to the appropriate media format.
+All formats above are supported, the GET parameter takes precedence over the header.
+For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sh" data-lang="sh">% curl '192.168.56.10:9200/_cat/indices?pretty' -H "Accept: application/json"
+[
+  {
+    "pri.store.size": "650b",
+    "health": "yellow",
+    "status": "open",
+    "index": "my-index-000001",
+    "pri": "5",
+    "rep": "1",
+    "docs.count": "0",
+    "docs.deleted": "0",
+    "store.size": "650b"
+  }
+]</code></pre>
+</div>
+</div>
+<h4 id="sort" class="discrete">Sort</h4>
+<div class="paragraph">
+<p>Each of the commands accepts a query string parameter <code>s</code> which sorts the table by
+the columns specified as the parameter value. Columns are specified either by name or by
+alias, and are provided as a comma separated string. By default, sorting is done in
+ascending fashion. Appending <code>:desc</code> to a column will invert the ordering for
+that column. <code>:asc</code> is also accepted but exhibits the same behavior as the default sort order.</p>
+</div>
+<div class="paragraph">
+<p>For example, with a sort string <code>s=column1,column2:desc,column3</code>, the table will be
+sorted in ascending order by column1, in descending order by column2, and in ascending
+order by column3.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sh" data-lang="sh">GET _cat/templates?v=true&amp;s=order:desc,index_patterns</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>returns:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-txt" data-lang="txt">name                  index_patterns order version
+pizza_pepperoni       [*pepperoni*]  2
+sushi_california_roll [*avocado*]    1     1
+pizza_hawaiian        [*pineapples*] 1</code></pre>
+</div>
+</div>
+<div class="sect2">
+<h3 id="cat-alias">cat aliases API</h3>
+<titleabbrev>cat aliases</titleabbrev>
+<div class="paragraph">
+<p>Returns information about currently configured aliases to indices, including
+filter and routing information.</p>
+</div>
+<div class="sect3">
+<h4 id="cat-alias-api-request">Request</h4>
+<div class="paragraph">
+<p><code>GET /_cat/aliases/&lt;alias&gt;</code></p>
+</div>
+<div class="paragraph">
+<p><code>GET /_cat/aliases</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="cat-alias-api-path-params">Path parameters</h4>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>&lt;alias&gt;</code></dt>
+<dd>
+<p>(Optional, string)
+Comma-separated list or wildcard expression of index alias names
+used to limit the request.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect3">
+<h4 id="cat-alias-api-query-params">Query parameters</h4>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>format</code></dt>
+<dd>
+<p>(Optional, string) Short version of the
+<a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html">HTTP accept header</a>.
+Valid values include JSON, YAML, etc.</p>
+</dd>
+<dt class="hdlist1"><code>h</code></dt>
+<dd>
+<p>(Optional, string) Comma-separated list of column names to display.</p>
+</dd>
+<dt class="hdlist1"><code>help</code></dt>
+<dd>
+<p>(Optional, Boolean) If <code>true</code>, the response includes help information. Defaults
+to <code>false</code>.</p>
+</dd>
+<dt class="hdlist1"><code>local</code></dt>
+<dd>
+<p>(Optional, Boolean) If <code>true</code>, the request retrieves information from the local
+node only. Defaults to <code>false</code>, which means information is retrieved from
+the master node.</p>
+</dd>
+<dt class="hdlist1"><code>s</code></dt>
+<dd>
+<p>(Optional, string) Comma-separated list of column names or column aliases used
+to sort the response.</p>
+</dd>
+<dt class="hdlist1"><code>v</code></dt>
+<dd>
+<p>(Optional, Boolean) If <code>true</code>, the response includes column headings.
+Defaults to <code>false</code>.</p>
+</dd>
+<dt class="hdlist1"><code>expand_wildcards</code></dt>
+<dd>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>(Optional, string) Controls what kind of indices that wildcard expressions can
+expand to. Multiple values are accepted when separated by a comma, as in
+<code>open,hidden</code>. Valid values are:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>all</code></dt>
+<dd>
+<p>Expand to open and closed indices, including <a href="api-conventions.html#hidden-indices">hidden indices</a>.</p>
+</dd>
+<dt class="hdlist1"><code>open</code></dt>
+<dd>
+<p>Expand only to open indices.</p>
+</dd>
+<dt class="hdlist1"><code>closed</code></dt>
+<dd>
+<p>Expand only to closed indices.</p>
+</dd>
+<dt class="hdlist1"><code>hidden</code></dt>
+<dd>
+<p>Expansion of wildcards will include hidden indices.
+Must be combined with <code>open</code>, <code>closed</code>, or both.</p>
+</dd>
+<dt class="hdlist1"><code>none</code></dt>
+<dd>
+<p>Wildcard expressions are not accepted.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect3">
+<h4 id="cat-alias-api-example">Examples</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">GET /_cat/aliases?v=true</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The API returns the following response:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-txt" data-lang="txt">alias  index filter routing.index routing.search is_write_index
+alias1 test1 -      -            -              -
+alias2 test1 *      -            -              -
+alias3 test1 -      1            1              -
+alias4 test1 -      2            1,2            -</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This response shows that <code>alias2</code> has configured a filter, and specific routing
+configurations in <code>alias3</code> and <code>alias4</code>.</p>
+</div>
+<div class="paragraph">
+<p>If you only want to get information about specific aliases, you can specify
+the aliases in comma-delimited format as a URL parameter, e.g.,
+/_cat/aliases/alias1,alias2.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="cat-allocation">cat allocation API</h3>
+<titleabbrev>cat allocation</titleabbrev>
+<div class="paragraph">
+<p>Provides a snapshot of the number of shards allocated to each data node
+and their disk space.</p>
+</div>
+<div class="sect3">
+<h4 id="cat-allocation-api-request">Request</h4>
+<div class="paragraph">
+<p><code>GET /_cat/allocation/&lt;node_id&gt;</code></p>
+</div>
+<div class="paragraph">
+<p><code>GET /_cat/allocation</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="cat-allocation-api-path-params">Path parameters</h4>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>&lt;node_id&gt;</code></dt>
+<dd>
+<p>(Optional, string) Comma-separated list of node IDs or names used to limit
+returned information.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect3">
+<h4 id="cat-allocation-api-query-params">Query parameters</h4>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>bytes</code></dt>
+<dd>
+<p>(Optional, <a href="api-conventions.html#byte-units">byte size units</a>) Unit used to display byte values.</p>
+</dd>
+<dt class="hdlist1"><code>format</code></dt>
+<dd>
+<p>(Optional, string) Short version of the
+<a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html">HTTP accept header</a>.
+Valid values include JSON, YAML, etc.</p>
+</dd>
+<dt class="hdlist1"><code>local</code></dt>
+<dd>
+<p>(Optional, Boolean) If <code>true</code>, the request retrieves information from the local
+node only. Defaults to <code>false</code>, which means information is retrieved from
+the master node.</p>
+</dd>
+<dt class="hdlist1"><code>master_timeout</code></dt>
+<dd>
+<p>(Optional, <a href="api-conventions.html#time-units">time units</a>)
+Period to wait for a connection to the master node. If no response is received
+before the timeout expires, the request fails and returns an error. Defaults to
+<code>30s</code>.</p>
+</dd>
+<dt class="hdlist1"><code>h</code></dt>
+<dd>
+<p>(Optional, string) Comma-separated list of column names to display.</p>
+</dd>
+<dt class="hdlist1"><code>help</code></dt>
+<dd>
+<p>(Optional, Boolean) If <code>true</code>, the response includes help information. Defaults
+to <code>false</code>.</p>
+</dd>
+<dt class="hdlist1"><code>s</code></dt>
+<dd>
+<p>(Optional, string) Comma-separated list of column names or column aliases used
+to sort the response.</p>
+</dd>
+<dt class="hdlist1"><code>v</code></dt>
+<dd>
+<p>(Optional, Boolean) If <code>true</code>, the response includes column headings.
+Defaults to <code>false</code>.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect3">
+<h4 id="cat-allocation-api-example">Examples</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">GET /_cat/allocation?v=true</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The API returns the following response:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-txt" data-lang="txt">shards disk.indices disk.used disk.avail disk.total disk.percent host      ip        node
+     1         260b    47.3gb     43.4gb    100.7gb           46 127.0.0.1 127.0.0.1 CSUXak2</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This response shows a single shard is allocated to the one node available.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="cat-count">cat count API</h3>
+<titleabbrev>cat count</titleabbrev>
+<div class="paragraph">
+<p>Provides quick access to a document count for an index or an
+entire cluster.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+The document count only includes live documents, not deleted documents
+which have not yet been removed by the merge process.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect3">
+<h4 id="cat-count-api-request">Request</h4>
+<div class="paragraph">
+<p><code>GET /_cat/count/&lt;target&gt;</code></p>
+</div>
+<div class="paragraph">
+<p><code>GET /_cat/count</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="cat-count-api-path-params">Path parameters</h4>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>&lt;target&gt;</code></dt>
+<dd>
+<p>(Optional, string)
+Comma-separated list of indices and index aliases used to limit
+the request. Wildcard expressions (<code>*</code>) are supported.</p>
+<div class="paragraph">
+<p>To target all indices in a cluster, omit this parameter or use
+<code>_all</code> or <code>*</code>.</p>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect3">
+<h4 id="cat-count-api-query-params">Query parameters</h4>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>format</code></dt>
+<dd>
+<p>(Optional, string) Short version of the
+<a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html">HTTP accept header</a>.
+Valid values include JSON, YAML, etc.</p>
+</dd>
+<dt class="hdlist1"><code>h</code></dt>
+<dd>
+<p>(Optional, string) Comma-separated list of column names to display.</p>
+</dd>
+<dt class="hdlist1"><code>help</code></dt>
+<dd>
+<p>(Optional, Boolean) If <code>true</code>, the response includes help information. Defaults
+to <code>false</code>.</p>
+</dd>
+<dt class="hdlist1"><code>s</code></dt>
+<dd>
+<p>(Optional, string) Comma-separated list of column names or column aliases used
+to sort the response.</p>
+</dd>
+<dt class="hdlist1"><code>v</code></dt>
+<dd>
+<p>(Optional, Boolean) If <code>true</code>, the response includes column headings.
+Defaults to <code>false</code>.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect3">
+<h4 id="cat-count-api-example">Examples</h4>
+<div class="sect4">
+<h5 id="cat-count-api-example-ind">Example with an individual index</h5>
+<div class="paragraph">
+<p>The following <code>count</code> API request retrieves the document count for the
+<code>my-index-000001</code> index.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">GET /_cat/count/my-index-000001?v=true</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The API returns the following response:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-txt" data-lang="txt">epoch      timestamp count
+1475868259 15:24:20  120</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="cat-count-api-example-all">Example with all indices in a cluster</h5>
+<div class="paragraph">
+<p>The following <code>count</code> API request retrieves the document count for all data
+streams and indices in the cluster.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">GET /_cat/count?v=true</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The API returns the following response:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-txt" data-lang="txt">epoch      timestamp count
+1475868259 15:24:20  121</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="cat-fielddata">cat fielddata API</h3>
+<titleabbrev>cat fielddata</titleabbrev>
+<div class="paragraph">
+<p>Returns the amount of heap memory currently used by the
+<a href="settings.html#modules-fielddata">field data cache</a> on every data node in the cluster.</p>
+</div>
+<div class="sect3">
+<h4 id="cat-fielddata-api-request">Request</h4>
+<div class="paragraph">
+<p><code>GET /_cat/fielddata/&lt;field&gt;</code></p>
+</div>
+<div class="paragraph">
+<p><code>GET /_cat/fielddata</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="cat-fielddata-api-path-params">Path parameters</h4>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>&lt;field&gt;</code></dt>
+<dd>
+<p>(Optional, string) Comma-separated list of fields used to limit returned
+information.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect3">
+<h4 id="cat-fielddata-api-query-params">Query parameters</h4>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>bytes</code></dt>
+<dd>
+<p>(Optional, <a href="api-conventions.html#byte-units">byte size units</a>) Unit used to display byte values.</p>
+</dd>
+<dt class="hdlist1"><code>format</code></dt>
+<dd>
+<p>(Optional, string) Short version of the
+<a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html">HTTP accept header</a>.
+Valid values include JSON, YAML, etc.</p>
+</dd>
+<dt class="hdlist1"><code>h</code></dt>
+<dd>
+<p>(Optional, string) Comma-separated list of column names to display.</p>
+</dd>
+<dt class="hdlist1"><code>help</code></dt>
+<dd>
+<p>(Optional, Boolean) If <code>true</code>, the response includes help information. Defaults
+to <code>false</code>.</p>
+</dd>
+<dt class="hdlist1"><code>s</code></dt>
+<dd>
+<p>(Optional, string) Comma-separated list of column names or column aliases used
+to sort the response.</p>
+</dd>
+<dt class="hdlist1"><code>v</code></dt>
+<dd>
+<p>(Optional, Boolean) If <code>true</code>, the response includes column headings.
+Defaults to <code>false</code>.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect3">
+<h4 id="cat-fielddata-api-example">Examples</h4>
+<div class="sect4">
+<h5 id="cat-fielddata-api-example-ind">Example with an individual field</h5>
+<div class="paragraph">
+<p>You can specify an individual field in the request body or URL path. The
+following <code>fieldata</code> API request retrieves heap memory size information for the
+<code>body</code> field.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">GET /_cat/fielddata?v=true&amp;fields=body</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The API returns the following response:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-txt" data-lang="txt">id                     host      ip        node    field   size
+Nqk-6inXQq-OxUfOUI8jNQ 127.0.0.1 127.0.0.1 Nqk-6in body    544b</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="cat-fielddata-api-example-list">Example with a list of fields</h5>
+<div class="paragraph">
+<p>You can specify a comma-separated list of fields in the request body or URL
+path. The following <code>fieldata</code> API request retrieves heap memory size
+information for the <code>body</code> and <code>soul</code> fields.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">GET /_cat/fielddata/body,soul?v=true</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The API returns the following response:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-txt" data-lang="txt">id                     host      ip        node    field   size
+Nqk-6inXQq-OxUfOUI8jNQ 127.0.0.1 127.0.0.1 Nqk-6in body    544b
+Nqk-6inXQq-OxUfOUI8jNQ 127.0.0.1 127.0.0.1 Nqk-6in soul    480b</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The response shows the individual fielddata for the <code>body</code> and <code>soul</code> fields,
+one row per field per node.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="cat-fielddata-api-example-all">Example with all fields in a cluster</h5>
+<div class="paragraph">
+<p>The following <code>fieldata</code> API request retrieves heap memory size
+information all fields.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">GET /_cat/fielddata?v=true</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The API returns the following response:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-txt" data-lang="txt">id                     host      ip        node    field   size
+Nqk-6inXQq-OxUfOUI8jNQ 127.0.0.1 127.0.0.1 Nqk-6in body    544b
+Nqk-6inXQq-OxUfOUI8jNQ 127.0.0.1 127.0.0.1 Nqk-6in mind    360b
+Nqk-6inXQq-OxUfOUI8jNQ 127.0.0.1 127.0.0.1 Nqk-6in soul    480b</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="cat-health">cat health API</h3>
+<titleabbrev>cat health</titleabbrev>
+<div class="paragraph">
+<p>Returns the health status of a cluster, similar to the <a href="cluster.html#cluster-health">cluster
+health</a> API.</p>
+</div>
+<div class="sect3">
+<h4 id="cat-health-api-request">Request</h4>
+<div class="paragraph">
+<p><code>GET /_cat/health</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="cat-health-api-desc">Description</h4>
+<div class="paragraph">
+<p>You can use the cat health API to get the health status of a cluster.</p>
+</div>
+<div id="timestamp" class="paragraph">
+<p>This API is often used to check malfunctioning clusters. To help you
+track cluster health alongside log files and alerting systems, the API returns
+timestamps in two formats:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>HH:MM:SS</code>, which is human-readable but includes no date information.</p>
+</li>
+<li>
+<p><a href="https://en.wikipedia.org/wiki/Unix_time">Unix <code>epoch</code> time</a>, which is
+machine-sortable and includes date information. This is useful for cluster
+recoveries that take multiple days.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>You can use the cat health API to verify cluster health across multiple nodes.
+See <a href="cat.html#cat-health-api-example-across-nodes">Example across nodes</a>.</p>
+</div>
+<div class="paragraph">
+<p>You also can use the API to track the recovery of a large cluster
+over a longer period of time. See <a href="cat.html#cat-health-api-example-large-cluster">Example with a large cluster</a>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="cat-health-api-query-params">Query parameters</h4>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>format</code></dt>
+<dd>
+<p>(Optional, string) Short version of the
+<a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html">HTTP accept header</a>.
+Valid values include JSON, YAML, etc.</p>
+</dd>
+<dt class="hdlist1"><code>h</code></dt>
+<dd>
+<p>(Optional, string) Comma-separated list of column names to display.</p>
+</dd>
+<dt class="hdlist1"><code>help</code></dt>
+<dd>
+<p>(Optional, Boolean) If <code>true</code>, the response includes help information. Defaults
+to <code>false</code>.</p>
+</dd>
+<dt class="hdlist1"><code>s</code></dt>
+<dd>
+<p>(Optional, string) Comma-separated list of column names or column aliases used
+to sort the response.</p>
+</dd>
+<dt class="hdlist1"><code>time</code></dt>
+<dd>
+<p>(Optional, <a href="api-conventions.html#time-units">time units</a>)
+Unit used to display time values.</p>
+</dd>
+<dt class="hdlist1"><code>ts</code> (timestamps)</dt>
+<dd>
+<p>(Optional, Boolean) If <code>true</code>, returns <code>HH:MM:SS</code> and
+<a href="https://en.wikipedia.org/wiki/Unix_time">Unix <code>epoch</code></a> timestamps. Defaults to
+<code>true</code>.</p>
+</dd>
+<dt class="hdlist1"><code>v</code></dt>
+<dd>
+<p>(Optional, Boolean) If <code>true</code>, the response includes column headings.
+Defaults to <code>false</code>.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect3">
+<h4 id="cat-health-api-example">Examples</h4>
+<div class="sect4">
+<h5 id="cat-health-api-example-timestamp">Example with a timestamp</h5>
+<div class="paragraph">
+<p>By default, the cat health API returns <code>HH:MM:SS</code> and
+<a href="https://en.wikipedia.org/wiki/Unix_time">Unix <code>epoch</code></a> timestamps. For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">GET /_cat/health?v=true</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The API returns the following response:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-txt" data-lang="txt">epoch      timestamp cluster       status node.total node.data shards pri relo init unassign pending_tasks max_task_wait_time active_shards_percent
+1475871424 16:17:04  opensearch green           1         1      1   1    0    0        0             0                  -                100.0%</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="cat-health-api-example-no-timestamp">Example without a timestamp</h5>
+<div class="paragraph">
+<p>You can use the <code>ts</code> (timestamps) parameter to disable timestamps. For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">GET /_cat/health?v=true&amp;ts=false</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The API returns the following response:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-txt" data-lang="txt">cluster       status node.total node.data shards pri relo init unassign pending_tasks max_task_wait_time active_shards_percent
+opensearch green           1         1      1   1    0    0        0             0                  -                100.0%</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="cat-health-api-example-across-nodes">Example across nodes</h5>
+<div class="paragraph">
+<p>You can use the cat health API to verify the health of a cluster across nodes.
+For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sh" data-lang="sh">% pssh -i -h list.of.cluster.hosts curl -s localhost:9200/_cat/health
+[1] 20:20:52 [SUCCESS] es3.vm
+1384309218 18:20:18 foo green 3 3 3 3 0 0 0 0
+[2] 20:20:52 [SUCCESS] es1.vm
+1384309218 18:20:18 foo green 3 3 3 3 0 0 0 0
+[3] 20:20:52 [SUCCESS] es2.vm
+1384309218 18:20:18 foo green 3 3 3 3 0 0 0 0</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="cat-health-api-example-large-cluster">Example with a large cluster</h5>
+<div class="paragraph">
+<p>You can use the cat health API to track the recovery of a large cluster over a
+longer period of time. You can do this by including the cat health API request
+in a delayed loop. For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sh" data-lang="sh">% while true; do curl localhost:9200/_cat/health; sleep 120; done
+1384309446 18:24:06 foo red 3 3 20 20 0 0 1812 0
+1384309566 18:26:06 foo yellow 3 3 950 916 0 12 870 0
+1384309686 18:28:06 foo yellow 3 3 1328 916 0 12 492 0
+1384309806 18:30:06 foo green 3 3 1832 916 4 0 0
+^C</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In this example, the recovery took roughly six minutes, from <code>18:24:06</code> to
+<code>18:30:06</code>. If this recovery took hours, you could continue to monitor the
+number of <code>UNASSIGNED</code> shards, which should drop. If the number of <code>UNASSIGNED</code>
+shards remains static, it would indicate an issue with the cluster recovery.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="cat-indices">cat indices API</h3>
+<titleabbrev>cat indices</titleabbrev>
+<div class="paragraph">
+<p>Returns high-level information about indices in a cluster.</p>
+</div>
+<div class="sect3">
+<h4 id="cat-indices-api-request">Request</h4>
+<div class="paragraph">
+<p><code>GET /_cat/indices/&lt;target&gt;</code></p>
+</div>
+<div class="paragraph">
+<p><code>GET /_cat/indices</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="cat-indices-api-desc">Description</h4>
+<div class="paragraph">
+<p>Use the cat indices API to get the following information for each index in a
+cluster:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Shard count</p>
+</li>
+<li>
+<p>Document count</p>
+</li>
+<li>
+<p>Deleted document count</p>
+</li>
+<li>
+<p>Primary store size</p>
+</li>
+<li>
+<p>Total store size of all shards, including shard replicas</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>These metrics are retrieved directly from
+<a href="https://lucene.apache.org/core/">Lucene</a>, which OpenSearch uses internally to power
+indexing and search. As a result, all document counts include hidden
+<a href="mapping-types.html#nested">nested</a> documents.</p>
+</div>
+<div class="paragraph">
+<p>To get an accurate count of OpenSearch documents, use the <a href="cat.html#cat-count">cat count</a> or
+<a href="search.html#search-count">count</a> APIs.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="cat-indices-api-path-params">Path parameters</h4>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>&lt;target&gt;</code></dt>
+<dd>
+<p>(Optional, string)
+Comma-separated list of indices and index aliases used to limit
+the request. Wildcard expressions (<code>*</code>) are supported.</p>
+<div class="paragraph">
+<p>To target all indices in a cluster, omit this parameter or use
+<code>_all</code> or <code>*</code>.</p>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect3">
+<h4 id="cat-indices-api-query-params">Query parameters</h4>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>bytes</code></dt>
+<dd>
+<p>(Optional, <a href="api-conventions.html#byte-units">byte size units</a>) Unit used to display byte values.</p>
+</dd>
+<dt class="hdlist1"><code>format</code></dt>
+<dd>
+<p>(Optional, string) Short version of the
+<a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html">HTTP accept header</a>.
+Valid values include JSON, YAML, etc.</p>
+</dd>
+<dt class="hdlist1"><code>h</code></dt>
+<dd>
+<p>(Optional, string) Comma-separated list of column names to display.</p>
+</dd>
+<dt class="hdlist1"><code>health</code></dt>
+<dd>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>(Optional, string) Health status used to limit returned indices. Valid values
+are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>green</code></p>
+</li>
+<li>
+<p><code>yellow</code></p>
+</li>
+<li>
+<p><code>red</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>By default, the response includes indices of any health status.</p>
+</div>
+</div>
+</div>
+</dd>
+<dt class="hdlist1"><code>help</code></dt>
+<dd>
+<p>(Optional, Boolean) If <code>true</code>, the response includes help information. Defaults
+to <code>false</code>.</p>
+</dd>
+<dt class="hdlist1"><code>include_unloaded_segments</code></dt>
+<dd>
+<p>(Optional, Boolean) If <code>true</code>, the response includes information from segments
+that are <strong>not</strong> loaded into memory. Defaults to <code>false</code>.</p>
+</dd>
+<dt class="hdlist1"><code>local</code></dt>
+<dd>
+<p>(Optional, Boolean) If <code>true</code>, the request retrieves information from the local
+node only. Defaults to <code>false</code>, which means information is retrieved from
+the master node.</p>
+</dd>
+<dt class="hdlist1"><code>master_timeout</code></dt>
+<dd>
+<p>(Optional, <a href="api-conventions.html#time-units">time units</a>)
+Period to wait for a connection to the master node. If no response is received
+before the timeout expires, the request fails and returns an error. Defaults to
+<code>30s</code>.</p>
+</dd>
+</dl>
+</div>
+<div id="pri-flag" class="dlist">
+<dl>
+<dt class="hdlist1"><code>pri</code> (primary shards)</dt>
+<dd>
+<p>(Optional, Boolean) If <code>true</code>, the response only includes information from
+primary shards. Defaults to <code>false</code>.</p>
+</dd>
+<dt class="hdlist1"><code>s</code></dt>
+<dd>
+<p>(Optional, string) Comma-separated list of column names or column aliases used
+to sort the response.</p>
+</dd>
+<dt class="hdlist1"><code>time</code></dt>
+<dd>
+<p>(Optional, <a href="api-conventions.html#time-units">time units</a>)
+Unit used to display time values.</p>
+</dd>
+<dt class="hdlist1"><code>v</code></dt>
+<dd>
+<p>(Optional, Boolean) If <code>true</code>, the response includes column headings.
+Defaults to <code>false</code>.</p>
+</dd>
+<dt class="hdlist1"><code>expand_wildcards</code></dt>
+<dd>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>(Optional, string) Controls what kind of indices that wildcard expressions can
+expand to. Multiple values are accepted when separated by a comma, as in
+<code>open,hidden</code>. Valid values are:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>all</code></dt>
+<dd>
+<p>Expand to open and closed indices, including <a href="api-conventions.html#hidden-indices">hidden indices</a>.</p>
+</dd>
+<dt class="hdlist1"><code>open</code></dt>
+<dd>
+<p>Expand only to open indices.</p>
+</dd>
+<dt class="hdlist1"><code>closed</code></dt>
+<dd>
+<p>Expand only to closed indices.</p>
+</dd>
+<dt class="hdlist1"><code>hidden</code></dt>
+<dd>
+<p>Expansion of wildcards will include hidden indices.
+Must be combined with <code>open</code>, <code>closed</code>, or both.</p>
+</dd>
+<dt class="hdlist1"><code>none</code></dt>
+<dd>
+<p>Wildcard expressions are not accepted.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect3">
+<h4 id="cat-indices-api-example">Examples</h4>
+<div id="examples" class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">GET /_cat/indices/my-index-*?v=true&amp;s=index</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The API returns the following response:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-txt" data-lang="txt">health status index            uuid                   pri rep docs.count docs.deleted store.size pri.store.size
+yellow open   my-index-000001  u8FNjxh8Rfy_awN11oDKYQ   1   1       1200            0     88.1kb         88.1kb
+green  open   my-index-000002  nYFWZEO7TUiOjLQXBaYJpA   1   0          0            0       260b           260b</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="cat-master">cat master API</h3>
+<titleabbrev>cat master</titleabbrev>
+<div class="paragraph">
+<p>Returns information about the master node, including the ID, bound IP address,
+and name.</p>
+</div>
+<div class="sect3">
+<h4 id="cat-master-api-request">Request</h4>
+<div class="paragraph">
+<p><code>GET /_cat/master</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="cat-master-api-query-params">Query parameters</h4>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>format</code></dt>
+<dd>
+<p>(Optional, string) Short version of the
+<a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html">HTTP accept header</a>.
+Valid values include JSON, YAML, etc.</p>
+</dd>
+<dt class="hdlist1"><code>h</code></dt>
+<dd>
+<p>(Optional, string) Comma-separated list of column names to display.</p>
+</dd>
+<dt class="hdlist1"><code>help</code></dt>
+<dd>
+<p>(Optional, Boolean) If <code>true</code>, the response includes help information. Defaults
+to <code>false</code>.</p>
+</dd>
+<dt class="hdlist1"><code>local</code></dt>
+<dd>
+<p>(Optional, Boolean) If <code>true</code>, the request retrieves information from the local
+node only. Defaults to <code>false</code>, which means information is retrieved from
+the master node.</p>
+</dd>
+<dt class="hdlist1"><code>master_timeout</code></dt>
+<dd>
+<p>(Optional, <a href="api-conventions.html#time-units">time units</a>)
+Period to wait for a connection to the master node. If no response is received
+before the timeout expires, the request fails and returns an error. Defaults to
+<code>30s</code>.</p>
+</dd>
+<dt class="hdlist1"><code>s</code></dt>
+<dd>
+<p>(Optional, string) Comma-separated list of column names or column aliases used
+to sort the response.</p>
+</dd>
+<dt class="hdlist1"><code>v</code></dt>
+<dd>
+<p>(Optional, Boolean) If <code>true</code>, the response includes column headings.
+Defaults to <code>false</code>.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect3">
+<h4 id="cat-master-api-example">Examples</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">GET /_cat/master?v=true</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The API returns the following response:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-txt" data-lang="txt">id                     host      ip        node
+YzWoH_2BT-6UjVGDyPdqYg 127.0.0.1 127.0.0.1 YzWoH_2</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This information is also available via the <code>nodes</code> command, but this
+is slightly shorter when all you want to do, for example, is verify
+all nodes agree on the master:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sh" data-lang="sh">% pssh -i -h list.of.cluster.hosts curl -s localhost:9200/_cat/master
+[1] 19:16:37 [SUCCESS] es3.vm
+Ntgn2DcuTjGuXlhKDUD4vA 192.168.56.30 H5dfFeA
+[2] 19:16:37 [SUCCESS] es2.vm
+Ntgn2DcuTjGuXlhKDUD4vA 192.168.56.30 H5dfFeA
+[3] 19:16:37 [SUCCESS] es1.vm
+Ntgn2DcuTjGuXlhKDUD4vA 192.168.56.30 H5dfFeA</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="cat-nodeattrs">cat nodeattrs API</h3>
+<titleabbrev>cat nodeattrs</titleabbrev>
+<div class="paragraph">
+<p>Returns information about custom node attributes.</p>
+</div>
+<div class="sect3">
+<h4 id="cat-nodeattrs-api-request">Request</h4>
+<div class="paragraph">
+<p><code>GET /_cat/nodeattrs</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="cat-nodeattrs-api-query-params">Query parameters</h4>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>format</code></dt>
+<dd>
+<p>(Optional, string) Short version of the
+<a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html">HTTP accept header</a>.
+Valid values include JSON, YAML, etc.</p>
+</dd>
+<dt class="hdlist1"><code>h</code></dt>
+<dd>
+<p>(Optional, string) Comma-separated list of column names to display.</p>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>If you do not specify which columns to include, the API returns the default columns in the order listed below. If you explicitly specify one or more columns, it only returns the specified columns.</p>
+</div>
+<div class="paragraph">
+<p>Valid columns are:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>node</code>,<code>name</code></dt>
+<dd>
+<p>(Default) Name of the node, such as <code>DKDM97B</code>.</p>
+</dd>
+<dt class="hdlist1"><code>host</code>, <code>h</code></dt>
+<dd>
+<p>(Default) Host name, such as <code>n1</code>.</p>
+</dd>
+<dt class="hdlist1"><code>ip</code>, <code>i</code></dt>
+<dd>
+<p>(Default) IP address, such as <code>127.0.1.1</code>.</p>
+</dd>
+<dt class="hdlist1"><code>attr</code>, <code>attr.name</code></dt>
+<dd>
+<p>(Default) Attribute name, such as <code>rack</code>.</p>
+</dd>
+<dt class="hdlist1"><code>value</code>, <code>attr.value</code></dt>
+<dd>
+<p>(Default) Attribute value, such as <code>rack123</code>.</p>
+</dd>
+<dt class="hdlist1"><code>id</code>, <code>nodeId</code></dt>
+<dd>
+<p>ID of the node, such as <code>k0zy</code>.</p>
+</dd>
+<dt class="hdlist1"><code>pid</code>, <code>p</code></dt>
+<dd>
+<p>Process ID, such as <code>13061</code>.</p>
+</dd>
+<dt class="hdlist1"><code>port</code>, <code>po</code></dt>
+<dd>
+<p>Bound transport port, such as <code>9300</code>.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+</dd>
+<dt class="hdlist1"><code>help</code></dt>
+<dd>
+<p>(Optional, Boolean) If <code>true</code>, the response includes help information. Defaults
+to <code>false</code>.</p>
+</dd>
+<dt class="hdlist1"><code>local</code></dt>
+<dd>
+<p>(Optional, Boolean) If <code>true</code>, the request retrieves information from the local
+node only. Defaults to <code>false</code>, which means information is retrieved from
+the master node.</p>
+</dd>
+<dt class="hdlist1"><code>master_timeout</code></dt>
+<dd>
+<p>(Optional, <a href="api-conventions.html#time-units">time units</a>)
+Period to wait for a connection to the master node. If no response is received
+before the timeout expires, the request fails and returns an error. Defaults to
+<code>30s</code>.</p>
+</dd>
+<dt class="hdlist1"><code>s</code></dt>
+<dd>
+<p>(Optional, string) Comma-separated list of column names or column aliases used
+to sort the response.</p>
+</dd>
+<dt class="hdlist1"><code>v</code></dt>
+<dd>
+<p>(Optional, Boolean) If <code>true</code>, the response includes column headings.
+Defaults to <code>false</code>.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect3">
+<h4 id="cat-nodeattrs-api-example">Examples</h4>
+<div class="sect4">
+<h5 id="cat-nodeattrs-api-ex-default">Example with default columns</h5>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">GET /_cat/nodeattrs?v=true</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The API returns the following response:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-txt" data-lang="txt">node    host      ip        attr     value
+node-0 127.0.0.1 127.0.0.1 testattr test</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>node</code>, <code>host</code>, and <code>ip</code> columns provide basic information about each node.
+The <code>attr</code> and <code>value</code> columns return custom node attributes, one per line.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="cat-nodeattrs-api-ex-headings">Example with explicit columns</h5>
+<div class="paragraph">
+<p>The following API request returns the <code>name</code>, <code>pid</code>, <code>attr</code>, and <code>value</code>
+columns.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">GET /_cat/nodeattrs?v=true&amp;h=name,pid,attr,value</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The API returns the following response:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-txt" data-lang="txt">name    pid   attr     value
+node-0 19566 testattr test</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="cat-nodes">cat nodes API</h3>
+<titleabbrev>cat nodes</titleabbrev>
+<div class="paragraph">
+<p>Returns information about a cluster&#8217;s nodes.</p>
+</div>
+<div class="sect3">
+<h4 id="cat-nodes-api-request">Request</h4>
+<div class="paragraph">
+<p><code>GET /_cat/nodes</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="cat-nodes-api-query-params">Query parameters</h4>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>bytes</code></dt>
+<dd>
+<p>(Optional, <a href="api-conventions.html#byte-units">byte size units</a>) Unit used to display byte values.</p>
+</dd>
+<dt class="hdlist1"><code>format</code></dt>
+<dd>
+<p>(Optional, string) Short version of the
+<a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html">HTTP accept header</a>.
+Valid values include JSON, YAML, etc.</p>
+</dd>
+<dt class="hdlist1"><code>full_id</code></dt>
+<dd>
+<p>(Optional, Boolean) If <code>true</code>, return the full node ID.  If <code>false</code>, return the
+shortened node ID. Defaults to <code>false</code>.</p>
+</dd>
+<dt class="hdlist1"><code>h</code></dt>
+<dd>
+<p>(Optional, string) Comma-separated list of column names to display.</p>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>If you do not specify which columns to include, the API returns the default columns in the order listed below. If you explicitly specify one or more columns, it only returns the specified columns.</p>
+</div>
+<div class="paragraph">
+<p>Valid columns are:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>ip</code>, <code>i</code></dt>
+<dd>
+<p>(Default) IP address, such as <code>127.0.1.1</code>.</p>
+</dd>
+<dt class="hdlist1"><code>heap.percent</code>, <code>hp</code>, <code>heapPercent</code></dt>
+<dd>
+<p>(Default) Maximum configured heap, such as <code>7</code>.</p>
+</dd>
+<dt class="hdlist1"><code>ram.percent</code>, <code>rp</code>, <code>ramPercent</code></dt>
+<dd>
+<p>(Default) Used total memory percentage, such as <code>47</code>.</p>
+</dd>
+<dt class="hdlist1"><code>file_desc.percent</code>, <code>fdp</code>, <code>fileDescriptorPercent</code></dt>
+<dd>
+<p>(Default) Used file descriptors percentage, such as <code>1</code>.</p>
+</dd>
+<dt class="hdlist1"><code>node.role</code>, <code>r</code>, <code>role</code>, <code>nodeRole</code></dt>
+<dd>
+<p>(Default) Roles of the node. Returned values include <code>m</code> (master-eligible node),
+<code>d</code> (data node), <code>i</code> (ingest node), and <code>-</code> (coordinating node only).</p>
+<div class="paragraph">
+<p>For example, <code>dim</code> indicates a master-eligible data and ingest node. See
+<a href="settings.html#modules-node">Node</a>.</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>master</code>, <code>m</code></dt>
+<dd>
+<p>(Default) Indicates whether the node is the elected master node. Returned values
+include <code>*</code> (elected master) and <code>-</code> (not elected master).</p>
+</dd>
+<dt class="hdlist1"><code>name</code>, <code>n</code></dt>
+<dd>
+<p>(Default) Node name, such as <code>I8hydUG</code>.</p>
+</dd>
+<dt class="hdlist1"><code>id</code>, <code>nodeId</code></dt>
+<dd>
+<p>ID of the node, such as <code>k0zy</code>.</p>
+</dd>
+<dt class="hdlist1"><code>pid</code>, <code>p</code></dt>
+<dd>
+<p>Process ID, such as <code>13061</code>.</p>
+</dd>
+<dt class="hdlist1"><code>port</code>, <code>po</code></dt>
+<dd>
+<p>Bound transport port, such as <code>9300</code>.</p>
+</dd>
+<dt class="hdlist1"><code>http_address</code>, <code>http</code></dt>
+<dd>
+<p>Bound http address, such as <code>127.0.0.1:9200</code>.</p>
+</dd>
+<dt class="hdlist1"><code>version</code>, <code>v</code></dt>
+<dd>
+<p>OpenSearch version, such as 1.0.0.</p>
+</dd>
+<dt class="hdlist1"><code>build</code>, <code>b</code></dt>
+<dd>
+<p>OpenSearch build hash, such as <code>5c03844</code>.</p>
+</dd>
+<dt class="hdlist1"><code>jdk</code>, <code>j</code></dt>
+<dd>
+<p>Java version, such as <code>1.8.0</code>.</p>
+</dd>
+<dt class="hdlist1"><code>disk.total</code>, <code>dt</code>, <code>diskTotal</code></dt>
+<dd>
+<p>Total disk space, such as <code>458.3gb</code>.</p>
+</dd>
+<dt class="hdlist1"><code>disk.used</code>, <code>du</code>, <code>diskUsed</code></dt>
+<dd>
+<p>Used disk space, such as <code>259.8gb</code>.</p>
+</dd>
+<dt class="hdlist1"><code>disk.avail</code>, <code>d</code>, <code>disk</code>, <code>diskAvail</code></dt>
+<dd>
+<p>Available disk space, such as <code>198.4gb</code>.</p>
+</dd>
+<dt class="hdlist1"><code>disk.used_percent</code>, <code>dup</code>, <code>diskUsedPercent</code></dt>
+<dd>
+<p>Used disk space percentage, such as <code>47</code>.</p>
+</dd>
+<dt class="hdlist1"><code>heap.current</code>, <code>hc</code>, <code>heapCurrent</code></dt>
+<dd>
+<p>Used heap, such as <code>311.2mb</code>.</p>
+</dd>
+<dt class="hdlist1"><code>ram.current</code>,<code>rc</code>, <code>ramCurrent</code></dt>
+<dd>
+<p>Used total memory, such as <code>513.4mb</code>.</p>
+</dd>
+<dt class="hdlist1"><code>ram.max</code>, <code>rm</code>, <code>ramMax</code></dt>
+<dd>
+<p>Total memory, such as <code>2.9gb</code>.</p>
+</dd>
+<dt class="hdlist1"><code>file_desc.current</code>, <code>fdc</code>, <code>fileDescriptorCurrent</code></dt>
+<dd>
+<p>Used file descriptors, such as <code>123</code>.</p>
+</dd>
+<dt class="hdlist1"><code>file_desc.max</code>, <code>fdm</code>, <code>fileDescriptorMax</code></dt>
+<dd>
+<p>Maximum number of file descriptors, such as <code>1024</code>.</p>
+</dd>
+<dt class="hdlist1"><code>cpu</code></dt>
+<dd>
+<p>Recent system CPU usage as percent, such as <code>12</code>.</p>
+</dd>
+<dt class="hdlist1"><code>load_1m</code>, <code>l</code></dt>
+<dd>
+<p>Most recent load average, such as <code>0.22</code>.</p>
+</dd>
+<dt class="hdlist1"><code>load_5m</code>, <code>l</code></dt>
+<dd>
+<p>Load average for the last five minutes, such as <code>0.78</code>.</p>
+</dd>
+<dt class="hdlist1"><code>load_15m</code>, <code>l</code></dt>
+<dd>
+<p>Load average for the last fifteen minutes, such as <code>1.24</code>.</p>
+</dd>
+<dt class="hdlist1"><code>uptime</code>, <code>u</code></dt>
+<dd>
+<p>Node uptime, such as <code>17.3m</code>.</p>
+</dd>
+<dt class="hdlist1"><code>completion.size</code>, <code>cs</code>, <code>completionSize</code></dt>
+<dd>
+<p>Size of completion, such as <code>0b</code>.</p>
+</dd>
+<dt class="hdlist1"><code>fielddata.memory_size</code>, <code>fm</code>, <code>fielddataMemory</code></dt>
+<dd>
+<p>Used fielddata cache memory, such as <code>0b</code>.</p>
+</dd>
+<dt class="hdlist1"><code>fielddata.evictions</code>, <code>fe</code>, <code>fielddataEvictions</code></dt>
+<dd>
+<p>Fielddata cache evictions, such as <code>0</code>.</p>
+</dd>
+<dt class="hdlist1"><code>query_cache.memory_size</code>, <code>qcm</code>, <code>queryCacheMemory</code></dt>
+<dd>
+<p>Used query cache memory, such as <code>0b</code>.</p>
+</dd>
+<dt class="hdlist1"><code>query_cache.evictions</code>, <code>qce</code>, <code>queryCacheEvictions</code></dt>
+<dd>
+<p>Query cache evictions, such as <code>0</code>.</p>
+</dd>
+<dt class="hdlist1"><code>query_cache.hit_count</code>, <code>qchc</code>, <code>queryCacheHitCount</code></dt>
+<dd>
+<p>Query cache hit count, such as <code>0</code>.</p>
+</dd>
+<dt class="hdlist1"><code>query_cache.miss_count</code>, <code>qcmc</code>, <code>queryCacheMissCount</code></dt>
+<dd>
+<p>Query cache miss count, such as <code>0</code>.</p>
+</dd>
+<dt class="hdlist1"><code>request_cache.memory_size</code>, <code>rcm</code>, <code>requestCacheMemory</code></dt>
+<dd>
+<p>Used request cache memory, such as <code>0b</code>.</p>
+</dd>
+<dt class="hdlist1"><code>request_cache.evictions</code>, <code>rce</code>, <code>requestCacheEvictions</code></dt>
+<dd>
+<p>Request cache evictions, such as <code>0</code>.</p>
+</dd>
+<dt class="hdlist1"><code>request_cache.hit_count</code>, <code>rchc</code>, <code>requestCacheHitCount</code></dt>
+<dd>
+<p>Request cache hit count, such as <code>0</code>.</p>
+</dd>
+<dt class="hdlist1"><code>request_cache.miss_count</code>, <code>rcmc</code>, <code>requestCacheMissCount</code></dt>
+<dd>
+<p>Request cache miss count, such as <code>0</code>.</p>
+</dd>
+<dt class="hdlist1"><code>flush.total</code>, <code>ft</code>, <code>flushTotal</code></dt>
+<dd>
+<p>Number of flushes, such as <code>1</code>.</p>
+</dd>
+<dt class="hdlist1"><code>flush.total_time</code>, <code>ftt</code>, <code>flushTotalTime</code></dt>
+<dd>
+<p>Time spent in flush, such as <code>1</code>.</p>
+</dd>
+<dt class="hdlist1"><code>get.current</code>, <code>gc</code>, <code>getCurrent</code></dt>
+<dd>
+<p>Number of current get operations, such as <code>0</code>.</p>
+</dd>
+<dt class="hdlist1"><code>get.time</code>, <code>gti</code>, <code>getTime</code></dt>
+<dd>
+<p>Time spent in get, such as <code>14ms</code>.</p>
+</dd>
+<dt class="hdlist1"><code>get.total</code>, <code>gto</code>, <code>getTotal</code></dt>
+<dd>
+<p>Number of get operations, such as <code>2</code>.</p>
+</dd>
+<dt class="hdlist1"><code>get.exists_time</code>, <code>geti</code>, <code>getExistsTime</code></dt>
+<dd>
+<p>Time spent in successful gets, such as <code>14ms</code>.</p>
+</dd>
+<dt class="hdlist1"><code>get.exists_total</code>, <code>geto</code>, <code>getExistsTotal</code></dt>
+<dd>
+<p>Number of successful get operations, such as <code>2</code>.</p>
+</dd>
+<dt class="hdlist1"><code>get.missing_time</code>, <code>gmti</code>, <code>getMissingTime</code></dt>
+<dd>
+<p>Time spent in failed gets, such as <code>0s</code>.</p>
+</dd>
+<dt class="hdlist1"><code>get.missing_total</code>, <code>gmto</code>, <code>getMissingTotal</code></dt>
+<dd>
+<p>Number of failed get operations, such as <code>1</code>.</p>
+</dd>
+<dt class="hdlist1"><code>indexing.delete_current</code>, <code>idc</code>, <code>indexingDeleteCurrent</code></dt>
+<dd>
+<p>Number of current deletion operations, such as <code>0</code>.</p>
+</dd>
+<dt class="hdlist1"><code>indexing.delete_time</code>, <code>idti</code>, <code>indexingDeleteTime</code></dt>
+<dd>
+<p>Time spent in deletions, such as <code>2ms</code>.</p>
+</dd>
+<dt class="hdlist1"><code>indexing.delete_total</code>, <code>idto</code>, <code>indexingDeleteTotal</code></dt>
+<dd>
+<p>Number of deletion operations, such as <code>2</code>.</p>
+</dd>
+<dt class="hdlist1"><code>indexing.index_current</code>, <code>iic</code>, <code>indexingIndexCurrent</code></dt>
+<dd>
+<p>Number of current indexing operations, such as <code>0</code>.</p>
+</dd>
+<dt class="hdlist1"><code>indexing.index_time</code>, <code>iiti</code>, <code>indexingIndexTime</code></dt>
+<dd>
+<p>Time spent in indexing, such as <code>134ms</code>.</p>
+</dd>
+<dt class="hdlist1"><code>indexing.index_total</code>, <code>iito</code>, <code>indexingIndexTotal</code></dt>
+<dd>
+<p>Number of indexing operations, such as <code>1</code>.</p>
+</dd>
+<dt class="hdlist1"><code>indexing.index_failed</code>, <code>iif</code>, <code>indexingIndexFailed</code></dt>
+<dd>
+<p>Number of failed indexing operations, such as <code>0</code>.</p>
+</dd>
+<dt class="hdlist1"><code>merges.current</code>, <code>mc</code>, <code>mergesCurrent</code></dt>
+<dd>
+<p>Number of current merge operations, such as <code>0</code>.</p>
+</dd>
+<dt class="hdlist1"><code>merges.current_docs</code>, <code>mcd</code>, <code>mergesCurrentDocs</code></dt>
+<dd>
+<p>Number of current merging documents, such as <code>0</code>.</p>
+</dd>
+<dt class="hdlist1"><code>merges.current_size</code>, <code>mcs</code>, <code>mergesCurrentSize</code></dt>
+<dd>
+<p>Size of current merges, such as <code>0b</code>.</p>
+</dd>
+<dt class="hdlist1"><code>merges.total</code>, <code>mt</code>, <code>mergesTotal</code></dt>
+<dd>
+<p>Number of completed merge operations, such as <code>0</code>.</p>
+</dd>
+<dt class="hdlist1"><code>merges.total_docs</code>, <code>mtd</code>, <code>mergesTotalDocs</code></dt>
+<dd>
+<p>Number of merged documents, such as <code>0</code>.</p>
+</dd>
+<dt class="hdlist1"><code>merges.total_size</code>, <code>mts</code>, <code>mergesTotalSize</code></dt>
+<dd>
+<p>Size of current merges, such as <code>0b</code>.</p>
+</dd>
+<dt class="hdlist1"><code>merges.total_time</code>, <code>mtt</code>, <code>mergesTotalTime</code></dt>
+<dd>
+<p>Time spent merging documents, such as <code>0s</code>.</p>
+</dd>
+<dt class="hdlist1"><code>refresh.total</code>, <code>rto</code>, <code>refreshTotal</code></dt>
+<dd>
+<p>Number of refreshes, such as <code>16</code>.</p>
+</dd>
+<dt class="hdlist1"><code>refresh.time</code>, <code>rti</code>, <code>refreshTime</code></dt>
+<dd>
+<p>Time spent in refreshes, such as <code>91ms</code>.</p>
+</dd>
+<dt class="hdlist1"><code>script.compilations</code>, <code>scrcc</code>, <code>scriptCompilations</code></dt>
+<dd>
+<p>Total script compilations, such as <code>17</code>.</p>
+</dd>
+<dt class="hdlist1"><code>script.cache_evictions</code>, <code>scrce</code>, <code>scriptCacheEvictions</code></dt>
+<dd>
+<p>Total compiled scripts evicted from cache, such as <code>6</code>.</p>
+</dd>
+<dt class="hdlist1"><code>search.fetch_current</code>, <code>sfc</code>, <code>searchFetchCurrent</code></dt>
+<dd>
+<p>Current fetch phase operations, such as <code>0</code>.</p>
+</dd>
+<dt class="hdlist1"><code>search.fetch_time</code>, <code>sfti</code>, <code>searchFetchTime</code></dt>
+<dd>
+<p>Time spent in fetch phase, such as <code>37ms</code>.</p>
+</dd>
+<dt class="hdlist1"><code>search.fetch_total</code>, <code>sfto</code>, <code>searchFetchTotal</code></dt>
+<dd>
+<p>Number of fetch operations, such as <code>7</code>.</p>
+</dd>
+<dt class="hdlist1"><code>search.open_contexts</code>, <code>so</code>, <code>searchOpenContexts</code></dt>
+<dd>
+<p>Open search contexts, such as <code>0</code>.</p>
+</dd>
+<dt class="hdlist1"><code>search.query_current</code>, <code>sqc</code>, <code>searchQueryCurrent</code></dt>
+<dd>
+<p>Current query phase operations, such as <code>0</code>.</p>
+</dd>
+<dt class="hdlist1"><code>search.query_time</code>, <code>sqti</code>, <code>searchQueryTime</code></dt>
+<dd>
+<p>Time spent in query phase, such as <code>43ms</code>.</p>
+</dd>
+<dt class="hdlist1"><code>search.query_total</code>, <code>sqto</code>, <code>searchQueryTotal</code></dt>
+<dd>
+<p>Number of query operations, such as <code>9</code>.</p>
+</dd>
+<dt class="hdlist1"><code>search.scroll_current</code>, <code>scc</code>, <code>searchScrollCurrent</code></dt>
+<dd>
+<p>Open scroll contexts, such as <code>2</code>.</p>
+</dd>
+<dt class="hdlist1"><code>search.scroll_time</code>, <code>scti</code>, <code>searchScrollTime</code></dt>
+<dd>
+<p>Time scroll contexts held open, such as <code>2m</code>.</p>
+</dd>
+<dt class="hdlist1"><code>search.scroll_total</code>, <code>scto</code>, <code>searchScrollTotal</code></dt>
+<dd>
+<p>Completed scroll contexts, such as <code>1</code>.</p>
+</dd>
+<dt class="hdlist1"><code>segments.count</code>, <code>sc</code>, <code>segmentsCount</code></dt>
+<dd>
+<p>Number of segments, such as <code>4</code>.</p>
+</dd>
+<dt class="hdlist1"><code>segments.memory</code>, <code>sm</code>, <code>segmentsMemory</code></dt>
+<dd>
+<p>Memory used by segments, such as <code>1.4kb</code>.</p>
+</dd>
+<dt class="hdlist1"><code>segments.index_writer_memory</code>, <code>siwm</code>, <code>segmentsIndexWriterMemory</code></dt>
+<dd>
+<p>Memory used by index writer, such as <code>18mb</code>.</p>
+</dd>
+<dt class="hdlist1"><code>segments.version_map_memory</code>, <code>svmm</code>, <code>segmentsVersionMapMemory</code></dt>
+<dd>
+<p>Memory used by version map, such as <code>1.0kb</code>.</p>
+</dd>
+<dt class="hdlist1"><code>segments.fixed_bitset_memory</code>, <code>sfbm</code>, <code>fixedBitsetMemory</code></dt>
+<dd>
+<p>Memory used by fixed bit sets for nested object field types and type filters for
+types referred in <a href="mapping-types.html#parent-join"><code>join</code></a> fields, such as <code>1.0kb</code>.</p>
+</dd>
+<dt class="hdlist1"><code>suggest.current</code>, <code>suc</code>, <code>suggestCurrent</code></dt>
+<dd>
+<p>Number of current suggest operations, such as <code>0</code>.</p>
+</dd>
+<dt class="hdlist1"><code>suggest.time</code>, <code>suti</code>, <code>suggestTime</code></dt>
+<dd>
+<p>Time spent in suggest, such as <code>0</code>.</p>
+</dd>
+<dt class="hdlist1"><code>suggest.total</code>, <code>suto</code>, <code>suggestTotal</code></dt>
+<dd>
+<p>Number of suggest operations, such as <code>0</code>.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+</dd>
+<dt class="hdlist1"><code>help</code></dt>
+<dd>
+<p>(Optional, Boolean) If <code>true</code>, the response includes help information. Defaults
+to <code>false</code>.</p>
+</dd>
+<dt class="hdlist1"><code>local</code></dt>
+<dd>
+<p>(Optional, boolean)
+If <code>true</code>, the request computes the list of selected nodes from the local
+cluster state. Defaults to <code>false</code>, which means the list of selected nodes is
+computed from the cluster state on the master node. In either case the
+coordinating node sends a request for further information to each selected
+node.</p>
+</dd>
+<dt class="hdlist1"><code>master_timeout</code></dt>
+<dd>
+<p>(Optional, <a href="api-conventions.html#time-units">time units</a>)
+Period to wait for a connection to the master node. If no response is received
+before the timeout expires, the request fails and returns an error. Defaults to
+<code>30s</code>.</p>
+</dd>
+<dt class="hdlist1"><code>s</code></dt>
+<dd>
+<p>(Optional, string) Comma-separated list of column names or column aliases used
+to sort the response.</p>
+</dd>
+<dt class="hdlist1"><code>time</code></dt>
+<dd>
+<p>(Optional, <a href="api-conventions.html#time-units">time units</a>)
+Unit used to display time values.</p>
+</dd>
+<dt class="hdlist1"><code>v</code></dt>
+<dd>
+<p>(Optional, Boolean) If <code>true</code>, the response includes column headings.
+Defaults to <code>false</code>.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect3">
+<h4 id="cat-nodes-api-example">Examples</h4>
+<div class="sect4">
+<h5 id="cat-nodes-api-ex-default">Example with default columns</h5>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">GET /_cat/nodes?v=true</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The API returns the following response:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-txt" data-lang="txt">ip        heap.percent ram.percent cpu load_1m load_5m load_15m node.role master name
+127.0.0.1           65          99  42    3.07                  dim       *      mJw06l1</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>ip</code>, <code>heap.percent</code>, <code>ram.percent</code>, <code>cpu</code>, and <code>load_*</code> columns provide the
+IP addresses and performance information of each node.</p>
+</div>
+<div class="paragraph">
+<p>The <code>node.role</code>, <code>master</code>, and <code>name</code> columns provide information useful for
+monitoring an entire cluster, particularly large ones.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="cat-nodes-api-ex-headings">Example with explicit columns</h5>
+<div class="paragraph">
+<p>The following API request returns the <code>id</code>, <code>ip</code>, <code>port</code>, <code>v</code> (version), and <code>m</code>
+(master) columns.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">GET /_cat/nodes?v=true&amp;h=id,ip,port,v,m</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The API returns the following response:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-txt" data-lang="txt">id   ip        port  v         m
+veJR 127.0.0.1 59938 1.0.0 *</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="cat-pending-tasks">cat pending tasks API</h3>
+<titleabbrev>cat pending tasks</titleabbrev>
+<div class="paragraph">
+<p>Returns cluster-level changes that have not yet been executed, similar to the
+<a href="cluster.html#cluster-pending">pending cluster tasks</a> API.</p>
+</div>
+<div class="sect3">
+<h4 id="cat-pending-tasks-api-request">Request</h4>
+<div class="paragraph">
+<p><code>GET /_cat/pending_tasks</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="cat-pending-tasks-api-query-params">Query parameters</h4>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>format</code></dt>
+<dd>
+<p>(Optional, string) Short version of the
+<a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html">HTTP accept header</a>.
+Valid values include JSON, YAML, etc.</p>
+</dd>
+<dt class="hdlist1"><code>h</code></dt>
+<dd>
+<p>(Optional, string) Comma-separated list of column names to display.</p>
+</dd>
+<dt class="hdlist1"><code>help</code></dt>
+<dd>
+<p>(Optional, Boolean) If <code>true</code>, the response includes help information. Defaults
+to <code>false</code>.</p>
+</dd>
+<dt class="hdlist1"><code>local</code></dt>
+<dd>
+<p>(Optional, Boolean) If <code>true</code>, the request retrieves information from the local
+node only. Defaults to <code>false</code>, which means information is retrieved from
+the master node.</p>
+</dd>
+<dt class="hdlist1"><code>master_timeout</code></dt>
+<dd>
+<p>(Optional, <a href="api-conventions.html#time-units">time units</a>)
+Period to wait for a connection to the master node. If no response is received
+before the timeout expires, the request fails and returns an error. Defaults to
+<code>30s</code>.</p>
+</dd>
+<dt class="hdlist1"><code>s</code></dt>
+<dd>
+<p>(Optional, string) Comma-separated list of column names or column aliases used
+to sort the response.</p>
+</dd>
+<dt class="hdlist1"><code>time</code></dt>
+<dd>
+<p>(Optional, <a href="api-conventions.html#time-units">time units</a>)
+Unit used to display time values.</p>
+</dd>
+<dt class="hdlist1"><code>v</code></dt>
+<dd>
+<p>(Optional, Boolean) If <code>true</code>, the response includes column headings.
+Defaults to <code>false</code>.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect3">
+<h4 id="cat-pending-tasks-api-example">Examples</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">GET /_cat/pending_tasks?v=true</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The API returns the following response:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-txt" data-lang="txt">insertOrder timeInQueue priority source
+       1685       855ms HIGH     update-mapping [foo][t]
+       1686       843ms HIGH     update-mapping [foo][t]
+       1693       753ms HIGH     refresh-mapping [foo][[t]]
+       1688       816ms HIGH     update-mapping [foo][t]
+       1689       802ms HIGH     update-mapping [foo][t]
+       1690       787ms HIGH     update-mapping [foo][t]
+       1691       773ms HIGH     update-mapping [foo][t]</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="cat-plugins">cat plugins API</h3>
+<titleabbrev>cat plugins</titleabbrev>
+<div class="paragraph">
+<p>Returns a list of plugins running on each node of a cluster.</p>
+</div>
+<div class="sect3">
+<h4 id="cat-plugins-api-request">Request</h4>
+<div class="paragraph">
+<p><code>GET /_cat/plugins</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="cat-plugins-api-query-params">Query parameters</h4>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>format</code></dt>
+<dd>
+<p>(Optional, string) Short version of the
+<a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html">HTTP accept header</a>.
+Valid values include JSON, YAML, etc.</p>
+</dd>
+<dt class="hdlist1"><code>h</code></dt>
+<dd>
+<p>(Optional, string) Comma-separated list of column names to display.</p>
+</dd>
+<dt class="hdlist1"><code>help</code></dt>
+<dd>
+<p>(Optional, Boolean) If <code>true</code>, the response includes help information. Defaults
+to <code>false</code>.</p>
+</dd>
+<dt class="hdlist1"><code>local</code></dt>
+<dd>
+<p>(Optional, Boolean) If <code>true</code>, the request retrieves information from the local
+node only. Defaults to <code>false</code>, which means information is retrieved from
+the master node.</p>
+</dd>
+<dt class="hdlist1"><code>master_timeout</code></dt>
+<dd>
+<p>(Optional, <a href="api-conventions.html#time-units">time units</a>)
+Period to wait for a connection to the master node. If no response is received
+before the timeout expires, the request fails and returns an error. Defaults to
+<code>30s</code>.</p>
+</dd>
+<dt class="hdlist1"><code>s</code></dt>
+<dd>
+<p>(Optional, string) Comma-separated list of column names or column aliases used
+to sort the response.</p>
+</dd>
+<dt class="hdlist1"><code>v</code></dt>
+<dd>
+<p>(Optional, Boolean) If <code>true</code>, the response includes column headings.
+Defaults to <code>false</code>.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect3">
+<h4 id="cat-plugins-api-example">Examples</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">GET /_cat/plugins?v=true&amp;s=component&amp;h=name,component,version,description</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The API returns the following response:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-txt" data-lang="txt">name    component               version   description
+U7321H6 analysis-icu            {bare_version} The ICU Analysis plugin integrates the Lucene ICU module into OpenSearch, adding ICU-related analysis components.
+U7321H6 analysis-kuromoji       {bare_version} The Japanese (kuromoji) Analysis plugin integrates Lucene kuromoji analysis module into opensearch.
+U7321H6 analysis-nori           {bare_version} The Korean (nori) Analysis plugin integrates Lucene nori analysis module into opensearch.
+U7321H6 analysis-phonetic       {bare_version} The Phonetic Analysis plugin integrates phonetic token filter analysis with opensearch.
+U7321H6 analysis-smartcn        {bare_version} Smart Chinese Analysis plugin integrates Lucene Smart Chinese analysis module into opensearch.
+U7321H6 analysis-stempel        {bare_version} The Stempel (Polish) Analysis plugin integrates Lucene stempel (polish) analysis module into opensearch.
+U7321H6 analysis-ukrainian      {bare_version} The Ukrainian Analysis plugin integrates the Lucene UkrainianMorfologikAnalyzer into opensearch.
+U7321H6 discovery-azure-classic {bare_version} The Azure Classic Discovery plugin allows to use Azure Classic API for the unicast discovery mechanism
+U7321H6 discovery-ec2           {bare_version} The EC2 discovery plugin allows to use AWS API for the unicast discovery mechanism.
+U7321H6 discovery-gce           {bare_version} The Google Compute Engine (GCE) Discovery plugin allows to use GCE API for the unicast discovery mechanism.
+U7321H6 ingest-attachment       {bare_version} Ingest processor that uses Apache Tika to extract contents
+U7321H6 mapper-annotated-text   {bare_version} The Mapper Annotated_text plugin adds support for text fields with markup used to inject annotation tokens into the index.
+U7321H6 mapper-murmur3          {bare_version} The Mapper Murmur3 plugin allows to compute hashes of a field's values at index-time and to store them in the index.
+U7321H6 mapper-size             {bare_version} The Mapper Size plugin allows document to record their uncompressed size at index time.
+U7321H6 store-smb               {bare_version} The Store SMB plugin adds support for SMB stores.
+U7321H6 transport-nio           {bare_version} The nio transport.</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="cat-recovery">cat recovery API</h3>
+<titleabbrev>cat recovery</titleabbrev>
+<div class="paragraph">
+<p>Returns information about ongoing and completed shard recoveries,
+similar to the <a href="indices.html#indices-recovery">index recovery</a> API.</p>
+</div>
+<div class="sect3">
+<h4 id="cat-recovery-api-request">Request</h4>
+<div class="paragraph">
+<p><code>GET /_cat/recovery/&lt;target&gt;</code></p>
+</div>
+<div class="paragraph">
+<p><code>GET /_cat/recovery</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="cat-recovery-api-desc">Description</h4>
+<div class="paragraph">
+<p>The cat recovery API returns information about shard recoveries, both
+ongoing and completed. It is a more compact view of the JSON
+<a href="indices.html#indices-recovery">index recovery</a> API.</p>
+</div>
+<div class="paragraph">
+<p>Shard recovery is the process
+of syncing a replica shard from a primary shard.
+Upon completion,
+the replica shard is available for search.</p>
+</div>
+<div class="paragraph">
+<p>Recovery automatically occurs
+during the following processes:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Node startup or failure.
+This type of recovery is called a <strong>local store recovery</strong>.</p>
+</li>
+<li>
+<p><a href="glossary.html#glossary-replica-shard">Primary shard replication</a>.</p>
+</li>
+<li>
+<p>Relocation of a shard to a different node in the same cluster.</p>
+</li>
+<li>
+<p><a href="https://www.opensearch.org/guide/en/opensearch/reference/{branch}/snapshots-restore-snapshot.html">Snapshot restoration</a>.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="cat-recovery-path-params">Path parameters</h4>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>&lt;target&gt;</code></dt>
+<dd>
+<p>(Optional, string)
+Comma-separated list of indices and index aliases used to limit
+the request. Wildcard expressions (<code>*</code>) are supported.</p>
+<div class="paragraph">
+<p>To target all indices in a cluster, omit this parameter or use
+<code>_all</code> or <code>*</code>.</p>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect3">
+<h4 id="cat-recovery-query-params">Query parameters</h4>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>active_only</code></dt>
+<dd>
+<p>(Optional, Boolean)
+If <code>true</code>,
+the response only includes ongoing shard recoveries.
+Defaults to <code>false</code>.</p>
+</dd>
+<dt class="hdlist1"><code>bytes</code></dt>
+<dd>
+<p>(Optional, <a href="api-conventions.html#byte-units">byte size units</a>) Unit used to display byte values.</p>
+</dd>
+<dt class="hdlist1"><code>detailed</code></dt>
+<dd>
+<p>(Optional, Boolean)
+If <code>true</code>,
+the response includes detailed information about shard recoveries.
+Defaults to <code>false</code>.</p>
+</dd>
+<dt class="hdlist1"><code>format</code></dt>
+<dd>
+<p>(Optional, string) Short version of the
+<a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html">HTTP accept header</a>.
+Valid values include JSON, YAML, etc.</p>
+</dd>
+<dt class="hdlist1"><code>h</code></dt>
+<dd>
+<p>(Optional, string) Comma-separated list of column names to display.</p>
+</dd>
+<dt class="hdlist1"><code>help</code></dt>
+<dd>
+<p>(Optional, Boolean) If <code>true</code>, the response includes help information. Defaults
+to <code>false</code>.</p>
+</dd>
+<dt class="hdlist1"><code>index</code></dt>
+<dd>
+<p>(Optional, string)
+Comma-separated list or wildcard expression of index names
+used to limit the request.</p>
+</dd>
+<dt class="hdlist1"><code>s</code></dt>
+<dd>
+<p>(Optional, string) Comma-separated list of column names or column aliases used
+to sort the response.</p>
+</dd>
+<dt class="hdlist1"><code>time</code></dt>
+<dd>
+<p>(Optional, <a href="api-conventions.html#time-units">time units</a>)
+Unit used to display time values.</p>
+</dd>
+<dt class="hdlist1"><code>v</code></dt>
+<dd>
+<p>(Optional, Boolean) If <code>true</code>, the response includes column headings.
+Defaults to <code>false</code>.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect3">
+<h4 id="cat-recovery-api-example">Examples</h4>
+<div class="sect4">
+<h5 id="cat-recovery-api-ex-dead">Example with no ongoing recoveries</h5>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">GET _cat/recovery?v=true</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The API returns the following response:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-txt" data-lang="txt">index             shard time type  stage source_host source_node target_host target_node repository snapshot files files_recovered files_percent files_total bytes bytes_recovered bytes_percent bytes_total translog_ops translog_ops_recovered translog_ops_percent
+my-index-000001   0     13ms store done  n/a         n/a         127.0.0.1   node-0      n/a        n/a      0     0               100%          13          0     0               100%          9928        0            0                      100.0%</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In this example response, the source and target nodes are the same because the
+recovery type is <code>store</code>, meaning they were read from local storage on node
+start.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="cat-recovery-api-ex-live">Example with a live shard recovery</h5>
+<div class="paragraph">
+<p>By increasing the replica count of an index and bringing another node online to
+host the replicas, you can retrieve information about an ongoing recovery.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">GET _cat/recovery?v=true&amp;h=i,s,t,ty,st,shost,thost,f,fp,b,bp</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The API returns the following response:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-txt" data-lang="txt">i               s t      ty   st    shost       thost       f     fp      b bp
+my-index-000001 0 1252ms peer done  192.168.1.1 192.168.1.2 0     100.0%  0 100.0%</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In this example response, the recovery type is <code>peer</code>, meaning the shard
+recovered from another node. The returned files and bytes are real-time
+measurements.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="cat-recovery-api-ex-snapshot">Example with a snapshot recovery</h5>
+<div class="paragraph">
+<p>You can restore backups of an index using the <a href="getting-started-modify-data.html#modules-snapshots">snapshot and
+restore</a> API. You can use the cat recovery API retrieve information about a
+snapshot recovery.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">GET _cat/recovery?v=true&amp;h=i,s,t,ty,st,rep,snap,f,fp,b,bp</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The API returns the following response with a recovery type of <code>snapshot</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-txt" data-lang="txt">i               s t      ty       st    rep     snap   f  fp   b     bp
+my-index-000001 0 1978ms snapshot done  my-repo snap_1 79 8.0% 12086 9.0%</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="cat-repositories">cat repositories API</h3>
+<titleabbrev>cat repositories</titleabbrev>
+<div class="paragraph">
+<p>Returns the <a href="getting-started-modify-data.html#snapshots-repositories">snapshot repositories</a> for a cluster.</p>
+</div>
+<div class="sect3">
+<h4 id="cat-repositories-api-request">Request</h4>
+<div class="paragraph">
+<p><code>GET /_cat/repositories</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="cat-repositories-query-params">Query parameters</h4>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>format</code></dt>
+<dd>
+<p>(Optional, string) Short version of the
+<a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html">HTTP accept header</a>.
+Valid values include JSON, YAML, etc.</p>
+</dd>
+<dt class="hdlist1"><code>h</code></dt>
+<dd>
+<p>(Optional, string) Comma-separated list of column names to display.</p>
+</dd>
+<dt class="hdlist1"><code>help</code></dt>
+<dd>
+<p>(Optional, Boolean) If <code>true</code>, the response includes help information. Defaults
+to <code>false</code>.</p>
+</dd>
+<dt class="hdlist1"><code>local</code></dt>
+<dd>
+<p>(Optional, Boolean) If <code>true</code>, the request retrieves information from the local
+node only. Defaults to <code>false</code>, which means information is retrieved from
+the master node.</p>
+</dd>
+<dt class="hdlist1"><code>master_timeout</code></dt>
+<dd>
+<p>(Optional, <a href="api-conventions.html#time-units">time units</a>)
+Period to wait for a connection to the master node. If no response is received
+before the timeout expires, the request fails and returns an error. Defaults to
+<code>30s</code>.</p>
+</dd>
+<dt class="hdlist1"><code>s</code></dt>
+<dd>
+<p>(Optional, string) Comma-separated list of column names or column aliases used
+to sort the response.</p>
+</dd>
+<dt class="hdlist1"><code>v</code></dt>
+<dd>
+<p>(Optional, Boolean) If <code>true</code>, the response includes column headings.
+Defaults to <code>false</code>.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect3">
+<h4 id="cat-repositories-api-example">Examples</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">GET /_cat/repositories?v=true</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The API returns the following response:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-txt" data-lang="txt">id    type
+repo1   fs
+repo2   s3</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="cat-segments">cat segments API</h3>
+<titleabbrev>cat segments</titleabbrev>
+<div class="paragraph">
+<p>Returns low-level information about the <a href="https://lucene.apache.org/core/">Lucene</a>
+segments in index shards, similar to the <a href="indices.html#indices-segments">indices segments</a>
+API.</p>
+</div>
+<div class="sect3">
+<h4 id="cat-segments-api-request">Request</h4>
+<div class="paragraph">
+<p><code>GET /_cat/segments/&lt;target&gt;</code></p>
+</div>
+<div class="paragraph">
+<p><code>GET /_cat/segments</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="cat-segments-path-params">Path parameters</h4>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>&lt;target&gt;</code></dt>
+<dd>
+<p>(Optional, string)
+Comma-separated list of indices and index aliases used to limit
+the request. Wildcard expressions (<code>*</code>) are supported.</p>
+<div class="paragraph">
+<p>To target all indices in a cluster, omit this parameter or use
+<code>_all</code> or <code>*</code>.</p>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect3">
+<h4 id="cat-segments-query-params">Query parameters</h4>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>bytes</code></dt>
+<dd>
+<p>(Optional, <a href="api-conventions.html#byte-units">byte size units</a>) Unit used to display byte values.</p>
+</dd>
+<dt class="hdlist1"><code>format</code></dt>
+<dd>
+<p>(Optional, string) Short version of the
+<a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html">HTTP accept header</a>.
+Valid values include JSON, YAML, etc.</p>
+</dd>
+<dt class="hdlist1"><code>h</code></dt>
+<dd>
+<p>(Optional, string) Comma-separated list of column names to display.</p>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>If you do not specify which columns to include, the API returns the default
+columns in the order listed below. If you explicitly specify one or more
+columns, it only returns the specified columns.</p>
+</div>
+<div class="paragraph">
+<p>Valid columns are:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>index</code>, <code>i</code>, <code>idx</code></dt>
+<dd>
+<p>(Default) Name of the index.</p>
+</dd>
+<dt class="hdlist1"><code>shard</code>, <code>s</code>, <code>sh</code></dt>
+<dd>
+<p>(Default) Name of the shard.</p>
+</dd>
+<dt class="hdlist1"><code>prirep</code>, <code>p</code>, <code>pr</code>, <code>primaryOrReplica</code></dt>
+<dd>
+<p>(Default) Shard type. Returned values are <code>primary</code> or <code>replica</code>.</p>
+</dd>
+<dt class="hdlist1"><code>ip</code></dt>
+<dd>
+<p>(Default) IP address of the segment&#8217;s shard, such as <code>127.0.1.1</code>.</p>
+</dd>
+<dt class="hdlist1"><code>segment</code></dt>
+<dd>
+<p>(Default)
+Name of the segment, such as <code>_0</code>. The segment name is derived from
+the segment generation and used internally to create file names in the directory
+of the shard.</p>
+</dd>
+<dt class="hdlist1"><code>generation</code></dt>
+<dd>
+<p>(Default)
+Generation number, such as <code>0</code>. OpenSearch increments this generation number
+for each segment written. OpenSearch then uses this number to derive the segment name.
+Generation number, such as <code>0</code>. OpenSearch increments this generation number
+for each segment written. OpenSearch then uses this number to derive the segment name.</p>
+</dd>
+<dt class="hdlist1"><code>docs.count</code></dt>
+<dd>
+<p>(Default)
+The number of documents as reported by Lucene. This excludes deleted documents
+and counts any <a href="mapping-types.html#nested">nested documents</a> separately from their parents. It
+also excludes documents which were indexed recently and do not yet belong to a
+segment.</p>
+</dd>
+<dt class="hdlist1"><code>docs.deleted</code></dt>
+<dd>
+<p>(Default)
+The number of deleted documents as reported by Lucene, which may be higher or
+lower than the number of delete operations you have performed. This number
+excludes deletes that were performed recently and do not yet belong to a
+segment. Deleted documents are cleaned up by the
+<a href="index-modules-merge.html">automatic merge process</a> if it makes sense to do so.
+Also, OpenSearch creates extra deleted documents to internally track the recent
+history of operations on a shard.</p>
+</dd>
+<dt class="hdlist1"><code>size</code></dt>
+<dd>
+<p>(Default)
+Disk space used by the segment, such as <code>50kb</code>.</p>
+</dd>
+<dt class="hdlist1"><code>size.memory</code></dt>
+<dd>
+<p>(Default)
+Bytes of segment data stored in memory for efficient search,
+such as <code>1264</code>.</p>
+<div class="paragraph">
+<p>A value of <code>-1</code> indicates OpenSearch was unable to compute this number.</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>committed</code></dt>
+<dd>
+<p>(Default)
+If <code>true</code>,
+the segments is synced to disk. Segments that are synced can survive a hard reboot.</p>
+<div class="paragraph">
+<p>If <code>false</code>,
+the data from uncommitted segments is also stored in
+the transaction log so that OpenSearch is able to replay
+changes on the next start.</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>searchable</code></dt>
+<dd>
+<p>(Default)
+If <code>true</code>,
+the segment is searchable.</p>
+<div class="paragraph">
+<p>If <code>false</code>,
+the segment has most likely been written to disk
+but needs a <a href="indices.html#indices-refresh">refresh</a> to be searchable.</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>version</code></dt>
+<dd>
+<p>(Default)
+Version of Lucene used to write the segment.</p>
+</dd>
+<dt class="hdlist1"><code>compound</code></dt>
+<dd>
+<p>(Default) If <code>true</code>, the segment is stored in a compound file. This means Lucene
+merged all files from the segment in a single file to save file descriptors.</p>
+</dd>
+<dt class="hdlist1"><code>id</code></dt>
+<dd>
+<p>ID of the node, such as <code>k0zy</code>.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+</dd>
+<dt class="hdlist1"><code>help</code></dt>
+<dd>
+<p>(Optional, Boolean) If <code>true</code>, the response includes help information. Defaults
+to <code>false</code>.</p>
+</dd>
+<dt class="hdlist1"><code>s</code></dt>
+<dd>
+<p>(Optional, string) Comma-separated list of column names or column aliases used
+to sort the response.</p>
+</dd>
+<dt class="hdlist1"><code>v</code></dt>
+<dd>
+<p>(Optional, Boolean) If <code>true</code>, the response includes column headings.
+Defaults to <code>false</code>.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect3">
+<h4 id="cat-segments-api-example">Examples</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">GET /_cat/segments?v=true</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The API returns the following response:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-txt" data-lang="txt">index shard prirep ip        segment generation docs.count docs.deleted size size.memory committed searchable version compound
+test  0     p      127.0.0.1 _0               0          1            0  3kb        2042 false     true       8.7.0   true
+test1 0     p      127.0.0.1 _0               0          1            0  3kb        2042 false     true       8.7.0   true</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="cat-shards">cat shards API</h3>
+<titleabbrev>cat shards</titleabbrev>
+<div class="paragraph">
+<p>The <code>shards</code> command is the detailed view of what nodes contain which
+shards. It will tell you if it&#8217;s a primary or replica, the number of
+docs, the bytes it takes on disk, and the node where it&#8217;s located.</p>
+</div>
+<div class="sect3">
+<h4 id="cat-shards-api-request">Request</h4>
+<div class="paragraph">
+<p><code>GET /_cat/shards/&lt;target&gt;</code></p>
+</div>
+<div class="paragraph">
+<p><code>GET /_cat/shards</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="cat-shards-path-params">Path parameters</h4>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>&lt;target&gt;</code></dt>
+<dd>
+<p>(Optional, string)
+Comma-separated list of indices and index aliases used to limit
+the request. Wildcard expressions (<code>*</code>) are supported.</p>
+<div class="paragraph">
+<p>To target all indices in a cluster, omit this parameter or use
+<code>_all</code> or <code>*</code>.</p>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect3">
+<h4 id="cat-shards-query-params">Query parameters</h4>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>bytes</code></dt>
+<dd>
+<p>(Optional, <a href="api-conventions.html#byte-units">byte size units</a>) Unit used to display byte values.</p>
+</dd>
+<dt class="hdlist1"><code>format</code></dt>
+<dd>
+<p>(Optional, string) Short version of the
+<a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html">HTTP accept header</a>.
+Valid values include JSON, YAML, etc.</p>
+</dd>
+<dt class="hdlist1"><code>h</code></dt>
+<dd>
+<p>(Optional, string) Comma-separated list of column names to display.</p>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>If you do not specify which columns to include, the API returns the default
+columns in the order listed below. If you explicitly specify one or more
+columns, it only returns the specified columns.</p>
+</div>
+<div class="paragraph">
+<p>Valid columns are:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>index</code>, <code>i</code>, <code>idx</code></dt>
+<dd>
+<p>(Default) Name of the index.</p>
+</dd>
+<dt class="hdlist1"><code>shard</code>, <code>s</code>, <code>sh</code></dt>
+<dd>
+<p>(Default) Name of the shard.</p>
+</dd>
+<dt class="hdlist1"><code>prirep</code>, <code>p</code>, <code>pr</code>, <code>primaryOrReplica</code></dt>
+<dd>
+<p>(Default) Shard type. Returned values are <code>primary</code> or <code>replica</code>.</p>
+</dd>
+<dt class="hdlist1"><code>state</code>, <code>st</code></dt>
+<dd>
+<p>(Default) State of the shard. Returned values are:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>INITIALIZING</code>: The shard is recovering from a peer shard or gateway.</p>
+</li>
+<li>
+<p><code>RELOCATING</code>: The shard is relocating.</p>
+</li>
+<li>
+<p><code>STARTED</code>: The shard has started.</p>
+</li>
+<li>
+<p><code>UNASSIGNED</code>: The shard is not assigned to any node.</p>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1"><code>docs</code>, <code>d</code>, <code>dc</code></dt>
+<dd>
+<p>(Default) Number of documents in shard, such as <code>25</code>.</p>
+</dd>
+<dt class="hdlist1"><code>store</code>, <code>sto</code></dt>
+<dd>
+<p>(Default) Disk space used by the shard, such as <code>5kb</code>.</p>
+</dd>
+<dt class="hdlist1"><code>ip</code></dt>
+<dd>
+<p>(Default) IP address of the node, such as <code>127.0.1.1</code>.</p>
+</dd>
+<dt class="hdlist1"><code>id</code></dt>
+<dd>
+<p>(Default) ID of the node, such as <code>k0zy</code>.</p>
+</dd>
+<dt class="hdlist1"><code>node</code>, <code>n</code></dt>
+<dd>
+<p>(Default) Node name, such as <code>I8hydUG</code>.</p>
+</dd>
+<dt class="hdlist1"><code>completion.size</code>, <code>cs</code>, <code>completionSize</code></dt>
+<dd>
+<p>Size of completion, such as <code>0b</code>.</p>
+</dd>
+<dt class="hdlist1"><code>fielddata.memory_size</code>, <code>fm</code>, <code>fielddataMemory</code></dt>
+<dd>
+<p>Used fielddata cache memory, such as <code>0b</code>.</p>
+</dd>
+<dt class="hdlist1"><code>fielddata.evictions</code>, <code>fe</code>, <code>fielddataEvictions</code></dt>
+<dd>
+<p>Fielddata cache evictions, such as <code>0</code>.</p>
+</dd>
+<dt class="hdlist1"><code>flush.total</code>, <code>ft</code>, <code>flushTotal</code></dt>
+<dd>
+<p>Number of flushes, such as <code>1</code>.</p>
+</dd>
+<dt class="hdlist1"><code>flush.total_time</code>, <code>ftt</code>, <code>flushTotalTime</code></dt>
+<dd>
+<p>Time spent in flush, such as <code>1</code>.</p>
+</dd>
+<dt class="hdlist1"><code>get.current</code>, <code>gc</code>, <code>getCurrent</code></dt>
+<dd>
+<p>Number of current get operations, such as <code>0</code>.</p>
+</dd>
+<dt class="hdlist1"><code>get.time</code>, <code>gti</code>, <code>getTime</code></dt>
+<dd>
+<p>Time spent in get, such as <code>14ms</code>.</p>
+</dd>
+<dt class="hdlist1"><code>get.total</code>, <code>gto</code>, <code>getTotal</code></dt>
+<dd>
+<p>Number of get operations, such as <code>2</code>.</p>
+</dd>
+<dt class="hdlist1"><code>get.exists_time</code>, <code>geti</code>, <code>getExistsTime</code></dt>
+<dd>
+<p>Time spent in successful gets, such as <code>14ms</code>.</p>
+</dd>
+<dt class="hdlist1"><code>get.exists_total</code>, <code>geto</code>, <code>getExistsTotal</code></dt>
+<dd>
+<p>Number of successful get operations, such as <code>2</code>.</p>
+</dd>
+<dt class="hdlist1"><code>get.missing_time</code>, <code>gmti</code>, <code>getMissingTime</code></dt>
+<dd>
+<p>Time spent in failed gets, such as <code>0s</code>.</p>
+</dd>
+<dt class="hdlist1"><code>get.missing_total</code>, <code>gmto</code>, <code>getMissingTotal</code></dt>
+<dd>
+<p>Number of failed get operations, such as <code>1</code>.</p>
+</dd>
+<dt class="hdlist1"><code>indexing.delete_current</code>, <code>idc</code>, <code>indexingDeleteCurrent</code></dt>
+<dd>
+<p>Number of current deletion operations, such as <code>0</code>.</p>
+</dd>
+<dt class="hdlist1"><code>indexing.delete_time</code>, <code>idti</code>, <code>indexingDeleteTime</code></dt>
+<dd>
+<p>Time spent in deletions, such as <code>2ms</code>.</p>
+</dd>
+<dt class="hdlist1"><code>indexing.delete_total</code>, <code>idto</code>, <code>indexingDeleteTotal</code></dt>
+<dd>
+<p>Number of deletion operations, such as <code>2</code>.</p>
+</dd>
+<dt class="hdlist1"><code>indexing.index_current</code>, <code>iic</code>, <code>indexingIndexCurrent</code></dt>
+<dd>
+<p>Number of current indexing operations, such as <code>0</code>.</p>
+</dd>
+<dt class="hdlist1"><code>indexing.index_time</code>, <code>iiti</code>, <code>indexingIndexTime</code></dt>
+<dd>
+<p>Time spent in indexing, such as <code>134ms</code>.</p>
+</dd>
+<dt class="hdlist1"><code>indexing.index_total</code>, <code>iito</code>, <code>indexingIndexTotal</code></dt>
+<dd>
+<p>Number of indexing operations, such as <code>1</code>.</p>
+</dd>
+<dt class="hdlist1"><code>indexing.index_failed</code>, <code>iif</code>, <code>indexingIndexFailed</code></dt>
+<dd>
+<p>Number of failed indexing operations, such as <code>0</code>.</p>
+</dd>
+<dt class="hdlist1"><code>merges.current</code>, <code>mc</code>, <code>mergesCurrent</code></dt>
+<dd>
+<p>Number of current merge operations, such as <code>0</code>.</p>
+</dd>
+<dt class="hdlist1"><code>merges.current_docs</code>, <code>mcd</code>, <code>mergesCurrentDocs</code></dt>
+<dd>
+<p>Number of current merging documents, such as <code>0</code>.</p>
+</dd>
+<dt class="hdlist1"><code>merges.current_size</code>, <code>mcs</code>, <code>mergesCurrentSize</code></dt>
+<dd>
+<p>Size of current merges, such as <code>0b</code>.</p>
+</dd>
+<dt class="hdlist1"><code>merges.total</code>, <code>mt</code>, <code>mergesTotal</code></dt>
+<dd>
+<p>Number of completed merge operations, such as <code>0</code>.</p>
+</dd>
+<dt class="hdlist1"><code>merges.total_docs</code>, <code>mtd</code>, <code>mergesTotalDocs</code></dt>
+<dd>
+<p>Number of merged documents, such as <code>0</code>.</p>
+</dd>
+<dt class="hdlist1"><code>merges.total_size</code>, <code>mts</code>, <code>mergesTotalSize</code></dt>
+<dd>
+<p>Size of current merges, such as <code>0b</code>.</p>
+</dd>
+<dt class="hdlist1"><code>merges.total_time</code>, <code>mtt</code>, <code>mergesTotalTime</code></dt>
+<dd>
+<p>Time spent merging documents, such as <code>0s</code>.</p>
+</dd>
+<dt class="hdlist1"><code>query_cache.memory_size</code>, <code>qcm</code>, <code>queryCacheMemory</code></dt>
+<dd>
+<p>Used query cache memory, such as <code>0b</code>.</p>
+</dd>
+<dt class="hdlist1"><code>query_cache.evictions</code>, <code>qce</code>, <code>queryCacheEvictions</code></dt>
+<dd>
+<p>Query cache evictions, such as <code>0</code>.</p>
+</dd>
+<dt class="hdlist1"><code>recoverysource.type</code>, <code>rs</code></dt>
+<dd>
+<p>Type of recovery source.</p>
+</dd>
+<dt class="hdlist1"><code>refresh.total</code>, <code>rto</code>, <code>refreshTotal</code></dt>
+<dd>
+<p>Number of refreshes, such as <code>16</code>.</p>
+</dd>
+<dt class="hdlist1"><code>refresh.time</code>, <code>rti</code>, <code>refreshTime</code></dt>
+<dd>
+<p>Time spent in refreshes, such as <code>91ms</code>.</p>
+</dd>
+<dt class="hdlist1"><code>search.fetch_current</code>, <code>sfc</code>, <code>searchFetchCurrent</code></dt>
+<dd>
+<p>Current fetch phase operations, such as <code>0</code>.</p>
+</dd>
+<dt class="hdlist1"><code>search.fetch_time</code>, <code>sfti</code>, <code>searchFetchTime</code></dt>
+<dd>
+<p>Time spent in fetch phase, such as <code>37ms</code>.</p>
+</dd>
+<dt class="hdlist1"><code>search.fetch_total</code>, <code>sfto</code>, <code>searchFetchTotal</code></dt>
+<dd>
+<p>Number of fetch operations, such as <code>7</code>.</p>
+</dd>
+<dt class="hdlist1"><code>search.open_contexts</code>, <code>so</code>, <code>searchOpenContexts</code></dt>
+<dd>
+<p>Open search contexts, such as <code>0</code>.</p>
+</dd>
+<dt class="hdlist1"><code>search.query_current</code>, <code>sqc</code>, <code>searchQueryCurrent</code></dt>
+<dd>
+<p>Current query phase operations, such as <code>0</code>.</p>
+</dd>
+<dt class="hdlist1"><code>search.query_time</code>, <code>sqti</code>, <code>searchQueryTime</code></dt>
+<dd>
+<p>Time spent in query phase, such as <code>43ms</code>.</p>
+</dd>
+<dt class="hdlist1"><code>search.query_total</code>, <code>sqto</code>, <code>searchQueryTotal</code></dt>
+<dd>
+<p>Number of query operations, such as <code>9</code>.</p>
+</dd>
+<dt class="hdlist1"><code>search.scroll_current</code>, <code>scc</code>, <code>searchScrollCurrent</code></dt>
+<dd>
+<p>Open scroll contexts, such as <code>2</code>.</p>
+</dd>
+<dt class="hdlist1"><code>search.scroll_time</code>, <code>scti</code>, <code>searchScrollTime</code></dt>
+<dd>
+<p>Time scroll contexts held open, such as <code>2m</code>.</p>
+</dd>
+<dt class="hdlist1"><code>search.scroll_total</code>, <code>scto</code>, <code>searchScrollTotal</code></dt>
+<dd>
+<p>Completed scroll contexts, such as <code>1</code>.</p>
+</dd>
+<dt class="hdlist1"><code>segments.count</code>, <code>sc</code>, <code>segmentsCount</code></dt>
+<dd>
+<p>Number of segments, such as <code>4</code>.</p>
+</dd>
+<dt class="hdlist1"><code>segments.memory</code>, <code>sm</code>, <code>segmentsMemory</code></dt>
+<dd>
+<p>Memory used by segments, such as <code>1.4kb</code>.</p>
+</dd>
+<dt class="hdlist1"><code>segments.index_writer_memory</code>, <code>siwm</code>, <code>segmentsIndexWriterMemory</code></dt>
+<dd>
+<p>Memory used by index writer, such as <code>18mb</code>.</p>
+</dd>
+<dt class="hdlist1"><code>segments.version_map_memory</code>, <code>svmm</code>, <code>segmentsVersionMapMemory</code></dt>
+<dd>
+<p>Memory used by version map, such as <code>1.0kb</code>.</p>
+</dd>
+<dt class="hdlist1"><code>segments.fixed_bitset_memory</code>, <code>sfbm</code>, <code>fixedBitsetMemory</code></dt>
+<dd>
+<p>Memory used by fixed bit sets for nested object field types and type filters for
+types referred in <a href="mapping-types.html#parent-join"><code>join</code></a> fields, such as <code>1.0kb</code>.</p>
+</dd>
+<dt class="hdlist1"><code>seq_no.global_checkpoint</code>, <code>sqg</code>, <code>globalCheckpoint</code></dt>
+<dd>
+<p>Global checkpoint.</p>
+</dd>
+<dt class="hdlist1"><code>seq_no.local_checkpoint</code>, <code>sql</code>, <code>localCheckpoint</code></dt>
+<dd>
+<p>Local checkpoint.</p>
+</dd>
+<dt class="hdlist1"><code>seq_no.max</code>, <code>sqm</code>, <code>maxSeqNo</code></dt>
+<dd>
+<p>Maximum sequence number.</p>
+</dd>
+<dt class="hdlist1"><code>suggest.current</code>, <code>suc</code>, <code>suggestCurrent</code></dt>
+<dd>
+<p>Number of current suggest operations, such as <code>0</code>.</p>
+</dd>
+<dt class="hdlist1"><code>suggest.time</code>, <code>suti</code>, <code>suggestTime</code></dt>
+<dd>
+<p>Time spent in suggest, such as <code>0</code>.</p>
+</dd>
+<dt class="hdlist1"><code>suggest.total</code>, <code>suto</code>, <code>suggestTotal</code></dt>
+<dd>
+<p>Number of suggest operations, such as <code>0</code>.</p>
+</dd>
+<dt class="hdlist1"><code>sync_id</code></dt>
+<dd>
+<p>Sync ID of the shard.</p>
+</dd>
+<dt class="hdlist1"><code>unassigned.at</code>, <code>ua</code></dt>
+<dd>
+<p>Time at which the shard became unassigned in
+<a href="https://en.wikipedia.org/wiki/List_of_UTC_time_offsets">Coordinated Universal
+Time (UTC)</a>.</p>
+</dd>
+<dt class="hdlist1"><code>unassigned.details</code>, <code>ud</code></dt>
+<dd>
+<p>Details about why the shard became unassigned.</p>
+</dd>
+<dt class="hdlist1"><code>unassigned.for</code>, <code>uf</code></dt>
+<dd>
+<p>Time at which the shard was requested to be unassigned in
+<a href="https://en.wikipedia.org/wiki/List_of_UTC_time_offsets">Coordinated Universal
+Time (UTC)</a>.</p>
+</dd>
+</dl>
+</div>
+<div id="reason-unassigned" class="dlist">
+<dl>
+<dt class="hdlist1"><code>unassigned.reason</code>, <code>ur</code></dt>
+<dd>
+<p>Reason the shard is unassigned. Returned values are:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>ALLOCATION_FAILED</code>: Unassigned as a result of a failed allocation of the shard.</p>
+</li>
+<li>
+<p><code>CLUSTER_RECOVERED</code>: Unassigned as a result of a full cluster recovery.</p>
+</li>
+<li>
+<p><code>DANGLING_INDEX_IMPORTED</code>: Unassigned as a result of importing a dangling index.</p>
+</li>
+<li>
+<p><code>EXISTING_INDEX_RESTORED</code>: Unassigned as a result of restoring into a closed index.</p>
+</li>
+<li>
+<p><code>INDEX_CREATED</code>: Unassigned as a result of an API creation of an index.</p>
+</li>
+<li>
+<p><code>INDEX_REOPENED</code>: Unassigned as a result of opening a closed index.</p>
+</li>
+<li>
+<p><code>NEW_INDEX_RESTORED</code>: Unassigned as a result of restoring into a new index.</p>
+</li>
+<li>
+<p><code>NODE_LEFT</code>: Unassigned as a result of the node hosting it leaving the cluster.</p>
+</li>
+<li>
+<p><code>REALLOCATED_REPLICA</code>: A better replica location is identified and causes the existing replica allocation to be cancelled.</p>
+</li>
+<li>
+<p><code>REINITIALIZED</code>: When a shard moves from started back to initializing.</p>
+</li>
+<li>
+<p><code>REPLICA_ADDED</code>: Unassigned as a result of explicit addition of a replica.</p>
+</li>
+<li>
+<p><code>REROUTE_CANCELLED</code>: Unassigned as a result of explicit cancel reroute command.</p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+</dd>
+<dt class="hdlist1"><code>help</code></dt>
+<dd>
+<p>(Optional, Boolean) If <code>true</code>, the response includes help information. Defaults
+to <code>false</code>.</p>
+</dd>
+<dt class="hdlist1"><code>local</code></dt>
+<dd>
+<p>(Optional, Boolean) If <code>true</code>, the request retrieves information from the local
+node only. Defaults to <code>false</code>, which means information is retrieved from
+the master node.</p>
+</dd>
+<dt class="hdlist1"><code>master_timeout</code></dt>
+<dd>
+<p>(Optional, <a href="api-conventions.html#time-units">time units</a>)
+Period to wait for a connection to the master node. If no response is received
+before the timeout expires, the request fails and returns an error. Defaults to
+<code>30s</code>.</p>
+</dd>
+<dt class="hdlist1"><code>s</code></dt>
+<dd>
+<p>(Optional, string) Comma-separated list of column names or column aliases used
+to sort the response.</p>
+</dd>
+<dt class="hdlist1"><code>time</code></dt>
+<dd>
+<p>(Optional, <a href="api-conventions.html#time-units">time units</a>)
+Unit used to display time values.</p>
+</dd>
+<dt class="hdlist1"><code>v</code></dt>
+<dd>
+<p>(Optional, Boolean) If <code>true</code>, the response includes column headings.
+Defaults to <code>false</code>.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect3">
+<h4 id="cat-shards-api-example">Examples</h4>
+<div class="sect4">
+<h5 id="cat-shards-api-example-single">Example with a single index</h5>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">GET _cat/shards</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The API returns the following response:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-txt" data-lang="txt">my-index-000001 0 p STARTED 3014 31.1mb 192.168.56.10 H5dfFeA</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="cat-shards-api-example-wildcard">Example with a wildcard pattern</h5>
+<div class="paragraph">
+<p>If your cluster has many shards, you can use a wildcard pattern in the
+<code>&lt;target&gt;</code> path parameter to limit the API request.</p>
+</div>
+<div class="paragraph">
+<p>The following request returns information for any indices
+beginning with <code>my-index-</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">GET _cat/shards/my-index-*</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The API returns the following response:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-txt" data-lang="txt">my-index-000001 0 p STARTED 3014 31.1mb 192.168.56.10 H5dfFeA</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="relocation">Example with a relocating shard</h5>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">GET _cat/shards</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The API returns the following response:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-txt" data-lang="txt">my-index-000001 0 p RELOCATING 3014 31.1mb 192.168.56.10 H5dfFeA -&gt; -&gt; 192.168.56.30 bGG90GE</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>RELOCATING</code> value in <code>state</code> column indicates the index shard is
+relocating.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="states">Example with a shard states</h5>
+<div class="paragraph">
+<p>Before a shard is available for use, it goes through an <code>INITIALIZING</code> state.
+You can use the cat shards API to see which shards are initializing.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">GET _cat/shards</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The API returns the following response:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-txt" data-lang="txt">my-index-000001 0 p STARTED      3014 31.1mb 192.168.56.10 H5dfFeA
+my-index-000001 0 r INITIALIZING    0 14.3mb 192.168.56.30 bGG90GE</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_example_with_reasons_for_unassigned_shards">Example with reasons for unassigned shards</h5>
+<div class="paragraph">
+<p>The following request returns the <code>unassigned.reason</code> column, which indicates
+why a shard is unassigned.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">GET _cat/shards?h=index,shard,prirep,state,unassigned.reason</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The API returns the following response:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-txt" data-lang="txt">my-index-000001 0 p STARTED    3014 31.1mb 192.168.56.10 H5dfFeA
+my-index-000001 0 r STARTED    3014 31.1mb 192.168.56.30 bGG90GE
+my-index-000001 0 r STARTED    3014 31.1mb 192.168.56.20 I8hydUG
+my-index-000001 0 r UNASSIGNED ALLOCATION_FAILED</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="cat-snapshots">cat snapshots API</h3>
+<titleabbrev>cat snapshots</titleabbrev>
+<div class="paragraph">
+<p>Returns information about the <a href="getting-started-modify-data.html#modules-snapshots">snapshots</a> stored in one or
+more repositories. A snapshot is a backup of an index or running OpenSearch cluster.</p>
+</div>
+<div class="sect3">
+<h4 id="cat-snapshots-api-request">Request</h4>
+<div class="paragraph">
+<p><code>GET /_cat/snapshots/&lt;repository&gt;</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="cat-snapshots-path-params">Path parameters</h4>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>&lt;repository&gt;</code></dt>
+<dd>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>(Required, string) Snapshot repository used to limit the request.</p>
+</div>
+<div class="paragraph">
+<p>If the repository fails during the request, OpenSearch returns an error.</p>
+</div>
+</div>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect3">
+<h4 id="cat-snapshots-query-params">Query parameters</h4>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>format</code></dt>
+<dd>
+<p>(Optional, string) Short version of the
+<a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html">HTTP accept header</a>.
+Valid values include JSON, YAML, etc.</p>
+</dd>
+<dt class="hdlist1"><code>h</code></dt>
+<dd>
+<p>(Optional, string) Comma-separated list of column names to display.</p>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>If you do not specify which columns to include, the API returns the default
+columns in the order listed below. If you explicitly specify one or more
+columns, it only returns the specified columns.</p>
+</div>
+<div class="paragraph">
+<p>Valid columns are:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>id</code>, <code>snapshot</code></dt>
+<dd>
+<p>(Default) ID of the snapshot, such as <code>snap1</code>.</p>
+</dd>
+<dt class="hdlist1"><code>repository</code>, <code>re</code>, <code>repo</code></dt>
+<dd>
+<p>(Default) Name of the repository, such as <code>repo1</code>.</p>
+</dd>
+<dt class="hdlist1"><code>status</code>, <code>s</code></dt>
+<dd>
+<p>(Default) State of the snapshot process. Returned values are:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>FAILED</code>: The snapshot process failed.</p>
+</li>
+<li>
+<p><code>INCOMPATIBLE</code>: The snapshot process is incompatible with the current cluster
+version.</p>
+</li>
+<li>
+<p><code>IN_PROGRESS</code>: The snapshot process started but has not completed.</p>
+</li>
+<li>
+<p><code>PARTIAL</code>: The snapshot process completed with a partial success.</p>
+</li>
+<li>
+<p><code>SUCCESS</code>: The snapshot process completed with a full success.</p>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1"><code>start_epoch</code>, <code>ste</code>, <code>startEpoch</code></dt>
+<dd>
+<p>(Default) <a href="https://en.wikipedia.org/wiki/Unix_time">Unix <code>epoch</code> time</a> at which
+the snapshot process started.</p>
+</dd>
+<dt class="hdlist1"><code>start_time</code>, <code>sti</code>, <code>startTime</code></dt>
+<dd>
+<p>(Default) <code>HH:MM:SS</code> time at which the snapshot process started.</p>
+</dd>
+<dt class="hdlist1"><code>end_epoch</code>, <code>ete</code>, <code>endEpoch</code></dt>
+<dd>
+<p>(Default) <a href="https://en.wikipedia.org/wiki/Unix_time">Unix <code>epoch</code> time</a> at which
+the snapshot process ended.</p>
+</dd>
+<dt class="hdlist1"><code>end_time</code>, <code>eti</code>, <code>endTime</code></dt>
+<dd>
+<p>(Default) <code>HH:MM:SS</code> time at which the snapshot process ended.</p>
+</dd>
+<dt class="hdlist1"><code>duration</code>, <code>dur</code></dt>
+<dd>
+<p>(Default) Time it took the snapshot process to complete in <a href="api-conventions.html#time-units">time
+units</a>.</p>
+</dd>
+<dt class="hdlist1"><code>indices</code>, <code>i</code></dt>
+<dd>
+<p>(Default) Number of indices in the snapshot.</p>
+</dd>
+<dt class="hdlist1"><code>successful_shards</code>, <code>ss</code></dt>
+<dd>
+<p>(Default) Number of successful shards in the snapshot.</p>
+</dd>
+<dt class="hdlist1"><code>failed_shards</code>, <code>fs</code></dt>
+<dd>
+<p>(Default) Number of failed shards in the snapshot.</p>
+</dd>
+<dt class="hdlist1"><code>total_shards</code>, <code>ts</code></dt>
+<dd>
+<p>(Default) Total number of shards in the snapshot.</p>
+</dd>
+<dt class="hdlist1"><code>reason, `r</code></dt>
+<dd>
+<p>Reason for any snapshot failures.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+</dd>
+<dt class="hdlist1"><code>help</code></dt>
+<dd>
+<p>(Optional, Boolean) If <code>true</code>, the response includes help information. Defaults
+to <code>false</code>.</p>
+</dd>
+<dt class="hdlist1"><code>ignore_unavailable</code></dt>
+<dd>
+<p>(Optional, Boolean) If <code>true</code>, the response does not include information from
+unavailable snapshots. Defaults to <code>false</code>.</p>
+</dd>
+<dt class="hdlist1"><code>master_timeout</code></dt>
+<dd>
+<p>(Optional, <a href="api-conventions.html#time-units">time units</a>)
+Period to wait for a connection to the master node. If no response is received
+before the timeout expires, the request fails and returns an error. Defaults to
+<code>30s</code>.</p>
+</dd>
+<dt class="hdlist1"><code>s</code></dt>
+<dd>
+<p>(Optional, string) Comma-separated list of column names or column aliases used
+to sort the response.</p>
+</dd>
+<dt class="hdlist1"><code>time</code></dt>
+<dd>
+<p>(Optional, <a href="api-conventions.html#time-units">time units</a>)
+Unit used to display time values.</p>
+</dd>
+<dt class="hdlist1"><code>v</code></dt>
+<dd>
+<p>(Optional, Boolean) If <code>true</code>, the response includes column headings.
+Defaults to <code>false</code>.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect3">
+<h4 id="cat-snapshots-api-example">Examples</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">GET /_cat/snapshots/repo1?v=true&amp;s=id</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The API returns the following response:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-txt" data-lang="txt">id     status start_epoch start_time end_epoch  end_time duration indices successful_shards failed_shards total_shards
+snap1  FAILED 1445616705  18:11:45   1445616978 18:16:18     4.6m       1                 4             1            5
+snap2 SUCCESS 1445634298  23:04:58   1445634672 23:11:12     6.2m       2                10             0           10</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="cat-tasks">cat task management API</h3>
+<titleabbrev>cat task management</titleabbrev>
+<div class="paragraph">
+<p>beta::["The task management API is new and should still be considered a beta feature. The API may change in ways that are not backwards compatible."]</p>
+</div>
+<div class="paragraph">
+<p>Returns information about tasks currently executing in the cluster,
+similar to the <a href="cluster.html#tasks">task management</a> API.</p>
+</div>
+<div class="sect3">
+<h4 id="cat-tasks-api-request">Request</h4>
+<div class="paragraph">
+<p><code>GET /_cat/tasks</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="cat-tasks-api-desc">Description</h4>
+<div class="paragraph">
+<p>The cat task management API returns information
+about tasks currently executing
+on one or more nodes in the cluster.
+It is a more compact view
+of the JSON <a href="cluster.html#tasks">task management</a> API.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="cat-tasks-api-query-params">Query parameters</h4>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>detailed</code></dt>
+<dd>
+<p>(Optional, Boolean)
+If <code>true</code>,
+the response includes detailed information about shard recoveries.
+Defaults to <code>false</code>.</p>
+</dd>
+<dt class="hdlist1"><code>format</code></dt>
+<dd>
+<p>(Optional, string) Short version of the
+<a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html">HTTP accept header</a>.
+Valid values include JSON, YAML, etc.</p>
+</dd>
+<dt class="hdlist1"><code>h</code></dt>
+<dd>
+<p>(Optional, string) Comma-separated list of column names to display.</p>
+</dd>
+<dt class="hdlist1"><code>help</code></dt>
+<dd>
+<p>(Optional, Boolean) If <code>true</code>, the response includes help information. Defaults
+to <code>false</code>.</p>
+</dd>
+<dt class="hdlist1"><code>nodes</code></dt>
+<dd>
+<p>(Optional, string)
+Comma-separated list of node IDs or names used to limit the response. Supports
+wildcard (<code>*</code>) expressions.</p>
+</dd>
+<dt class="hdlist1"><code>parent_task_id</code></dt>
+<dd>
+<p>(Optional, string)
+Parent task ID used to limit the response.</p>
+</dd>
+<dt class="hdlist1"><code>s</code></dt>
+<dd>
+<p>(Optional, string) Comma-separated list of column names or column aliases used
+to sort the response.</p>
+</dd>
+<dt class="hdlist1"><code>time</code></dt>
+<dd>
+<p>(Optional, <a href="api-conventions.html#time-units">time units</a>)
+Unit used to display time values.</p>
+</dd>
+<dt class="hdlist1"><code>v</code></dt>
+<dd>
+<p>(Optional, Boolean) If <code>true</code>, the response includes column headings.
+Defaults to <code>false</code>.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect3">
+<h4 id="cat-tasks-api-response-codes">Response codes</h4>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>404</code> (Missing resources)</dt>
+<dd>
+<p>If <code>&lt;task_id&gt;</code> is specified but not found, this code indicates that there
+are no resources that match the request.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect3">
+<h4 id="cat-tasks-api-examples">Examples</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">GET _cat/tasks?v=true</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The API returns the following response:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console-result" data-lang="console-result">action                         task_id                    parent_task_id             type      start_time    timestamp running_time ip             node
+cluster:monitor/tasks/lists[n] oTUltX4IQMOUUVeiohTt8A:124 oTUltX4IQMOUUVeiohTt8A:123 direct    1458585884904 01:48:24  44.1micros   127.0.0.1:9300 oTUltX4IQMOUUVeiohTt8A
+cluster:monitor/tasks/lists    oTUltX4IQMOUUVeiohTt8A:123 -                          transport 1458585884904 01:48:24  186.2micros  127.0.0.1:9300 oTUltX4IQMOUUVeiohTt8A</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="cat-templates">cat templates API</h3>
+<titleabbrev>cat templates</titleabbrev>
+<div class="paragraph">
+<p>Returns information about <a href="index-templates.html">index templates</a> in a cluster.
+You can use index templates to apply <a href="index-modules.html#index-modules-settings">index settings</a>
+and <a href="mapping.html">field mappings</a> to new indices at creation.</p>
+</div>
+<div class="sect3">
+<h4 id="cat-templates-api-request">Request</h4>
+<div class="paragraph">
+<p><code>GET /_cat/templates/&lt;template_name&gt;</code></p>
+</div>
+<div class="paragraph">
+<p><code>GET /_cat/templates</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="cat-templates-path-params">Path parameters</h4>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>&lt;template_name&gt;</code></dt>
+<dd>
+<p>(Optional, string) Comma-separated list of index template names used to limit
+the request. Accepts wildcard expressions.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect3">
+<h4 id="cat-templates-query-params">Query parameters</h4>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>format</code></dt>
+<dd>
+<p>(Optional, string) Short version of the
+<a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html">HTTP accept header</a>.
+Valid values include JSON, YAML, etc.</p>
+</dd>
+<dt class="hdlist1"><code>h</code></dt>
+<dd>
+<p>(Optional, string) Comma-separated list of column names to display.</p>
+</dd>
+<dt class="hdlist1"><code>help</code></dt>
+<dd>
+<p>(Optional, Boolean) If <code>true</code>, the response includes help information. Defaults
+to <code>false</code>.</p>
+</dd>
+<dt class="hdlist1"><code>local</code></dt>
+<dd>
+<p>(Optional, Boolean) If <code>true</code>, the request retrieves information from the local
+node only. Defaults to <code>false</code>, which means information is retrieved from
+the master node.</p>
+</dd>
+<dt class="hdlist1"><code>master_timeout</code></dt>
+<dd>
+<p>(Optional, <a href="api-conventions.html#time-units">time units</a>)
+Period to wait for a connection to the master node. If no response is received
+before the timeout expires, the request fails and returns an error. Defaults to
+<code>30s</code>.</p>
+</dd>
+<dt class="hdlist1"><code>s</code></dt>
+<dd>
+<p>(Optional, string) Comma-separated list of column names or column aliases used
+to sort the response.</p>
+</dd>
+<dt class="hdlist1"><code>v</code></dt>
+<dd>
+<p>(Optional, Boolean) If <code>true</code>, the response includes column headings.
+Defaults to <code>false</code>.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect3">
+<h4 id="cat-templates-api-example">Examples</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">GET _cat/templates/my-template-*?v=true&amp;s=name</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The API returns the following response:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-txt" data-lang="txt">name          index_patterns order version composed_of
+my-template-0 [te*]          200           []
+my-template-1 [tea*]         201           []
+my-template-2 [teak*]        202   7       []</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="cat-thread-pool">cat thread pool API</h3>
+<titleabbrev>cat thread pool</titleabbrev>
+<div class="paragraph">
+<p>Returns thread pool statistics for each node in a cluster. Returned information
+includes all <a href="settings.html#modules-threadpool">built-in thread pools</a> and custom thread
+pools.</p>
+</div>
+<div class="sect3">
+<h4 id="cat-thread-pool-api-request">Request</h4>
+<div class="paragraph">
+<p><code>GET /_cat/thread_pool/&lt;thread_pool&gt;</code></p>
+</div>
+<div class="paragraph">
+<p><code>GET /_cat/thread_pool</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="cat-thread-pool-path-params">Path parameters</h4>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>&lt;thread_pool&gt;</code></dt>
+<dd>
+<p>(Optional, string) Comma-separated list of thread pool names used to limit the
+request. Accepts wildcard expressions.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect3">
+<h4 id="cat-thread-pool-query-params">Query parameters</h4>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>format</code></dt>
+<dd>
+<p>(Optional, string) Short version of the
+<a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html">HTTP accept header</a>.
+Valid values include JSON, YAML, etc.</p>
+</dd>
+<dt class="hdlist1"><code>h</code></dt>
+<dd>
+<p>(Optional, string) Comma-separated list of column names to display.</p>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>If you do not specify which columns to include, the API returns the default
+columns in the order listed below. If you explicitly specify one or more
+columns, it only returns the specified columns.</p>
+</div>
+<div class="paragraph">
+<p>Valid columns are:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>node_name</code></dt>
+<dd>
+<p>(Default) Node name, such as <code>I8hydUG</code>.</p>
+</dd>
+<dt class="hdlist1"><code>name</code></dt>
+<dd>
+<p>(Default) Name of the thread pool, such as <code>analyze</code> or <code>generic</code>.</p>
+</dd>
+<dt class="hdlist1"><code>active</code>, <code>a</code></dt>
+<dd>
+<p>(Default) Number of active threads in the current thread pool.</p>
+</dd>
+<dt class="hdlist1"><code>queue</code>,<code>q</code></dt>
+<dd>
+<p>(Default) Number of tasks in the queue for the current thread pool.</p>
+</dd>
+<dt class="hdlist1"><code>rejected</code>, <code>r</code></dt>
+<dd>
+<p>(Default) Number of tasks rejected by the thread pool executor.</p>
+</dd>
+<dt class="hdlist1"><code>completed</code>, <code>c</code></dt>
+<dd>
+<p>Number of tasks completed by the thread pool executor.</p>
+</dd>
+<dt class="hdlist1"><code>core</code>, <code>cr</code></dt>
+<dd>
+<p>Configured core number of active threads allowed in the current thread pool.</p>
+</dd>
+<dt class="hdlist1"><code>ephemeral_id</code>,<code>eid</code></dt>
+<dd>
+<p>Ephemeral node ID.</p>
+</dd>
+<dt class="hdlist1"><code>host</code>, <code>h</code></dt>
+<dd>
+<p>Hostname for the current node.</p>
+</dd>
+<dt class="hdlist1"><code>ip</code>, <code>i</code></dt>
+<dd>
+<p>IP address for the current node.</p>
+</dd>
+<dt class="hdlist1"><code>keep_alive</code>, <code>k</code></dt>
+<dd>
+<p>Configured keep alive time for threads.</p>
+</dd>
+<dt class="hdlist1"><code>largest</code>, <code>l</code></dt>
+<dd>
+<p>Highest number of active threads in the current thread pool.</p>
+</dd>
+<dt class="hdlist1"><code>max</code>, <code>mx</code></dt>
+<dd>
+<p>Configured maximum number of active threads allowed in the current thread pool.</p>
+</dd>
+<dt class="hdlist1"><code>node_id</code>, <code>id</code></dt>
+<dd>
+<p>ID of the node, such as <code>k0zy</code>.</p>
+</dd>
+<dt class="hdlist1"><code>pid</code>, <code>p</code></dt>
+<dd>
+<p>Process ID of the running node.</p>
+</dd>
+<dt class="hdlist1"><code>pool_size</code>, <code>psz</code></dt>
+<dd>
+<p>Number of threads in the current thread pool.</p>
+</dd>
+<dt class="hdlist1"><code>port</code>, <code>po</code></dt>
+<dd>
+<p>Bound transport port for the current node.</p>
+</dd>
+<dt class="hdlist1"><code>queue_size</code>, <code>qs</code></dt>
+<dd>
+<p>Maximum number of tasks permitted in the queue for the current thread pool.</p>
+</dd>
+<dt class="hdlist1"><code>size</code>, <code>sz</code></dt>
+<dd>
+<p>Configured fixed number of active threads allowed in the current thread pool.</p>
+</dd>
+<dt class="hdlist1"><code>type</code>, <code>t</code></dt>
+<dd>
+<p>Type of thread pool. Returned values are <code>fixed</code> or <code>scaling</code>.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+</dd>
+<dt class="hdlist1"><code>help</code></dt>
+<dd>
+<p>(Optional, Boolean) If <code>true</code>, the response includes help information. Defaults
+to <code>false</code>.</p>
+</dd>
+<dt class="hdlist1"><code>local</code></dt>
+<dd>
+<p>(Optional, Boolean) If <code>true</code>, the request retrieves information from the local
+node only. Defaults to <code>false</code>, which means information is retrieved from
+the master node.</p>
+</dd>
+<dt class="hdlist1"><code>master_timeout</code></dt>
+<dd>
+<p>(Optional, <a href="api-conventions.html#time-units">time units</a>)
+Period to wait for a connection to the master node. If no response is received
+before the timeout expires, the request fails and returns an error. Defaults to
+<code>30s</code>.</p>
+</dd>
+<dt class="hdlist1"><code>s</code></dt>
+<dd>
+<p>(Optional, string) Comma-separated list of column names or column aliases used
+to sort the response.</p>
+</dd>
+<dt class="hdlist1"><code>size</code></dt>
+<dd>
+<p>(Optional, <a href="api-conventions.html#size-units">size unit</a>) Multiplier used to display quantities.</p>
+</dd>
+<dt class="hdlist1"><code>v</code></dt>
+<dd>
+<p>(Optional, Boolean) If <code>true</code>, the response includes column headings.
+Defaults to <code>false</code>.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect3">
+<h4 id="cat-thread-pool-api-example">Examples</h4>
+<div class="sect4">
+<h5 id="cat-thread-pool-api-ex-default">Example with default columns</h5>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">GET /_cat/thread_pool</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The API returns the following response:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-txt" data-lang="txt">node-0 analyze             0 0 0
+...
+node-0 fetch_shard_started 0 0 0
+node-0 fetch_shard_store   0 0 0
+node-0 flush               0 0 0
+...
+node-0 write               0 0 0</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="cat-thread-pool-api-ex-headings">Example with explicit columns</h5>
+<div class="paragraph">
+<p>The following API request returns the <code>id</code>, <code>name</code>, <code>active</code>, <code>rejected</code>, and
+<code>completed</code> columns. The request limits returned information to the <code>generic</code>
+thread pool.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">GET /_cat/thread_pool/generic?v=true&amp;h=id,name,active,rejected,completed</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The API returns the following response:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-txt" data-lang="txt">id                     name    active rejected completed
+0EWUhXeBQtaVGlexUeVwMg generic      0        0        70</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph nav-footer">
+<p>← Previous: <a href="api-conventions.html">API conventions</a> | ↑ Up: <a href="rest-apis.html">REST APIs</a> | ⌂ Home: <a href="index.html">OpenSearch Reference</a> | Next: <a href="cluster.html">Cluster APIs</a> →</p>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2021-04-12 14:08:20 -0700
+</div>
+</div>
+</body>
+</html>

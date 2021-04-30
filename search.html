@@ -55,8 +55,12 @@
         <div class="col-md-2 col-lg-1 my-col"></div>
         <div class="col-md-8 col-lg-10 my-col">
             <form class="d-flex" style="min-height: 70px; margin-bottom: 10px;">
-                <input class="form-control me-2" type="search" placeholder="Search docs, blogs, webinars, and everything else ..." aria-label="Search">
-                <button class="btn btn-outline-primary " type="button" id="search_button"> Search </button>
+                <input class="form-control me-2" type="search" aria-label="Search"
+                       placeholder="Search docs, blogs, webinars, and everything else ..."
+                       id="search_input">
+<!--                hack to prevent form submission on pressing enter on search_input field (https://stackoverflow.com/questions/1563062/prevent-form-submission-with-enter-key)-->
+                <input type="text" style="display: none;" />
+                <button class="btn btn-outline-primary" type="button" id="search_button"> Search </button>
             </form>
             <div id="results"></div>
         </div>

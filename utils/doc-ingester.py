@@ -52,9 +52,7 @@
 - create an alias pointing to created above index
 - Ingest the data
     - traverse the doc path until you reach an html file
-    - extract heading (or title) and summary from html
-    -
-
+    - TODO: extract heading (or title) and summary from html
 
 - search the queries against the alias
         POST docs/_search
@@ -71,27 +69,194 @@
 
 '''
 
+import os
+import random
 import sys
+import string
+import time
+from datetime import datetime
 from argparse import ArgumentParser
-from elasticsearch import Elasticsearch as OpenSearch
+from elasticsearch import Elasticsearch as OpenSearch, helpers
+from pathlib import Path
+
+INDEX_NAME_PREFIX = 'documentation_index'
+INDEX_ALIAS = 'docs'
+SECTION_SEPARATOR = '===================='
+
+
+DUMMY_URL = 'this/is/a/dummy/url'
+DUMMY_VERSION = '1.0.0'
+DUMMY_SUMMARY = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt' \
+                ' ut labore et dolore magna aliqua.'
+TYPE = 'DOC'
 
 
 def parse_args(argv):
-    desc = 'Tool to ingest documentation to OpenSearch cluster for search functionality on opensearch.org'
-    usage = '%(prog)s [options]'
-    parser = ArgumentParser(description=desc, usage=usage)
-    args = parser.parse_args(argv)
-    validate_args(args)
-    return args
+  desc = 'Tool to ingest documentation to OpenSearch cluster for search functionality on opensearch.org'
+  usage = '%(prog)s [options]'
+  parser = ArgumentParser(description=desc, usage=usage)
+  args = parser.parse_args(argv)
+  validate_args(args)
+  return args
 
 
 def validate_args(args):
-    pass
+  pass
+
+
+def remove_prefix(text, prefix):
+  if text.startswith(prefix):
+    return text[len(prefix):]
+  return text
+
+
+def generate_random_n_digit_string(k=8):
+  # k should be integer
+  # k should be greater than 0
+  s = ''.join(random.choices(string.ascii_lowercase + string.digits, k=k))
+  return s
+
+
+def create_index_name_from_prefix(prefix=INDEX_NAME_PREFIX):
+  return '{}_{}'.format(prefix, generate_random_n_digit_string())
+
+
+def index_mappings():
+  mappings = {
+    "properties": {
+      "url": {"type": "text"},
+      "content": {
+        "type": "text",
+        "analyzer": "html_analyzer",
+        "search_analyzer": "standard"
+      },
+      "version": {"type": "keyword"},
+      "summary": {
+        "type": "text",
+        "index": False
+      },
+      "type": {"type": "keyword"}
+    }
+  }
+
+  return mappings
+
+
+def index_settings():
+  settings = {
+    "analysis": {
+      "analyzer": {
+        "html_analyzer": {
+          "type": "custom",
+          "char_filter": [
+            "html_strip"
+          ],
+          "tokenizer": "standard",
+          "filter": [
+            "lowercase",
+            "asciifolding",
+            "stop",
+            "edge_ngram"
+          ]
+        }
+      },
+      "filter": {
+        "edge_ngram": {
+          "type": "edge_ngram",
+          "min_gram": 3,
+          "max_gram": 20
+        }
+      }
+    }
+  }
+  return settings
+
+def get_all_html_files_under_path(path=os.getcwd()):
+  # check if the directory exists
+  doc_path = os.path.normpath(os.path.join(path, "..", "docs"))
+  # print(doc_path)
+  html_files = []
+  other_files = []
+
+  for dirpath, dirnames, filenames in os.walk(doc_path):
+    for f in filenames:
+      if f.endswith("html") or f.endswith("htm"):
+        html_files.append(dirpath + os.sep + f)
+      else:
+        other_files.append(dirpath + os.sep + f)
+
+  # print(html_files)
+  return doc_path, html_files
+
+
+def get_data_from_text_file(f):
+  data = []
+
+  for line in open(f, encoding="utf-8", errors="ignore"):
+    data.append(str(line))
+
+  return "".join(data)
+
+
+def yield_docs(all_files, doc_path, index):
+
+  for _id, filename in enumerate(all_files):
+    content = get_data_from_text_file(filename)
+    doc_source = {
+      "content": content,
+      "type": TYPE,
+      "summary": DUMMY_SUMMARY,
+      "url": remove_prefix(filename, doc_path),
+      "version": DUMMY_VERSION
+    }
+
+    yield {
+      "_index": index,
+      "_source": doc_source
+    }
 
 
 def main(argv=None):
-    args = parse_args(argv)
+  '''
+  - TODO: read the directory from command line argument or use default location
+  - create new index with mappings and settings
+  - go through all the directories and read all html files and index it into this index
+  - TODO: point the alias to this new index
+  '''
+  args = parse_args(argv)
+
+  os_client = OpenSearch()
+
+  print("Creating a new index")
+  new_index = create_index_name_from_prefix()
+  status = os_client.indices.create(index=new_index,
+                                    body={
+                                      "settings": index_settings(),
+                                      "mappings": index_mappings()
+                                    })
+  print("Created a new index: ", new_index)
+  print(SECTION_SEPARATOR)
+
+  print("Listing all indices : ")
+  print(os_client.cat.indices())
+  print(SECTION_SEPARATOR)
+
+  d = os.getcwd()
+  print("fetching all html files under directory: ", d)
+  doc_path, all_html_files = get_all_html_files_under_path(path=d)
+  print("Total {} HTML files found".format(len(all_html_files)))
+
+  time.sleep(2)
+
+  try:
+    print("Starting bulk indexing to opensearch cluster..")
+    os_response = helpers.bulk(os_client, yield_docs(all_html_files, doc_path, new_index))
+    print("\nhelpers.bulk() RESPONSE:", os_response)
+    print(SECTION_SEPARATOR)
+  except Exception as err:
+    print("\nhelpers.bulk() ERROR:", err)
+    print(SECTION_SEPARATOR)
 
 
 if __name__ == '__main__':
-    sys.exit(main(sys.argv[1:]))
+  sys.exit(main(sys.argv[1:]))

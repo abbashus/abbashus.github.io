@@ -1,3 +1,5 @@
+console.log("start")
+
 const lorem = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum";
 
 function fetchdata() {
@@ -34,11 +36,13 @@ function fetchdata() {
 }
 
 function search() {
+
+     const query = document.getElementById("search_input").value;
      const search_body = {
          "query": {
              "match": {
                  "content": {
-                     "query": "disc"
+                     "query": query
                  }
              }
          },
@@ -103,6 +107,12 @@ function search() {
     });
 }
 
+// https://stackoverflow.com/questions/7060750/detect-the-enter-key-in-a-text-input-field
+document.getElementById("search_input").addEventListener('keyup', ({key}) => {
+    if (key === "Enter") {
+        search();
+    }
+});
 
 document.getElementById("search_button").onclick = function () {
     search();

@@ -256,6 +256,18 @@ def main(argv=None):
   except Exception as err:
     print("\nhelpers.bulk() ERROR:", err)
     print(SECTION_SEPARATOR)
+    sys.exit(1)
+
+  if os_client.indices.exists_alias(INDEX_ALIAS):
+    print("Indices associated with alias '{}' exists ".format(INDEX_ALIAS))
+    print(os_client.cat.aliases())
+    print("Deleting existing alias associated with '{}'".format(INDEX_ALIAS))
+    os_client.indices.delete_alias([INDEX_NAME_PREFIX + "*"], INDEX_ALIAS)
+    print(os_client.cat.aliases())
+
+  print("Updating alias {} to point to new index {}...".format(INDEX_ALIAS, new_index))
+  os_client.indices.put_alias([new_index], INDEX_ALIAS)
+  print(os_client.cat.aliases())
 
 
 if __name__ == '__main__':

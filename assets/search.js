@@ -18,19 +18,92 @@ function fetchdata() {
                     <h5 class="card-header">${user.first_name}
                         <span class="badge rounded-pill bg-warning text-dark" style="float: right;">DOC</span>
                     </h5>
-                        <div class="card-body">                            
-                            <h6 class="card-subtitle mb-2 text-muted">${user.email}</h6>
-                            <p class="card-text">${lorem}</p>
-                        </div>
+                    <div class="card-body">                      
+                        <h6 class="card-subtitle mb-2 text-muted">${user.email}</h6>
+                        <p class="card-text">${lorem}</p>
+                    </div>
                     </div>
                     `;
             }
         ).join(" ")
         console.log(html);
-        document.querySelector("#results").innerHTML += html;
+        document.querySelector("#results").insertAdjacentHTML("afterbegin", html);
     }).catch(error => {
         console.log(error);
     });
 }
 
-fetchdata()
+function search() {
+     const search_body = {
+         "query": {
+             "match": {
+                 "content": {
+                     "query": "disc"
+                 }
+             }
+         },
+         "_source": [
+             "url",
+             "version",
+             "type",
+             "summary"
+         ]
+     }
+
+    fetch("http://localhost:9200/docs/_search", {
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        method: "POST",
+        body: JSON.stringify(search_body)
+
+    }).then(response => {
+            if(!response.ok) {
+                throw Error("Some error from opensearch api");
+            }
+            const res = response.json()
+            return res;
+        }).then(results => {
+            const hits = results.hits.hits;
+
+            let html = '';
+
+            if(hits.length == 0) {
+                html += `
+                <div class="alert alert-warning" role="alert">
+                  No matches found! :(
+                </div>
+                `
+            } else {
+                html = hits.map(
+                    hit => {
+                        const source = hit._source;
+                        return `
+                        <div class="card border-info my-card " style="border: 2px solid green;" >
+                        <h5 class="card-header">${source.url}
+                            <span class="badge rounded-pill bg-warning text-dark" style="float: right;">${source.type}</span>
+                        </h5>
+                        <div class="card-body">
+                            <h6 class="card-subtitle mb-2 text-muted">${source.version}</h6>
+                            <p class="card-text">${source.summary}</p>
+                        </div>
+                        </div>
+                    `;
+
+                    }
+                ).join(" ");
+            }
+
+            console.log(html);
+            document.querySelector("#results").innerHTML = html;
+
+    }).catch(error => {
+        console.log(error);
+    });
+}
+
+
+document.getElementById("search_button").onclick = function () {
+    search();
+};

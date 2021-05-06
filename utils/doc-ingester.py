@@ -79,6 +79,9 @@ from argparse import ArgumentParser
 from elasticsearch import Elasticsearch as OpenSearch, helpers
 from pathlib import Path
 
+SEARCH_ENDPOINT = os.getenv('SEARCH_ENDPOINT')
+SEARCH_USER = os.getenv('SEARCH_USER')
+SEARCH_PASS = os.getenv('SEARCH_PASS')
 INDEX_NAME_PREFIX = 'documentation_index'
 INDEX_ALIAS = 'docs'
 SECTION_SEPARATOR = '===================='
@@ -107,6 +110,12 @@ def validate_args(args):
 def remove_prefix(text, prefix):
   if text.startswith(prefix):
     return text[len(prefix):]
+  return text
+
+
+def remove_suffix(text, suffix):
+  if text.endswith(suffix):
+    return text[:-len(suffix)]
   return text
 
 
@@ -171,22 +180,22 @@ def index_settings():
   }
   return settings
 
-def get_all_html_files_under_path(path=os.getcwd()):
+def get_all_html_files_under_path( folder_name='', path=os.getcwd(),):
   # check if the directory exists
-  doc_path = os.path.normpath(os.path.join(path, "..", "docs"))
+  doc_path = os.path.normpath(os.path.join(path, "..", folder_name))
   # print(doc_path)
   html_files = []
   other_files = []
 
   for dirpath, dirnames, filenames in os.walk(doc_path):
     for f in filenames:
-      if f.endswith("html") or f.endswith("htm"):
+      if (f.endswith("html") or f.endswith("htm")) and not f.startswith('_'):
         html_files.append(dirpath + os.sep + f)
       else:
         other_files.append(dirpath + os.sep + f)
 
   # print(html_files)
-  return doc_path, html_files
+  return folder_name, doc_path, html_files
 
 
 def get_data_from_text_file(f):
@@ -198,15 +207,18 @@ def get_data_from_text_file(f):
   return "".join(data)
 
 
-def yield_docs(all_files, doc_path, index):
+def yield_docs(all_files, doc_path, folder_name, index):
+
+  url_prefix = remove_suffix(doc_path, folder_name)
 
   for _id, filename in enumerate(all_files):
     content = get_data_from_text_file(filename)
+
     doc_source = {
       "content": content,
       "type": TYPE,
       "summary": DUMMY_SUMMARY,
-      "url": remove_prefix(filename, doc_path),
+      "url": remove_prefix(filename, url_prefix),
       "version": DUMMY_VERSION
     }
 
@@ -225,7 +237,11 @@ def main(argv=None):
   '''
   args = parse_args(argv)
 
-  os_client = OpenSearch()
+  os_client = OpenSearch([SEARCH_ENDPOINT], http_auth=(SEARCH_USER, SEARCH_PASS))
+
+  # print("Listing all indices : ")
+  # print(os_client.cat.indices())
+  # return
 
   print("Creating a new index")
   new_index = create_index_name_from_prefix()
@@ -243,14 +259,14 @@ def main(argv=None):
 
   d = os.getcwd()
   print("fetching all html files under directory: ", d)
-  doc_path, all_html_files = get_all_html_files_under_path(path=d)
+  folder_name, doc_path, all_html_files = get_all_html_files_under_path('docs', path=d)
   print("Total {} HTML files found".format(len(all_html_files)))
 
   time.sleep(2)
 
   try:
-    print("Starting bulk indexing to opensearch cluster..")
-    os_response = helpers.bulk(os_client, yield_docs(all_html_files, doc_path, new_index))
+    print("Starting bulk indexing to OpenSearch cluster..")
+    os_response = helpers.bulk(os_client, yield_docs(all_html_files, doc_path, folder_name, new_index), chunk_size=5, request_timeout=20)
     print("\nhelpers.bulk() RESPONSE:", os_response)
     print(SECTION_SEPARATOR)
   except Exception as err:

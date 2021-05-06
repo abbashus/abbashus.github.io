@@ -85,7 +85,8 @@ function search() {
                         const source = hit._source;
                         return `
                         <div class="card border-info my-card " style="border: 2px solid green;" >
-                        <h5 class="card-header">${source.url}
+                        <h5 class="card-header">
+                            <a href="${source.url}" class="card-link">${source.url}</a>
                             <span class="badge rounded-pill bg-warning text-dark" style="float: right;">${source.type}</span>
                         </h5>
                         <div class="card-body">

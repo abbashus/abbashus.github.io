@@ -1,7 +1,7 @@
 console.log("start")
 
 const lorem = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum";
-
+const search_endpoint = "https://ody3j2vxld.execute-api.us-west-2.amazonaws.com/search-os-api-test"
 function fetchdata() {
     fetch("https://reqres.in/api/users")
         .then(response => {
@@ -53,14 +53,15 @@ function search() {
              "summary"
          ]
      }
-
-    fetch("http://localhost:9200/docs/_search", {
+    const query_url = `${search_endpoint}?q=${query}`
+    console.log(query_url)
+    fetch(query_url, {
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         },
-        method: "POST",
-        body: JSON.stringify(search_body)
+        method: "GET",
+        // body: JSON.stringify(search_body)
 
     }).then(response => {
             if(!response.ok) {

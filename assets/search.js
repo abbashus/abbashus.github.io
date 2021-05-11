@@ -70,18 +70,26 @@ function search() {
             const res = response.json()
             return res;
         }).then(results => {
-            const hits = results.hits.hits;
+            const hits = results.hits;
+            const inner_hits = hits.hits;
+            const hits_total = hits["total"]["value"];
 
             let html = '';
 
-            if(hits.length == 0) {
+            if(hits_total == 0) {
                 html += `
                 <div class="alert alert-warning" role="alert">
                   No matches found! :(
                 </div>
                 `
             } else {
-                html = hits.map(
+                const result_count_html = `
+                    <div class="alert alert-success" role="alert">
+                        ${hits_total} result(s) found.
+                    </div>
+                    `
+
+                html = result_count_html + inner_hits.map(
                     hit => {
                         const source = hit._source;
                         return `

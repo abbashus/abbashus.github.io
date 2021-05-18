@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{{ page.title }}</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="ROBOTS" content="ALL" />
+    <meta name="MSSmartTagsPreventParsing" content="true" />
+    <meta name="Copyright" content="" />
+    <meta name="keywords" content="open-source, search, opensearch" />
+    <meta name="description" content="" />
+
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" href="/assets/img/icon-touch.png">
+    <link rel="icon" sizes="192x192" href="/assets/img/icon-touch.png">
+    <link rel="shortcut icon" href="/assets/img/favicon.ico">
+    <meta name="msapplication-TileColor" content="#113228">
+    <meta name="msapplication-TileImage" content="/img/icon-tile.png">
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+          rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+          crossorigin="anonymous">
+    <style>
+        .my-card {
+            margin-bottom: 10px;
+        }
+
+        .logo-size {
+            width: 35px;
+            height: 41px;
+        }
+
+        /*.card-body {*/
+        /*    text-decoration: none;*/
+        /*    color: inherit;*/
+        /*}*/
+
+        .card-link, .card-link:hover {
+            text-decoration: none;
+            color: inherit;
+        }
+
+    </style>
+</head>
+<body class="bg-dark">
+<div class="container {% if page.url != "/demo-home-page.html" %} bg-light {% endif %}" style="background-position: left top; background-size: cover;">
+    {%- include aws_demo_header.html -%}
+
+    {{ content }}
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+            crossorigin="anonymous"></script>
+</div>
+</body>
+</html>

@@ -1,20 +1,20 @@
 -
   title: Piped Processing Language
-  rel_url: /blog/demo/2021/05/ppl
+  rel_url: /blog/feature-demo/2021/05/ppl
   on_homepage: true
   summary: PPL enables you to explore, discover, and find data stored in Elasticsearch, using a set of commands delimited by pipes ( | ).
 -
   title: Reporting
-  rel_url: /blog/demo/2021/05/reporting
+  rel_url: /blog/feature-demo/2021/05/reporting
   on_homepage: true
   summary: Some goodness coming here :)
 -
   title: Graphana Integration
-  rel_url: /blog/demo/2021/05/graphana
+  rel_url: /blog/feature-demo/2021/05/graphana
   on_homepage: true
   summary: Some goodness coming here :)
 -
   title: Power BI Integration
-  rel_url: /blog/demo/2021/05/power-bi
+  rel_url: /blog/feature-demo/2021/05/power-bi
   on_homepage: true
   summary: Some goodness coming here :)

@@ -9,3 +9,57 @@ categories: demo
 ---
 <h3>{{ page.title }}</h3>
 
+
+System developers, DevOps engineers, support engineers, site reliability engineers (SREs), and IT managers make sure that the underlying infrastructure powering the applications and systems within an organization is available, reliable, secure, and scalable. To achieve these goals, you need to perform a fast and deep analysis on the underlying logs, monitoring, and observability data. Amazon Elasticsearch Service (Amazon ES) is a popular choice to store and analyze such data. However, extracting insights from Elasticsearch isn’t easy. Although Query DSL (the language used to query data stored in Elasticsearch) is powerful, it has a steep learning curve, and wasn’t designed as a human interface to easily create one-time queries and explore user data.
+
+In this post, we discuss the newly supported Piped Processing Language (PPL) feature, powered by Open Distro for Elasticsearch, which enables you to form complex queries and quickly explore and discover data with the help of pipes.
+
+### What is Piped Processing Language?
+
+Piped Processing Language is powered by Open Distro for Elasticsearch, an Apache 2.0-licensed distribution of Elasticsearch. PPL enables you to explore, discover, and find data stored in Elasticsearch, using a set of commands delimited by pipes ( \| ).
+
+Pipes allow you to combine two or more commands as a chain, such that the output of one command acts as an input for the next command, very similar to Unix pipes. With PPL, you can now search for keywords and feed the results from the command on the left of the pipe to the command on the right of the pipe, effectively creating a command pipeline.
+
+### Use case
+As an illustration, consider a use case where you want to find out the number of hosts that are responding with HTTP 404 (Page not found) and HTTP 503 (Server Unavailability) errors, aggregate the error responses per host, and sort in the order of impact.
+
+
+#### Using Query DSL
+
+```
+
+GET kibana_sample_data_logs/_search
+{"from":0,"size":0,"timeout":"1m","query":{"bool":{"should":[{"term":{"response.keyword":{"value":"404","boost":1}}},{"term":{"response.keyword":{"value":"503","boost":1}}}],"adjust_pure_negative":true,"boost":1}},"sort":[{"_doc":{"order":"asc"}}],"aggregations":{"composite_buckets":{"composite":{"size":1000,"sources":[{"host":{"terms":{"field":"host.keyword","missing_bucket":true,"order":"asc"}}},{"response":{"terms":{"field":"response.keyword","missing_bucket":true,"order":"asc"}}}]},"aggregations":{"request_count":{"value_count":{"field":"request.keyword"}},"sales_bucket_sort":{"bucket_sort":{"sort":[{"request_count":{"order":"desc"}}],"size":10}}}}}}
+
+```
+
+The following screenshot shows the query results.
+
+![Search Query on Opensearch Dashboards Dev Tools](/assets/img/es-query-dev-tools.jpeg)
+
+
+#### Using PPL
+
+You can replace the entire DSL query with a single PPL command:
+
+```
+
+source = kibana_sample_data_logs | where response='404' or response='503' | stats count(request) as request_count by host, response | sort -request_count
+
+```
+
+The following screenshot shows the query results.
+
+![PPL on Opensearch Dashboards Dev Tools](/assets/img/ppl-dev-tools.jpeg)
+
+### Commands and functions supported by PPL
+
+PPL supports a comprehensive set of commands, including `search`, `where`, `field`, `rename`, `dedup`, `sort`, `stats`, `eval`, `head`, `top`, and `rare`. These commands are read-only requests to process data and return results. The following table summarizes the purpose of each command.
+
+
+
+PPL also supports functions including date-time, mathematical, string, aggregate, and trigonometric, and operators and expressions.
+
+### Summary
+
+Piped Processing Language, powered by Open Distro for Elasticsearch, has a comprehensive set of commands and functions that enable you to quickly begin extracting insights from your data in Elasticsearch. It’s supported on all Amazon ES domains running Elasticsearch 7.9 or greater. PPL also expands the capabilities of the Query Workbench in Kibana in addition to SQL. For more information, see Piped Processing Language.

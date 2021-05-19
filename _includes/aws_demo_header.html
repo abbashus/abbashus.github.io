@@ -14,15 +14,25 @@
                     <a class="nav-link" href="https://aws.amazon.com/elasticsearch-service/">AWS Elasticsearch Service</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1"
+                    <a class="nav-link dropdown-toggle" href="#" id="featureDemoDropdown"
                        role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Featured Demos
                     </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown1">
+                    <ul class="dropdown-menu" aria-labelledby="featureDemoDropdown">
                         {% for demo in site.data.featured_demos %}
                         <li><a class="dropdown-item" href="{{demo.rel_url}}">{{demo.title}}</a></li>
                         {% endfor %}
-
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="useCaseDropdown"
+                       role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Use Case Demos
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="useCaseDropdown">
+                        {% for demo in site.data.use_cases %}
+                        <li><a class="dropdown-item" href="{{demo.rel_url}}">{{demo.title}}</a></li>
+                        {% endfor %}
                     </ul>
                 </li>
             </ul>

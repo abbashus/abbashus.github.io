@@ -16,7 +16,7 @@ In this post, we discuss the newly supported Piped Processing Language (PPL) fea
 
 ### What is Piped Processing Language?
 
-Piped Processing Language is powered by Open Distro for Elasticsearch, an Apache 2.0-licensed distribution of Elasticsearch. PPL enables you to explore, discover, and find data stored in Elasticsearch, using a set of commands delimited by pipes ( \| ).
+Piped Processing Language is powered by Open Distro for Elasticsearch, an Apache 2.0-licensed distribution of Elasticsearch. PPL enables you to explore, discover, and find data stored in Elasticsearch, using a set of commands delimited by pipes ( `|` ).
 
 Pipes allow you to combine two or more commands as a chain, such that the output of one command acts as an input for the next command, very similar to Unix pipes. With PPL, you can now search for keywords and feed the results from the command on the left of the pipe to the command on the right of the pipe, effectively creating a command pipeline.
 

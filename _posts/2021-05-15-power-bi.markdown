@@ -1,6 +1,6 @@
 ---
 layout: awsdemos
-title: OpenDistro Power BI Integration 
+title: Power BI Integration 
 authors: 
   - virajp
 

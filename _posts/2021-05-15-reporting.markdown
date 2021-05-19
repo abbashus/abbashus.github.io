@@ -1,6 +1,6 @@
 ---
 layout: awsdemos
-title: OpenDistro Reporting
+title: Reporting
 authors: 
   - virajp
 

@@ -2,7 +2,7 @@
   title: Piped Processing Language
   rel_url: /blog/demo/2021/05/ppl
   on_homepage: true
-  summary: Some goodness coming here :)
+  summary: PPL enables you to explore, discover, and find data stored in Elasticsearch, using a set of commands delimited by pipes ( | ).
 -
   title: ODFE Reporting
   rel_url: /blog/demo/2021/05/odfe-reporting

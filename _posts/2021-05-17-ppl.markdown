@@ -48,9 +48,7 @@ source = kibana_sample_data_logs | where response='404' or response='503' | stat
 
 ```
 
-The following screenshot shows the query results.
-
-![PPL on Opensearch Dashboards Dev Tools](/assets/img/ppl-dev-tools.jpeg)
+![PPL on Opensearch Dashboards Dev Tools](/assets/img/ppl_demo.gif)
 
 ### Commands and functions supported by PPL
 

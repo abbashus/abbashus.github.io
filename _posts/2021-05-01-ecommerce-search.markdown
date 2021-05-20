@@ -12,5 +12,5 @@ categories: use-case-demo
 
 <div class="jumbotron text-center text-light">
     <h2> While we are working on this awesome demo, you can stretch yourself !</h2>
-    <img src="/assets/img/deer_running.gif" border=0 class="center" style="width: available">
+    <img src="/assets/img/deer_running.gif" border=0 class="center" style="max-width: 100%">
 </div>

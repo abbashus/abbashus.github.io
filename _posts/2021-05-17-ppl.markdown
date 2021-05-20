@@ -10,16 +10,38 @@ categories: feature-demo
 <h4 style="text-align: center;">{{ page.title }}</h4>
 ------
 
-System developers, DevOps engineers, support engineers, site reliability engineers (SREs), and IT managers make sure that the underlying infrastructure powering the applications and systems within an organization is available, reliable, secure, and scalable. To achieve these goals, you need to perform a fast and deep analysis on the underlying logs, monitoring, and observability data. [Amazon Elasticsearch Service](https://aws.amazon.com/elasticsearch-service/) (Amazon ES) is a popular choice to store and analyze such data. However, extracting insights from Elasticsearch isn’t easy. Although Query DSL (the language used to query data stored in Elasticsearch) is powerful, it has a steep learning curve, and wasn’t designed as a human interface to easily create one-time queries and explore user data.
-
 In this demo, we discuss the newly supported Piped Processing Language (PPL) feature, powered by Open Distro for Elasticsearch, which enables you to form complex queries and quickly explore and discover data with the help of pipes.
 
-#### What is Piped Processing Language?
+#### What is Piped Processing language?
 ------
 
-Piped Processing Language is powered by Open Distro for Elasticsearch, an Apache 2.0-licensed distribution of Elasticsearch. PPL enables you to explore, discover, and find data stored in Elasticsearch, using a set of commands delimited by pipes ( `|` ).
+<div id="carouselExampleIndicators" class="carousel slide pb-4" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="/assets/img/orange-checker-bg.png" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="/assets/img/orange-checker-bg.png" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="/assets/img/orange-checker-bg.png" class="d-block w-100" alt="...">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
 
-Pipes allow you to combine two or more commands as a chain, such that the output of one command acts as an input for the next command, very similar to [Unix pipes](https://en.wikipedia.org/wiki/Pipeline_(Unix)). With PPL, you can now search for keywords and feed the results from the command on the left of the pipe to the command on the right of the pipe, effectively creating a command pipeline.
 
 #### Use case
 ------
@@ -36,10 +58,6 @@ GET kibana_sample_data_logs/_search
 
 ```
 
-The following screenshot shows the query results.
-
-![Search Query on Opensearch Dashboards Dev Tools](/assets/img/es-query-dev-tools.jpeg)
-
 
 ##### Using PPL
 
@@ -52,14 +70,6 @@ source = kibana_sample_data_logs | where response='404' or response='503' | stat
 ```
 
 ![PPL on Opensearch Dashboards Dev Tools](/assets/img/ppl_demo.gif)
-
-#### Commands and functions supported by PPL
-------
-PPL supports a comprehensive set of [commands](https://opendistro.github.io/for-elasticsearch-docs/docs/ppl/commands/), including `search`, `where`, `field`, `rename`, `dedup`, `sort`, `stats`, `eval`, `head`, `top`, and `rare`. These commands are read-only requests to process data and return results. The following table summarizes the purpose of each command.
-
-
-
-PPL also supports functions including date-time, mathematical, string, aggregate, and trigonometric, and operators and expressions.
 
 #### Summary
 ------

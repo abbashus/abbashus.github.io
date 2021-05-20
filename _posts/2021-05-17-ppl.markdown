@@ -12,7 +12,7 @@ categories: feature-demo
 
 System developers, DevOps engineers, support engineers, site reliability engineers (SREs), and IT managers make sure that the underlying infrastructure powering the applications and systems within an organization is available, reliable, secure, and scalable. To achieve these goals, you need to perform a fast and deep analysis on the underlying logs, monitoring, and observability data. Amazon Elasticsearch Service (Amazon ES) is a popular choice to store and analyze such data. However, extracting insights from Elasticsearch isn’t easy. Although Query DSL (the language used to query data stored in Elasticsearch) is powerful, it has a steep learning curve, and wasn’t designed as a human interface to easily create one-time queries and explore user data.
 
-In this post, we discuss the newly supported Piped Processing Language (PPL) feature, powered by Open Distro for Elasticsearch, which enables you to form complex queries and quickly explore and discover data with the help of pipes.
+In this demo, we discuss the newly supported Piped Processing Language (PPL) feature, powered by Open Distro for Elasticsearch, which enables you to form complex queries and quickly explore and discover data with the help of pipes.
 
 ### What is Piped Processing Language?
 

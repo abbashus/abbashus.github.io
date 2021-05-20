@@ -8,6 +8,10 @@ date:   2021-05-17 01:01:01 -0700
 categories: demo
 ---
 
+<div class="jumbotron text-center text-light">
+    <h1>Amazon Elasticsearch Service Demos</h1>
+</div>
+
 <div class="row row-cols-1 row-cols-md-2 g-4" style="margin-top: 20px;">
 
     {% for demo in site.data.featured_demos %}
@@ -15,7 +19,7 @@ categories: demo
             <div class="col">
                 <div class="card h-100 ">
                     <a href="{{demo.rel_url}}" class="card-link">
-                        <div class="card-header bg-primary text-light">
+                        <div class="card-header amazon-orange text-light">
                             <h5> {{demo.title}} </h5>
                         </div>
                         <div class="card-body">

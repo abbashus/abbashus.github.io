@@ -67,15 +67,23 @@
     </style>
 </head>
 <body class="bg-dark">
-<div class="container {% if page.url != "/demo-home-page.html" %} bg-light {% endif %}" style="background-position: left top; background-size: cover;">
-    {%- include aws_demo_header.html -%}
+<div class="container p-0" style="background-position: left top; background-size: cover;">
 
-    {{ content }}
+    <div class="container p-4 {% if page.url != "/demo-home-page.html" %} bg-light {% endif %}" style="background-position: left top; background-size: cover;">
+        {%- include aws_demo_header.html -%}
+
+        {{ content }}
+    </div>
 </div>
+
+{%- include aws_demo_footer.html -%}
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
         crossorigin="anonymous"></script>
 <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.7.2/build/highlight.min.js"></script>
 <script>hljs.highlightAll();</script>
+
+
 </body>
 </html>

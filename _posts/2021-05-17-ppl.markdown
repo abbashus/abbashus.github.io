@@ -7,20 +7,23 @@ authors:
 date:   2021-05-17 01:01:01 -0700
 categories: feature-demo
 ---
-<h4>{{ page.title }}</h4>
-
+<h4 style="text-align: center;">{{ page.title }}</h4>
+------
 
 System developers, DevOps engineers, support engineers, site reliability engineers (SREs), and IT managers make sure that the underlying infrastructure powering the applications and systems within an organization is available, reliable, secure, and scalable. To achieve these goals, you need to perform a fast and deep analysis on the underlying logs, monitoring, and observability data. [Amazon Elasticsearch Service](https://aws.amazon.com/elasticsearch-service/) (Amazon ES) is a popular choice to store and analyze such data. However, extracting insights from Elasticsearch isn’t easy. Although Query DSL (the language used to query data stored in Elasticsearch) is powerful, it has a steep learning curve, and wasn’t designed as a human interface to easily create one-time queries and explore user data.
 
 In this demo, we discuss the newly supported Piped Processing Language (PPL) feature, powered by Open Distro for Elasticsearch, which enables you to form complex queries and quickly explore and discover data with the help of pipes.
 
 #### What is Piped Processing Language?
+------
 
 Piped Processing Language is powered by Open Distro for Elasticsearch, an Apache 2.0-licensed distribution of Elasticsearch. PPL enables you to explore, discover, and find data stored in Elasticsearch, using a set of commands delimited by pipes ( `|` ).
 
 Pipes allow you to combine two or more commands as a chain, such that the output of one command acts as an input for the next command, very similar to [Unix pipes](https://en.wikipedia.org/wiki/Pipeline_(Unix)). With PPL, you can now search for keywords and feed the results from the command on the left of the pipe to the command on the right of the pipe, effectively creating a command pipeline.
 
 #### Use case
+------
+
 As an illustration, consider a use case where you want to find out the number of hosts that are responding with HTTP 404 (Page not found) and HTTP 503 (Server Unavailability) errors, aggregate the error responses per host, and sort in the order of impact.
 
 
@@ -51,7 +54,7 @@ source = kibana_sample_data_logs | where response='404' or response='503' | stat
 ![PPL on Opensearch Dashboards Dev Tools](/assets/img/ppl_demo.gif)
 
 #### Commands and functions supported by PPL
-
+------
 PPL supports a comprehensive set of [commands](https://opendistro.github.io/for-elasticsearch-docs/docs/ppl/commands/), including `search`, `where`, `field`, `rename`, `dedup`, `sort`, `stats`, `eval`, `head`, `top`, and `rare`. These commands are read-only requests to process data and return results. The following table summarizes the purpose of each command.
 
 
@@ -59,5 +62,5 @@ PPL supports a comprehensive set of [commands](https://opendistro.github.io/for-
 PPL also supports functions including date-time, mathematical, string, aggregate, and trigonometric, and operators and expressions.
 
 #### Summary
-
+------
 Piped Processing Language, powered by Open Distro for Elasticsearch, has a comprehensive set of commands and functions that enable you to quickly begin extracting insights from your data in Elasticsearch. It’s supported on all Amazon ES domains running Elasticsearch 7.9 or greater. PPL also expands the capabilities of the Query Workbench in Kibana in addition to SQL. For more information, see [Piped Processing Language](https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/ppl-support.html).

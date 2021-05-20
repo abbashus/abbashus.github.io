@@ -7,14 +7,14 @@
   title: Reporting
   rel_url: /blog/feature-demo/2021/05/reporting
   on_homepage: true
-  summary: Some goodness coming here :)
+  summary: Reporting enables Kibana users to generate and download reports.
 -
   title: Grafana Integration
   rel_url: /blog/feature-demo/2021/05/grafana
   on_homepage: true
-  summary: Some goodness coming here :)
+  summary: Open Distro for Elasticsearch data source plugin for Grafana provides improved log data exploration and visualization for Elasticsearch data stored on Amazon Elasticsearch Service or clusters running Open Distro for Elasticsearch (an Apache 2.0-licensed distribution of Elasticsearch).
 -
   title: Power BI Integration
   rel_url: /blog/feature-demo/2021/05/power-bi
   on_homepage: true
-  summary: Some goodness coming here :)
+  summary: Amazon Elasticsearch Service now supports integrating with Microsoft Power BI, a business analytics service that delivers insights to enable fast, informed decisions.

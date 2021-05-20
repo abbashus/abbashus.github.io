@@ -23,13 +23,13 @@ In this demo, we discuss the newly supported Piped Processing Language (PPL) fea
   </div>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="/assets/img/orange-checker-bg.png" class="d-block w-100" alt="...">
+      <img src="/assets/img/ppl/what-is-ppl.png" class="d-block w-100" alt="...">
     </div>
     <div class="carousel-item">
-      <img src="/assets/img/orange-checker-bg.png" class="d-block w-100" alt="...">
+      <img src="/assets/img/ppl/block-diagram.png" class="d-block w-100" alt="...">
     </div>
     <div class="carousel-item">
-      <img src="/assets/img/orange-checker-bg.png" class="d-block w-100" alt="...">
+      <img src="/assets/img/ppl/parser-diagram.png" class="d-block w-100" alt="...">
     </div>
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -47,7 +47,6 @@ In this demo, we discuss the newly supported Piped Processing Language (PPL) fea
 ------
 
 As an illustration, consider a use case where you want to find out the number of hosts that are responding with HTTP 404 (Page not found) and HTTP 503 (Server Unavailability) errors, aggregate the error responses per host, and sort in the order of impact.
-
 
 ##### Using Query DSL
 

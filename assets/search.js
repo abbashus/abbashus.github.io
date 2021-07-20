@@ -1,8 +1,8 @@
 console.log("start")
 
 const lorem = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum";
-// const search_endpoint = "https://ody3j2vxld.execute-api.us-west-2.amazonaws.com/search-os-api-test"
-const search_endpoint = "https://g3fwtptsni.execute-api.us-west-2.amazonaws.com/prod/search"
+const search_endpoint = "https://ody3j2vxld.execute-api.us-west-2.amazonaws.com/search-os-api-test"
+// const search_endpoint = "https://g3fwtptsni.execute-api.us-west-2.amazonaws.com/prod/search"
 function fetchdata() {
     fetch("https://reqres.in/api/users")
         .then(response => {
@@ -96,7 +96,7 @@ function search() {
                         return `
                         <div class="card border-info my-card " style="border: 2px solid green;" >
                         <h5 class="card-header">
-                            <a href="${'https://opensearch.org/docs' + source.url}" class="card-link">${source.url}</a>
+                            <a href="${source.url}" class="card-link">${source.url}</a>
                             <span class="badge rounded-pill bg-warning text-dark" style="float: right;">${source.type}</span>
                         </h5>
                         <div class="card-body">

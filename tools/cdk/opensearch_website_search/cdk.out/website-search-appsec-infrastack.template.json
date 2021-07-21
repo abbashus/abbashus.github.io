@@ -1,0 +1,576 @@
+{
+  "Resources": {
+    "ec2iamroleDF18375D": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "ec2.amazonaws.com"
+              }
+            }
+          ],
+          "Version": "2012-10-17"
+        },
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition"
+                },
+                ":iam::aws:policy/AmazonEC2ReadOnlyAccess"
+              ]
+            ]
+          },
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition"
+                },
+                ":iam::aws:policy/CloudWatchAgentServerPolicy"
+              ]
+            ]
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "website-search-appsec-infrastack/ec2_iam_role/Resource"
+      }
+    },
+    "LogGroupF5B46931": {
+      "Type": "AWS::Logs::LogGroup",
+      "Properties": {
+        "LogGroupName": "website-search-appsec-infrastack-07-15-21-t20-54",
+        "RetentionInDays": 90
+      },
+      "UpdateReplacePolicy": "Retain",
+      "DeletionPolicy": "Retain",
+      "Metadata": {
+        "aws:cdk:path": "website-search-appsec-infrastack/LogGroup/Resource"
+      }
+    },
+    "MasterASGInstanceProfileA90CF9FF": {
+      "Type": "AWS::IAM::InstanceProfile",
+      "Properties": {
+        "Roles": [
+          {
+            "Ref": "ec2iamroleDF18375D"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "website-search-appsec-infrastack/MasterASG/InstanceProfile"
+      }
+    },
+    "MasterASGLaunchConfigA6B00FCA": {
+      "Type": "AWS::AutoScaling::LaunchConfiguration",
+      "Properties": {
+        "ImageId": {
+          "Ref": "SsmParameterValueawsserviceamiamazonlinuxlatestamzn2amihvmx8664gp2C96584B6F00A464EAD1953AFF4B05118Parameter"
+        },
+        "InstanceType": "m5.xlarge",
+        "IamInstanceProfile": {
+          "Ref": "MasterASGInstanceProfileA90CF9FF"
+        },
+        "KeyName": "opensearch-cluster",
+        "SecurityGroups": [
+          {
+            "Fn::ImportValue": "website-search-appsec-networkstack:ExportsOutputFnGetAttwebsitesearchappseccdksecuritygroup68FAFEDEGroupId34DA8A32"
+          }
+        ],
+        "UserData": {
+          "Fn::Base64": {
+            "Fn::Sub": [
+              "#!/bin/bash\ndownloadUrl=\"${__URL__}\"\nstackName=\"${__STACK_NAME__}\"\nnodeName=\"${__NODE_NAME__}\"\nmaster=\"${__MASTER__}\"\ndata=\"${__DATA__}\"\ningest=\"${__INGEST__}\"\nlogGroup=\"${__LG__}\"\n\n\nsudo sysctl -w vm.max_map_count=262144\nsudo yum update -y\nsudo yum install -y libnss3.so xorg-x11-fonts-100dpi xorg-x11-fonts-75dpi xorg-x11-utils xorg-x11-fonts-cyrillic xorg-x11-fonts-Type1 xorg-x11-fonts-misc fontconfig freetype\ncurl \"${!downloadUrl}\" -o opensearch\ntar zxf opensearch\nchown -R ec2-user:ec2-user opensearch*\ncd opensearch-*\n{\necho \"\ncluster.name: ${!stackName}\ncluster.initial_master_nodes: [\\\"seed\\\"]\ndiscovery.seed_providers: ec2\ndiscovery.ec2.tag.role: master\nnetwork.host: 0.0.0.0\nnode.name: ${!nodeName}\nnode.master: ${!master}\nnode.data: ${!data}\nnode.ingest: ${!ingest}\"\n} >> config/opensearch.yml\nuuid=$(uuidgen | cut -d - -f 1)\nsudo sed -i /^node.name/s/node/\"$uuid\"/2 config/opensearch.yml\nsudo bin/opensearch-plugin install https://artifacts.opensearch.org/snapshots/native-plugins/opensearch/discovery-ec2/discovery-ec2-1.0.0-SNAPSHOT.zip --batch\nsudo -u ec2-user nohup ./opensearch-tar-install.sh > install.log 2>&1 &\nlogfile=$(pwd)/logs/${!stackName}.log\n\n# Creating cloudwatch logging\nsudo yum install amazon-cloudwatch-agent -y\ncat <<- EOF > /opt/aws/amazon-cloudwatch-agent/etc/amazon-cloudwatch-agent.json\n{\n    \"logs\": {\n        \"logs_collected\": {\n            \"files\": {\n                \"collect_list\": [\n                    {\n                        \"file_path\": \"$logfile\",\n                        \"log_group_name\": \"${!logGroup}\",\n                        \"log_stream_name\": \"${!nodeName}\",\n                        \"timezone\": \"UTC\"\n                    }\n                ]\n            }\n        }\n    },\n    \"log_stream_name\": \"others\"\n}\nEOF\nsudo systemctl start amazon-cloudwatch-agent",
+              {
+                "__NODE_NAME__": "master-node",
+                "__MASTER__": "true",
+                "__DATA__": "false",
+                "__INGEST__": "false",
+                "__URL__": "https://artifacts.opensearch.org/releases/bundle/opensearch/1.0.0/opensearch-1.0.0-linux-x64.tar.gz",
+                "__STACK_NAME__": "website-search-appsec-infrastack",
+                "__LG__": {
+                  "Ref": "LogGroupF5B46931"
+                }
+              }
+            ]
+          }
+        }
+      },
+      "DependsOn": [
+        "ec2iamroleDF18375D"
+      ],
+      "Metadata": {
+        "aws:cdk:path": "website-search-appsec-infrastack/MasterASG/LaunchConfig"
+      }
+    },
+    "MasterASGAEEF6F87": {
+      "Type": "AWS::AutoScaling::AutoScalingGroup",
+      "Properties": {
+        "MaxSize": "2",
+        "MinSize": "2",
+        "DesiredCapacity": "2",
+        "LaunchConfigurationName": {
+          "Ref": "MasterASGLaunchConfigA6B00FCA"
+        },
+        "Tags": [
+          {
+            "Key": "Name",
+            "PropagateAtLaunch": true,
+            "Value": "website-search-appsec-infrastack/MasterASG"
+          },
+          {
+            "Key": "role",
+            "PropagateAtLaunch": true,
+            "Value": "master"
+          }
+        ],
+        "VPCZoneIdentifier": [
+          {
+            "Fn::ImportValue": "website-search-appsec-networkstack:ExportsOutputRefcdkvpcprivateSubnet1Subnet54E345CF34A96D33"
+          }
+        ]
+      },
+      "UpdatePolicy": {
+        "AutoScalingScheduledAction": {
+          "IgnoreUnmodifiedGroupSizeProperties": true
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "website-search-appsec-infrastack/MasterASG/ASG"
+      }
+    },
+    "SeedASGInstanceProfile0EDEF8D7": {
+      "Type": "AWS::IAM::InstanceProfile",
+      "Properties": {
+        "Roles": [
+          {
+            "Ref": "ec2iamroleDF18375D"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "website-search-appsec-infrastack/SeedASG/InstanceProfile"
+      }
+    },
+    "SeedASGLaunchConfigC34953F8": {
+      "Type": "AWS::AutoScaling::LaunchConfiguration",
+      "Properties": {
+        "ImageId": {
+          "Ref": "SsmParameterValueawsserviceamiamazonlinuxlatestamzn2amihvmx8664gp2C96584B6F00A464EAD1953AFF4B05118Parameter"
+        },
+        "InstanceType": "m5.xlarge",
+        "IamInstanceProfile": {
+          "Ref": "SeedASGInstanceProfile0EDEF8D7"
+        },
+        "KeyName": "opensearch-cluster",
+        "SecurityGroups": [
+          {
+            "Fn::ImportValue": "website-search-appsec-networkstack:ExportsOutputFnGetAttwebsitesearchappseccdksecuritygroup68FAFEDEGroupId34DA8A32"
+          }
+        ],
+        "UserData": {
+          "Fn::Base64": {
+            "Fn::Sub": [
+              "#!/bin/bash\ndownloadUrl=\"${__URL__}\"\nstackName=\"${__STACK_NAME__}\"\nnodeName=\"${__NODE_NAME__}\"\nmaster=\"${__MASTER__}\"\ndata=\"${__DATA__}\"\ningest=\"${__INGEST__}\"\nlogGroup=\"${__LG__}\"\n\n\nsudo sysctl -w vm.max_map_count=262144\nsudo yum update -y\nsudo yum install -y libnss3.so xorg-x11-fonts-100dpi xorg-x11-fonts-75dpi xorg-x11-utils xorg-x11-fonts-cyrillic xorg-x11-fonts-Type1 xorg-x11-fonts-misc fontconfig freetype\ncurl \"${!downloadUrl}\" -o opensearch\ntar zxf opensearch\nchown -R ec2-user:ec2-user opensearch*\ncd opensearch-*\n{\necho \"\ncluster.name: ${!stackName}\ncluster.initial_master_nodes: [\\\"seed\\\"]\ndiscovery.seed_providers: ec2\ndiscovery.ec2.tag.role: master\nnetwork.host: 0.0.0.0\nnode.name: ${!nodeName}\nnode.master: ${!master}\nnode.data: ${!data}\nnode.ingest: ${!ingest}\"\n} >> config/opensearch.yml\nuuid=$(uuidgen | cut -d - -f 1)\nsudo sed -i /^node.name/s/node/\"$uuid\"/2 config/opensearch.yml\nsudo bin/opensearch-plugin install https://artifacts.opensearch.org/snapshots/native-plugins/opensearch/discovery-ec2/discovery-ec2-1.0.0-SNAPSHOT.zip --batch\nsudo -u ec2-user nohup ./opensearch-tar-install.sh > install.log 2>&1 &\nlogfile=$(pwd)/logs/${!stackName}.log\n\n# Creating cloudwatch logging\nsudo yum install amazon-cloudwatch-agent -y\ncat <<- EOF > /opt/aws/amazon-cloudwatch-agent/etc/amazon-cloudwatch-agent.json\n{\n    \"logs\": {\n        \"logs_collected\": {\n            \"files\": {\n                \"collect_list\": [\n                    {\n                        \"file_path\": \"$logfile\",\n                        \"log_group_name\": \"${!logGroup}\",\n                        \"log_stream_name\": \"${!nodeName}\",\n                        \"timezone\": \"UTC\"\n                    }\n                ]\n            }\n        }\n    },\n    \"log_stream_name\": \"others\"\n}\nEOF\nsudo systemctl start amazon-cloudwatch-agent",
+              {
+                "__NODE_NAME__": "seed",
+                "__MASTER__": "true",
+                "__DATA__": "true",
+                "__INGEST__": "false",
+                "__URL__": "https://artifacts.opensearch.org/releases/bundle/opensearch/1.0.0/opensearch-1.0.0-linux-x64.tar.gz",
+                "__STACK_NAME__": "website-search-appsec-infrastack",
+                "__LG__": {
+                  "Ref": "LogGroupF5B46931"
+                }
+              }
+            ]
+          }
+        }
+      },
+      "DependsOn": [
+        "ec2iamroleDF18375D"
+      ],
+      "Metadata": {
+        "aws:cdk:path": "website-search-appsec-infrastack/SeedASG/LaunchConfig"
+      }
+    },
+    "SeedASGB2DA15D5": {
+      "Type": "AWS::AutoScaling::AutoScalingGroup",
+      "Properties": {
+        "MaxSize": "1",
+        "MinSize": "1",
+        "DesiredCapacity": "1",
+        "LaunchConfigurationName": {
+          "Ref": "SeedASGLaunchConfigC34953F8"
+        },
+        "Tags": [
+          {
+            "Key": "Name",
+            "PropagateAtLaunch": true,
+            "Value": "website-search-appsec-infrastack/SeedASG"
+          },
+          {
+            "Key": "role",
+            "PropagateAtLaunch": true,
+            "Value": "master"
+          }
+        ],
+        "VPCZoneIdentifier": [
+          {
+            "Fn::ImportValue": "website-search-appsec-networkstack:ExportsOutputRefcdkvpcprivateSubnet1Subnet54E345CF34A96D33"
+          }
+        ]
+      },
+      "UpdatePolicy": {
+        "AutoScalingScheduledAction": {
+          "IgnoreUnmodifiedGroupSizeProperties": true
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "website-search-appsec-infrastack/SeedASG/ASG"
+      }
+    },
+    "ClientASGInstanceProfile0B5B7E24": {
+      "Type": "AWS::IAM::InstanceProfile",
+      "Properties": {
+        "Roles": [
+          {
+            "Ref": "ec2iamroleDF18375D"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "website-search-appsec-infrastack/ClientASG/InstanceProfile"
+      }
+    },
+    "ClientASGLaunchConfig931F8AF7": {
+      "Type": "AWS::AutoScaling::LaunchConfiguration",
+      "Properties": {
+        "ImageId": {
+          "Ref": "SsmParameterValueawsserviceamiamazonlinuxlatestamzn2amihvmx8664gp2C96584B6F00A464EAD1953AFF4B05118Parameter"
+        },
+        "InstanceType": "m5.xlarge",
+        "IamInstanceProfile": {
+          "Ref": "ClientASGInstanceProfile0B5B7E24"
+        },
+        "KeyName": "opensearch-cluster",
+        "SecurityGroups": [
+          {
+            "Fn::ImportValue": "website-search-appsec-networkstack:ExportsOutputFnGetAttwebsitesearchappseccdksecuritygroup68FAFEDEGroupId34DA8A32"
+          }
+        ],
+        "UserData": {
+          "Fn::Base64": {
+            "Fn::Join": [
+              "",
+              [
+                {
+                  "Fn::Sub": [
+                    "#!/bin/bash\ndownloadUrl=\"${__URL__}\"\nstackName=\"${__STACK_NAME__}\"\nnodeName=\"${__NODE_NAME__}\"\nmaster=\"${__MASTER__}\"\ndata=\"${__DATA__}\"\ningest=\"${__INGEST__}\"\nlogGroup=\"${__LG__}\"\n\n\nsudo sysctl -w vm.max_map_count=262144\nsudo yum update -y\nsudo yum install -y libnss3.so xorg-x11-fonts-100dpi xorg-x11-fonts-75dpi xorg-x11-utils xorg-x11-fonts-cyrillic xorg-x11-fonts-Type1 xorg-x11-fonts-misc fontconfig freetype\ncurl \"${!downloadUrl}\" -o opensearch\ntar zxf opensearch\nchown -R ec2-user:ec2-user opensearch*\ncd opensearch-*\n{\necho \"\ncluster.name: ${!stackName}\ncluster.initial_master_nodes: [\\\"seed\\\"]\ndiscovery.seed_providers: ec2\ndiscovery.ec2.tag.role: master\nnetwork.host: 0.0.0.0\nnode.name: ${!nodeName}\nnode.master: ${!master}\nnode.data: ${!data}\nnode.ingest: ${!ingest}\"\n} >> config/opensearch.yml\nuuid=$(uuidgen | cut -d - -f 1)\nsudo sed -i /^node.name/s/node/\"$uuid\"/2 config/opensearch.yml\nsudo bin/opensearch-plugin install https://artifacts.opensearch.org/snapshots/native-plugins/opensearch/discovery-ec2/discovery-ec2-1.0.0-SNAPSHOT.zip --batch\nsudo -u ec2-user nohup ./opensearch-tar-install.sh > install.log 2>&1 &\nlogfile=$(pwd)/logs/${!stackName}.log\n\n# Creating cloudwatch logging\nsudo yum install amazon-cloudwatch-agent -y\ncat <<- EOF > /opt/aws/amazon-cloudwatch-agent/etc/amazon-cloudwatch-agent.json\n{\n    \"logs\": {\n        \"logs_collected\": {\n            \"files\": {\n                \"collect_list\": [\n                    {\n                        \"file_path\": \"$logfile\",\n                        \"log_group_name\": \"${!logGroup}\",\n                        \"log_stream_name\": \"${!nodeName}\",\n                        \"timezone\": \"UTC\"\n                    }\n                ]\n            }\n        }\n    },\n    \"log_stream_name\": \"others\"\n}\nEOF\nsudo systemctl start amazon-cloudwatch-agent",
+                    {
+                      "__NODE_NAME__": "client-node",
+                      "__MASTER__": "false",
+                      "__DATA__": "false",
+                      "__INGEST__": "false",
+                      "__URL__": "https://artifacts.opensearch.org/releases/bundle/opensearch/1.0.0/opensearch-1.0.0-linux-x64.tar.gz",
+                      "__STACK_NAME__": "website-search-appsec-infrastack",
+                      "__LG__": {
+                        "Ref": "LogGroupF5B46931"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "Fn::Sub": [
+                    "#Installing Oopensearch dashboards\ndashboards_url=\"${__DASHBOARDS_URL__}\"\ncd /\ncurl \"${!dashboards_url}\" -o opensearch-dashboards\ntar zxf opensearch-dashboards\nchown -R ec2-user:ec2-user opensearch-dashboards\ncd opensearch-dashboards\necho \"server.host: 0.0.0.0\" >> config/opensearch_dashboards.yml\nsudo -u ec2-user nohup ./bin/opensearch-dashboards > dashboard_install.log 2>&1 &",
+                    {
+                      "__DASHBOARDS_URL__": "https://artifacts.opensearch.org/releases/bundle/opensearch-dashboards/1.0.0/opensearch-dashboards-1.0.0-linux-x64.tar.gz"
+                    }
+                  ]
+                }
+              ]
+            ]
+          }
+        }
+      },
+      "DependsOn": [
+        "ec2iamroleDF18375D"
+      ],
+      "Metadata": {
+        "aws:cdk:path": "website-search-appsec-infrastack/ClientASG/LaunchConfig"
+      }
+    },
+    "ClientASGC25EE12E": {
+      "Type": "AWS::AutoScaling::AutoScalingGroup",
+      "Properties": {
+        "MaxSize": "2",
+        "MinSize": "2",
+        "DesiredCapacity": "2",
+        "LaunchConfigurationName": {
+          "Ref": "ClientASGLaunchConfig931F8AF7"
+        },
+        "Tags": [
+          {
+            "Key": "Name",
+            "PropagateAtLaunch": true,
+            "Value": "website-search-appsec-infrastack/ClientASG"
+          },
+          {
+            "Key": "role",
+            "PropagateAtLaunch": true,
+            "Value": "client"
+          }
+        ],
+        "TargetGroupARNs": [
+          {
+            "Ref": "websitesearchappsecNetworkLoadBalanceropensearchOpenSearchTargetGroup1A6DF86D"
+          },
+          {
+            "Ref": "websitesearchappsecNetworkLoadBalancerdashboardsDashboardsTargetGroup94FBDF69"
+          }
+        ],
+        "VPCZoneIdentifier": [
+          {
+            "Fn::ImportValue": "website-search-appsec-networkstack:ExportsOutputRefcdkvpcpublicSubnet1Subnet8CE8DF43592738AF"
+          }
+        ]
+      },
+      "UpdatePolicy": {
+        "AutoScalingScheduledAction": {
+          "IgnoreUnmodifiedGroupSizeProperties": true
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "website-search-appsec-infrastack/ClientASG/ASG"
+      }
+    },
+    "DataASGInstanceProfileC2E725D1": {
+      "Type": "AWS::IAM::InstanceProfile",
+      "Properties": {
+        "Roles": [
+          {
+            "Ref": "ec2iamroleDF18375D"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "website-search-appsec-infrastack/DataASG/InstanceProfile"
+      }
+    },
+    "DataASGLaunchConfigCEDCA2DF": {
+      "Type": "AWS::AutoScaling::LaunchConfiguration",
+      "Properties": {
+        "ImageId": {
+          "Ref": "SsmParameterValueawsserviceamiamazonlinuxlatestamzn2amihvmx8664gp2C96584B6F00A464EAD1953AFF4B05118Parameter"
+        },
+        "InstanceType": "m5.xlarge",
+        "IamInstanceProfile": {
+          "Ref": "DataASGInstanceProfileC2E725D1"
+        },
+        "KeyName": "opensearch-cluster",
+        "SecurityGroups": [
+          {
+            "Fn::ImportValue": "website-search-appsec-networkstack:ExportsOutputFnGetAttwebsitesearchappseccdksecuritygroup68FAFEDEGroupId34DA8A32"
+          }
+        ],
+        "UserData": {
+          "Fn::Base64": {
+            "Fn::Sub": [
+              "#!/bin/bash\ndownloadUrl=\"${__URL__}\"\nstackName=\"${__STACK_NAME__}\"\nnodeName=\"${__NODE_NAME__}\"\nmaster=\"${__MASTER__}\"\ndata=\"${__DATA__}\"\ningest=\"${__INGEST__}\"\nlogGroup=\"${__LG__}\"\n\n\nsudo sysctl -w vm.max_map_count=262144\nsudo yum update -y\nsudo yum install -y libnss3.so xorg-x11-fonts-100dpi xorg-x11-fonts-75dpi xorg-x11-utils xorg-x11-fonts-cyrillic xorg-x11-fonts-Type1 xorg-x11-fonts-misc fontconfig freetype\ncurl \"${!downloadUrl}\" -o opensearch\ntar zxf opensearch\nchown -R ec2-user:ec2-user opensearch*\ncd opensearch-*\n{\necho \"\ncluster.name: ${!stackName}\ncluster.initial_master_nodes: [\\\"seed\\\"]\ndiscovery.seed_providers: ec2\ndiscovery.ec2.tag.role: master\nnetwork.host: 0.0.0.0\nnode.name: ${!nodeName}\nnode.master: ${!master}\nnode.data: ${!data}\nnode.ingest: ${!ingest}\"\n} >> config/opensearch.yml\nuuid=$(uuidgen | cut -d - -f 1)\nsudo sed -i /^node.name/s/node/\"$uuid\"/2 config/opensearch.yml\nsudo bin/opensearch-plugin install https://artifacts.opensearch.org/snapshots/native-plugins/opensearch/discovery-ec2/discovery-ec2-1.0.0-SNAPSHOT.zip --batch\nsudo -u ec2-user nohup ./opensearch-tar-install.sh > install.log 2>&1 &\nlogfile=$(pwd)/logs/${!stackName}.log\n\n# Creating cloudwatch logging\nsudo yum install amazon-cloudwatch-agent -y\ncat <<- EOF > /opt/aws/amazon-cloudwatch-agent/etc/amazon-cloudwatch-agent.json\n{\n    \"logs\": {\n        \"logs_collected\": {\n            \"files\": {\n                \"collect_list\": [\n                    {\n                        \"file_path\": \"$logfile\",\n                        \"log_group_name\": \"${!logGroup}\",\n                        \"log_stream_name\": \"${!nodeName}\",\n                        \"timezone\": \"UTC\"\n                    }\n                ]\n            }\n        }\n    },\n    \"log_stream_name\": \"others\"\n}\nEOF\nsudo systemctl start amazon-cloudwatch-agent",
+              {
+                "__NODE_NAME__": "data-node",
+                "__MASTER__": "false",
+                "__DATA__": "true",
+                "__INGEST__": "true",
+                "__URL__": "https://artifacts.opensearch.org/releases/bundle/opensearch/1.0.0/opensearch-1.0.0-linux-x64.tar.gz",
+                "__STACK_NAME__": "website-search-appsec-infrastack",
+                "__LG__": {
+                  "Ref": "LogGroupF5B46931"
+                }
+              }
+            ]
+          }
+        }
+      },
+      "DependsOn": [
+        "ec2iamroleDF18375D"
+      ],
+      "Metadata": {
+        "aws:cdk:path": "website-search-appsec-infrastack/DataASG/LaunchConfig"
+      }
+    },
+    "DataASG290E0E71": {
+      "Type": "AWS::AutoScaling::AutoScalingGroup",
+      "Properties": {
+        "MaxSize": "2",
+        "MinSize": "2",
+        "DesiredCapacity": "2",
+        "LaunchConfigurationName": {
+          "Ref": "DataASGLaunchConfigCEDCA2DF"
+        },
+        "Tags": [
+          {
+            "Key": "Name",
+            "PropagateAtLaunch": true,
+            "Value": "website-search-appsec-infrastack/DataASG"
+          },
+          {
+            "Key": "role",
+            "PropagateAtLaunch": true,
+            "Value": "data"
+          }
+        ],
+        "VPCZoneIdentifier": [
+          {
+            "Fn::ImportValue": "website-search-appsec-networkstack:ExportsOutputRefcdkvpcprivateSubnet1Subnet54E345CF34A96D33"
+          }
+        ]
+      },
+      "UpdatePolicy": {
+        "AutoScalingScheduledAction": {
+          "IgnoreUnmodifiedGroupSizeProperties": true
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "website-search-appsec-infrastack/DataASG/ASG"
+      }
+    },
+    "websitesearchappsecNetworkLoadBalancer0A3F1CBD": {
+      "Type": "AWS::ElasticLoadBalancingV2::LoadBalancer",
+      "Properties": {
+        "LoadBalancerAttributes": [
+          {
+            "Key": "deletion_protection.enabled",
+            "Value": "false"
+          }
+        ],
+        "Scheme": "internal",
+        "Subnets": [
+          {
+            "Fn::ImportValue": "website-search-appsec-networkstack:ExportsOutputRefcdkvpcprivateSubnet1Subnet54E345CF34A96D33"
+          }
+        ],
+        "Type": "network"
+      },
+      "Metadata": {
+        "aws:cdk:path": "website-search-appsec-infrastack/website-search-appsec-NetworkLoadBalancer/Resource"
+      }
+    },
+    "websitesearchappsecNetworkLoadBalanceropensearch356EA480": {
+      "Type": "AWS::ElasticLoadBalancingV2::Listener",
+      "Properties": {
+        "DefaultActions": [
+          {
+            "TargetGroupArn": {
+              "Ref": "websitesearchappsecNetworkLoadBalanceropensearchOpenSearchTargetGroup1A6DF86D"
+            },
+            "Type": "forward"
+          }
+        ],
+        "LoadBalancerArn": {
+          "Ref": "websitesearchappsecNetworkLoadBalancer0A3F1CBD"
+        },
+        "Port": 80,
+        "Protocol": "TCP"
+      },
+      "Metadata": {
+        "aws:cdk:path": "website-search-appsec-infrastack/website-search-appsec-NetworkLoadBalancer/opensearch/Resource"
+      }
+    },
+    "websitesearchappsecNetworkLoadBalanceropensearchOpenSearchTargetGroup1A6DF86D": {
+      "Type": "AWS::ElasticLoadBalancingV2::TargetGroup",
+      "Properties": {
+        "Port": 9200,
+        "Protocol": "TCP",
+        "TargetType": "instance",
+        "VpcId": {
+          "Fn::ImportValue": "website-search-appsec-networkstack:ExportsOutputRefcdkvpc58C641FA3C2DCB3C"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "website-search-appsec-infrastack/website-search-appsec-NetworkLoadBalancer/opensearch/OpenSearchTargetGroup/Resource"
+      }
+    },
+    "websitesearchappsecNetworkLoadBalancerdashboards49893A27": {
+      "Type": "AWS::ElasticLoadBalancingV2::Listener",
+      "Properties": {
+        "DefaultActions": [
+          {
+            "TargetGroupArn": {
+              "Ref": "websitesearchappsecNetworkLoadBalancerdashboardsDashboardsTargetGroup94FBDF69"
+            },
+            "Type": "forward"
+          }
+        ],
+        "LoadBalancerArn": {
+          "Ref": "websitesearchappsecNetworkLoadBalancer0A3F1CBD"
+        },
+        "Port": 5601,
+        "Protocol": "TCP"
+      },
+      "Metadata": {
+        "aws:cdk:path": "website-search-appsec-infrastack/website-search-appsec-NetworkLoadBalancer/dashboards/Resource"
+      }
+    },
+    "websitesearchappsecNetworkLoadBalancerdashboardsDashboardsTargetGroup94FBDF69": {
+      "Type": "AWS::ElasticLoadBalancingV2::TargetGroup",
+      "Properties": {
+        "Port": 5601,
+        "Protocol": "TCP",
+        "TargetType": "instance",
+        "VpcId": {
+          "Fn::ImportValue": "website-search-appsec-networkstack:ExportsOutputRefcdkvpc58C641FA3C2DCB3C"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "website-search-appsec-infrastack/website-search-appsec-NetworkLoadBalancer/dashboards/DashboardsTargetGroup/Resource"
+      }
+    },
+    "CDKMetadata": {
+      "Type": "AWS::CDK::Metadata",
+      "Properties": {
+        "Analytics": "v2:deflate64:H4sIAAAAAAAAE12PQU/DMAyFf8vuWUYZF27ADghpgqrjD5jM7ULTeHIcJhT1v5N0K0yc7PfeJ+u50lW11jeLBziFpdn3q2SIUaedgOnVpvU1MAwoyKrBQJENFvctyjGK2pAPwtFI8eZ8VOVWsjDo1JCb+Hm+ZB68wZqptS6jjrqg05a6Z6Z4LMi85zNRKBhw1nc6PWaxO4s/FKI3h1yitV1kEEu+2P/RUaGDINY4gv0HuFwgR1+3Or2inIj7bfafJj+/OVW40jNjg6C/5PN+yd6BO5TfWldyHEdVf8uB/Gqt7/Xd4jNYu+ToxQ6om/P8AbTymbCEAQAA"
+      },
+      "Metadata": {
+        "aws:cdk:path": "website-search-appsec-infrastack/CDKMetadata/Default"
+      }
+    }
+  },
+  "Parameters": {
+    "SsmParameterValueawsserviceamiamazonlinuxlatestamzn2amihvmx8664gp2C96584B6F00A464EAD1953AFF4B05118Parameter": {
+      "Type": "AWS::SSM::Parameter::Value<AWS::EC2::Image::Id>",
+      "Default": "/aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2"
+    }
+  },
+  "Outputs": {
+    "LoadBalancerEndpoint": {
+      "Value": {
+        "Fn::GetAtt": [
+          "websitesearchappsecNetworkLoadBalancer0A3F1CBD",
+          "DNSName"
+        ]
+      }
+    },
+    "ExportsOutputFnGetAttwebsitesearchappsecNetworkLoadBalancer0A3F1CBDDNSNameCE0BAB7C": {
+      "Value": {
+        "Fn::GetAtt": [
+          "websitesearchappsecNetworkLoadBalancer0A3F1CBD",
+          "DNSName"
+        ]
+      },
+      "Export": {
+        "Name": "website-search-appsec-infrastack:ExportsOutputFnGetAttwebsitesearchappsecNetworkLoadBalancer0A3F1CBDDNSNameCE0BAB7C"
+      }
+    }
+  }
+}

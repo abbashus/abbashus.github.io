@@ -1,0 +1,2057 @@
+{
+  "version": "tree-0.1",
+  "tree": {
+    "id": "App",
+    "path": "",
+    "children": {
+      "Tree": {
+        "id": "Tree",
+        "path": "Tree",
+        "constructInfo": {
+          "fqn": "@aws-cdk/core.Construct",
+          "version": "1.113.0"
+        }
+      },
+      "website-search-appsec-networkstack": {
+        "id": "website-search-appsec-networkstack",
+        "path": "website-search-appsec-networkstack",
+        "children": {
+          "cdk-vpc": {
+            "id": "cdk-vpc",
+            "path": "website-search-appsec-networkstack/cdk-vpc",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "website-search-appsec-networkstack/cdk-vpc/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::EC2::VPC",
+                  "aws:cdk:cloudformation:props": {
+                    "cidrBlock": "10.9.0.0/21",
+                    "enableDnsHostnames": true,
+                    "enableDnsSupport": true,
+                    "instanceTenancy": "default",
+                    "tags": [
+                      {
+                        "key": "Name",
+                        "value": "website-search-appsec-networkstack/cdk-vpc"
+                      }
+                    ]
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "@aws-cdk/aws-ec2.CfnVPC",
+                  "version": "1.113.0"
+                }
+              },
+              "privateSubnet1": {
+                "id": "privateSubnet1",
+                "path": "website-search-appsec-networkstack/cdk-vpc/privateSubnet1",
+                "children": {
+                  "Subnet": {
+                    "id": "Subnet",
+                    "path": "website-search-appsec-networkstack/cdk-vpc/privateSubnet1/Subnet",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::Subnet",
+                      "aws:cdk:cloudformation:props": {
+                        "cidrBlock": "10.9.0.0/24",
+                        "vpcId": {
+                          "Ref": "cdkvpc58C641FA"
+                        },
+                        "availabilityZone": "us-west-2a",
+                        "mapPublicIpOnLaunch": false,
+                        "tags": [
+                          {
+                            "key": "aws-cdk:subnet-name",
+                            "value": "private"
+                          },
+                          {
+                            "key": "aws-cdk:subnet-type",
+                            "value": "Private"
+                          },
+                          {
+                            "key": "Name",
+                            "value": "website-search-appsec-networkstack/cdk-vpc/privateSubnet1"
+                          }
+                        ]
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "@aws-cdk/aws-ec2.CfnSubnet",
+                      "version": "1.113.0"
+                    }
+                  },
+                  "Acl": {
+                    "id": "Acl",
+                    "path": "website-search-appsec-networkstack/cdk-vpc/privateSubnet1/Acl",
+                    "constructInfo": {
+                      "fqn": "@aws-cdk/core.Resource",
+                      "version": "1.113.0"
+                    }
+                  },
+                  "RouteTable": {
+                    "id": "RouteTable",
+                    "path": "website-search-appsec-networkstack/cdk-vpc/privateSubnet1/RouteTable",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::RouteTable",
+                      "aws:cdk:cloudformation:props": {
+                        "vpcId": {
+                          "Ref": "cdkvpc58C641FA"
+                        },
+                        "tags": [
+                          {
+                            "key": "Name",
+                            "value": "website-search-appsec-networkstack/cdk-vpc/privateSubnet1"
+                          }
+                        ]
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "@aws-cdk/aws-ec2.CfnRouteTable",
+                      "version": "1.113.0"
+                    }
+                  },
+                  "RouteTableAssociation": {
+                    "id": "RouteTableAssociation",
+                    "path": "website-search-appsec-networkstack/cdk-vpc/privateSubnet1/RouteTableAssociation",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::SubnetRouteTableAssociation",
+                      "aws:cdk:cloudformation:props": {
+                        "routeTableId": {
+                          "Ref": "cdkvpcprivateSubnet1RouteTable25FF8809"
+                        },
+                        "subnetId": {
+                          "Ref": "cdkvpcprivateSubnet1Subnet54E345CF"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "@aws-cdk/aws-ec2.CfnSubnetRouteTableAssociation",
+                      "version": "1.113.0"
+                    }
+                  },
+                  "DefaultRoute": {
+                    "id": "DefaultRoute",
+                    "path": "website-search-appsec-networkstack/cdk-vpc/privateSubnet1/DefaultRoute",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::Route",
+                      "aws:cdk:cloudformation:props": {
+                        "routeTableId": {
+                          "Ref": "cdkvpcprivateSubnet1RouteTable25FF8809"
+                        },
+                        "destinationCidrBlock": "0.0.0.0/0",
+                        "natGatewayId": {
+                          "Ref": "cdkvpcpublicSubnet1NATGateway96E91EBA"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "@aws-cdk/aws-ec2.CfnRoute",
+                      "version": "1.113.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "@aws-cdk/aws-ec2.PrivateSubnet",
+                  "version": "1.113.0"
+                }
+              },
+              "publicSubnet1": {
+                "id": "publicSubnet1",
+                "path": "website-search-appsec-networkstack/cdk-vpc/publicSubnet1",
+                "children": {
+                  "Subnet": {
+                    "id": "Subnet",
+                    "path": "website-search-appsec-networkstack/cdk-vpc/publicSubnet1/Subnet",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::Subnet",
+                      "aws:cdk:cloudformation:props": {
+                        "cidrBlock": "10.9.1.0/24",
+                        "vpcId": {
+                          "Ref": "cdkvpc58C641FA"
+                        },
+                        "availabilityZone": "us-west-2a",
+                        "mapPublicIpOnLaunch": true,
+                        "tags": [
+                          {
+                            "key": "aws-cdk:subnet-name",
+                            "value": "public"
+                          },
+                          {
+                            "key": "aws-cdk:subnet-type",
+                            "value": "Public"
+                          },
+                          {
+                            "key": "Name",
+                            "value": "website-search-appsec-networkstack/cdk-vpc/publicSubnet1"
+                          }
+                        ]
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "@aws-cdk/aws-ec2.CfnSubnet",
+                      "version": "1.113.0"
+                    }
+                  },
+                  "Acl": {
+                    "id": "Acl",
+                    "path": "website-search-appsec-networkstack/cdk-vpc/publicSubnet1/Acl",
+                    "constructInfo": {
+                      "fqn": "@aws-cdk/core.Resource",
+                      "version": "1.113.0"
+                    }
+                  },
+                  "RouteTable": {
+                    "id": "RouteTable",
+                    "path": "website-search-appsec-networkstack/cdk-vpc/publicSubnet1/RouteTable",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::RouteTable",
+                      "aws:cdk:cloudformation:props": {
+                        "vpcId": {
+                          "Ref": "cdkvpc58C641FA"
+                        },
+                        "tags": [
+                          {
+                            "key": "Name",
+                            "value": "website-search-appsec-networkstack/cdk-vpc/publicSubnet1"
+                          }
+                        ]
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "@aws-cdk/aws-ec2.CfnRouteTable",
+                      "version": "1.113.0"
+                    }
+                  },
+                  "RouteTableAssociation": {
+                    "id": "RouteTableAssociation",
+                    "path": "website-search-appsec-networkstack/cdk-vpc/publicSubnet1/RouteTableAssociation",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::SubnetRouteTableAssociation",
+                      "aws:cdk:cloudformation:props": {
+                        "routeTableId": {
+                          "Ref": "cdkvpcpublicSubnet1RouteTableEB6F9789"
+                        },
+                        "subnetId": {
+                          "Ref": "cdkvpcpublicSubnet1Subnet8CE8DF43"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "@aws-cdk/aws-ec2.CfnSubnetRouteTableAssociation",
+                      "version": "1.113.0"
+                    }
+                  },
+                  "DefaultRoute": {
+                    "id": "DefaultRoute",
+                    "path": "website-search-appsec-networkstack/cdk-vpc/publicSubnet1/DefaultRoute",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::Route",
+                      "aws:cdk:cloudformation:props": {
+                        "routeTableId": {
+                          "Ref": "cdkvpcpublicSubnet1RouteTableEB6F9789"
+                        },
+                        "destinationCidrBlock": "0.0.0.0/0",
+                        "gatewayId": {
+                          "Ref": "cdkvpcIGW79C8E110"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "@aws-cdk/aws-ec2.CfnRoute",
+                      "version": "1.113.0"
+                    }
+                  },
+                  "EIP": {
+                    "id": "EIP",
+                    "path": "website-search-appsec-networkstack/cdk-vpc/publicSubnet1/EIP",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::EIP",
+                      "aws:cdk:cloudformation:props": {
+                        "domain": "vpc",
+                        "tags": [
+                          {
+                            "key": "Name",
+                            "value": "website-search-appsec-networkstack/cdk-vpc/publicSubnet1"
+                          }
+                        ]
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "@aws-cdk/aws-ec2.CfnEIP",
+                      "version": "1.113.0"
+                    }
+                  },
+                  "NATGateway": {
+                    "id": "NATGateway",
+                    "path": "website-search-appsec-networkstack/cdk-vpc/publicSubnet1/NATGateway",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::NatGateway",
+                      "aws:cdk:cloudformation:props": {
+                        "subnetId": {
+                          "Ref": "cdkvpcpublicSubnet1Subnet8CE8DF43"
+                        },
+                        "allocationId": {
+                          "Fn::GetAtt": [
+                            "cdkvpcpublicSubnet1EIPB01708B1",
+                            "AllocationId"
+                          ]
+                        },
+                        "tags": [
+                          {
+                            "key": "Name",
+                            "value": "website-search-appsec-networkstack/cdk-vpc/publicSubnet1"
+                          }
+                        ]
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "@aws-cdk/aws-ec2.CfnNatGateway",
+                      "version": "1.113.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "@aws-cdk/aws-ec2.PublicSubnet",
+                  "version": "1.113.0"
+                }
+              },
+              "IGW": {
+                "id": "IGW",
+                "path": "website-search-appsec-networkstack/cdk-vpc/IGW",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::EC2::InternetGateway",
+                  "aws:cdk:cloudformation:props": {
+                    "tags": [
+                      {
+                        "key": "Name",
+                        "value": "website-search-appsec-networkstack/cdk-vpc"
+                      }
+                    ]
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "@aws-cdk/aws-ec2.CfnInternetGateway",
+                  "version": "1.113.0"
+                }
+              },
+              "VPCGW": {
+                "id": "VPCGW",
+                "path": "website-search-appsec-networkstack/cdk-vpc/VPCGW",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::EC2::VPCGatewayAttachment",
+                  "aws:cdk:cloudformation:props": {
+                    "vpcId": {
+                      "Ref": "cdkvpc58C641FA"
+                    },
+                    "internetGatewayId": {
+                      "Ref": "cdkvpcIGW79C8E110"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "@aws-cdk/aws-ec2.CfnVPCGatewayAttachment",
+                  "version": "1.113.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "@aws-cdk/aws-ec2.Vpc",
+              "version": "1.113.0"
+            }
+          },
+          "website-search-appsec-cdk-security-group": {
+            "id": "website-search-appsec-cdk-security-group",
+            "path": "website-search-appsec-networkstack/website-search-appsec-cdk-security-group",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "website-search-appsec-networkstack/website-search-appsec-cdk-security-group/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::EC2::SecurityGroup",
+                  "aws:cdk:cloudformation:props": {
+                    "groupDescription": "Opensearch website search domain security group",
+                    "groupName": "website-search-appsec-SecurityGroup",
+                    "securityGroupEgress": [
+                      {
+                        "cidrIp": "0.0.0.0/0",
+                        "description": "Allow all outbound traffic by default",
+                        "ipProtocol": "-1"
+                      }
+                    ],
+                    "securityGroupIngress": [
+                      {
+                        "cidrIp": {
+                          "Fn::GetAtt": [
+                            "cdkvpc58C641FA",
+                            "CidrBlock"
+                          ]
+                        },
+                        "ipProtocol": "tcp",
+                        "fromPort": 9200,
+                        "toPort": 9200,
+                        "description": "OpenSearch runs on port 9200 from VPC"
+                      },
+                      {
+                        "cidrIp": {
+                          "Fn::GetAtt": [
+                            "cdkvpc58C641FA",
+                            "CidrBlock"
+                          ]
+                        },
+                        "ipProtocol": "tcp",
+                        "fromPort": 9600,
+                        "toPort": 9600,
+                        "description": "Performance Analyzer plugin port from VPC"
+                      },
+                      {
+                        "cidrIp": {
+                          "Fn::GetAtt": [
+                            "cdkvpc58C641FA",
+                            "CidrBlock"
+                          ]
+                        },
+                        "ipProtocol": "tcp",
+                        "fromPort": 5601,
+                        "toPort": 5601,
+                        "description": "Used for accessing OpenSearch Dashboards from VPC"
+                      },
+                      {
+                        "cidrIp": "0.0.0.0/0",
+                        "ipProtocol": "tcp",
+                        "fromPort": 9200,
+                        "toPort": 9200,
+                        "description": "OpenSearch runs on port 9200 from VPC"
+                      },
+                      {
+                        "cidrIp": "0.0.0.0/0",
+                        "ipProtocol": "tcp",
+                        "fromPort": 9600,
+                        "toPort": 9600,
+                        "description": "Performance Analyzer plugin port from VPC"
+                      },
+                      {
+                        "cidrIp": "0.0.0.0/0",
+                        "ipProtocol": "tcp",
+                        "fromPort": 5601,
+                        "toPort": 5601,
+                        "description": "Used for accessing OpenSearch Dashboards from VPC"
+                      }
+                    ],
+                    "vpcId": {
+                      "Ref": "cdkvpc58C641FA"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "@aws-cdk/aws-ec2.CfnSecurityGroup",
+                  "version": "1.113.0"
+                }
+              },
+              "from pl-f8a64391:22": {
+                "id": "from pl-f8a64391:22",
+                "path": "website-search-appsec-networkstack/website-search-appsec-cdk-security-group/from pl-f8a64391:22",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::EC2::SecurityGroupIngress",
+                  "aws:cdk:cloudformation:props": {
+                    "ipProtocol": "tcp",
+                    "description": "SSH access to the nodes",
+                    "fromPort": 22,
+                    "groupId": {
+                      "Fn::GetAtt": [
+                        "websitesearchappseccdksecuritygroup68FAFEDE",
+                        "GroupId"
+                      ]
+                    },
+                    "sourcePrefixListId": "pl-f8a64391",
+                    "toPort": 22
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "@aws-cdk/aws-ec2.CfnSecurityGroupIngress",
+                  "version": "1.113.0"
+                }
+              },
+              "from websitesearchappsecnetworkstackwebsitesearchappseccdksecuritygroup2A57801B:ALL TRAFFIC": {
+                "id": "from websitesearchappsecnetworkstackwebsitesearchappseccdksecuritygroup2A57801B:ALL TRAFFIC",
+                "path": "website-search-appsec-networkstack/website-search-appsec-cdk-security-group/from websitesearchappsecnetworkstackwebsitesearchappseccdksecuritygroup2A57801B:ALL TRAFFIC",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::EC2::SecurityGroupIngress",
+                  "aws:cdk:cloudformation:props": {
+                    "ipProtocol": "-1",
+                    "description": "from websitesearchappsecnetworkstackwebsitesearchappseccdksecuritygroup2A57801B:ALL TRAFFIC",
+                    "groupId": {
+                      "Fn::GetAtt": [
+                        "websitesearchappseccdksecuritygroup68FAFEDE",
+                        "GroupId"
+                      ]
+                    },
+                    "sourceSecurityGroupId": {
+                      "Fn::GetAtt": [
+                        "websitesearchappseccdksecuritygroup68FAFEDE",
+                        "GroupId"
+                      ]
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "@aws-cdk/aws-ec2.CfnSecurityGroupIngress",
+                  "version": "1.113.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "@aws-cdk/aws-ec2.SecurityGroup",
+              "version": "1.113.0"
+            }
+          },
+          "CDKMetadata": {
+            "id": "CDKMetadata",
+            "path": "website-search-appsec-networkstack/CDKMetadata",
+            "children": {
+              "Default": {
+                "id": "Default",
+                "path": "website-search-appsec-networkstack/CDKMetadata/Default",
+                "constructInfo": {
+                  "fqn": "@aws-cdk/core.CfnResource",
+                  "version": "1.113.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "@aws-cdk/core.Construct",
+              "version": "1.113.0"
+            }
+          },
+          "Exports": {
+            "id": "Exports",
+            "path": "website-search-appsec-networkstack/Exports",
+            "children": {
+              "Output{\"Fn::GetAtt\":[\"websitesearchappseccdksecuritygroup68FAFEDE\",\"GroupId\"]}": {
+                "id": "Output{\"Fn::GetAtt\":[\"websitesearchappseccdksecuritygroup68FAFEDE\",\"GroupId\"]}",
+                "path": "website-search-appsec-networkstack/Exports/Output{\"Fn::GetAtt\":[\"websitesearchappseccdksecuritygroup68FAFEDE\",\"GroupId\"]}",
+                "constructInfo": {
+                  "fqn": "@aws-cdk/core.CfnOutput",
+                  "version": "1.113.0"
+                }
+              },
+              "Output{\"Ref\":\"cdkvpcprivateSubnet1Subnet54E345CF\"}": {
+                "id": "Output{\"Ref\":\"cdkvpcprivateSubnet1Subnet54E345CF\"}",
+                "path": "website-search-appsec-networkstack/Exports/Output{\"Ref\":\"cdkvpcprivateSubnet1Subnet54E345CF\"}",
+                "constructInfo": {
+                  "fqn": "@aws-cdk/core.CfnOutput",
+                  "version": "1.113.0"
+                }
+              },
+              "Output{\"Ref\":\"cdkvpcpublicSubnet1Subnet8CE8DF43\"}": {
+                "id": "Output{\"Ref\":\"cdkvpcpublicSubnet1Subnet8CE8DF43\"}",
+                "path": "website-search-appsec-networkstack/Exports/Output{\"Ref\":\"cdkvpcpublicSubnet1Subnet8CE8DF43\"}",
+                "constructInfo": {
+                  "fqn": "@aws-cdk/core.CfnOutput",
+                  "version": "1.113.0"
+                }
+              },
+              "Output{\"Ref\":\"cdkvpc58C641FA\"}": {
+                "id": "Output{\"Ref\":\"cdkvpc58C641FA\"}",
+                "path": "website-search-appsec-networkstack/Exports/Output{\"Ref\":\"cdkvpc58C641FA\"}",
+                "constructInfo": {
+                  "fqn": "@aws-cdk/core.CfnOutput",
+                  "version": "1.113.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "@aws-cdk/core.Construct",
+              "version": "1.113.0"
+            }
+          }
+        },
+        "constructInfo": {
+          "fqn": "@aws-cdk/core.Stack",
+          "version": "1.113.0"
+        }
+      },
+      "website-search-appsec-infrastack": {
+        "id": "website-search-appsec-infrastack",
+        "path": "website-search-appsec-infrastack",
+        "children": {
+          "ec2_iam_role": {
+            "id": "ec2_iam_role",
+            "path": "website-search-appsec-infrastack/ec2_iam_role",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "website-search-appsec-infrastack/ec2_iam_role/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::IAM::Role",
+                  "aws:cdk:cloudformation:props": {
+                    "assumeRolePolicyDocument": {
+                      "Statement": [
+                        {
+                          "Action": "sts:AssumeRole",
+                          "Effect": "Allow",
+                          "Principal": {
+                            "Service": "ec2.amazonaws.com"
+                          }
+                        }
+                      ],
+                      "Version": "2012-10-17"
+                    },
+                    "managedPolicyArns": [
+                      {
+                        "Fn::Join": [
+                          "",
+                          [
+                            "arn:",
+                            {
+                              "Ref": "AWS::Partition"
+                            },
+                            ":iam::aws:policy/AmazonEC2ReadOnlyAccess"
+                          ]
+                        ]
+                      },
+                      {
+                        "Fn::Join": [
+                          "",
+                          [
+                            "arn:",
+                            {
+                              "Ref": "AWS::Partition"
+                            },
+                            ":iam::aws:policy/CloudWatchAgentServerPolicy"
+                          ]
+                        ]
+                      }
+                    ]
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "@aws-cdk/aws-iam.CfnRole",
+                  "version": "1.113.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "@aws-cdk/aws-iam.Role",
+              "version": "1.113.0"
+            }
+          },
+          "LogGroup": {
+            "id": "LogGroup",
+            "path": "website-search-appsec-infrastack/LogGroup",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "website-search-appsec-infrastack/LogGroup/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::Logs::LogGroup",
+                  "aws:cdk:cloudformation:props": {
+                    "logGroupName": "website-search-appsec-infrastack-07-15-21-t20-54",
+                    "retentionInDays": 90
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "@aws-cdk/aws-logs.CfnLogGroup",
+                  "version": "1.113.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "@aws-cdk/aws-logs.LogGroup",
+              "version": "1.113.0"
+            }
+          },
+          "MasterASG": {
+            "id": "MasterASG",
+            "path": "website-search-appsec-infrastack/MasterASG",
+            "children": {
+              "InstanceProfile": {
+                "id": "InstanceProfile",
+                "path": "website-search-appsec-infrastack/MasterASG/InstanceProfile",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::IAM::InstanceProfile",
+                  "aws:cdk:cloudformation:props": {
+                    "roles": [
+                      {
+                        "Ref": "ec2iamroleDF18375D"
+                      }
+                    ]
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "@aws-cdk/aws-iam.CfnInstanceProfile",
+                  "version": "1.113.0"
+                }
+              },
+              "LaunchConfig": {
+                "id": "LaunchConfig",
+                "path": "website-search-appsec-infrastack/MasterASG/LaunchConfig",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::AutoScaling::LaunchConfiguration",
+                  "aws:cdk:cloudformation:props": {
+                    "imageId": {
+                      "Ref": "SsmParameterValueawsserviceamiamazonlinuxlatestamzn2amihvmx8664gp2C96584B6F00A464EAD1953AFF4B05118Parameter"
+                    },
+                    "instanceType": "m5.xlarge",
+                    "iamInstanceProfile": {
+                      "Ref": "MasterASGInstanceProfileA90CF9FF"
+                    },
+                    "keyName": "opensearch-cluster",
+                    "securityGroups": [
+                      {
+                        "Fn::ImportValue": "website-search-appsec-networkstack:ExportsOutputFnGetAttwebsitesearchappseccdksecuritygroup68FAFEDEGroupId34DA8A32"
+                      }
+                    ],
+                    "userData": {
+                      "Fn::Base64": {
+                        "Fn::Sub": [
+                          "#!/bin/bash\ndownloadUrl=\"${__URL__}\"\nstackName=\"${__STACK_NAME__}\"\nnodeName=\"${__NODE_NAME__}\"\nmaster=\"${__MASTER__}\"\ndata=\"${__DATA__}\"\ningest=\"${__INGEST__}\"\nlogGroup=\"${__LG__}\"\n\n\nsudo sysctl -w vm.max_map_count=262144\nsudo yum update -y\nsudo yum install -y libnss3.so xorg-x11-fonts-100dpi xorg-x11-fonts-75dpi xorg-x11-utils xorg-x11-fonts-cyrillic xorg-x11-fonts-Type1 xorg-x11-fonts-misc fontconfig freetype\ncurl \"${!downloadUrl}\" -o opensearch\ntar zxf opensearch\nchown -R ec2-user:ec2-user opensearch*\ncd opensearch-*\n{\necho \"\ncluster.name: ${!stackName}\ncluster.initial_master_nodes: [\\\"seed\\\"]\ndiscovery.seed_providers: ec2\ndiscovery.ec2.tag.role: master\nnetwork.host: 0.0.0.0\nnode.name: ${!nodeName}\nnode.master: ${!master}\nnode.data: ${!data}\nnode.ingest: ${!ingest}\"\n} >> config/opensearch.yml\nuuid=$(uuidgen | cut -d - -f 1)\nsudo sed -i /^node.name/s/node/\"$uuid\"/2 config/opensearch.yml\nsudo bin/opensearch-plugin install https://artifacts.opensearch.org/snapshots/native-plugins/opensearch/discovery-ec2/discovery-ec2-1.0.0-SNAPSHOT.zip --batch\nsudo -u ec2-user nohup ./opensearch-tar-install.sh > install.log 2>&1 &\nlogfile=$(pwd)/logs/${!stackName}.log\n\n# Creating cloudwatch logging\nsudo yum install amazon-cloudwatch-agent -y\ncat <<- EOF > /opt/aws/amazon-cloudwatch-agent/etc/amazon-cloudwatch-agent.json\n{\n    \"logs\": {\n        \"logs_collected\": {\n            \"files\": {\n                \"collect_list\": [\n                    {\n                        \"file_path\": \"$logfile\",\n                        \"log_group_name\": \"${!logGroup}\",\n                        \"log_stream_name\": \"${!nodeName}\",\n                        \"timezone\": \"UTC\"\n                    }\n                ]\n            }\n        }\n    },\n    \"log_stream_name\": \"others\"\n}\nEOF\nsudo systemctl start amazon-cloudwatch-agent",
+                          {
+                            "__NODE_NAME__": "master-node",
+                            "__MASTER__": "true",
+                            "__DATA__": "false",
+                            "__INGEST__": "false",
+                            "__URL__": "https://artifacts.opensearch.org/releases/bundle/opensearch/1.0.0/opensearch-1.0.0-linux-x64.tar.gz",
+                            "__STACK_NAME__": "website-search-appsec-infrastack",
+                            "__LG__": {
+                              "Ref": "LogGroupF5B46931"
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "@aws-cdk/aws-autoscaling.CfnLaunchConfiguration",
+                  "version": "1.113.0"
+                }
+              },
+              "ASG": {
+                "id": "ASG",
+                "path": "website-search-appsec-infrastack/MasterASG/ASG",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::AutoScaling::AutoScalingGroup",
+                  "aws:cdk:cloudformation:props": {
+                    "maxSize": "2",
+                    "minSize": "2",
+                    "desiredCapacity": "2",
+                    "launchConfigurationName": {
+                      "Ref": "MasterASGLaunchConfigA6B00FCA"
+                    },
+                    "tags": [
+                      {
+                        "key": "Name",
+                        "value": "website-search-appsec-infrastack/MasterASG",
+                        "propagateAtLaunch": true
+                      },
+                      {
+                        "key": "role",
+                        "value": "master",
+                        "propagateAtLaunch": true
+                      }
+                    ],
+                    "vpcZoneIdentifier": [
+                      {
+                        "Fn::ImportValue": "website-search-appsec-networkstack:ExportsOutputRefcdkvpcprivateSubnet1Subnet54E345CF34A96D33"
+                      }
+                    ]
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "@aws-cdk/aws-autoscaling.CfnAutoScalingGroup",
+                  "version": "1.113.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "@aws-cdk/aws-autoscaling.AutoScalingGroup",
+              "version": "1.113.0"
+            }
+          },
+          "SsmParameterValue:--aws--service--ami-amazon-linux-latest--amzn2-ami-hvm-x86_64-gp2:C96584B6-F00A-464E-AD19-53AFF4B05118.Parameter": {
+            "id": "SsmParameterValue:--aws--service--ami-amazon-linux-latest--amzn2-ami-hvm-x86_64-gp2:C96584B6-F00A-464E-AD19-53AFF4B05118.Parameter",
+            "path": "website-search-appsec-infrastack/SsmParameterValue:--aws--service--ami-amazon-linux-latest--amzn2-ami-hvm-x86_64-gp2:C96584B6-F00A-464E-AD19-53AFF4B05118.Parameter",
+            "constructInfo": {
+              "fqn": "@aws-cdk/core.CfnParameter",
+              "version": "1.113.0"
+            }
+          },
+          "SsmParameterValue:--aws--service--ami-amazon-linux-latest--amzn2-ami-hvm-x86_64-gp2:C96584B6-F00A-464E-AD19-53AFF4B05118": {
+            "id": "SsmParameterValue:--aws--service--ami-amazon-linux-latest--amzn2-ami-hvm-x86_64-gp2:C96584B6-F00A-464E-AD19-53AFF4B05118",
+            "path": "website-search-appsec-infrastack/SsmParameterValue:--aws--service--ami-amazon-linux-latest--amzn2-ami-hvm-x86_64-gp2:C96584B6-F00A-464E-AD19-53AFF4B05118",
+            "constructInfo": {
+              "fqn": "@aws-cdk/core.Resource",
+              "version": "1.113.0"
+            }
+          },
+          "SeedASG": {
+            "id": "SeedASG",
+            "path": "website-search-appsec-infrastack/SeedASG",
+            "children": {
+              "InstanceProfile": {
+                "id": "InstanceProfile",
+                "path": "website-search-appsec-infrastack/SeedASG/InstanceProfile",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::IAM::InstanceProfile",
+                  "aws:cdk:cloudformation:props": {
+                    "roles": [
+                      {
+                        "Ref": "ec2iamroleDF18375D"
+                      }
+                    ]
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "@aws-cdk/aws-iam.CfnInstanceProfile",
+                  "version": "1.113.0"
+                }
+              },
+              "LaunchConfig": {
+                "id": "LaunchConfig",
+                "path": "website-search-appsec-infrastack/SeedASG/LaunchConfig",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::AutoScaling::LaunchConfiguration",
+                  "aws:cdk:cloudformation:props": {
+                    "imageId": {
+                      "Ref": "SsmParameterValueawsserviceamiamazonlinuxlatestamzn2amihvmx8664gp2C96584B6F00A464EAD1953AFF4B05118Parameter"
+                    },
+                    "instanceType": "m5.xlarge",
+                    "iamInstanceProfile": {
+                      "Ref": "SeedASGInstanceProfile0EDEF8D7"
+                    },
+                    "keyName": "opensearch-cluster",
+                    "securityGroups": [
+                      {
+                        "Fn::ImportValue": "website-search-appsec-networkstack:ExportsOutputFnGetAttwebsitesearchappseccdksecuritygroup68FAFEDEGroupId34DA8A32"
+                      }
+                    ],
+                    "userData": {
+                      "Fn::Base64": {
+                        "Fn::Sub": [
+                          "#!/bin/bash\ndownloadUrl=\"${__URL__}\"\nstackName=\"${__STACK_NAME__}\"\nnodeName=\"${__NODE_NAME__}\"\nmaster=\"${__MASTER__}\"\ndata=\"${__DATA__}\"\ningest=\"${__INGEST__}\"\nlogGroup=\"${__LG__}\"\n\n\nsudo sysctl -w vm.max_map_count=262144\nsudo yum update -y\nsudo yum install -y libnss3.so xorg-x11-fonts-100dpi xorg-x11-fonts-75dpi xorg-x11-utils xorg-x11-fonts-cyrillic xorg-x11-fonts-Type1 xorg-x11-fonts-misc fontconfig freetype\ncurl \"${!downloadUrl}\" -o opensearch\ntar zxf opensearch\nchown -R ec2-user:ec2-user opensearch*\ncd opensearch-*\n{\necho \"\ncluster.name: ${!stackName}\ncluster.initial_master_nodes: [\\\"seed\\\"]\ndiscovery.seed_providers: ec2\ndiscovery.ec2.tag.role: master\nnetwork.host: 0.0.0.0\nnode.name: ${!nodeName}\nnode.master: ${!master}\nnode.data: ${!data}\nnode.ingest: ${!ingest}\"\n} >> config/opensearch.yml\nuuid=$(uuidgen | cut -d - -f 1)\nsudo sed -i /^node.name/s/node/\"$uuid\"/2 config/opensearch.yml\nsudo bin/opensearch-plugin install https://artifacts.opensearch.org/snapshots/native-plugins/opensearch/discovery-ec2/discovery-ec2-1.0.0-SNAPSHOT.zip --batch\nsudo -u ec2-user nohup ./opensearch-tar-install.sh > install.log 2>&1 &\nlogfile=$(pwd)/logs/${!stackName}.log\n\n# Creating cloudwatch logging\nsudo yum install amazon-cloudwatch-agent -y\ncat <<- EOF > /opt/aws/amazon-cloudwatch-agent/etc/amazon-cloudwatch-agent.json\n{\n    \"logs\": {\n        \"logs_collected\": {\n            \"files\": {\n                \"collect_list\": [\n                    {\n                        \"file_path\": \"$logfile\",\n                        \"log_group_name\": \"${!logGroup}\",\n                        \"log_stream_name\": \"${!nodeName}\",\n                        \"timezone\": \"UTC\"\n                    }\n                ]\n            }\n        }\n    },\n    \"log_stream_name\": \"others\"\n}\nEOF\nsudo systemctl start amazon-cloudwatch-agent",
+                          {
+                            "__NODE_NAME__": "seed",
+                            "__MASTER__": "true",
+                            "__DATA__": "true",
+                            "__INGEST__": "false",
+                            "__URL__": "https://artifacts.opensearch.org/releases/bundle/opensearch/1.0.0/opensearch-1.0.0-linux-x64.tar.gz",
+                            "__STACK_NAME__": "website-search-appsec-infrastack",
+                            "__LG__": {
+                              "Ref": "LogGroupF5B46931"
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "@aws-cdk/aws-autoscaling.CfnLaunchConfiguration",
+                  "version": "1.113.0"
+                }
+              },
+              "ASG": {
+                "id": "ASG",
+                "path": "website-search-appsec-infrastack/SeedASG/ASG",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::AutoScaling::AutoScalingGroup",
+                  "aws:cdk:cloudformation:props": {
+                    "maxSize": "1",
+                    "minSize": "1",
+                    "desiredCapacity": "1",
+                    "launchConfigurationName": {
+                      "Ref": "SeedASGLaunchConfigC34953F8"
+                    },
+                    "tags": [
+                      {
+                        "key": "Name",
+                        "value": "website-search-appsec-infrastack/SeedASG",
+                        "propagateAtLaunch": true
+                      },
+                      {
+                        "key": "role",
+                        "value": "master",
+                        "propagateAtLaunch": true
+                      }
+                    ],
+                    "vpcZoneIdentifier": [
+                      {
+                        "Fn::ImportValue": "website-search-appsec-networkstack:ExportsOutputRefcdkvpcprivateSubnet1Subnet54E345CF34A96D33"
+                      }
+                    ]
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "@aws-cdk/aws-autoscaling.CfnAutoScalingGroup",
+                  "version": "1.113.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "@aws-cdk/aws-autoscaling.AutoScalingGroup",
+              "version": "1.113.0"
+            }
+          },
+          "ClientASG": {
+            "id": "ClientASG",
+            "path": "website-search-appsec-infrastack/ClientASG",
+            "children": {
+              "InstanceProfile": {
+                "id": "InstanceProfile",
+                "path": "website-search-appsec-infrastack/ClientASG/InstanceProfile",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::IAM::InstanceProfile",
+                  "aws:cdk:cloudformation:props": {
+                    "roles": [
+                      {
+                        "Ref": "ec2iamroleDF18375D"
+                      }
+                    ]
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "@aws-cdk/aws-iam.CfnInstanceProfile",
+                  "version": "1.113.0"
+                }
+              },
+              "LaunchConfig": {
+                "id": "LaunchConfig",
+                "path": "website-search-appsec-infrastack/ClientASG/LaunchConfig",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::AutoScaling::LaunchConfiguration",
+                  "aws:cdk:cloudformation:props": {
+                    "imageId": {
+                      "Ref": "SsmParameterValueawsserviceamiamazonlinuxlatestamzn2amihvmx8664gp2C96584B6F00A464EAD1953AFF4B05118Parameter"
+                    },
+                    "instanceType": "m5.xlarge",
+                    "iamInstanceProfile": {
+                      "Ref": "ClientASGInstanceProfile0B5B7E24"
+                    },
+                    "keyName": "opensearch-cluster",
+                    "securityGroups": [
+                      {
+                        "Fn::ImportValue": "website-search-appsec-networkstack:ExportsOutputFnGetAttwebsitesearchappseccdksecuritygroup68FAFEDEGroupId34DA8A32"
+                      }
+                    ],
+                    "userData": {
+                      "Fn::Base64": {
+                        "Fn::Join": [
+                          "",
+                          [
+                            {
+                              "Fn::Sub": [
+                                "#!/bin/bash\ndownloadUrl=\"${__URL__}\"\nstackName=\"${__STACK_NAME__}\"\nnodeName=\"${__NODE_NAME__}\"\nmaster=\"${__MASTER__}\"\ndata=\"${__DATA__}\"\ningest=\"${__INGEST__}\"\nlogGroup=\"${__LG__}\"\n\n\nsudo sysctl -w vm.max_map_count=262144\nsudo yum update -y\nsudo yum install -y libnss3.so xorg-x11-fonts-100dpi xorg-x11-fonts-75dpi xorg-x11-utils xorg-x11-fonts-cyrillic xorg-x11-fonts-Type1 xorg-x11-fonts-misc fontconfig freetype\ncurl \"${!downloadUrl}\" -o opensearch\ntar zxf opensearch\nchown -R ec2-user:ec2-user opensearch*\ncd opensearch-*\n{\necho \"\ncluster.name: ${!stackName}\ncluster.initial_master_nodes: [\\\"seed\\\"]\ndiscovery.seed_providers: ec2\ndiscovery.ec2.tag.role: master\nnetwork.host: 0.0.0.0\nnode.name: ${!nodeName}\nnode.master: ${!master}\nnode.data: ${!data}\nnode.ingest: ${!ingest}\"\n} >> config/opensearch.yml\nuuid=$(uuidgen | cut -d - -f 1)\nsudo sed -i /^node.name/s/node/\"$uuid\"/2 config/opensearch.yml\nsudo bin/opensearch-plugin install https://artifacts.opensearch.org/snapshots/native-plugins/opensearch/discovery-ec2/discovery-ec2-1.0.0-SNAPSHOT.zip --batch\nsudo -u ec2-user nohup ./opensearch-tar-install.sh > install.log 2>&1 &\nlogfile=$(pwd)/logs/${!stackName}.log\n\n# Creating cloudwatch logging\nsudo yum install amazon-cloudwatch-agent -y\ncat <<- EOF > /opt/aws/amazon-cloudwatch-agent/etc/amazon-cloudwatch-agent.json\n{\n    \"logs\": {\n        \"logs_collected\": {\n            \"files\": {\n                \"collect_list\": [\n                    {\n                        \"file_path\": \"$logfile\",\n                        \"log_group_name\": \"${!logGroup}\",\n                        \"log_stream_name\": \"${!nodeName}\",\n                        \"timezone\": \"UTC\"\n                    }\n                ]\n            }\n        }\n    },\n    \"log_stream_name\": \"others\"\n}\nEOF\nsudo systemctl start amazon-cloudwatch-agent",
+                                {
+                                  "__NODE_NAME__": "client-node",
+                                  "__MASTER__": "false",
+                                  "__DATA__": "false",
+                                  "__INGEST__": "false",
+                                  "__URL__": "https://artifacts.opensearch.org/releases/bundle/opensearch/1.0.0/opensearch-1.0.0-linux-x64.tar.gz",
+                                  "__STACK_NAME__": "website-search-appsec-infrastack",
+                                  "__LG__": {
+                                    "Ref": "LogGroupF5B46931"
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "Fn::Sub": [
+                                "#Installing Oopensearch dashboards\ndashboards_url=\"${__DASHBOARDS_URL__}\"\ncd /\ncurl \"${!dashboards_url}\" -o opensearch-dashboards\ntar zxf opensearch-dashboards\nchown -R ec2-user:ec2-user opensearch-dashboards\ncd opensearch-dashboards\necho \"server.host: 0.0.0.0\" >> config/opensearch_dashboards.yml\nsudo -u ec2-user nohup ./bin/opensearch-dashboards > dashboard_install.log 2>&1 &",
+                                {
+                                  "__DASHBOARDS_URL__": "https://artifacts.opensearch.org/releases/bundle/opensearch-dashboards/1.0.0/opensearch-dashboards-1.0.0-linux-x64.tar.gz"
+                                }
+                              ]
+                            }
+                          ]
+                        ]
+                      }
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "@aws-cdk/aws-autoscaling.CfnLaunchConfiguration",
+                  "version": "1.113.0"
+                }
+              },
+              "ASG": {
+                "id": "ASG",
+                "path": "website-search-appsec-infrastack/ClientASG/ASG",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::AutoScaling::AutoScalingGroup",
+                  "aws:cdk:cloudformation:props": {
+                    "maxSize": "2",
+                    "minSize": "2",
+                    "desiredCapacity": "2",
+                    "launchConfigurationName": {
+                      "Ref": "ClientASGLaunchConfig931F8AF7"
+                    },
+                    "tags": [
+                      {
+                        "key": "Name",
+                        "value": "website-search-appsec-infrastack/ClientASG",
+                        "propagateAtLaunch": true
+                      },
+                      {
+                        "key": "role",
+                        "value": "client",
+                        "propagateAtLaunch": true
+                      }
+                    ],
+                    "targetGroupArns": [
+                      {
+                        "Ref": "websitesearchappsecNetworkLoadBalanceropensearchOpenSearchTargetGroup1A6DF86D"
+                      },
+                      {
+                        "Ref": "websitesearchappsecNetworkLoadBalancerdashboardsDashboardsTargetGroup94FBDF69"
+                      }
+                    ],
+                    "vpcZoneIdentifier": [
+                      {
+                        "Fn::ImportValue": "website-search-appsec-networkstack:ExportsOutputRefcdkvpcpublicSubnet1Subnet8CE8DF43592738AF"
+                      }
+                    ]
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "@aws-cdk/aws-autoscaling.CfnAutoScalingGroup",
+                  "version": "1.113.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "@aws-cdk/aws-autoscaling.AutoScalingGroup",
+              "version": "1.113.0"
+            }
+          },
+          "DataASG": {
+            "id": "DataASG",
+            "path": "website-search-appsec-infrastack/DataASG",
+            "children": {
+              "InstanceProfile": {
+                "id": "InstanceProfile",
+                "path": "website-search-appsec-infrastack/DataASG/InstanceProfile",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::IAM::InstanceProfile",
+                  "aws:cdk:cloudformation:props": {
+                    "roles": [
+                      {
+                        "Ref": "ec2iamroleDF18375D"
+                      }
+                    ]
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "@aws-cdk/aws-iam.CfnInstanceProfile",
+                  "version": "1.113.0"
+                }
+              },
+              "LaunchConfig": {
+                "id": "LaunchConfig",
+                "path": "website-search-appsec-infrastack/DataASG/LaunchConfig",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::AutoScaling::LaunchConfiguration",
+                  "aws:cdk:cloudformation:props": {
+                    "imageId": {
+                      "Ref": "SsmParameterValueawsserviceamiamazonlinuxlatestamzn2amihvmx8664gp2C96584B6F00A464EAD1953AFF4B05118Parameter"
+                    },
+                    "instanceType": "m5.xlarge",
+                    "iamInstanceProfile": {
+                      "Ref": "DataASGInstanceProfileC2E725D1"
+                    },
+                    "keyName": "opensearch-cluster",
+                    "securityGroups": [
+                      {
+                        "Fn::ImportValue": "website-search-appsec-networkstack:ExportsOutputFnGetAttwebsitesearchappseccdksecuritygroup68FAFEDEGroupId34DA8A32"
+                      }
+                    ],
+                    "userData": {
+                      "Fn::Base64": {
+                        "Fn::Sub": [
+                          "#!/bin/bash\ndownloadUrl=\"${__URL__}\"\nstackName=\"${__STACK_NAME__}\"\nnodeName=\"${__NODE_NAME__}\"\nmaster=\"${__MASTER__}\"\ndata=\"${__DATA__}\"\ningest=\"${__INGEST__}\"\nlogGroup=\"${__LG__}\"\n\n\nsudo sysctl -w vm.max_map_count=262144\nsudo yum update -y\nsudo yum install -y libnss3.so xorg-x11-fonts-100dpi xorg-x11-fonts-75dpi xorg-x11-utils xorg-x11-fonts-cyrillic xorg-x11-fonts-Type1 xorg-x11-fonts-misc fontconfig freetype\ncurl \"${!downloadUrl}\" -o opensearch\ntar zxf opensearch\nchown -R ec2-user:ec2-user opensearch*\ncd opensearch-*\n{\necho \"\ncluster.name: ${!stackName}\ncluster.initial_master_nodes: [\\\"seed\\\"]\ndiscovery.seed_providers: ec2\ndiscovery.ec2.tag.role: master\nnetwork.host: 0.0.0.0\nnode.name: ${!nodeName}\nnode.master: ${!master}\nnode.data: ${!data}\nnode.ingest: ${!ingest}\"\n} >> config/opensearch.yml\nuuid=$(uuidgen | cut -d - -f 1)\nsudo sed -i /^node.name/s/node/\"$uuid\"/2 config/opensearch.yml\nsudo bin/opensearch-plugin install https://artifacts.opensearch.org/snapshots/native-plugins/opensearch/discovery-ec2/discovery-ec2-1.0.0-SNAPSHOT.zip --batch\nsudo -u ec2-user nohup ./opensearch-tar-install.sh > install.log 2>&1 &\nlogfile=$(pwd)/logs/${!stackName}.log\n\n# Creating cloudwatch logging\nsudo yum install amazon-cloudwatch-agent -y\ncat <<- EOF > /opt/aws/amazon-cloudwatch-agent/etc/amazon-cloudwatch-agent.json\n{\n    \"logs\": {\n        \"logs_collected\": {\n            \"files\": {\n                \"collect_list\": [\n                    {\n                        \"file_path\": \"$logfile\",\n                        \"log_group_name\": \"${!logGroup}\",\n                        \"log_stream_name\": \"${!nodeName}\",\n                        \"timezone\": \"UTC\"\n                    }\n                ]\n            }\n        }\n    },\n    \"log_stream_name\": \"others\"\n}\nEOF\nsudo systemctl start amazon-cloudwatch-agent",
+                          {
+                            "__NODE_NAME__": "data-node",
+                            "__MASTER__": "false",
+                            "__DATA__": "true",
+                            "__INGEST__": "true",
+                            "__URL__": "https://artifacts.opensearch.org/releases/bundle/opensearch/1.0.0/opensearch-1.0.0-linux-x64.tar.gz",
+                            "__STACK_NAME__": "website-search-appsec-infrastack",
+                            "__LG__": {
+                              "Ref": "LogGroupF5B46931"
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "@aws-cdk/aws-autoscaling.CfnLaunchConfiguration",
+                  "version": "1.113.0"
+                }
+              },
+              "ASG": {
+                "id": "ASG",
+                "path": "website-search-appsec-infrastack/DataASG/ASG",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::AutoScaling::AutoScalingGroup",
+                  "aws:cdk:cloudformation:props": {
+                    "maxSize": "2",
+                    "minSize": "2",
+                    "desiredCapacity": "2",
+                    "launchConfigurationName": {
+                      "Ref": "DataASGLaunchConfigCEDCA2DF"
+                    },
+                    "tags": [
+                      {
+                        "key": "Name",
+                        "value": "website-search-appsec-infrastack/DataASG",
+                        "propagateAtLaunch": true
+                      },
+                      {
+                        "key": "role",
+                        "value": "data",
+                        "propagateAtLaunch": true
+                      }
+                    ],
+                    "vpcZoneIdentifier": [
+                      {
+                        "Fn::ImportValue": "website-search-appsec-networkstack:ExportsOutputRefcdkvpcprivateSubnet1Subnet54E345CF34A96D33"
+                      }
+                    ]
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "@aws-cdk/aws-autoscaling.CfnAutoScalingGroup",
+                  "version": "1.113.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "@aws-cdk/aws-autoscaling.AutoScalingGroup",
+              "version": "1.113.0"
+            }
+          },
+          "website-search-appsec-NetworkLoadBalancer": {
+            "id": "website-search-appsec-NetworkLoadBalancer",
+            "path": "website-search-appsec-infrastack/website-search-appsec-NetworkLoadBalancer",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "website-search-appsec-infrastack/website-search-appsec-NetworkLoadBalancer/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::ElasticLoadBalancingV2::LoadBalancer",
+                  "aws:cdk:cloudformation:props": {
+                    "loadBalancerAttributes": [
+                      {
+                        "key": "deletion_protection.enabled",
+                        "value": "false"
+                      }
+                    ],
+                    "scheme": "internal",
+                    "subnets": [
+                      {
+                        "Fn::ImportValue": "website-search-appsec-networkstack:ExportsOutputRefcdkvpcprivateSubnet1Subnet54E345CF34A96D33"
+                      }
+                    ],
+                    "type": "network"
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "@aws-cdk/aws-elasticloadbalancingv2.CfnLoadBalancer",
+                  "version": "1.113.0"
+                }
+              },
+              "opensearch": {
+                "id": "opensearch",
+                "path": "website-search-appsec-infrastack/website-search-appsec-NetworkLoadBalancer/opensearch",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "website-search-appsec-infrastack/website-search-appsec-NetworkLoadBalancer/opensearch/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::ElasticLoadBalancingV2::Listener",
+                      "aws:cdk:cloudformation:props": {
+                        "defaultActions": [
+                          {
+                            "type": "forward",
+                            "targetGroupArn": {
+                              "Ref": "websitesearchappsecNetworkLoadBalanceropensearchOpenSearchTargetGroup1A6DF86D"
+                            }
+                          }
+                        ],
+                        "loadBalancerArn": {
+                          "Ref": "websitesearchappsecNetworkLoadBalancer0A3F1CBD"
+                        },
+                        "port": 80,
+                        "protocol": "TCP"
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "@aws-cdk/aws-elasticloadbalancingv2.CfnListener",
+                      "version": "1.113.0"
+                    }
+                  },
+                  "OpenSearchTargetGroup": {
+                    "id": "OpenSearchTargetGroup",
+                    "path": "website-search-appsec-infrastack/website-search-appsec-NetworkLoadBalancer/opensearch/OpenSearchTargetGroup",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "website-search-appsec-infrastack/website-search-appsec-NetworkLoadBalancer/opensearch/OpenSearchTargetGroup/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::ElasticLoadBalancingV2::TargetGroup",
+                          "aws:cdk:cloudformation:props": {
+                            "port": 9200,
+                            "protocol": "TCP",
+                            "targetType": "instance",
+                            "vpcId": {
+                              "Fn::ImportValue": "website-search-appsec-networkstack:ExportsOutputRefcdkvpc58C641FA3C2DCB3C"
+                            }
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "@aws-cdk/aws-elasticloadbalancingv2.CfnTargetGroup",
+                          "version": "1.113.0"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "@aws-cdk/aws-elasticloadbalancingv2.NetworkTargetGroup",
+                      "version": "1.113.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "@aws-cdk/aws-elasticloadbalancingv2.NetworkListener",
+                  "version": "1.113.0"
+                }
+              },
+              "dashboards": {
+                "id": "dashboards",
+                "path": "website-search-appsec-infrastack/website-search-appsec-NetworkLoadBalancer/dashboards",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "website-search-appsec-infrastack/website-search-appsec-NetworkLoadBalancer/dashboards/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::ElasticLoadBalancingV2::Listener",
+                      "aws:cdk:cloudformation:props": {
+                        "defaultActions": [
+                          {
+                            "type": "forward",
+                            "targetGroupArn": {
+                              "Ref": "websitesearchappsecNetworkLoadBalancerdashboardsDashboardsTargetGroup94FBDF69"
+                            }
+                          }
+                        ],
+                        "loadBalancerArn": {
+                          "Ref": "websitesearchappsecNetworkLoadBalancer0A3F1CBD"
+                        },
+                        "port": 5601,
+                        "protocol": "TCP"
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "@aws-cdk/aws-elasticloadbalancingv2.CfnListener",
+                      "version": "1.113.0"
+                    }
+                  },
+                  "DashboardsTargetGroup": {
+                    "id": "DashboardsTargetGroup",
+                    "path": "website-search-appsec-infrastack/website-search-appsec-NetworkLoadBalancer/dashboards/DashboardsTargetGroup",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "website-search-appsec-infrastack/website-search-appsec-NetworkLoadBalancer/dashboards/DashboardsTargetGroup/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::ElasticLoadBalancingV2::TargetGroup",
+                          "aws:cdk:cloudformation:props": {
+                            "port": 5601,
+                            "protocol": "TCP",
+                            "targetType": "instance",
+                            "vpcId": {
+                              "Fn::ImportValue": "website-search-appsec-networkstack:ExportsOutputRefcdkvpc58C641FA3C2DCB3C"
+                            }
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "@aws-cdk/aws-elasticloadbalancingv2.CfnTargetGroup",
+                          "version": "1.113.0"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "@aws-cdk/aws-elasticloadbalancingv2.NetworkTargetGroup",
+                      "version": "1.113.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "@aws-cdk/aws-elasticloadbalancingv2.NetworkListener",
+                  "version": "1.113.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "@aws-cdk/aws-elasticloadbalancingv2.NetworkLoadBalancer",
+              "version": "1.113.0"
+            }
+          },
+          "Load Balancer Endpoint": {
+            "id": "Load Balancer Endpoint",
+            "path": "website-search-appsec-infrastack/Load Balancer Endpoint",
+            "constructInfo": {
+              "fqn": "@aws-cdk/core.CfnOutput",
+              "version": "1.113.0"
+            }
+          },
+          "CDKMetadata": {
+            "id": "CDKMetadata",
+            "path": "website-search-appsec-infrastack/CDKMetadata",
+            "children": {
+              "Default": {
+                "id": "Default",
+                "path": "website-search-appsec-infrastack/CDKMetadata/Default",
+                "constructInfo": {
+                  "fqn": "@aws-cdk/core.CfnResource",
+                  "version": "1.113.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "@aws-cdk/core.Construct",
+              "version": "1.113.0"
+            }
+          },
+          "Exports": {
+            "id": "Exports",
+            "path": "website-search-appsec-infrastack/Exports",
+            "children": {
+              "Output{\"Fn::GetAtt\":[\"websitesearchappsecNetworkLoadBalancer0A3F1CBD\",\"DNSName\"]}": {
+                "id": "Output{\"Fn::GetAtt\":[\"websitesearchappsecNetworkLoadBalancer0A3F1CBD\",\"DNSName\"]}",
+                "path": "website-search-appsec-infrastack/Exports/Output{\"Fn::GetAtt\":[\"websitesearchappsecNetworkLoadBalancer0A3F1CBD\",\"DNSName\"]}",
+                "constructInfo": {
+                  "fqn": "@aws-cdk/core.CfnOutput",
+                  "version": "1.113.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "@aws-cdk/core.Construct",
+              "version": "1.113.0"
+            }
+          }
+        },
+        "constructInfo": {
+          "fqn": "@aws-cdk/core.Stack",
+          "version": "1.113.0"
+        }
+      },
+      "website-search-appsec-apiLambdaStack": {
+        "id": "website-search-appsec-apiLambdaStack",
+        "path": "website-search-appsec-apiLambdaStack",
+        "children": {
+          "DocSearchLambda": {
+            "id": "DocSearchLambda",
+            "path": "website-search-appsec-apiLambdaStack/DocSearchLambda",
+            "children": {
+              "ServiceRole": {
+                "id": "ServiceRole",
+                "path": "website-search-appsec-apiLambdaStack/DocSearchLambda/ServiceRole",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "website-search-appsec-apiLambdaStack/DocSearchLambda/ServiceRole/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::IAM::Role",
+                      "aws:cdk:cloudformation:props": {
+                        "assumeRolePolicyDocument": {
+                          "Statement": [
+                            {
+                              "Action": "sts:AssumeRole",
+                              "Effect": "Allow",
+                              "Principal": {
+                                "Service": "lambda.amazonaws.com"
+                              }
+                            }
+                          ],
+                          "Version": "2012-10-17"
+                        },
+                        "managedPolicyArns": [
+                          {
+                            "Fn::Join": [
+                              "",
+                              [
+                                "arn:",
+                                {
+                                  "Ref": "AWS::Partition"
+                                },
+                                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+                              ]
+                            ]
+                          },
+                          {
+                            "Fn::Join": [
+                              "",
+                              [
+                                "arn:",
+                                {
+                                  "Ref": "AWS::Partition"
+                                },
+                                ":iam::aws:policy/service-role/AWSLambdaVPCAccessExecutionRole"
+                              ]
+                            ]
+                          }
+                        ]
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "@aws-cdk/aws-iam.CfnRole",
+                      "version": "1.113.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "@aws-cdk/aws-iam.Role",
+                  "version": "1.113.0"
+                }
+              },
+              "Code": {
+                "id": "Code",
+                "path": "website-search-appsec-apiLambdaStack/DocSearchLambda/Code",
+                "children": {
+                  "Stage": {
+                    "id": "Stage",
+                    "path": "website-search-appsec-apiLambdaStack/DocSearchLambda/Code/Stage",
+                    "constructInfo": {
+                      "fqn": "@aws-cdk/core.AssetStaging",
+                      "version": "1.113.0"
+                    }
+                  },
+                  "AssetBucket": {
+                    "id": "AssetBucket",
+                    "path": "website-search-appsec-apiLambdaStack/DocSearchLambda/Code/AssetBucket",
+                    "children": {
+                      "Notifications": {
+                        "id": "Notifications",
+                        "path": "website-search-appsec-apiLambdaStack/DocSearchLambda/Code/AssetBucket/Notifications",
+                        "constructInfo": {
+                          "fqn": "@aws-cdk/core.Construct",
+                          "version": "1.113.0"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "@aws-cdk/aws-s3.BucketBase",
+                      "version": "1.113.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "@aws-cdk/aws-s3-assets.Asset",
+                  "version": "1.113.0"
+                }
+              },
+              "SecurityGroup": {
+                "id": "SecurityGroup",
+                "path": "website-search-appsec-apiLambdaStack/DocSearchLambda/SecurityGroup",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "website-search-appsec-apiLambdaStack/DocSearchLambda/SecurityGroup/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::SecurityGroup",
+                      "aws:cdk:cloudformation:props": {
+                        "groupDescription": "Automatic security group for Lambda Function websitesearchappsecapiLambdaStackDocSearchLambdaF027BD24",
+                        "securityGroupEgress": [
+                          {
+                            "cidrIp": "0.0.0.0/0",
+                            "description": "Allow all outbound traffic by default",
+                            "ipProtocol": "-1"
+                          }
+                        ],
+                        "vpcId": {
+                          "Fn::ImportValue": "website-search-appsec-networkstack:ExportsOutputRefcdkvpc58C641FA3C2DCB3C"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "@aws-cdk/aws-ec2.CfnSecurityGroup",
+                      "version": "1.113.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "@aws-cdk/aws-ec2.SecurityGroup",
+                  "version": "1.113.0"
+                }
+              },
+              "Resource": {
+                "id": "Resource",
+                "path": "website-search-appsec-apiLambdaStack/DocSearchLambda/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::Lambda::Function",
+                  "aws:cdk:cloudformation:props": {
+                    "code": {
+                      "s3Bucket": {
+                        "Ref": "AssetParameters54e6f5dfc599418d7615483ca503852b0f2c16cc684ed4d5d444389da555d90bS3Bucket175178E0"
+                      },
+                      "s3Key": {
+                        "Fn::Join": [
+                          "",
+                          [
+                            {
+                              "Fn::Select": [
+                                0,
+                                {
+                                  "Fn::Split": [
+                                    "||",
+                                    {
+                                      "Ref": "AssetParameters54e6f5dfc599418d7615483ca503852b0f2c16cc684ed4d5d444389da555d90bS3VersionKey1A4044EF"
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "Fn::Select": [
+                                1,
+                                {
+                                  "Fn::Split": [
+                                    "||",
+                                    {
+                                      "Ref": "AssetParameters54e6f5dfc599418d7615483ca503852b0f2c16cc684ed4d5d444389da555d90bS3VersionKey1A4044EF"
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        ]
+                      }
+                    },
+                    "role": {
+                      "Fn::GetAtt": [
+                        "DocSearchLambdaServiceRole98A3008A",
+                        "Arn"
+                      ]
+                    },
+                    "environment": {
+                      "variables": {
+                        "SEARCH_USER": "admin",
+                        "SEARCH_PASS": "admin",
+                        "NLB_ENDPOINT": {
+                          "Fn::ImportValue": "website-search-appsec-infrastack:ExportsOutputFnGetAttwebsitesearchappsecNetworkLoadBalancer0A3F1CBDDNSNameCE0BAB7C"
+                        }
+                      }
+                    },
+                    "handler": "doc-search.handler",
+                    "runtime": "python3.8",
+                    "vpcConfig": {
+                      "subnetIds": [
+                        {
+                          "Fn::ImportValue": "website-search-appsec-networkstack:ExportsOutputRefcdkvpcprivateSubnet1Subnet54E345CF34A96D33"
+                        }
+                      ],
+                      "securityGroupIds": [
+                        {
+                          "Fn::GetAtt": [
+                            "DocSearchLambdaSecurityGroup4361FA06",
+                            "GroupId"
+                          ]
+                        }
+                      ]
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "@aws-cdk/aws-lambda.CfnFunction",
+                  "version": "1.113.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "@aws-cdk/aws-lambda.Function",
+              "version": "1.113.0"
+            }
+          },
+          "AssetParameters": {
+            "id": "AssetParameters",
+            "path": "website-search-appsec-apiLambdaStack/AssetParameters",
+            "children": {
+              "54e6f5dfc599418d7615483ca503852b0f2c16cc684ed4d5d444389da555d90b": {
+                "id": "54e6f5dfc599418d7615483ca503852b0f2c16cc684ed4d5d444389da555d90b",
+                "path": "website-search-appsec-apiLambdaStack/AssetParameters/54e6f5dfc599418d7615483ca503852b0f2c16cc684ed4d5d444389da555d90b",
+                "children": {
+                  "S3Bucket": {
+                    "id": "S3Bucket",
+                    "path": "website-search-appsec-apiLambdaStack/AssetParameters/54e6f5dfc599418d7615483ca503852b0f2c16cc684ed4d5d444389da555d90b/S3Bucket",
+                    "constructInfo": {
+                      "fqn": "@aws-cdk/core.CfnParameter",
+                      "version": "1.113.0"
+                    }
+                  },
+                  "S3VersionKey": {
+                    "id": "S3VersionKey",
+                    "path": "website-search-appsec-apiLambdaStack/AssetParameters/54e6f5dfc599418d7615483ca503852b0f2c16cc684ed4d5d444389da555d90b/S3VersionKey",
+                    "constructInfo": {
+                      "fqn": "@aws-cdk/core.CfnParameter",
+                      "version": "1.113.0"
+                    }
+                  },
+                  "ArtifactHash": {
+                    "id": "ArtifactHash",
+                    "path": "website-search-appsec-apiLambdaStack/AssetParameters/54e6f5dfc599418d7615483ca503852b0f2c16cc684ed4d5d444389da555d90b/ArtifactHash",
+                    "constructInfo": {
+                      "fqn": "@aws-cdk/core.CfnParameter",
+                      "version": "1.113.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "@aws-cdk/core.Construct",
+                  "version": "1.113.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "@aws-cdk/core.Construct",
+              "version": "1.113.0"
+            }
+          },
+          "ApiGatewayWithCors": {
+            "id": "ApiGatewayWithCors",
+            "path": "website-search-appsec-apiLambdaStack/ApiGatewayWithCors",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "website-search-appsec-apiLambdaStack/ApiGatewayWithCors/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::ApiGateway::RestApi",
+                  "aws:cdk:cloudformation:props": {
+                    "name": "opensearch"
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "@aws-cdk/aws-apigateway.CfnRestApi",
+                  "version": "1.113.0"
+                }
+              },
+              "CloudWatchRole": {
+                "id": "CloudWatchRole",
+                "path": "website-search-appsec-apiLambdaStack/ApiGatewayWithCors/CloudWatchRole",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "website-search-appsec-apiLambdaStack/ApiGatewayWithCors/CloudWatchRole/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::IAM::Role",
+                      "aws:cdk:cloudformation:props": {
+                        "assumeRolePolicyDocument": {
+                          "Statement": [
+                            {
+                              "Action": "sts:AssumeRole",
+                              "Effect": "Allow",
+                              "Principal": {
+                                "Service": "apigateway.amazonaws.com"
+                              }
+                            }
+                          ],
+                          "Version": "2012-10-17"
+                        },
+                        "managedPolicyArns": [
+                          {
+                            "Fn::Join": [
+                              "",
+                              [
+                                "arn:",
+                                {
+                                  "Ref": "AWS::Partition"
+                                },
+                                ":iam::aws:policy/service-role/AmazonAPIGatewayPushToCloudWatchLogs"
+                              ]
+                            ]
+                          }
+                        ]
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "@aws-cdk/aws-iam.CfnRole",
+                      "version": "1.113.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "@aws-cdk/aws-iam.Role",
+                  "version": "1.113.0"
+                }
+              },
+              "Account": {
+                "id": "Account",
+                "path": "website-search-appsec-apiLambdaStack/ApiGatewayWithCors/Account",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::ApiGateway::Account",
+                  "aws:cdk:cloudformation:props": {
+                    "cloudWatchRoleArn": {
+                      "Fn::GetAtt": [
+                        "ApiGatewayWithCorsCloudWatchRole9C3700F0",
+                        "Arn"
+                      ]
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "@aws-cdk/aws-apigateway.CfnAccount",
+                  "version": "1.113.0"
+                }
+              },
+              "Deployment": {
+                "id": "Deployment",
+                "path": "website-search-appsec-apiLambdaStack/ApiGatewayWithCors/Deployment",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "website-search-appsec-apiLambdaStack/ApiGatewayWithCors/Deployment/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::ApiGateway::Deployment",
+                      "aws:cdk:cloudformation:props": {
+                        "restApiId": {
+                          "Ref": "ApiGatewayWithCors6DE4076F"
+                        },
+                        "description": "Automatically created by the RestApi construct"
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "@aws-cdk/aws-apigateway.CfnDeployment",
+                      "version": "1.113.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "@aws-cdk/aws-apigateway.Deployment",
+                  "version": "1.113.0"
+                }
+              },
+              "DeploymentStage.prod": {
+                "id": "DeploymentStage.prod",
+                "path": "website-search-appsec-apiLambdaStack/ApiGatewayWithCors/DeploymentStage.prod",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "website-search-appsec-apiLambdaStack/ApiGatewayWithCors/DeploymentStage.prod/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::ApiGateway::Stage",
+                      "aws:cdk:cloudformation:props": {
+                        "restApiId": {
+                          "Ref": "ApiGatewayWithCors6DE4076F"
+                        },
+                        "deploymentId": {
+                          "Ref": "ApiGatewayWithCorsDeployment248C0700aa0e3c94fdf8043bdf88da0c2f1531f8"
+                        },
+                        "stageName": "prod"
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "@aws-cdk/aws-apigateway.CfnStage",
+                      "version": "1.113.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "@aws-cdk/aws-apigateway.Stage",
+                  "version": "1.113.0"
+                }
+              },
+              "Endpoint": {
+                "id": "Endpoint",
+                "path": "website-search-appsec-apiLambdaStack/ApiGatewayWithCors/Endpoint",
+                "constructInfo": {
+                  "fqn": "@aws-cdk/core.CfnOutput",
+                  "version": "1.113.0"
+                }
+              },
+              "Default": {
+                "id": "Default",
+                "path": "website-search-appsec-apiLambdaStack/ApiGatewayWithCors/Default",
+                "children": {
+                  "search": {
+                    "id": "search",
+                    "path": "website-search-appsec-apiLambdaStack/ApiGatewayWithCors/Default/search",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "website-search-appsec-apiLambdaStack/ApiGatewayWithCors/Default/search/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::ApiGateway::Resource",
+                          "aws:cdk:cloudformation:props": {
+                            "parentId": {
+                              "Fn::GetAtt": [
+                                "ApiGatewayWithCors6DE4076F",
+                                "RootResourceId"
+                              ]
+                            },
+                            "pathPart": "search",
+                            "restApiId": {
+                              "Ref": "ApiGatewayWithCors6DE4076F"
+                            }
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "@aws-cdk/aws-apigateway.CfnResource",
+                          "version": "1.113.0"
+                        }
+                      },
+                      "OPTIONS": {
+                        "id": "OPTIONS",
+                        "path": "website-search-appsec-apiLambdaStack/ApiGatewayWithCors/Default/search/OPTIONS",
+                        "children": {
+                          "Resource": {
+                            "id": "Resource",
+                            "path": "website-search-appsec-apiLambdaStack/ApiGatewayWithCors/Default/search/OPTIONS/Resource",
+                            "attributes": {
+                              "aws:cdk:cloudformation:type": "AWS::ApiGateway::Method",
+                              "aws:cdk:cloudformation:props": {
+                                "httpMethod": "OPTIONS",
+                                "resourceId": {
+                                  "Ref": "ApiGatewayWithCorssearch627B9142"
+                                },
+                                "restApiId": {
+                                  "Ref": "ApiGatewayWithCors6DE4076F"
+                                },
+                                "authorizationType": "NONE",
+                                "integration": {
+                                  "type": "MOCK",
+                                  "requestTemplates": {
+                                    "application/json": "{ statusCode: 200 }"
+                                  },
+                                  "integrationResponses": [
+                                    {
+                                      "statusCode": "204",
+                                      "responseParameters": {
+                                        "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent'",
+                                        "method.response.header.Access-Control-Allow-Origin": "'*'",
+                                        "method.response.header.Access-Control-Allow-Methods": "'GET,OPTIONS'"
+                                      }
+                                    }
+                                  ]
+                                },
+                                "methodResponses": [
+                                  {
+                                    "statusCode": "204",
+                                    "responseParameters": {
+                                      "method.response.header.Access-Control-Allow-Headers": true,
+                                      "method.response.header.Access-Control-Allow-Origin": true,
+                                      "method.response.header.Access-Control-Allow-Methods": true
+                                    }
+                                  }
+                                ]
+                              }
+                            },
+                            "constructInfo": {
+                              "fqn": "@aws-cdk/aws-apigateway.CfnMethod",
+                              "version": "1.113.0"
+                            }
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "@aws-cdk/aws-apigateway.Method",
+                          "version": "1.113.0"
+                        }
+                      },
+                      "GET": {
+                        "id": "GET",
+                        "path": "website-search-appsec-apiLambdaStack/ApiGatewayWithCors/Default/search/GET",
+                        "children": {
+                          "ApiPermission.websitesearchappsecapiLambdaStackApiGatewayWithCorsF44BCCCB.GET..search": {
+                            "id": "ApiPermission.websitesearchappsecapiLambdaStackApiGatewayWithCorsF44BCCCB.GET..search",
+                            "path": "website-search-appsec-apiLambdaStack/ApiGatewayWithCors/Default/search/GET/ApiPermission.websitesearchappsecapiLambdaStackApiGatewayWithCorsF44BCCCB.GET..search",
+                            "attributes": {
+                              "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
+                              "aws:cdk:cloudformation:props": {
+                                "action": "lambda:InvokeFunction",
+                                "functionName": {
+                                  "Fn::GetAtt": [
+                                    "DocSearchLambda35709C82",
+                                    "Arn"
+                                  ]
+                                },
+                                "principal": "apigateway.amazonaws.com",
+                                "sourceArn": {
+                                  "Fn::Join": [
+                                    "",
+                                    [
+                                      "arn:",
+                                      {
+                                        "Ref": "AWS::Partition"
+                                      },
+                                      ":execute-api:us-west-2:339203782206:",
+                                      {
+                                        "Ref": "ApiGatewayWithCors6DE4076F"
+                                      },
+                                      "/",
+                                      {
+                                        "Ref": "ApiGatewayWithCorsDeploymentStageprod7F1DD875"
+                                      },
+                                      "/GET/search"
+                                    ]
+                                  ]
+                                }
+                              }
+                            },
+                            "constructInfo": {
+                              "fqn": "@aws-cdk/aws-lambda.CfnPermission",
+                              "version": "1.113.0"
+                            }
+                          },
+                          "ApiPermission.Test.websitesearchappsecapiLambdaStackApiGatewayWithCorsF44BCCCB.GET..search": {
+                            "id": "ApiPermission.Test.websitesearchappsecapiLambdaStackApiGatewayWithCorsF44BCCCB.GET..search",
+                            "path": "website-search-appsec-apiLambdaStack/ApiGatewayWithCors/Default/search/GET/ApiPermission.Test.websitesearchappsecapiLambdaStackApiGatewayWithCorsF44BCCCB.GET..search",
+                            "attributes": {
+                              "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
+                              "aws:cdk:cloudformation:props": {
+                                "action": "lambda:InvokeFunction",
+                                "functionName": {
+                                  "Fn::GetAtt": [
+                                    "DocSearchLambda35709C82",
+                                    "Arn"
+                                  ]
+                                },
+                                "principal": "apigateway.amazonaws.com",
+                                "sourceArn": {
+                                  "Fn::Join": [
+                                    "",
+                                    [
+                                      "arn:",
+                                      {
+                                        "Ref": "AWS::Partition"
+                                      },
+                                      ":execute-api:us-west-2:339203782206:",
+                                      {
+                                        "Ref": "ApiGatewayWithCors6DE4076F"
+                                      },
+                                      "/test-invoke-stage/GET/search"
+                                    ]
+                                  ]
+                                }
+                              }
+                            },
+                            "constructInfo": {
+                              "fqn": "@aws-cdk/aws-lambda.CfnPermission",
+                              "version": "1.113.0"
+                            }
+                          },
+                          "Resource": {
+                            "id": "Resource",
+                            "path": "website-search-appsec-apiLambdaStack/ApiGatewayWithCors/Default/search/GET/Resource",
+                            "attributes": {
+                              "aws:cdk:cloudformation:type": "AWS::ApiGateway::Method",
+                              "aws:cdk:cloudformation:props": {
+                                "httpMethod": "GET",
+                                "resourceId": {
+                                  "Ref": "ApiGatewayWithCorssearch627B9142"
+                                },
+                                "restApiId": {
+                                  "Ref": "ApiGatewayWithCors6DE4076F"
+                                },
+                                "authorizationType": "NONE",
+                                "integration": {
+                                  "type": "AWS",
+                                  "uri": {
+                                    "Fn::Join": [
+                                      "",
+                                      [
+                                        "arn:",
+                                        {
+                                          "Ref": "AWS::Partition"
+                                        },
+                                        ":apigateway:us-west-2:lambda:path/2015-03-31/functions/",
+                                        {
+                                          "Fn::GetAtt": [
+                                            "DocSearchLambda35709C82",
+                                            "Arn"
+                                          ]
+                                        },
+                                        "/invocations"
+                                      ]
+                                    ]
+                                  },
+                                  "integrationHttpMethod": "POST",
+                                  "integrationResponses": [
+                                    {
+                                      "statusCode": "200",
+                                      "responseParameters": {
+                                        "method.response.header.Access-Control-Allow-Origin": "'*'"
+                                      }
+                                    }
+                                  ]
+                                },
+                                "methodResponses": [
+                                  {
+                                    "statusCode": "200",
+                                    "responseParameters": {
+                                      "method.response.header.Access-Control-Allow-Origin": true
+                                    }
+                                  }
+                                ]
+                              }
+                            },
+                            "constructInfo": {
+                              "fqn": "@aws-cdk/aws-apigateway.CfnMethod",
+                              "version": "1.113.0"
+                            }
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "@aws-cdk/aws-apigateway.Method",
+                          "version": "1.113.0"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "@aws-cdk/aws-apigateway.Resource",
+                      "version": "1.113.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "@aws-cdk/aws-apigateway.ResourceBase",
+                  "version": "1.113.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "@aws-cdk/aws-apigateway.RestApi",
+              "version": "1.113.0"
+            }
+          },
+          "CDKMetadata": {
+            "id": "CDKMetadata",
+            "path": "website-search-appsec-apiLambdaStack/CDKMetadata",
+            "children": {
+              "Default": {
+                "id": "Default",
+                "path": "website-search-appsec-apiLambdaStack/CDKMetadata/Default",
+                "constructInfo": {
+                  "fqn": "@aws-cdk/core.CfnResource",
+                  "version": "1.113.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "@aws-cdk/core.Construct",
+              "version": "1.113.0"
+            }
+          }
+        },
+        "constructInfo": {
+          "fqn": "@aws-cdk/core.Stack",
+          "version": "1.113.0"
+        }
+      }
+    },
+    "constructInfo": {
+      "fqn": "@aws-cdk/core.App",
+      "version": "1.113.0"
+    }
+  }
+}

@@ -1,0 +1,405 @@
+{
+  "Resources": {
+    "cdkvpc58C641FA": {
+      "Type": "AWS::EC2::VPC",
+      "Properties": {
+        "CidrBlock": "10.9.0.0/21",
+        "EnableDnsHostnames": true,
+        "EnableDnsSupport": true,
+        "InstanceTenancy": "default",
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "website-search-appsec-networkstack/cdk-vpc"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "website-search-appsec-networkstack/cdk-vpc/Resource"
+      }
+    },
+    "cdkvpcprivateSubnet1Subnet54E345CF": {
+      "Type": "AWS::EC2::Subnet",
+      "Properties": {
+        "CidrBlock": "10.9.0.0/24",
+        "VpcId": {
+          "Ref": "cdkvpc58C641FA"
+        },
+        "AvailabilityZone": "us-west-2a",
+        "MapPublicIpOnLaunch": false,
+        "Tags": [
+          {
+            "Key": "aws-cdk:subnet-name",
+            "Value": "private"
+          },
+          {
+            "Key": "aws-cdk:subnet-type",
+            "Value": "Private"
+          },
+          {
+            "Key": "Name",
+            "Value": "website-search-appsec-networkstack/cdk-vpc/privateSubnet1"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "website-search-appsec-networkstack/cdk-vpc/privateSubnet1/Subnet"
+      }
+    },
+    "cdkvpcprivateSubnet1RouteTable25FF8809": {
+      "Type": "AWS::EC2::RouteTable",
+      "Properties": {
+        "VpcId": {
+          "Ref": "cdkvpc58C641FA"
+        },
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "website-search-appsec-networkstack/cdk-vpc/privateSubnet1"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "website-search-appsec-networkstack/cdk-vpc/privateSubnet1/RouteTable"
+      }
+    },
+    "cdkvpcprivateSubnet1RouteTableAssociation84391A61": {
+      "Type": "AWS::EC2::SubnetRouteTableAssociation",
+      "Properties": {
+        "RouteTableId": {
+          "Ref": "cdkvpcprivateSubnet1RouteTable25FF8809"
+        },
+        "SubnetId": {
+          "Ref": "cdkvpcprivateSubnet1Subnet54E345CF"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "website-search-appsec-networkstack/cdk-vpc/privateSubnet1/RouteTableAssociation"
+      }
+    },
+    "cdkvpcprivateSubnet1DefaultRouteF8657AA0": {
+      "Type": "AWS::EC2::Route",
+      "Properties": {
+        "RouteTableId": {
+          "Ref": "cdkvpcprivateSubnet1RouteTable25FF8809"
+        },
+        "DestinationCidrBlock": "0.0.0.0/0",
+        "NatGatewayId": {
+          "Ref": "cdkvpcpublicSubnet1NATGateway96E91EBA"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "website-search-appsec-networkstack/cdk-vpc/privateSubnet1/DefaultRoute"
+      }
+    },
+    "cdkvpcpublicSubnet1Subnet8CE8DF43": {
+      "Type": "AWS::EC2::Subnet",
+      "Properties": {
+        "CidrBlock": "10.9.1.0/24",
+        "VpcId": {
+          "Ref": "cdkvpc58C641FA"
+        },
+        "AvailabilityZone": "us-west-2a",
+        "MapPublicIpOnLaunch": true,
+        "Tags": [
+          {
+            "Key": "aws-cdk:subnet-name",
+            "Value": "public"
+          },
+          {
+            "Key": "aws-cdk:subnet-type",
+            "Value": "Public"
+          },
+          {
+            "Key": "Name",
+            "Value": "website-search-appsec-networkstack/cdk-vpc/publicSubnet1"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "website-search-appsec-networkstack/cdk-vpc/publicSubnet1/Subnet"
+      }
+    },
+    "cdkvpcpublicSubnet1RouteTableEB6F9789": {
+      "Type": "AWS::EC2::RouteTable",
+      "Properties": {
+        "VpcId": {
+          "Ref": "cdkvpc58C641FA"
+        },
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "website-search-appsec-networkstack/cdk-vpc/publicSubnet1"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "website-search-appsec-networkstack/cdk-vpc/publicSubnet1/RouteTable"
+      }
+    },
+    "cdkvpcpublicSubnet1RouteTableAssociationDEB7517D": {
+      "Type": "AWS::EC2::SubnetRouteTableAssociation",
+      "Properties": {
+        "RouteTableId": {
+          "Ref": "cdkvpcpublicSubnet1RouteTableEB6F9789"
+        },
+        "SubnetId": {
+          "Ref": "cdkvpcpublicSubnet1Subnet8CE8DF43"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "website-search-appsec-networkstack/cdk-vpc/publicSubnet1/RouteTableAssociation"
+      }
+    },
+    "cdkvpcpublicSubnet1DefaultRouteDECB4A91": {
+      "Type": "AWS::EC2::Route",
+      "Properties": {
+        "RouteTableId": {
+          "Ref": "cdkvpcpublicSubnet1RouteTableEB6F9789"
+        },
+        "DestinationCidrBlock": "0.0.0.0/0",
+        "GatewayId": {
+          "Ref": "cdkvpcIGW79C8E110"
+        }
+      },
+      "DependsOn": [
+        "cdkvpcVPCGWEB85764E"
+      ],
+      "Metadata": {
+        "aws:cdk:path": "website-search-appsec-networkstack/cdk-vpc/publicSubnet1/DefaultRoute"
+      }
+    },
+    "cdkvpcpublicSubnet1EIPB01708B1": {
+      "Type": "AWS::EC2::EIP",
+      "Properties": {
+        "Domain": "vpc",
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "website-search-appsec-networkstack/cdk-vpc/publicSubnet1"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "website-search-appsec-networkstack/cdk-vpc/publicSubnet1/EIP"
+      }
+    },
+    "cdkvpcpublicSubnet1NATGateway96E91EBA": {
+      "Type": "AWS::EC2::NatGateway",
+      "Properties": {
+        "SubnetId": {
+          "Ref": "cdkvpcpublicSubnet1Subnet8CE8DF43"
+        },
+        "AllocationId": {
+          "Fn::GetAtt": [
+            "cdkvpcpublicSubnet1EIPB01708B1",
+            "AllocationId"
+          ]
+        },
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "website-search-appsec-networkstack/cdk-vpc/publicSubnet1"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "website-search-appsec-networkstack/cdk-vpc/publicSubnet1/NATGateway"
+      }
+    },
+    "cdkvpcIGW79C8E110": {
+      "Type": "AWS::EC2::InternetGateway",
+      "Properties": {
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "website-search-appsec-networkstack/cdk-vpc"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "website-search-appsec-networkstack/cdk-vpc/IGW"
+      }
+    },
+    "cdkvpcVPCGWEB85764E": {
+      "Type": "AWS::EC2::VPCGatewayAttachment",
+      "Properties": {
+        "VpcId": {
+          "Ref": "cdkvpc58C641FA"
+        },
+        "InternetGatewayId": {
+          "Ref": "cdkvpcIGW79C8E110"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "website-search-appsec-networkstack/cdk-vpc/VPCGW"
+      }
+    },
+    "websitesearchappseccdksecuritygroup68FAFEDE": {
+      "Type": "AWS::EC2::SecurityGroup",
+      "Properties": {
+        "GroupDescription": "Opensearch website search domain security group",
+        "GroupName": "website-search-appsec-SecurityGroup",
+        "SecurityGroupEgress": [
+          {
+            "CidrIp": "0.0.0.0/0",
+            "Description": "Allow all outbound traffic by default",
+            "IpProtocol": "-1"
+          }
+        ],
+        "SecurityGroupIngress": [
+          {
+            "CidrIp": {
+              "Fn::GetAtt": [
+                "cdkvpc58C641FA",
+                "CidrBlock"
+              ]
+            },
+            "Description": "OpenSearch runs on port 9200 from VPC",
+            "FromPort": 9200,
+            "IpProtocol": "tcp",
+            "ToPort": 9200
+          },
+          {
+            "CidrIp": {
+              "Fn::GetAtt": [
+                "cdkvpc58C641FA",
+                "CidrBlock"
+              ]
+            },
+            "Description": "Performance Analyzer plugin port from VPC",
+            "FromPort": 9600,
+            "IpProtocol": "tcp",
+            "ToPort": 9600
+          },
+          {
+            "CidrIp": {
+              "Fn::GetAtt": [
+                "cdkvpc58C641FA",
+                "CidrBlock"
+              ]
+            },
+            "Description": "Used for accessing OpenSearch Dashboards from VPC",
+            "FromPort": 5601,
+            "IpProtocol": "tcp",
+            "ToPort": 5601
+          },
+          {
+            "CidrIp": "0.0.0.0/0",
+            "Description": "OpenSearch runs on port 9200 from VPC",
+            "FromPort": 9200,
+            "IpProtocol": "tcp",
+            "ToPort": 9200
+          },
+          {
+            "CidrIp": "0.0.0.0/0",
+            "Description": "Performance Analyzer plugin port from VPC",
+            "FromPort": 9600,
+            "IpProtocol": "tcp",
+            "ToPort": 9600
+          },
+          {
+            "CidrIp": "0.0.0.0/0",
+            "Description": "Used for accessing OpenSearch Dashboards from VPC",
+            "FromPort": 5601,
+            "IpProtocol": "tcp",
+            "ToPort": 5601
+          }
+        ],
+        "VpcId": {
+          "Ref": "cdkvpc58C641FA"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "website-search-appsec-networkstack/website-search-appsec-cdk-security-group/Resource"
+      }
+    },
+    "websitesearchappseccdksecuritygroupfromplf8a6439122C4409B18": {
+      "Type": "AWS::EC2::SecurityGroupIngress",
+      "Properties": {
+        "IpProtocol": "tcp",
+        "Description": "SSH access to the nodes",
+        "FromPort": 22,
+        "GroupId": {
+          "Fn::GetAtt": [
+            "websitesearchappseccdksecuritygroup68FAFEDE",
+            "GroupId"
+          ]
+        },
+        "SourcePrefixListId": "pl-f8a64391",
+        "ToPort": 22
+      },
+      "Metadata": {
+        "aws:cdk:path": "website-search-appsec-networkstack/website-search-appsec-cdk-security-group/from pl-f8a64391:22"
+      }
+    },
+    "websitesearchappseccdksecuritygroupfromwebsitesearchappsecnetworkstackwebsitesearchappseccdksecuritygroup2A57801BALLTRAFFICDD5EFCF4": {
+      "Type": "AWS::EC2::SecurityGroupIngress",
+      "Properties": {
+        "IpProtocol": "-1",
+        "Description": "from websitesearchappsecnetworkstackwebsitesearchappseccdksecuritygroup2A57801B:ALL TRAFFIC",
+        "GroupId": {
+          "Fn::GetAtt": [
+            "websitesearchappseccdksecuritygroup68FAFEDE",
+            "GroupId"
+          ]
+        },
+        "SourceSecurityGroupId": {
+          "Fn::GetAtt": [
+            "websitesearchappseccdksecuritygroup68FAFEDE",
+            "GroupId"
+          ]
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "website-search-appsec-networkstack/website-search-appsec-cdk-security-group/from websitesearchappsecnetworkstackwebsitesearchappseccdksecuritygroup2A57801B:ALL TRAFFIC"
+      }
+    },
+    "CDKMetadata": {
+      "Type": "AWS::CDK::Metadata",
+      "Properties": {
+        "Analytics": "v2:deflate64:H4sIAAAAAAAAE32PTW+DMAyGf0vvIR2jl91WoaniUkVQcQ+eN7K2DnKcVgjx3wfsg512sv34tf061Wma6YfNs72HBF7P2wE8ox4qsXBWJQYfGVDlnoJwBFH5G/3QUc1DCI96qDuYO7XJlWF3s4JVbAgX+ZqVPgqebHPBla9sH4IHZ8V5+hUrE5uLg3XFS2HmcLRymI7cbT9XBQnyJPiDJiff1V6mV9orkqgKIbKT/sA+douFf0FB74whjKMyvbSetpl+0rvNR3Au4UjirqjLr/gJWMmWuUcBAAA="
+      },
+      "Metadata": {
+        "aws:cdk:path": "website-search-appsec-networkstack/CDKMetadata/Default"
+      }
+    }
+  },
+  "Outputs": {
+    "ExportsOutputFnGetAttwebsitesearchappseccdksecuritygroup68FAFEDEGroupId34DA8A32": {
+      "Value": {
+        "Fn::GetAtt": [
+          "websitesearchappseccdksecuritygroup68FAFEDE",
+          "GroupId"
+        ]
+      },
+      "Export": {
+        "Name": "website-search-appsec-networkstack:ExportsOutputFnGetAttwebsitesearchappseccdksecuritygroup68FAFEDEGroupId34DA8A32"
+      }
+    },
+    "ExportsOutputRefcdkvpcprivateSubnet1Subnet54E345CF34A96D33": {
+      "Value": {
+        "Ref": "cdkvpcprivateSubnet1Subnet54E345CF"
+      },
+      "Export": {
+        "Name": "website-search-appsec-networkstack:ExportsOutputRefcdkvpcprivateSubnet1Subnet54E345CF34A96D33"
+      }
+    },
+    "ExportsOutputRefcdkvpcpublicSubnet1Subnet8CE8DF43592738AF": {
+      "Value": {
+        "Ref": "cdkvpcpublicSubnet1Subnet8CE8DF43"
+      },
+      "Export": {
+        "Name": "website-search-appsec-networkstack:ExportsOutputRefcdkvpcpublicSubnet1Subnet8CE8DF43592738AF"
+      }
+    },
+    "ExportsOutputRefcdkvpc58C641FA3C2DCB3C": {
+      "Value": {
+        "Ref": "cdkvpc58C641FA"
+      },
+      "Export": {
+        "Name": "website-search-appsec-networkstack:ExportsOutputRefcdkvpc58C641FA3C2DCB3C"
+      }
+    }
+  }
+}

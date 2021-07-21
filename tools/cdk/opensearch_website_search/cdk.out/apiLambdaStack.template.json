@@ -1,0 +1,419 @@
+{
+  "Resources": {
+    "DocSearchLambdaServiceRole98A3008A": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "lambda.amazonaws.com"
+              }
+            }
+          ],
+          "Version": "2012-10-17"
+        },
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition"
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+              ]
+            ]
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "apiLambdaStack/DocSearchLambda/ServiceRole/Resource"
+      }
+    },
+    "DocSearchLambda35709C82": {
+      "Type": "AWS::Lambda::Function",
+      "Properties": {
+        "Code": {
+          "S3Bucket": {
+            "Ref": "AssetParameters89524910a57e91b2162e13be7cfb2c4b3f93b37e2facdb4ec081133750ba614cS3BucketB94F9088"
+          },
+          "S3Key": {
+            "Fn::Join": [
+              "",
+              [
+                {
+                  "Fn::Select": [
+                    0,
+                    {
+                      "Fn::Split": [
+                        "||",
+                        {
+                          "Ref": "AssetParameters89524910a57e91b2162e13be7cfb2c4b3f93b37e2facdb4ec081133750ba614cS3VersionKey844FA9D1"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "Fn::Select": [
+                    1,
+                    {
+                      "Fn::Split": [
+                        "||",
+                        {
+                          "Ref": "AssetParameters89524910a57e91b2162e13be7cfb2c4b3f93b37e2facdb4ec081133750ba614cS3VersionKey844FA9D1"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            ]
+          }
+        },
+        "Role": {
+          "Fn::GetAtt": [
+            "DocSearchLambdaServiceRole98A3008A",
+            "Arn"
+          ]
+        },
+        "Handler": "lambda-handler.handler",
+        "Runtime": "python3.7"
+      },
+      "DependsOn": [
+        "DocSearchLambdaServiceRole98A3008A"
+      ],
+      "Metadata": {
+        "aws:cdk:path": "apiLambdaStack/DocSearchLambda/Resource",
+        "aws:asset:path": "asset.89524910a57e91b2162e13be7cfb2c4b3f93b37e2facdb4ec081133750ba614c",
+        "aws:asset:property": "Code"
+      }
+    },
+    "ApiGatewayWithCors6DE4076F": {
+      "Type": "AWS::ApiGateway::RestApi",
+      "Properties": {
+        "Name": "opensearch"
+      },
+      "Metadata": {
+        "aws:cdk:path": "apiLambdaStack/ApiGatewayWithCors/Resource"
+      }
+    },
+    "ApiGatewayWithCorsCloudWatchRole9C3700F0": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "apigateway.amazonaws.com"
+              }
+            }
+          ],
+          "Version": "2012-10-17"
+        },
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition"
+                },
+                ":iam::aws:policy/service-role/AmazonAPIGatewayPushToCloudWatchLogs"
+              ]
+            ]
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "apiLambdaStack/ApiGatewayWithCors/CloudWatchRole/Resource"
+      }
+    },
+    "ApiGatewayWithCorsAccount3D15B20D": {
+      "Type": "AWS::ApiGateway::Account",
+      "Properties": {
+        "CloudWatchRoleArn": {
+          "Fn::GetAtt": [
+            "ApiGatewayWithCorsCloudWatchRole9C3700F0",
+            "Arn"
+          ]
+        }
+      },
+      "DependsOn": [
+        "ApiGatewayWithCors6DE4076F"
+      ],
+      "Metadata": {
+        "aws:cdk:path": "apiLambdaStack/ApiGatewayWithCors/Account"
+      }
+    },
+    "ApiGatewayWithCorsDeployment248C07009f1b29aa7fb9e23ee8dd70473053a484": {
+      "Type": "AWS::ApiGateway::Deployment",
+      "Properties": {
+        "RestApiId": {
+          "Ref": "ApiGatewayWithCors6DE4076F"
+        },
+        "Description": "Automatically created by the RestApi construct"
+      },
+      "DependsOn": [
+        "ApiGatewayWithCorsexampleGETCC962CB3",
+        "ApiGatewayWithCorsexampleOPTIONS2F5D9F4D",
+        "ApiGatewayWithCorsexample5AE32A3C"
+      ],
+      "Metadata": {
+        "aws:cdk:path": "apiLambdaStack/ApiGatewayWithCors/Deployment/Resource"
+      }
+    },
+    "ApiGatewayWithCorsDeploymentStageprod7F1DD875": {
+      "Type": "AWS::ApiGateway::Stage",
+      "Properties": {
+        "RestApiId": {
+          "Ref": "ApiGatewayWithCors6DE4076F"
+        },
+        "DeploymentId": {
+          "Ref": "ApiGatewayWithCorsDeployment248C07009f1b29aa7fb9e23ee8dd70473053a484"
+        },
+        "StageName": "prod"
+      },
+      "Metadata": {
+        "aws:cdk:path": "apiLambdaStack/ApiGatewayWithCors/DeploymentStage.prod/Resource"
+      }
+    },
+    "ApiGatewayWithCorsexample5AE32A3C": {
+      "Type": "AWS::ApiGateway::Resource",
+      "Properties": {
+        "ParentId": {
+          "Fn::GetAtt": [
+            "ApiGatewayWithCors6DE4076F",
+            "RootResourceId"
+          ]
+        },
+        "PathPart": "example",
+        "RestApiId": {
+          "Ref": "ApiGatewayWithCors6DE4076F"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "apiLambdaStack/ApiGatewayWithCors/Default/example/Resource"
+      }
+    },
+    "ApiGatewayWithCorsexampleOPTIONS2F5D9F4D": {
+      "Type": "AWS::ApiGateway::Method",
+      "Properties": {
+        "HttpMethod": "OPTIONS",
+        "ResourceId": {
+          "Ref": "ApiGatewayWithCorsexample5AE32A3C"
+        },
+        "RestApiId": {
+          "Ref": "ApiGatewayWithCors6DE4076F"
+        },
+        "AuthorizationType": "NONE",
+        "Integration": {
+          "IntegrationResponses": [
+            {
+              "ResponseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'",
+                "method.response.header.Access-Control-Allow-Methods": "'GET,OPTIONS'"
+              },
+              "StatusCode": "204"
+            }
+          ],
+          "RequestTemplates": {
+            "application/json": "{ statusCode: 200 }"
+          },
+          "Type": "MOCK"
+        },
+        "MethodResponses": [
+          {
+            "ResponseParameters": {
+              "method.response.header.Access-Control-Allow-Headers": true,
+              "method.response.header.Access-Control-Allow-Origin": true,
+              "method.response.header.Access-Control-Allow-Methods": true
+            },
+            "StatusCode": "204"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "apiLambdaStack/ApiGatewayWithCors/Default/example/OPTIONS/Resource"
+      }
+    },
+    "ApiGatewayWithCorsexampleGETApiPermissionapiLambdaStackApiGatewayWithCors2165B049GETexampleE42D9EF2": {
+      "Type": "AWS::Lambda::Permission",
+      "Properties": {
+        "Action": "lambda:InvokeFunction",
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "DocSearchLambda35709C82",
+            "Arn"
+          ]
+        },
+        "Principal": "apigateway.amazonaws.com",
+        "SourceArn": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:",
+              {
+                "Ref": "AWS::Partition"
+              },
+              ":execute-api:us-west-2:339203782206:",
+              {
+                "Ref": "ApiGatewayWithCors6DE4076F"
+              },
+              "/",
+              {
+                "Ref": "ApiGatewayWithCorsDeploymentStageprod7F1DD875"
+              },
+              "/GET/example"
+            ]
+          ]
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "apiLambdaStack/ApiGatewayWithCors/Default/example/GET/ApiPermission.apiLambdaStackApiGatewayWithCors2165B049.GET..example"
+      }
+    },
+    "ApiGatewayWithCorsexampleGETApiPermissionTestapiLambdaStackApiGatewayWithCors2165B049GETexample5966FBB0": {
+      "Type": "AWS::Lambda::Permission",
+      "Properties": {
+        "Action": "lambda:InvokeFunction",
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "DocSearchLambda35709C82",
+            "Arn"
+          ]
+        },
+        "Principal": "apigateway.amazonaws.com",
+        "SourceArn": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:",
+              {
+                "Ref": "AWS::Partition"
+              },
+              ":execute-api:us-west-2:339203782206:",
+              {
+                "Ref": "ApiGatewayWithCors6DE4076F"
+              },
+              "/test-invoke-stage/GET/example"
+            ]
+          ]
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "apiLambdaStack/ApiGatewayWithCors/Default/example/GET/ApiPermission.Test.apiLambdaStackApiGatewayWithCors2165B049.GET..example"
+      }
+    },
+    "ApiGatewayWithCorsexampleGETCC962CB3": {
+      "Type": "AWS::ApiGateway::Method",
+      "Properties": {
+        "HttpMethod": "GET",
+        "ResourceId": {
+          "Ref": "ApiGatewayWithCorsexample5AE32A3C"
+        },
+        "RestApiId": {
+          "Ref": "ApiGatewayWithCors6DE4076F"
+        },
+        "AuthorizationType": "NONE",
+        "Integration": {
+          "IntegrationHttpMethod": "POST",
+          "IntegrationResponses": [
+            {
+              "ResponseParameters": {
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              },
+              "StatusCode": "200"
+            }
+          ],
+          "Type": "AWS",
+          "Uri": {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition"
+                },
+                ":apigateway:us-west-2:lambda:path/2015-03-31/functions/",
+                {
+                  "Fn::GetAtt": [
+                    "DocSearchLambda35709C82",
+                    "Arn"
+                  ]
+                },
+                "/invocations"
+              ]
+            ]
+          }
+        },
+        "MethodResponses": [
+          {
+            "ResponseParameters": {
+              "method.response.header.Access-Control-Allow-Origin": true
+            },
+            "StatusCode": "200"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "apiLambdaStack/ApiGatewayWithCors/Default/example/GET/Resource"
+      }
+    },
+    "CDKMetadata": {
+      "Type": "AWS::CDK::Metadata",
+      "Properties": {
+        "Analytics": "v2:deflate64:H4sIAAAAAAAAE02PQW6EMAxFzzL7TKaIbrorM9XsqiJ6Aje4NIUkKHY0Qih3bxKKxMrvW/b3dyWrqpZPp1d40Fn142VVzqNcPxnUKBoi5ISDtoO4OUvsg2Jx+7YteDDI6LP4CDyH0u6QXPAKo8h+6wTmqwe53oNVrJ3NI0du0RtNlFQUGoxcOzdh8Uk1CqrPkBOQLEGSltegRuQrEAqY9QCMD1jSHhI3s/6PsGOjlAuWxRvOk1sM2pLxoPJr5d4Ge/piv4vjW+Id+cf1ubVRjFG0SyJ7qeWLfD79ktZnn45qg7Lb6h/5oFQ7ZAEAAA=="
+      },
+      "Metadata": {
+        "aws:cdk:path": "apiLambdaStack/CDKMetadata/Default"
+      }
+    }
+  },
+  "Parameters": {
+    "AssetParameters89524910a57e91b2162e13be7cfb2c4b3f93b37e2facdb4ec081133750ba614cS3BucketB94F9088": {
+      "Type": "String",
+      "Description": "S3 bucket for asset \"89524910a57e91b2162e13be7cfb2c4b3f93b37e2facdb4ec081133750ba614c\""
+    },
+    "AssetParameters89524910a57e91b2162e13be7cfb2c4b3f93b37e2facdb4ec081133750ba614cS3VersionKey844FA9D1": {
+      "Type": "String",
+      "Description": "S3 key for asset version \"89524910a57e91b2162e13be7cfb2c4b3f93b37e2facdb4ec081133750ba614c\""
+    },
+    "AssetParameters89524910a57e91b2162e13be7cfb2c4b3f93b37e2facdb4ec081133750ba614cArtifactHashDB11D38C": {
+      "Type": "String",
+      "Description": "Artifact hash for asset \"89524910a57e91b2162e13be7cfb2c4b3f93b37e2facdb4ec081133750ba614c\""
+    }
+  },
+  "Outputs": {
+    "ApiGatewayWithCorsEndpoint559B76CB": {
+      "Value": {
+        "Fn::Join": [
+          "",
+          [
+            "https://",
+            {
+              "Ref": "ApiGatewayWithCors6DE4076F"
+            },
+            ".execute-api.us-west-2.",
+            {
+              "Ref": "AWS::URLSuffix"
+            },
+            "/",
+            {
+              "Ref": "ApiGatewayWithCorsDeploymentStageprod7F1DD875"
+            },
+            "/"
+          ]
+        ]
+      }
+    }
+  }
+}

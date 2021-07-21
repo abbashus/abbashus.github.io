@@ -1,0 +1,14 @@
+{
+  "stack_prefix" : "website-search-appsec-",
+  "cidr": "10.9.0.0/21",
+  "distribution": "tar",
+  "keypair": "opensearch-cluster",
+  "url": "https://artifacts.opensearch.org/releases/bundle/opensearch/1.0.0/opensearch-1.0.0-linux-x64.tar.gz",
+  "dashboards_url": "https://artifacts.opensearch.org/releases/bundle/opensearch-dashboards/1.0.0/opensearch-dashboards-1.0.0-linux-x64.tar.gz",
+  "availability-zones:account=339203782206:region=us-west-2": [
+    "us-west-2a",
+    "us-west-2b",
+    "us-west-2c",
+    "us-west-2d"
+  ]
+}
